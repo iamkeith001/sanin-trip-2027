@@ -106,6 +106,11 @@
     .journey-nav .day-nav-item:focus-visible, button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
     .journey-nav .tab-active { color: white !important; background: var(--ink) !important; box-shadow: 0 3px 8px rgba(18,38,58,.18); }
     .journey-nav .tab-active span { color: #DDE8E8 !important; }
+    .journey-nav .tab-active .nav-date { color: #F0C987 !important; }
+    /* 副標會讓 9 個分頁超出畫面寬度而需要橫向捲動；只在放得下時才顯示。
+       日期則一律顯示，含手機。日別標題在下方面板本來就有完整版本。 */
+    .journey-nav .nav-sub { display: none; }
+    @media (min-width: 1920px) { .journey-nav .nav-sub { display: inline; } }
     #itinerary-content { max-width: 72rem; padding-top: clamp(2rem, 4vw, 4rem); padding-bottom: 5rem; }
     .day-panel > section:first-child { margin-bottom: 2.5rem; padding: 0 0 1.5rem; border-color: var(--line); }
     .day-panel > section:first-child h2 { font-size: clamp(1.8rem, 3vw, 2.75rem); line-height: 1.25; color: var(--ink); }
@@ -124,7 +129,6 @@
       .hero-image { object-position: 68% center; }
       .hero-content { min-height: 570px; padding-left: 1.5rem; padding-right: 1.5rem; }
       .hero-title { max-width: 7em; }
-      .journey-nav .day-nav-item span { display: none; }
       .day-panel > section:first-child h2 { font-size: 1.75rem; }
       .day-panel article[id^="card-"] { border-radius: .8rem; }
     }
@@ -172,31 +176,31 @@
   <!-- Day Selector -->
   <nav class="journey-nav" aria-label="行程日別導覽">
       <button onclick="switchDay(1)" id="tab-1" data-day="1" class="day-nav-item tab-active py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent text-stone-900">
-        Day 1 <span class="text-xs text-stone-400 font-light ml-1">境港・米子住宿決策</span>
+        Day 1 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/11 (一)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">境港・米子住宿決策</span>
       </button>
       <button onclick="switchDay(2)" id="tab-2" data-day="2" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        Day 2 <span class="text-xs text-stone-400 font-light ml-1">柯南小鎮・城崎川口屋</span>
+        Day 2 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/12 (二)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">柯南小鎮・城崎川口屋</span>
       </button>
       <button onclick="switchDay(3)" id="tab-3" data-day="3" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        Day 3 <span class="text-xs text-stone-400 font-light ml-1">玄武洞・出石皿蕎麥</span>
+        Day 3 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/13 (三)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">玄武洞・出石皿蕎麥</span>
       </button>
       <button onclick="switchDay(4)" id="tab-4" data-day="4" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        Day 4 <span class="text-xs text-stone-400 font-light ml-1">天橋立・伊根舟屋</span>
+        Day 4 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/14 (四)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">天橋立・伊根舟屋</span>
       </button>
       <button onclick="switchDay(5)" id="tab-5" data-day="5" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        Day 5 <span class="text-xs text-stone-400 font-light ml-1">鳥取砂丘・和牛</span>
+        Day 5 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/15 (五)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">鳥取砂丘・和牛</span>
       </button>
       <button onclick="switchDay(6)" id="tab-6" data-day="6" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        Day 6 <span class="text-xs text-stone-400 font-light ml-1">岡山烏城・吉備津</span>
+        Day 6 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/16 (六)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">岡山烏城・吉備津</span>
       </button>
       <button onclick="switchDay(7)" id="tab-7" data-day="7" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        Day 7 <span class="text-xs text-stone-400 font-light ml-1">倉敷美觀・三井Outlet</span>
+        Day 7 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/17 (日)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">倉敷美觀・三井Outlet</span>
       </button>
       <button onclick="switchDay(8)" id="tab-8" data-day="8" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        Day 8 <span class="text-xs text-stone-400 font-light ml-1">伴手禮・返台</span>
+        Day 8 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/18 (一)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">伴手禮・返台</span>
       </button>
       <button onclick="switchDay(0)" id="tab-0" data-day="0" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        總覽 <span class="text-xs text-stone-400 font-light ml-1">討論成果</span>
+        總覽 <span class="nav-sub text-xs text-stone-400 font-light ml-1">討論成果</span>
       </button>
   </nav>
 
