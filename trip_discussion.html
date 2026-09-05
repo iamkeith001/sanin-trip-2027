@@ -1012,7 +1012,7 @@
           </div>
           <div class="mt-6 pt-4 border-t border-stone-100">
             <p class="text-[11px] text-stone-700 bg-amber-50 border border-amber-200 rounded px-3 py-2 mb-3 leading-relaxed">
-              <strong class="text-amber-800">本方案交通</strong>　JR 城崎溫泉 ➔ 豐岡（轉京都丹後鐵道）➔ 天橋立，再渡海到北側府中，伊根段搭丹海巴士。<strong>全程不需用車</strong>，但轉乘最多：鐵道換乘一次、渡海一次、巴士一次。
+              <strong class="text-amber-800">本方案交通</strong>　JR 城崎溫泉 ➔ 豐岡（轉京都丹後鐵道）➔ 天橋立，再渡海到北側府中，伊根段搭丹海巴士。<strong>天橋立不租車，當日全程大眾運輸</strong>；轉乘最多：鐵道換乘一次、渡海一次、巴士一次，任一段班次不合就得放棄該點。
             </p>
             <button onclick="highlightD4(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
               標記選取此方案 (Plan A)
@@ -1072,7 +1072,7 @@
           </div>
           <div class="mt-6 pt-4 border-t border-stone-100">
             <p class="text-[11px] text-stone-700 bg-amber-50 border border-amber-200 rounded px-3 py-2 mb-3 leading-relaxed">
-              <strong class="text-amber-800">本方案交通</strong>　JR 城崎溫泉 ➔ 豐岡（轉京都丹後鐵道）➔ 天橋立，出站即文珠，伊根段搭丹海巴士。<strong>全程不需用車</strong>，轉乘最少。
+              <strong class="text-amber-800">本方案交通</strong>　JR 城崎溫泉 ➔ 豐岡（轉京都丹後鐵道）➔ 天橋立，出站即文珠，伊根段搭丹海巴士。<strong>天橋立不租車，當日全程大眾運輸</strong>；轉乘最少，文珠一帶的景點就算巴士誤點也走得到。
             </p>
             <button onclick="highlightD4(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 text-stone-800 transition tracking-wider">
               標記選取此方案 (Plan B)
@@ -1168,6 +1168,11 @@
         <div id="map-d5" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
       </div>
 
+      <p class="mb-6 rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-900">
+        ⚠️ <strong>以下兩個方案都是以「當天有車」為前提寫的，這個前提已不成立。</strong>
+        天橋立不租車，所以從文珠到鳥取這段要改搭鐵道（天橋立 ➔ 豐岡 ➔ 鳥取），
+        浦富海岸與賀露市場等沿路景點多半到不了。等取車地點確定後這兩張卡要重擬。
+      </p>
       <!-- Two Parallel Plan Cards for Day 5 -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
         <article id="card-d5-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
@@ -2462,7 +2467,7 @@
       2: ['由當日方案決定（兩案皆為 JR）', '川口屋（連住第 1 晚）', '列車時刻、由良站與城崎接駁'],
       3: ['由當日方案決定', '川口屋（連住第 2 晚）', '纜車／玄武洞冬季營運'],
       4: ['由當日方案決定（兩案皆為 JR）', '天橋立溫泉 和のリゾート 文珠荘', '豐岡轉乘時刻、丹海巴士與觀光船冬季班次、文珠荘訂房'],
-      5: ['由當日方案決定', '鳥取市區', '砂之美術館冬季開館'],
+      5: ['⚠ 兩案皆預設用車，待重擬', '鳥取市區', '天橋立不租車，本日交通方式與取車地點未定'],
       6: ['由當日方案決定', '岡山車站周邊', '吉備津神社參拜時間'],
       7: ['由當日方案決定', '岡山車站周邊', '鷲羽山日落與購物時間'],
       8: ['由當日方案決定', '—', '機場交通與報到時間']
