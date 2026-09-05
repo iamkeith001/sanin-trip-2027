@@ -216,10 +216,10 @@
             <span aria-hidden="true">↓</span> 輸出 Word 企劃書
           </button>
           <button id="share-link-button" type="button" class="inline-flex items-center gap-2 rounded border border-stone-400/60 bg-stone-700 px-3 py-2 text-xs font-semibold text-stone-100 shadow-sm transition hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-300" aria-describedby="share-hint">
-            <span aria-hidden="true">🔗</span> <span id="share-link-label">建立共享連結</span>
+            <span aria-hidden="true">🔗</span> <span id="share-link-label">複製分享連結</span>
           </button>
-          <span id="sync-status" class="text-[11px] text-stone-300 border border-stone-500/40 rounded px-2.5 py-1.5">僅存在此瀏覽器</span>
-          <span id="share-hint" class="text-[10px] text-stone-300">建立後把連結給旅伴，大家的拍板會即時同步。</span>
+          <span id="sync-status" class="text-[11px] text-stone-300 border border-stone-500/40 rounded px-2.5 py-1.5">連線中…</span>
+          <span id="share-hint" class="text-[10px] text-stone-300">大家開同一個網址就是同一份行程，任何人的拍板都會即時出現在所有人畫面上。</span>
           <span id="share-feedback" class="hidden text-[10px] text-amber-100" role="status" aria-live="polite"></span>
           <span id="save-status" class="text-[11px] text-amber-200 border border-amber-200/30 rounded px-2.5 py-1.5">尚未做出選擇</span>
           <span id="export-word-hint" class="text-[10px] text-stone-300">可先輸出討論整理版；全部拍板後即為定稿。</span>
@@ -2328,19 +2328,17 @@
     // 未建立共享連結時只留在本機；建立後改以 Firestore 同步，localStorage 降為離線快取。
     const decisionKey = 'sanin-sanyo-2027-decisions-v1';
     const STATE_FIELDS = ['decisions', 'statuses', 'notes', 'collapsed'];
-    let tripId = new URLSearchParams(location.search).get('t') || '';
+    // 基底網址即為共同行程；?t= 仍可用來另開一份獨立的討論。
+    const DEFAULT_TRIP_ID = 'sanin-2027-companions';
+    let tripId = new URLSearchParams(location.search).get('t') || DEFAULT_TRIP_ID;
     let fb = null;              // Firestore API（module script 載入後注入）
     let unsubscribe = null;     // onSnapshot 取消訂閱
     let applyingRemote = false; // 套用遠端快照時不要回寫，避免無限迴圈
     let writeTimer = null;
     let pendingFbBoot = false;
+    let seeded = false;
 
-    function isShared() { return !!tripId; }
-
-    function newTripId() {
-      const rand = Math.random().toString(36).slice(2, 10) + Math.random().toString(36).slice(2, 6);
-      return `sanin-${rand}`;   // 至少 8 字元，符合 Firestore 規則
-    }
+    function isShared() { return !!tripId; }   // 恆為真；保留作為同步層的防呆
 
     function setSyncStatus(text, tone = 'neutral') {
       const el = document.getElementById('sync-status');
@@ -2363,15 +2361,16 @@
       const label = document.getElementById('share-link-label');
       const hint = document.getElementById('share-hint');
       if (!label) return;
-      label.textContent = isShared() ? '複製分享連結' : '建立共享連結';
-      if (hint) hint.textContent = isShared()
-        ? '把這個連結給旅伴，任何人的拍板都會即時出現在所有人畫面上。'
-        : '建立後把連結給旅伴，大家的拍板會即時同步。';
+      label.textContent = '複製分享連結';
+      if (hint) hint.textContent = tripId === DEFAULT_TRIP_ID
+        ? '大家開同一個網址就是同一份行程，任何人的拍板都會即時出現在所有人畫面上。'
+        : '這是一份獨立的討論（網址帶 ?t=），只有拿到此連結的人看得到。';
     }
 
     function shareUrl() {
       const u = new URL(location.href);
-      u.searchParams.set('t', tripId);
+      if (tripId === DEFAULT_TRIP_ID) u.searchParams.delete('t');
+      else u.searchParams.set('t', tripId);
       u.hash = '';
       return u.toString();
     }
@@ -2425,6 +2424,11 @@
       unsubscribe = fb.onSnapshot(fb.doc(fb.db, 'trips', tripId), { includeMetadataChanges: true },
         snap => {
           if (snap.exists()) applyRemoteState(snap.data());
+          else if (!snap.metadata.fromCache && !seeded) {
+            // 遠端還沒有這份行程：用本機既有的拍板結果建立，避免既有討論被清空
+            seeded = true;
+            fb.setDoc(fb.doc(fb.db, 'trips', tripId), stateForRemote()).catch(() => {});
+          }
           if (snap.metadata.fromCache) setSyncStatus('離線中，顯示本機快取', 'warn');
           else setSyncStatus('即時同步中', 'live');
         },
@@ -2441,28 +2445,8 @@
     };
 
     async function handleShareClick() {
-      if (isShared()) {
-        try { await navigator.clipboard.writeText(shareUrl()); shareFeedback('連結已複製，貼給旅伴即可。'); }
-        catch (_) { shareFeedback(`請手動複製：${shareUrl()}`); }
-        return;
-      }
-      if (!fb) { shareFeedback('同步服務尚未載入，請稍候再試。'); return; }
-      tripId = newTripId();
-      history.replaceState(null, '', shareUrl());
-      refreshShareUi();
-      setSyncStatus('建立中…');
-      try {
-        await fb.setDoc(fb.doc(fb.db, 'trips', tripId), stateForRemote());
-        startSubscription();
-        try { await navigator.clipboard.writeText(shareUrl()); shareFeedback('已建立並複製連結，貼給旅伴即可。'); }
-        catch (_) { shareFeedback(`已建立，請手動複製：${shareUrl()}`); }
-      } catch (err) {
-        tripId = '';
-        history.replaceState(null, '', location.pathname);
-        refreshShareUi();
-        setSyncStatus('建立失敗，仍以本機保存', 'warn');
-        shareFeedback('建立共享連結失敗，請稍後再試。');
-      }
+      try { await navigator.clipboard.writeText(shareUrl()); shareFeedback('連結已複製，貼給旅伴即可。'); }
+      catch (_) { shareFeedback(`請手動複製：${shareUrl()}`); }
     }
 
     const dayMeta = {
@@ -2869,7 +2853,7 @@
       document.getElementById('export-word-button')?.addEventListener('click', exportWordProposal);
       document.getElementById('share-link-button')?.addEventListener('click', handleShareClick);
       refreshShareUi();
-      if (isShared()) setSyncStatus('連線中…');
+      setSyncStatus('連線中…');
       for (let day = 1; day <= 8; day++) {
         renderNotes(day);
         const selected = decisionState.decisions[day];
