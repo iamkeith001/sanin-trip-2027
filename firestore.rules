@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 行程討論文件：知道行程 ID（即分享網址）的人可讀寫。
+    // 行程 ID 至少 8 字元，使網址本身具備鑰匙性質，無法以 test、1 之類猜中。
+    match /trips/{tripId} {
+      allow read: if tripId.size() >= 8 && tripId.size() <= 64;
+
+      allow write: if tripId.size() >= 8 && tripId.size() <= 64
+        && request.resource.data.keys().hasOnly(
+             ['decisions', 'statuses', 'notes', 'collapsed', 'spotNotes', 'title', 'updatedAt'])
+        && request.resource.data.size() <= 7;
+    }
+
+    // 其餘一律拒絕
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
