@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冬日山陰・海之京都・山陽｜旅伴行程決策冊</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Serif TC + Noto Sans TC + Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Leaflet CSS & JS for Maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Bundled locally so Word export works without a CDN. -->
+  <script src="assets/vendor/docx.iife.js" defer></script>
+  <link rel="preload" as="image" href="assets/sanin-winter-journey-hero-sunlit.png">
+
+  <style>
+    :root {
+      --ink: #12263A;
+      --ink-soft: #29485C;
+      --sea: #65899A;
+      --pine: #244B43;
+      --paper: #F4F1E9;
+      --snow: #FCFCF9;
+      --persimmon: #B65435;
+      --gold: #D6A45A;
+      --line: rgba(18, 38, 58, 0.14);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: radial-gradient(circle at top left, #FFFDF6 0%, var(--paper) 46%, #ECE9E0 100%);
+      color: var(--ink);
+      min-width: 320px;
+    }
+    .font-serif-title {
+      font-family: 'Noto Serif TC', serif;
+    }
+    .font-en-serif {
+      font-family: 'Cinzel', serif;
+    }
+    .tab-active {
+      border-bottom: 2px solid #991B1B !important;
+      color: #991B1B !important;
+      font-weight: 700;
+    }
+    .card-active {
+      border-color: #991B1B !important;
+      background-color: #FFFFFF !important;
+      box-shadow: 0 12px 28px -6px rgba(153, 27, 27, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03) !important;
+    }
+    .leaflet-container {
+      font-family: 'Noto Sans TC', sans-serif;
+      z-index: 10;
+    }
+    .custom-marker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #991B1B;
+      color: white;
+      font-size: 11px;
+      font-weight: bold;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .decision-ledger {
+      background: linear-gradient(135deg, #10273B 0%, #18384D 65%, #244B43 100%);
+      color: #F5F5F4;
+    }
+    .ledger-row + .ledger-row { border-top: 1px solid rgba(245, 245, 244, 0.13); }
+    .ledger-row select { color-scheme: dark; }
+    .candidate-collapsed { display: none; }
+    .decision-reason {
+      border-left: 3px solid var(--gold);
+      background: #FFF9EC;
+    }
+    .skip-link {
+      position: fixed; left: 1rem; top: -4rem; z-index: 100;
+      padding: .7rem 1rem; background: var(--ink); color: white; border-radius: .5rem;
+    }
+    .skip-link:focus { top: 1rem; }
+    .travel-meta { background: var(--ink); color: #DDE8E8; }
+    .travel-hero { position: relative; isolation: isolate; min-height: min(68vh, 630px); overflow: hidden; background: var(--ink); }
+    .travel-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(7, 36, 74, .7) 0%, rgba(7, 36, 74, .45) 37%, rgba(7, 36, 74, .04) 72%); }
+    .hero-image { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-content { max-width: none; min-height: min(68vh, 630px); margin: 0; padding: clamp(4rem, 9vw, 8.5rem) clamp(1.5rem, 7vw, 8.5rem) clamp(3rem, 6vw, 5rem); display: flex; flex-direction: column; justify-content: flex-end; }
+    .hero-eyebrow { color: #F2CD8C; font-family: 'Cinzel', serif; font-size: .72rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; }
+    .hero-title { max-width: 8.5em; margin: .8rem 0 1rem; color: white; font-family: 'Noto Serif TC', serif; font-size: clamp(2.6rem, 6vw, 5.7rem); font-weight: 900; line-height: 1.08; letter-spacing: -.045em; text-shadow: 0 3px 18px rgba(7,36,74,.42); text-wrap: balance; }
+    .hero-summary { max-width: 34rem; color: rgba(255,255,255,.95); font-size: clamp(.95rem, 1.5vw, 1.1rem); line-height: 1.85; text-shadow: 0 2px 11px rgba(7,36,74,.42); }
+    .hero-stamps { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.6rem; }
+    .hero-stamps span { border: 1px solid rgba(255,255,255,.36); border-radius: 999px; color: white; background: rgba(18,38,58,.34); backdrop-filter: blur(5px); padding: .45rem .8rem; font-size: .75rem; }
+    .journey-nav { position: sticky; top: 0; z-index: 50; display: flex; gap: .1rem; overflow-x: auto; padding: .45rem max(1rem, calc((100vw - 72rem) / 2)); border-bottom: 1px solid var(--line); background: rgba(252,252,249,.94); box-shadow: 0 7px 22px rgba(18,38,58,.06); backdrop-filter: blur(14px); scrollbar-width: none; }
+    .journey-nav::-webkit-scrollbar { display: none; }
+    .journey-nav .day-nav-item { min-height: 46px; padding: .6rem .75rem; border-radius: .45rem; border-bottom: 0 !important; color: var(--ink-soft); font-size: .875rem; }
+    .journey-nav .day-nav-item:hover { background: #E7EFED; color: var(--ink); }
+    .journey-nav .day-nav-item:focus-visible, button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .journey-nav .tab-active { color: white !important; background: var(--ink) !important; box-shadow: 0 3px 8px rgba(18,38,58,.18); }
+    .journey-nav .tab-active span { color: #DDE8E8 !important; }
+    #itinerary-content { max-width: 72rem; padding-top: clamp(2rem, 4vw, 4rem); padding-bottom: 5rem; }
+    .day-panel > section:first-child { margin-bottom: 2.5rem; padding: 0 0 1.5rem; border-color: var(--line); }
+    .day-panel > section:first-child h2 { font-size: clamp(1.8rem, 3vw, 2.75rem); line-height: 1.25; color: var(--ink); }
+    .day-panel > section:first-child > div > div:last-child { border-color: rgba(18,38,58,.12); background: #E9F0EE; color: var(--pine); border-radius: 999px; }
+    .day-panel article[id^="card-"] { position: relative; border-color: var(--line); border-radius: 1rem; box-shadow: 0 8px 24px rgba(18,38,58,.045); overflow: hidden; }
+    .day-panel article[id^="card-"]::before { content: ''; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--sea), var(--gold)); opacity: .6; }
+    .day-panel article[id^="card-"].card-active { border-color: var(--persimmon) !important; box-shadow: 0 16px 38px rgba(104,56,35,.14); }
+    .day-panel article[id^="card-"] button { min-height: 44px; cursor: pointer; }
+    .day-panel [id^="map-d"] { border-color: var(--line); border-radius: 1rem; box-shadow: 0 10px 28px rgba(18,38,58,.05); }
+    .decision-ledger { border-radius: 1rem; box-shadow: 0 20px 40px rgba(18,38,58,.14); }
+    .ledger-row { transition: background-color 180ms ease; }
+    .ledger-row:hover { background: rgba(255,255,255,.06); }
+    @media (max-width: 767px) {
+      .travel-hero { min-height: 570px; }
+      .travel-hero::after { background: linear-gradient(0deg, rgba(7,36,74,.9) 0%, rgba(7,36,74,.67) 54%, rgba(7,36,74,.14) 100%); }
+      .hero-image { object-position: 68% center; }
+      .hero-content { min-height: 570px; padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero-title { max-width: 7em; }
+      .journey-nav .day-nav-item span { display: none; }
+      .day-panel > section:first-child h2 { font-size: 1.75rem; }
+      .day-panel article[id^="card-"] { border-radius: .8rem; }
+    }
+    @media (min-width: 1024px) { .journey-nav { justify-content: center; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body class="selection:bg-amber-200">
+  <a class="skip-link" href="#itinerary-content">跳至行程內容</a>
+
+  <!-- Minimal Top Status Bar -->
+  <aside class="travel-meta text-xs py-2 px-4 tracking-widest">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-2 font-light">
+      <div class="flex items-center space-x-3">
+        <span class="text-amber-300 font-en-serif uppercase tracking-widest text-[10px]">Companion route book</span>
+        <span class="text-stone-400">|</span>
+        <span class="text-stone-200">日本山陰・海之京都・山陽｜旅伴討論後的 8 日行程決策冊</span>
+      </div>
+      <div class="flex items-center space-x-4 text-stone-300">
+        <span>2027.01.11 — 01.18</span>
+        <span>•</span>
+        <span>台灣虎航 TPE ➔ YGJ (米子) / OKJ (岡山) ➔ TPE</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Winter journey hero -->
+  <header class="travel-hero">
+    <img class="hero-image" src="assets/sanin-winter-journey-hero-sunlit.png" width="1536" height="1024" fetchpriority="high" alt="陽光下，橘色列車沿著積雪山陰海岸行駛，前方是碧海與溫泉聚落">
+    <div class="hero-content">
+      <p class="hero-eyebrow">A companion-made winter route · 2027</p>
+      <h1 class="hero-title">冬日山陰<br>海之京都・山陽</h1>
+      <p class="hero-summary">和旅伴一起，把境港妖怪街、JR 日本海雪景與城崎溫泉連住，延伸到天橋立、伊根舟屋、鳥取砂丘、岡山與倉敷；冬蟹、但馬牛、海鮮丼正等著上桌。一起出發，讓每天值得反覆回味的冬日故事。</p>
+      <div class="hero-stamps" aria-label="行程特色">
+        <span>景點｜妖怪街・伊根・砂丘</span>
+        <span>住宿｜城崎溫泉連住</span>
+        <span>交通｜JR 與日別方案</span>
+        <span>餐飲｜冬蟹・但馬牛・海鮮丼</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Day Selector -->
+  <nav class="journey-nav" aria-label="行程日別導覽">
+      <button onclick="switchDay(1)" id="tab-1" data-day="1" class="day-nav-item tab-active py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent text-stone-900">
+        Day 1 <span class="text-xs text-stone-400 font-light ml-1">境港・米子住宿決策</span>
+      </button>
+      <button onclick="switchDay(2)" id="tab-2" data-day="2" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        Day 2 <span class="text-xs text-stone-400 font-light ml-1">柯南小鎮・城崎川口屋</span>
+      </button>
+      <button onclick="switchDay(3)" id="tab-3" data-day="3" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        Day 3 <span class="text-xs text-stone-400 font-light ml-1">玄武洞・出石皿蕎麥</span>
+      </button>
+      <button onclick="switchDay(4)" id="tab-4" data-day="4" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        Day 4 <span class="text-xs text-stone-400 font-light ml-1">天橋立・伊根舟屋</span>
+      </button>
+      <button onclick="switchDay(5)" id="tab-5" data-day="5" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        Day 5 <span class="text-xs text-stone-400 font-light ml-1">鳥取砂丘・和牛</span>
+      </button>
+      <button onclick="switchDay(6)" id="tab-6" data-day="6" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        Day 6 <span class="text-xs text-stone-400 font-light ml-1">岡山烏城・吉備津</span>
+      </button>
+      <button onclick="switchDay(7)" id="tab-7" data-day="7" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        Day 7 <span class="text-xs text-stone-400 font-light ml-1">倉敷美觀・三井Outlet</span>
+      </button>
+      <button onclick="switchDay(8)" id="tab-8" data-day="8" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        Day 8 <span class="text-xs text-stone-400 font-light ml-1">伴手禮・滿載返台</span>
+      </button>
+      <button onclick="switchDay(0)" id="tab-0" data-day="0" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        總覽 <span class="text-xs text-stone-400 font-light ml-1">討論成果</span>
+      </button>
+  </nav>
+
+  <!-- Content Area -->
+  <main id="itinerary-content" class="mx-auto px-6 py-8">
+
+    <!-- Discussion-results overview: an independent tab, not a preface to each day -->
+    <section id="day-panel-0" aria-labelledby="decision-ledger-title" class="day-panel hidden decision-ledger rounded-lg overflow-hidden shadow-sm">
+      <div class="px-5 py-5 md:px-6 md:py-6 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-600">
+        <div>
+          <p class="font-en-serif text-[10px] tracking-[0.25em] text-amber-300 uppercase">Travel decision ledger</p>
+          <h2 id="decision-ledger-title" class="font-serif-title text-2xl font-bold mt-1">討論成果總覽</h2>
+          <p class="text-stone-300 text-xs mt-1.5">這份行程由旅伴討論後整理而成；交通依日期安排，Day 2 採 JR 山陰鐵道。可在此追蹤預訂與仍待查證的項目。</p>
+        </div>
+        <div class="flex flex-col items-start md:items-end gap-2 self-start md:self-auto">
+          <button id="export-word-button" type="button" class="inline-flex items-center gap-2 rounded border border-amber-200/60 bg-amber-300 px-3 py-2 text-xs font-bold text-slate-950 shadow-sm transition hover:bg-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-100" aria-describedby="export-word-hint">
+            <span aria-hidden="true">↓</span> 輸出 Word 企劃書
+          </button>
+          <span id="save-status" class="text-[11px] text-amber-200 border border-amber-200/30 rounded px-2.5 py-1.5">尚未做出選擇</span>
+          <span id="export-word-hint" class="text-[10px] text-stone-300">可先輸出討論整理版；全部拍板後即為定稿。</span>
+          <span id="export-feedback" class="hidden text-[10px] text-amber-100" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+      <div id="decision-ledger-rows" class="divide-y divide-stone-600"></div>
+      <p id="dependency-status" class="hidden mx-5 my-4 text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded px-3 py-2"></p>
+    </section>
+
+    <!-- Function to render Map Box for each day -->
+    <template id="map-template">
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">當日移動路線與地理分佈地圖</h4>
+          </div>
+          <a id="gmap-link" href="#" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖中開啟今日路線
+          </a>
+        </div>
+        <div id="map-container" class="w-full h-72 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+    </template>
+
+    <!-- ================= DAY 1 PANEL ================= -->
+    <div id="day-panel-1" class="day-panel block">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 01 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第一天：山陰初抵達，晚間住宿點與生活節奏拍板
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              航班於中午 12:00 抵達米子鬼太郎機場。考慮到 1 月中旬冬天天黑早（約 17:00 日落），下午約有 3.5 小時有效戶外時光。今晚核心在於決定：<strong>「您希望第一晚住在什麼樣的環境，並隨時能走出門散步？」</strong>
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            1/11 (一) 日落時間 17:08
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 1 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 1 路線地圖：米子機場 ➔ 境港 ➔ 住宿三大候選地</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/米子鬼太郎空港/境港水産物直売センター/水木しげる記念館/天然温泉+境港+夕凪の湯+御宿+野乃/皆生松月" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟路線
+          </a>
+        </div>
+        <div id="map-d1" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Three Architectural Style Options -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Plan A: 境港 野乃 -->
+        <article id="card-d1-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A ・ 推薦首選</span>
+              <span class="text-xs text-stone-400 font-light">境港站前</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              天然溫泉 夕凪之湯<br>御宿野乃 境港
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">全館榻榻米和風旅館 • 頂樓海景大浴場</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-amber-600 leading-relaxed font-light">
+              「出站即抵達，卸下行李即可漫步妖怪老街。夜間換上浴衣走在投射著發光妖怪影子的街道，享受獨一無二的奇幻之夜。」
+            </p>
+            <div class="my-5 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-2 flex items-center gap-1.5">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-red-800"></i> 走出大門即抵達之參觀景點
+              </h4>
+              <ul class="text-xs text-stone-600 space-y-1.5 font-light">
+                <li class="flex items-start gap-1.5"><span class="text-red-700 font-bold">•</span> <strong>水木茂大道</strong>：出門 1 分鐘即老街起點，177 尊青銅像。</li>
+                <li class="flex items-start gap-1.5"><span class="text-red-700 font-bold">•</span> <strong>夜間妖怪光影秀</strong>：日落後地面光影投射，夜間限定。</li>
+                <li class="flex items-start gap-1.5"><span class="text-red-700 font-bold">•</span> <strong>妖怪神社 & 眼球石</strong>：步行 6 分鐘。</li>
+                <li class="flex items-start gap-1.5"><span class="text-red-700 font-bold">•</span> <strong>水木茂紀念館</strong>：老街散步約 12 分鐘（2024全新整修）。</li>
+                <li class="flex items-start gap-1.5"><span class="text-red-700 font-bold">•</span> <strong>境港站前天然足湯</strong>：出門 1 分鐘即可享受。</li>
+              </ul>
+            </div>
+            <div class="space-y-2 text-xs text-stone-600 font-light">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-400 font-medium whitespace-nowrap">交通動線</span>
+                <span>機場搭「鬼太郎電車」15 分直達！免第一天租車費用。</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-400 font-medium whitespace-nowrap">晚餐體驗</span>
+                <span>於境港海鮮市場或在地居酒屋大啖松葉蟹與鳥取地酒。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD1(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
+              標記選取此方案 (Plan A)
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan B: 皆生 松月/華水亭 -->
+        <article id="card-d1-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B ・ 奢華放鬆</span>
+              <span class="text-xs text-stone-400 font-light">皆生溫泉海濱</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              皆生海景名宿<br>皆生松月 或 華水亭
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">日本海第一排 • 純和風一泊二食名湯</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-stone-400 leading-relaxed font-light">
+              「開車抵達日本海邊，推開窗即是洶湧濤聲與遠方大山雪嶺。在露天風呂中泡鹽泉洗去疲憊，享用專人服務的極上螃蟹會席。」
+            </p>
+            <div class="my-5 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-2 flex items-center gap-1.5">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-700"></i> 走出大門即抵達之參觀景點
+              </h4>
+              <ul class="text-xs text-stone-600 space-y-1.5 font-light">
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>皆生海岸步道</strong>：出門 1 分鐘踏上白砂青松海灘。</li>
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>日本落日百選景觀</strong>：黃昏時海天一色霞光。</li>
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>潮風之足湯</strong>：海濱公園免費海景足湯（步行 5 分）。</li>
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>皆生溫泉神社</strong>：祈求美肌長壽之守護神社。</li>
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>大山眺望點</strong>：冬日晴空時遠眺「伯耆富士」白雪山頭。</li>
+              </ul>
+            </div>
+            <div class="space-y-2 text-xs text-stone-600 font-light">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-400 font-medium whitespace-nowrap">交通動線</span>
+                <span>建議機場取車後自駕前往（約 25 分鐘）；或計程車。</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-400 font-medium whitespace-nowrap">晚餐體驗</span>
+                <span>旅館專人服務會席料理（鳥取和牛、冬季松葉蟹全席）。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD1(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
+              標記選取此方案 (Plan B)
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan C: 米子站前 -->
+        <article id="card-d1-3" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan C ・ 機能效率</span>
+              <span class="text-xs text-stone-400 font-light">米子車站前</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              米子市區樞紐飯店<br>Harvest In / Morris / ANA
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">交通樞紐中心 • 居酒屋與生活機能</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-stone-400 leading-relaxed font-light">
+              「置身山陰交通樞紐，站前居酒屋街熱氣騰騰。隔天清晨下樓即可提車出發，將所有時間留給翌日白天的旅途。」
+            </p>
+            <div class="my-5 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-2 flex items-center gap-1.5">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-700"></i> 走出大門即抵達之參觀景點
+              </h4>
+              <ul class="text-xs text-stone-600 space-y-1.5 font-light">
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>彫刻ロード（雕刻大道）</strong>：20 多座現代雕塑林蔭道。</li>
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>米子市美術館</strong>：沿雕刻大道步行約 12 分鐘。</li>
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>加茂川白壁土藏群</strong>：江戶水運老街古民家（步行 15 分）。</li>
+                <li class="flex items-start gap-1.5"><span class="text-stone-400 font-bold">•</span> <strong>米子站前鐵道廣場</strong>：山陰鐵道發祥地紀念廣場。</li>
+              </ul>
+            </div>
+            <div class="space-y-2 text-xs text-stone-600 font-light">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-400 font-medium whitespace-nowrap">交通動線</span>
+                <span>機場搭巴士直達米子站（25 分），隔日站前租車提車最快。</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-400 font-medium whitespace-nowrap">晚餐體驗</span>
+                <span>品嚐大山土雞串燒、鳥取和牛燒肉，AEON 超市補給便利。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD1(3)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
+              標記選取此方案 (Plan C)
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 1 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- 推薦口袋景點清單 (2 cols) -->
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">可順遊之口袋名單（車程或步行 15 分鐘內）：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">美保神社 ＆ 青石疊通（美保關）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">全日本三千多座惠美須神社總本社，古樸青石疊老街，祈求海上平安與商貿繁盛（境港驅車約 15 分）。</p>
+              </div>
+              <button onclick="addPresetSpot(1, '美保神社 ＆ 青石疊通')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">夢港塔 (Yumeminato Tower) ＆ 夢港公園</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">鳥取博覽會地標，全玻璃環景展望台俯瞰日本海與弓濱半島，設有海鮮物產館（境港與米子交界處）。</p>
+              </div>
+              <button onclick="addPresetSpot(1, '夢港塔 ＆ 夢港公園')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <!-- 現場新增備忘筆記 (1 col) -->
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-1" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(1)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-1" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DAY 2 PANEL ================= -->
+    <div id="day-panel-2" class="day-panel hidden">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 02 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第二天：JR 山陰鐵道之旅 ➔ 入住城崎溫泉川口屋（連住第1晚）
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              冬季安全無負擔首選！搭乘 <strong>JR 山陰本線鐵道</strong> 東行，沿途飽覽日本海冬雪絕景。今天核心討論：是否中停<strong>【北榮町柯南小鎮】</strong>？請比較以下兩種動線方案：
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            宿：川口屋城崎河畔酒店 (連住第1晚)
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 2 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 2 鐵道路線：JR米子站 ➔ 由良站（柯南）➔ 鳥取站 ➔ JR城崎溫泉站 ➔ 川口屋</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/米子駅/由良駅/青山剛昌ふるさと館/鳥取駅/城崎温泉駅/川口屋城崎リバーサイドホテル" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟鐵道路線
+          </a>
+        </div>
+        <div id="map-d2" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Two Architectural Style Options (Plan A vs Plan B) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+        <!-- Plan A: 柯南朝聖 + 城崎溫泉 -->
+        <article id="card-d2-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
+              <span class="text-xs text-stone-400 font-light">動漫朝聖 ＋ 溫泉雙享受</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              柯南小鎮動漫巡禮 ➔ 城崎初夜外湯
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">JR山陰本線 • 由良站寄放行李 • 柯南大道漫步</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-red-800 leading-relaxed font-light">
+              「米子出發直達由良，行李寄放車站，輕鬆漫步柯南大道與故鄉館；午後再搭車欣賞日本海雪景，傍晚抵達城崎溫泉展開外湯巡禮。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與交通時刻表
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">09:15 - 10:05</span>
+                  <span><strong>JR 米子站 ➔ 由良站</strong>（搭乘山陰本線快速列車，車程約 45~50 分）。出站後將大行李寄放由良站置物櫃或站前案內所。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">10:15 - 13:00</span>
+                  <span><strong>北榮町柯南小鎮漫遊</strong>：由良站打卡 ➔ 柯南大道銅像巡禮 ➔ 米花商店街享用特色午餐 ➔ 青山剛昌故鄉館體驗阿笠博士道具與互動遊戲。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">13:15 - 16:30</span>
+                  <span><strong>JR 景觀列車往城崎</strong>：由良站出發 ➔ 經鳥取站（站內換乘／小歇）➔ 經濱坂 ➔ 抵達 <strong>JR 城崎溫泉站</strong>。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">16:45 - 21:00</span>
+                  <span><strong>入住川口屋 ＆ 城崎初夜</strong>：站前搭接駁小巴抵達川口屋。換浴衣木屐，泡鄰近【里之湯】或【地藏湯】，品嚐津居山港松葉蟹宴！</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">亮點優勢：</span>
+                <span>兼顧知名動漫景點與溫泉名宿，行程豐富充實，拍照亮點極多。</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">注意事項：</span>
+                  <span>由良站轉乘接駁時間需預先查妥；下午抵達城崎時間約 16:30，當晚泡 1~2 座外湯。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD2(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
+              標記選取此方案 (Plan A)
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan B: 直奔城崎溫泉 + 外湯全制霸 -->
+        <article id="card-d2-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B</span>
+              <span class="text-xs text-stone-400 font-light">頂級度假 ＋ 慢活泡湯</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              直奔城崎溫泉 ➔ 七大外湯深度全制霸
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">特急列車 • 14:30 提早抵達 • 悠閒漫步古湯街道</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-amber-600 leading-relaxed font-light">
+              「不趕行程、不做多餘轉乘，米子搭特急直達鳥取悠閒午餐，午後 14:30 提早入住川口屋，擁有整整一下午與夜晚徹底泡透七大名湯。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與交通時刻表
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">10:00 - 11:05</span>
+                  <span><strong>JR 米子站 ➔ 鳥取站</strong>（搭乘特急超級松風號／白兔號，舒適直達，約 65 分鐘）。免提早趕路，悠閒在飯店享用早餐。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">11:15 - 12:45</span>
+                  <span><strong>鳥取站前美食小憩</strong>：於鳥取車站商場品嚐在地知名鳥取和牛便當、砂丘海鮮料理或特產咖啡，採買車上點心。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">13:00 - 14:30</span>
+                  <span><strong>鳥取 ➔ JR 城崎溫泉站</strong>：搭乘山陰本線直抵城崎溫泉站，下午 14:30 左右提早抵達！</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">14:45 - 21:00</span>
+                  <span><strong>提前辦理入住 ＆ 外湯制霸</strong>：15:00 準時 Check-in 川口屋，避開傍晚入湯人潮！下午先泡【一之湯】與【御所之湯】，晚餐松葉蟹宴，夜晚再泡【鴻之湯】。</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">亮點優勢：</span>
+                <span>完全不趕、步調極度放鬆，外湯體驗時間充裕，適合偏好純度假享受的夥伴。</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">注意事項：</span>
+                <span>捨棄柯南小鎮（由良站），沿途以鐵道景觀與車站城市散步為主。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD2(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 text-stone-800 transition tracking-wider">
+              標記選取此方案 (Plan B)
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- 連住優勢提醒橫幅 -->
+      <div class="bg-amber-50/60 border border-amber-200/80 rounded-lg p-4 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-800 shrink-0">
+            <i data-lucide="hotel" class="w-4 h-4"></i>
+          </div>
+          <div class="text-xs text-stone-700">
+            <strong class="text-stone-900 block font-serif-title text-sm">川口屋城崎河畔酒店（連住 2 晚）的行程優勢</strong>
+            無論選擇 Plan A 或 Plan B，今晚與明晚均連續入住同一間飯店，明天全天<strong>完全不需打包行李與換房</strong>，外湯街區漫步最為從容！
+          </div>
+        </div>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 2 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">可順遊之口袋名單（由良/鳥取/但馬沿途）：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">倉吉白壁土藏群（打吹玉川）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">江戶明治時代紅瓦白壁倉庫老街，錦鯉悠游小溪，老字號造酒廠與石臼研磨咖啡（距離由良站僅約 15 分鐘鐵路/公車車程）。</p>
+              </div>
+              <button onclick="addPresetSpot(2, '倉吉白壁土藏群')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">柯南 Gelato 冰淇淋 ＆ 米花商店街手作工坊</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">北榮町柯南大橋旁的在地義式冰淇淋，特產大榮西瓜、白玫瑰牛奶口味，還有限定柯南周邊專賣店。</p>
+              </div>
+              <button onclick="addPresetSpot(2, '柯南 Gelato 冰淇淋 ＆ 米花商店街')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-2" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(2)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-2" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DAY 3 PANEL ================= -->
+    <div id="day-panel-3" class="day-panel hidden">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 03 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第三天：城崎纜車 ➔ 玄武洞奇岩 ➔ 但馬小京都出石 ➔ 續住川口屋
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              今天全程<strong>免換房、免搬行李</strong>！核心討論：白天前往【出石城下町吃皿蕎麥麵】，或是【全天留在城崎老街享受極致外湯漫活】？
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            宿：川口屋城崎河畔酒店 (連住第2晚)
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 3 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 3 路線地圖：城崎纜車 ➔ 玄武洞 ➔ 出石辰鼓樓 ➔ 返回川口屋</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/城崎温泉ロープウェイ/玄武洞公園/玄武洞ミュージアム/出石辰鼓楼/まんだら湯" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟路線
+          </a>
+        </div>
+        <div id="map-d3" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Two Parallel Plan Cards for Day 3 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+        <!-- Plan A: 經典兼備 -->
+        <article id="card-d3-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
+              <span class="text-xs text-stone-400 font-light">世界奇觀 ＋ 但馬城下町</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              經典探索：玄武洞 ➔ 出石皿蕎麥 ➔ 城崎夜湯
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">纜車山頂展望 • 六角玄武岩 • 20盤皿蕎麥體驗</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-red-800 leading-relaxed font-light">
+              「上午登高俯瞰日本海與溫泉鎮，造訪被列為世界地質公園的玄武洞；中午到但馬小京都出石吃名物皿蕎麥，傍晚回到川口屋繼續泡外湯。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">09:30 - 11:00</span>
+                  <span><strong>城崎空中纜車（大師山頂展望台）</strong>：米其林一星全景展望，俯瞰城崎溫泉街景與圓山川入海口。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">11:15 - 12:30</span>
+                  <span><strong>玄武洞公園 ＆ 玄武洞博物館</strong>：【Google Maps 收藏景點】參觀 160 萬年前火山六角柱狀玄武岩奇觀與世界稀有礦石。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">13:00 - 15:30</span>
+                  <span><strong>但馬小京都・出石城下町</strong>：挑戰出石皿蕎麥麵（皿そば，吃滿 20 碟贈紀念木牌！），漫步日本最古鐘樓「辰鼓樓」與家老屋敷。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">16:00 - 21:00</span>
+                  <span><strong>返回川口屋 ＆ 體驗曼陀羅湯/鴻之湯</strong>：回飯店品茶小歇，晚上繼續體驗城崎歷史最悠久的古湯與露天庭園湯。</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">行程優勢：</span>
+                <span>地質奇景、古鎮風貌與特色美食一次滿足，行程豐富度最高。</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">交通方式：</span>
+                <span>往返出石車程約 35 分鐘，可安排短程包車或計程車/公車接駁。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD3(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
+              標記選取此方案 (Plan A)
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan B: 全日城崎溫泉慢活 -->
+        <article id="card-d3-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B</span>
+              <span class="text-xs text-stone-400 font-light">極致慢活 ＋ 七湯全解鎖</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              城崎深度漫步 ➔ 七大外湯全集齊
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">全日不拉車 • 柳樹沿河咖啡 • 溫泉蛋DIY體驗</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-amber-600 leading-relaxed font-light">
+              「不去出石、全日不離開城崎。睡到自然醒，穿著浴衣穿梭柳樹石橋間，悠閒享用午茶咖啡，把七大外湯全部泡滿集齊記念印章。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">10:00 - 12:00</span>
+                  <span><strong>溫泉街晨間慢散步 ＆ 溫泉蛋製作</strong>：元湯親手煮溫泉蛋，搭乘空中纜車登頂眺望，漫步藥師公園。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">12:15 - 14:00</span>
+                  <span><strong>城崎老街特色午餐 ＆ 咖啡甜點</strong>：造訪老街品嚐但馬牛漢堡排排餐，於「短編喫茶 Un」等文青喫茶店閱讀放空。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">14:15 - 17:00</span>
+                  <span><strong>午後外湯巡禮高峰</strong>：泡【御所之湯】瀑布露天湯、【柳湯】木香深湯與【曼陀羅湯】陶器風呂，解鎖七湯紀念！</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">18:00 - 21:00</span>
+                  <span><strong>川口屋溫泉會席晚宴 ＆ 柳樹河畔夜遊</strong>：換上保暖羽織，沿河欣賞夜間點燈倒影，享受極致靜謐的溫泉鄉時光。</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">行程優勢：</span>
+                <span>完全無車程負擔，徹底享受連住兩晚的度假感，七大外湯收集狂首選。</span>
+              </div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">注意事項：</span>
+                <span>行程範圍限定在城崎鎮內，不前往出石城跡與玄武洞。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD3(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 text-stone-800 transition tracking-wider">
+              標記選取此方案 (Plan B)
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- 連住提醒 -->
+      <div class="bg-stone-50 border border-stone-200 rounded-lg p-4 text-xs text-stone-600 font-light flex items-center gap-3">
+        <i data-lucide="info" class="w-4 h-4 text-amber-700 shrink-0"></i>
+        <span><strong>川口屋續住提示</strong>：今天一整天房間均可自由進出小憩，外出無需整理行李退房，隨時可回房泡茶或小睡片刻。</span>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 3 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">可順遊之口袋名單（城崎/豐岡周邊）：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">城崎海洋世界 (Kinosaki Marine World) ＆ 日和山海岸</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">面向日本海懸崖的水族館，可遠眺海中「龍宮城」傳奇奇岩，海豚企鵝表演生動（城崎溫泉往北車程約 10 分鐘）。</p>
+              </div>
+              <button onclick="addPresetSpot(3, '城崎海洋世界 ＆ 日和山海岸')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">兵庫縣立東方白鸛鄉公園 (Kounotori no Sato Park)</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">日本特別天然紀念物「東方白鸛」保育與野放基地，近距離觀察神聖巨鳥展翅（位於豐岡市區往出石順路途中）。</p>
+              </div>
+              <button onclick="addPresetSpot(3, '東方白鸛鄉公園')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-3" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(3)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-3" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DAY 4 PANEL ================= -->
+    <div id="day-panel-4" class="day-panel hidden">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 04 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第四天：京都府北部海之京都 ➔ 日本三景天橋立 ➔ 伊根水上舟屋
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              告別城崎溫泉，前往日本三景天橋立與海上威尼斯伊根舟屋。核心討論：<strong>天橋立登高視角要選擇北側「傘松公園（昇龍觀）」還是南側「View Land（飛龍觀）」？</strong>
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            宿：宮津溫泉 / 天橋立飯店
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 4 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 4 路線地圖：城崎川口屋 ➔ 天橋立 ➔ 智恩寺 ➔ 伊根舟屋 ➔ 宮津</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/傘松公園/智恩寺/伊根の舟屋/向井酒造/天橋立ホテル" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟路線
+          </a>
+        </div>
+        <div id="map-d4" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Two Parallel Plan Cards for Day 4 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+        <!-- Plan A: 傘松公園 昇龍觀 -->
+        <article id="card-d4-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
+              <span class="text-xs text-stone-400 font-light">元祖發源地 ＋ 順向動線</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              北側・傘松公園（昇龍觀）➔ 伊根舟屋
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">元祖「胯下倒看」發源地 • 順向往伊根最佳動線</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-red-800 leading-relaxed font-light">
+              「從城崎往東最順路抵達北側府中站，搭乘單人吊椅登頂傘松公園，看沙洲如青龍升天；隨後直接北上伊根舟屋，車程最順暢。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">09:30 - 10:45</span>
+                  <span><strong>城崎出發前往天橋立北側</strong>：經丹後半島抵達傘松公園府中站（車程約 1 小時 15 分）。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">10:45 - 12:30</span>
+                  <span><strong>傘松公園 ＆ 元伊勢籠神社</strong>：體驗單人吊椅上山，站上「胯下倒看台」見證青龍飛升；參拜丹後一之宮元伊勢籠神社。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">12:30 - 13:30</span>
+                  <span><strong>丹後名物午餐</strong>：品嚐冬季當令「丹後寒鰤魚涮涮鍋」或「智惠之餅」甜點。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">14:00 - 16:30</span>
+                  <span><strong>伊根舟屋水上聚落</strong>：搭乘遊覽船向海鷗餵食蝦味先，海上眺望 230 棟舟屋；造訪向井酒造購買女性杜氏「伊根滿開」粉紅赤米酒。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">17:15 - 20:30</span>
+                  <span><strong>入住宮津/天橋立溫泉飯店</strong>：享受宮津灣海景溫泉與丹後海鮮晚餐。</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">動線優勢：</span>
+                <span>傘松公園位於天橋立北端，結束後往伊根舟屋車程僅 25 分鐘，無多餘折返。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD4(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
+              標記選取此方案 (Plan A)
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan B: View Land 飛龍觀 -->
+        <article id="card-d4-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B</span>
+              <span class="text-xs text-stone-400 font-light">經典飛龍角度 ＋ 文殊老街</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              南側・View Land（飛龍觀）➔ 伊根舟屋
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">曲折飛龍全景 • 智恩寺文殊堂 • 迴旋橋散步</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-amber-600 leading-relaxed font-light">
+              「先到南側天橋立車站周邊，登天橋立 View Land 觀看最著名的曲折飛龍全景，再散步智恩寺文殊堂與迴旋橋，午後前往伊根。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">09:30 - 10:45</span>
+                  <span><strong>城崎出發前往天橋立南側文殊地區</strong>：直達天橋立車站旁停車場。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">10:45 - 12:15</span>
+                  <span><strong>天橋立 View Land（飛龍觀）</strong>：搭單軌電車或吊椅登上文珠山，沙洲宛如活生生降臨地面的巨龍，設有遊樂設施與空中散步廊。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">12:15 - 13:30</span>
+                  <span><strong>智恩寺文殊堂 ＆ 旋轉橋散策</strong>：求籤拜智慧、看運河旋轉橋船隻通行，在文殊老街享用蛤蜊釜飯與海鮮定食。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">14:15 - 16:45</span>
+                  <span><strong>伊根舟屋水上聚落</strong>：搭乘遊覽船向海鷗餵食蝦味先，造訪向井酒造、INE CAFE 海景咖啡。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">17:30 - 20:30</span>
+                  <span><strong>入住宮津溫泉飯店</strong>：放鬆泡湯，享用丹後地酒與海鮮盛宴。</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">動線考量：</span>
+                <span>智恩寺與旋轉橋都在南側，參觀文殊老街最集中，惟前往伊根時需繞經內海或北上。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD4(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 text-stone-800 transition tracking-wider">
+              標記選取此方案 (Plan B)
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 4 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">可順遊之口袋名單（天橋立/丹後/伊根周邊）：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">舟屋日和（INE CAFE 海景咖啡館）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">伊根灣第一排落地玻璃咖啡廳，一邊喝手沖咖啡、吃起司蛋糕，一邊欣賞波光粼粼水上舟屋（舟屋群核心區）。</p>
+              </div>
+              <button onclick="addPresetSpot(4, '舟屋日和 INE CAFE')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">成相寺（西國三十三所第 28 番）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">天橋立傘松公園上方的高山古寺，登頂「成相寺展望台」能以極高視角一覽天橋立與宮津灣全景（傘松搭登山巴士 7 分）。</p>
+              </div>
+              <button onclick="addPresetSpot(4, '成相寺 ＆ 展望台')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-4" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(4)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-4" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DAY 5 PANEL ================= -->
+    <div id="day-panel-5" class="day-panel hidden">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 05 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第五天：山陰海岸折返 ➔ 冬季鳥取雪砂丘 ➔ 白兔神話 ➔ 鳥取和牛盛宴
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              沿山陰海岸西行回鳥取市。核心體驗：<strong>冬季白雪與黃沙交織的鳥取砂丘</strong>，登臨「馬背」遠眺日本海巨浪，晚間享用鳥取和牛炭火燒肉！
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            宿：鳥取市區飯店 (Green Hotel Morris)
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 5 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 5 路線地圖：宮津 ➔ 浦富海岸 ➔ 賀露市場 ➔ 鳥取砂丘 ➔ 白兔神社 ➔ 鳥取站</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/天橋立ホテル/浦富海岸/鳥取港海鮮市場+かろいち/鳥取砂丘/砂の美術館/白兎神社/鳥取駅" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟路線
+          </a>
+        </div>
+        <div id="map-d5" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Balanced 2-Column Editorial Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+        <!-- Left: Timetable Card -->
+        <div class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Itinerary</span>
+              <span class="text-xs text-stone-400 font-light">海岸公路西行</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug mb-4 flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-amber-700"></i> 當日自然神話探索時程
+            </h3>
+            <ol class="space-y-4 text-xs text-stone-600 font-light pl-1 border-l border-stone-100 ml-1">
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-900"></span>
+                <span class="font-mono text-stone-900 font-medium block">09:30 - 11:30 ｜ 宮津出發 ➔ 浦富海岸山陰地質景觀</span>
+                沿著山陰海岸線欣賞浪蝕洞窟與奇岩怪石，途經展望台眺望冬濤。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-400"></span>
+                <span class="font-mono text-stone-900 font-medium block">11:30 - 13:00 ｜ 鳥取港賀露海鮮市場（かろいち）</span>
+                午餐享用產地直送松葉蟹、猛者蝦（モサエビ）刺身丼飯，採買鳥取梨子土產。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+                <span class="font-mono text-stone-900 font-medium block">13:15 - 15:45 ｜ 冬季鳥取砂丘 ＆ 砂之美術館</span>
+                【Google Maps 收藏景點】租借長靴攀登「馬背」，俯瞰日本海壯闊全景；參觀世界最高水準的「砂之美術館」室內巨型砂雕展。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-red-800"></span>
+                <span class="font-mono text-stone-900 font-medium block">16:15 - 17:15 ｜ 白兔神社 ＆ 白兔海岸</span>
+                日本最古老神話「因幡白兔」結緣聖地，撫摸御使白兔石雕祈求良緣與健康。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-900"></span>
+                <span class="font-mono text-stone-900 font-medium block">18:00 - 20:30 ｜ 入住鳥取市區 ＆ 炭火「鳥取和牛」盛宴</span>
+                晚餐享用日本肉質評比第一的鳥取和牛炭火燒肉（如：炭火燒肉 炭藏 或 牛王）。
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Right: Field Guide & Decision Card -->
+        <div class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-amber-50 text-amber-800 rounded font-semibold border border-amber-200">FIELD GUIDE</span>
+              <span class="text-xs text-stone-400 font-light">冬日砂丘裝備與美食</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug mb-4">
+              砂丘防沙裝備 ＆ 討論細節
+            </h3>
+            
+            <div class="space-y-4 text-xs text-stone-600 font-light">
+              <div class="p-3.5 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1 flex items-center gap-1.5">
+                  <i data-lucide="footprints" class="w-3.5 h-3.5 text-amber-700"></i> 冬季砂丘長靴（防沙鞋）租借指引
+                </strong>
+                冬季砂丘常伴隨積雪或潮濕細沙。砂丘會館提供<strong>長筒膠靴租借</strong>（租金約 ¥200~300），不僅徹底防止細沙灌入鞋內，登「馬背」坡道防滑保暖，非常值得全員租借！
+              </div>
+
+              <div class="p-3.5 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1 flex items-center gap-1.5">
+                  <i data-lucide="utensils" class="w-3.5 h-3.5 text-red-800"></i> 鳥取和牛晚餐預約建議
+                </strong>
+                鳥取和牛以「油酸 55%」的高融點油脂聞名，入口即化。市區知名名店（如炭藏、牛王）座位有限，行前建議提前預約 18:30 時段。
+              </div>
+
+              <div class="p-3.5 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1 flex items-center gap-1.5">
+                  <i data-lucide="bed" class="w-3.5 h-3.5 text-stone-700"></i> 鳥取市區住宿便利度
+                </strong>
+                入住鳥取站前飯店（如 Green Hotel Morris），步行可達車站商圈與居酒屋，大浴場設施完善，適時舒緩砂丘健行疲勞。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 5 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">可順遊之口袋名單（鳥取砂丘/岩美周邊）：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">砂丘布丁專賣店（Tottori Pudding）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">鳥取砂丘旁的爆紅甜點店，隨瓶附贈一包特殊烤製「焦糖砂」，吃之前自己撒上，口感酥脆驚艷！</p>
+              </div>
+              <button onclick="addPresetSpot(5, '砂丘布丁專賣店')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">仁風閣（Jinpukaku）＆ 鳥取城跡</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">明治時期法國文藝復興風格的白堊洋館，神劍闖江湖電影取景地，後倚久松山鳥取城天守遺跡（市中心順路）。</p>
+              </div>
+              <button onclick="addPresetSpot(5, '仁風閣 ＆ 鳥取城跡')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-5" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(5)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-5" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DAY 6 PANEL ================= -->
+    <div id="day-panel-6" class="day-panel hidden">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 06 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第六天：南下穿越中國山地 ➔ 晴天之國岡山 ➔ 岡山城烏城 ➔ 桃太郎吉備津神社
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              自鳥取穿越中國山地直達山陽岡山。參訪黑色「烏城」岡山城與日本三大名園後樂園；下午造訪【Google Maps 收藏景點：吉備津神社】，漫步 360 公尺國寶木造長迴廊！
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            宿：岡山 Granvia 酒店 / 三井花園 (連住2晚)
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 6 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 6 路線地圖：鳥取 ➔ 智頭町 ➔ 岡山城 ➔ 後樂園 ➔ 吉備津神社 ➔ 岡山站</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/鳥取駅/石谷家住宅/岡山城/岡山後楽園/吉備津神社/ホテルグランヴィア岡山" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟路線
+          </a>
+        </div>
+        <div id="map-d6" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Balanced 2-Column Editorial Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+        <!-- Left: Timetable Card -->
+        <div class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Itinerary</span>
+              <span class="text-xs text-stone-400 font-light">穿越中國山地</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug mb-4 flex items-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-amber-700"></i> 岡山與桃太郎神話探索時程
+            </h3>
+            <ol class="space-y-4 text-xs text-stone-600 font-light pl-1 border-l border-stone-100 ml-1">
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-900"></span>
+                <span class="font-mono text-stone-900 font-medium block">09:00 - 11:30 ｜ 鳥取南下穿越中國山地 ➔ 岡山</span>
+                行經智頭杉宿場町，沿國道與高速公路順暢南下，抵達陽光明媚的山陽岡山。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-400"></span>
+                <span class="font-mono text-stone-900 font-medium block">11:30 - 13:00 ｜ 岡山名物午餐：多蜜醬豬排丼 (Demikatsu)</span>
+                品嚐岡山老店「味司 野村」，酥脆豬排淋上濃郁多蜜醬汁與生蛋黃。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-900"></span>
+                <span class="font-mono text-stone-900 font-medium block">13:30 - 15:30 ｜ 黑色天守「岡山城」＆ 日本三大名園「後樂園」</span>
+                烏黑威嚴的「烏城」映照旭川；走過月見橋漫步米其林三星名園，登上唯心山遠眺池泉迴遊美景。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-red-800"></span>
+                <span class="font-mono text-stone-900 font-medium block">15:45 - 17:30 ｜ 吉備津神社 (360米木造長迴廊) ＆ 吉備津彥神社</span>
+                【Google Maps 收藏景點】桃太郎傳說發源地，漫步全日本唯一的 360 公尺國寶起伏木造長迴廊。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+                <span class="font-mono text-stone-900 font-medium block">18:00 - 21:00 ｜ 入住岡山站前 ＆ AEON Mall 岡山散策</span>
+                辦理入住（連住 2 晚），西日本最大級 AEON Mall 自由用餐與逛街。
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Right: Photography & Travel Notes -->
+        <div class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-amber-50 text-amber-800 rounded font-semibold border border-amber-200">HIGHLIGHT</span>
+              <span class="text-xs text-stone-400 font-light">國寶迴廊與連住優勢</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug mb-4">
+              吉備津長迴廊攝影 ＆ 連住亮點
+            </h3>
+
+            <div class="space-y-4 text-xs text-stone-600 font-light">
+              <div class="p-3.5 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1 flex items-center gap-1.5">
+                  <i data-lucide="camera" class="w-3.5 h-3.5 text-red-800"></i> 國寶 360 公尺長迴廊拍攝絕佳時機
+                </strong>
+                午後 16:00 前後陽光斜射，光影穿透連續木柱投射在木造長廊地面，縱深感與禪意極具張力，是此行最震撼的人像與文化大片取景地。
+              </div>
+
+              <div class="p-3.5 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1 flex items-center gap-1.5">
+                  <i data-lucide="hotel" class="w-3.5 h-3.5 text-amber-700"></i> 岡山站前連住 2 晚無行李負擔
+                </strong>
+                今晚起連住岡山 2 晚，明天前往倉敷美觀與 Outlet 全天<strong>不用搬行李</strong>，回飯店後即可輕鬆逛街或吃居酒屋。
+              </div>
+
+              <div class="p-3.5 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1 flex items-center gap-1.5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-stone-700"></i> 桃太郎結緣御守與吉備糰子
+                </strong>
+                神社境內可購買「桃守」（象徵驅邪消災與結緣）以及名物吉備糰子（きびだんご）。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 6 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">可順遊之口袋名單（智頭/津山/吉備周邊）：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">津山城跡（鶴山公園）＆ 眾樂園</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">日本三大平山城之一，壯觀雄偉的十數米石垣層疊交錯，鳥取前往岡山途中順路必經的歷史名城（距智頭約 30 分）。</p>
+              </div>
+              <button onclick="addPresetSpot(6, '津山城跡 ＆ 鶴山公園')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">智頭宿 石谷家住宅</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">因幡街道重要宿場町，日本重要文化財豪農邸宅，佔地三千坪的池泉迴遊式日本庭園（鳥取往南穿越山地中途休息點）。</p>
+              </div>
+              <button onclick="addPresetSpot(6, '智頭宿 石谷家住宅')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-6" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(6)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-6" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DAY 7 PANEL ================= -->
+    <div id="day-panel-7" class="day-panel hidden">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 07 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第七天：倉敷美觀水鄉小舟 ➔ 三井 Outlet 採買 ➔ 瀨戶大橋夕景
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              沉浸於江戶天領白壁建築與柳樹運河。下午前往【三井 OUTLET PARK 倉敷】享受免稅採購。核心討論：<strong>傍晚要留在市區血拚到底，還是前往鷲羽山追「瀨戶大橋夕陽」？</strong>
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            宿：岡山車站周邊飯店 (連住第2晚)
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 7 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 7 路線地圖：岡山 ➔ 倉敷美觀 ➔ 三井Outlet ➔ 鷲羽山展望台(瀨戶大橋)</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/岡山駅/倉敷美観地区/大原美術館/三井アウトレットパーク+倉敷/鷲羽山第二展望台/岡山駅" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟路線
+          </a>
+        </div>
+        <div id="map-d7" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Two Parallel Plan Cards for Day 7 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+        <!-- Plan A: 採買到底 -->
+        <article id="card-d7-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
+              <span class="text-xs text-stone-400 font-light">水鄉漫步 ＋ 購物滿足</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              美觀古街 ➔ 三井 Outlet ＆ 岡山站商圈採買
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">倉敷川遊船 • 120家Outlet名店 • Bic Camera家電藥妝</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-red-800 leading-relaxed font-light">
+              「上午沈浸在倉敷白壁運河與大原美術館，下午充分享受三井 Outlet 購物時光，傍晚回岡山站前補齊所有藥妝與電器，輕鬆無趕路壓力。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">09:30 - 13:30</span>
+                  <span><strong>倉敷美觀地區（小舟遊船 ＆ 大原美術館）</strong>：搭木舟穿梭垂柳運河；參觀收藏莫內《睡蓮》的大原美術館；品嚐常春藤廣場特色咖啡。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">13:45 - 17:00</span>
+                  <span><strong>三井 OUTLET PARK 倉敷 ＆ Ario 倉敷</strong>：【Google Maps 收藏景點】120 家專櫃品牌免稅大採買，連通 Ario 商場採購零食土產。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">17:30 - 21:00</span>
+                  <span><strong>岡山站商圈最後掃貨 ＆ 居酒屋慶功宴</strong>：逛 Bic Camera 購買電器與免稅藥妝，晚餐享用瀨戶內海鮮居酒屋！</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">優勢：</span>
+                <span>購物與挑選手信時間最充裕，不需奔波，回程行李裝滿滿。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD7(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
+              標記選取此方案 (Plan A)
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan B: 鷲羽山夕陽 -->
+        <article id="card-d7-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B</span>
+              <span class="text-xs text-stone-400 font-light">水鄉漫步 ＋ 跨海大橋絕景</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
+              美觀古街 ➔ 三井快閃 ➔ 鷲羽山瀨戶大橋夕陽
+            </h3>
+            <p class="text-xs text-stone-500 mt-1 font-light">大原美術館 • 跨海大橋日落 • 瀨戶內海百大夕陽</p>
+            <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-amber-600 leading-relaxed font-light">
+              「下午精簡 Outlet 購物時間（約 1.5 小時），驅車南下鷲羽山第二展望台，親眼目睹金色夕陽斜照跨海大橋與島嶼群的壯麗絕景。」
+            </p>
+
+            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
+              </h4>
+              <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">09:30 - 13:30</span>
+                  <span><strong>倉敷美觀地區（小舟遊船 ＆ 大原美術館）</strong>：搭木舟穿梭垂柳運河；參觀大原美術館名畫與白壁老街。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">13:45 - 15:30</span>
+                  <span><strong>三井 OUTLET PARK 快閃精選採買</strong>：鎖定重點服飾運動品牌免稅購物。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">16:15 - 17:30</span>
+                  <span><strong>【Google Maps 收藏】鷲羽山第二展望台</strong>：居高臨下遠眺瀨戶內海與跨海「瀨戶大橋」震撼日落。</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-mono text-stone-900 font-medium whitespace-nowrap">18:30 - 21:00</span>
+                  <span><strong>返回岡山 ＆ 旅程最後一晚慶功宴</strong>：享用岡山黑牛肉、鰆魚生魚片與地酒。</span>
+                </li>
+              </ol>
+            </div>
+
+            <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
+              <div class="flex items-baseline gap-2">
+                <span class="text-stone-500 font-medium whitespace-nowrap">優勢：</span>
+                <span>能多收穫一座日本國家級壯麗自然跨海景觀，拍照視覺震撼度極高。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100">
+            <button onclick="highlightD7(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 text-stone-800 transition tracking-wider">
+              標記選取此方案 (Plan B)
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 7 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">可順遊之口袋名單（倉敷/兒島/水島周邊）：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">兒島牛仔褲街（Kojima Jeans Street）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">日本國產牛仔褲發源地，街頭懸掛滿滿牛仔褲裝置藝術，老街進駐數十家頂級丹寧工藝店（鷲羽山順路）。</p>
+              </div>
+              <button onclick="addPresetSpot(7, '兒島牛仔褲街')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">阿智神社（鶴形山公園展望）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">倉敷美觀地區後方的千年古神社，登上石階可俯瞰整個白壁土藏群全景，求「花纏御守」極受歡迎。</p>
+              </div>
+              <button onclick="addPresetSpot(7, '阿智神社 ＆ 展望台')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-7" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(7)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-7" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= DAY 8 PANEL ================= -->
+    <div id="day-panel-8" class="day-panel hidden">
+      <section class="mb-6 pb-4 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 08 DISCUSSION</span>
+            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
+              第八天：岡山伴手禮最後衝刺 ➔ 岡山機場門市還車 ➔ 15:25 搭機滿載返台
+            </h2>
+            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
+              最後一天步調從容！早晨在岡山站伴手禮商場採買大手饅頭與白桃名產，中午前往岡山桃太郎機場還車登機，帶著滿滿戰利品與回憶平安抵台。
+            </p>
+          </div>
+          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+            17:30 抵達桃園國際機場第一航廈
+          </div>
+        </div>
+      </section>
+
+      <!-- Day 8 Map Box -->
+      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 8 路線地圖：岡山站 ➔ 機場租車門市 ➔ 岡山桃太郎機場 (OKJ)</h4>
+          </div>
+          <a href="https://www.google.com/maps/dir/岡山駅/岡山桃太郎空港" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 在 Google 地圖開啟路線
+          </a>
+        </div>
+        <div id="map-d8" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
+
+      <!-- Balanced 2-Column Editorial Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+        <!-- Left: Timetable Card -->
+        <div class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-sky-50 text-sky-800 rounded font-semibold border border-sky-200">DEPARTURE</span>
+              <span class="text-xs text-stone-400 font-light">岡山桃太郎機場 (OKJ)</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug mb-4 flex items-center gap-2">
+              <i data-lucide="plane" class="w-4 h-4 text-sky-700"></i> 回程搭機時間表
+            </h3>
+            <ol class="space-y-4 text-xs text-stone-600 font-light pl-1 border-l border-stone-100 ml-1">
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-900"></span>
+                <span class="font-mono text-stone-900 font-medium block">09:30 - 11:30 ｜ 岡山站「さんすて岡山」名產最後掃貨</span>
+                悠閒享用早餐後，於車站商場選購岡山大手饅頭、吉備糰子、白桃果凍、廣島檸檬蛋糕等手信。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-stone-400"></span>
+                <span class="font-mono text-stone-900 font-medium block">12:15 - 12:45 ｜ 租車公司岡山機場門市還車</span>
+                前往機場門市結算 ETC 過路費、檢查車輛外觀，搭乘租車公司免費接駁車前往航廈。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+                <span class="font-mono text-stone-900 font-medium block">13:00 - 15:25 ｜ 岡山桃太郎機場 (OKJ) 報到登機</span>
+                虎航 IT215 櫃檯託運（享有 80 公斤寬裕額度），順利通關後逛免稅店。
+              </li>
+              <li class="pl-4 relative">
+                <span class="absolute -left-1.5 top-1 w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                <span class="font-mono text-stone-900 font-medium block">15:25 - 17:30 ｜ 起飛返回台灣</span>
+                台灣時間 17:30 降落桃園機場第一航廈，圓滿完成 8 天 7 夜精彩假期！
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Right: Grand Tour Summary -->
+        <div class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">SUMMARY</span>
+              <span class="text-xs text-stone-400 font-light">行程整體亮點回顧</span>
+            </div>
+            <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug mb-4">
+              8 天不走回頭路大環線成果
+            </h3>
+
+            <div class="space-y-3.5 text-xs text-stone-600 font-light leading-relaxed">
+              <div class="p-3 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1">✓ 開口機票極致順暢：米子進、岡山出</strong>
+                由西向東橫貫山陰山陽，完全無折返行車時間，每天景點步步推進。
+              </div>
+              <div class="p-3 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1">✓ 川口屋連住 2 晚 ＋ 岡山連住 2 晚</strong>
+                8 天旅程中只有 3 次換飯店，大幅減少打包與搬運行李負擔，長輩與親友皆舒適。
+              </div>
+              <div class="p-3 bg-stone-50 rounded border border-stone-200">
+                <strong class="text-stone-900 block font-medium mb-1">✓ 全方位體驗精準到位</strong>
+                集結鬼太郎、柯南、城崎七外湯、天橋立飛龍、伊根水上舟屋、鳥取雪砂丘、岡山城與倉敷三井購物，文化、美景、美食、血拚一次滿足！
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
+      <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 mb-4 border-b border-stone-100">
+          <div class="flex items-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 font-serif-title">Day 8 順路備選景點庫 ＆ 臨時新增備忘</h4>
+          </div>
+          <span class="text-[11px] text-stone-400 font-light">點擊「＋加入今日備忘」或在右側自訂輸入</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-2.5">
+            <span class="text-[11px] text-stone-500 uppercase tracking-wider font-semibold block mb-2">最後一天可選之順遊/伴手禮口袋名單：</span>
+            
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">吉備津彥神社（出發前往機場前短暫參拜）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">若 Day 6 時間緊湊未及造訪，Day 8 早上驅車前往機場途中可順路短暫停留 30 分鐘，參拜壯麗朱紅鳥居與神池。</p>
+              </div>
+              <button onclick="addPresetSpot(8, '吉備津彥神社')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+
+            <div class="p-3 bg-stone-50 rounded border border-stone-200 flex items-start justify-between gap-3">
+              <div>
+                <strong class="text-stone-900 text-xs block">AEON Mall 岡山最後採買（超市水果與伴手禮）</strong>
+                <p class="text-[11px] text-stone-500 font-light mt-0.5">退房後直接在車站旁西日本最大永旺超市採購當季白桃果凍、日式調味料、零食與水果，塞滿行李箱！</p>
+              </div>
+              <button onclick="addPresetSpot(8, 'AEON Mall 岡山最後採買')" class="text-[11px] text-amber-800 hover:text-amber-950 font-medium px-2 py-1 bg-white rounded border border-stone-200 shrink-0">
+                + 加入備忘
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-stone-50/70 border border-stone-200 rounded p-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] text-stone-700 font-semibold block mb-1">夥伴提議新增景點 / 美食備忘：</span>
+              <div class="flex gap-1.5 mb-3">
+                <input type="text" id="custom-spot-input-8" placeholder="輸入景點或店家名稱..." class="text-xs px-2.5 py-1.5 rounded border border-stone-300 w-full focus:outline-none focus:border-stone-800 bg-white" />
+                <button onclick="addCustomSpot(8)" class="px-3 py-1.5 bg-stone-900 text-white text-xs rounded hover:bg-stone-800 shrink-0">
+                  記錄
+                </button>
+              </div>
+              <div id="spot-notes-8" class="space-y-1.5 min-h-[60px] text-xs">
+                <p class="text-stone-400 italic text-[11px] py-1">尚未記錄新景點...</p>
+              </div>
+            </div>
+            <p class="text-[10px] text-stone-400 mt-2 font-light">※ 會議中隨時記錄，確認後告訴我即可正式排入行程與地圖！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Clean Editorial Footer -->
+  <footer class="border-t border-stone-200 bg-white py-8 text-center text-xs text-stone-400 font-light">
+    <p>2027 日本山陰・海之京都・山陽 8天7夜自由行企劃 ｜ 旅伴討論提案專用</p>
+    <p class="mt-1 text-stone-300 font-mono">Designed for Keith and Travel Companions</p>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Map store & data
+    const mapInstances = {};
+    const daysGeoData = {
+      1: {
+        center: [35.5000, 133.2800],
+        zoom: 12,
+        points: [
+          { name: "1. 米子鬼太郎空港", lat: 35.4952, lng: 133.2382 },
+          { name: "2. 境港大魚市場", lat: 35.5223, lng: 133.2539 },
+          { name: "3. 水木茂大道&紀念館", lat: 35.5464, lng: 133.2313 },
+          { name: "候選宿: 御宿野乃 境港", lat: 35.5488, lng: 133.2325 },
+          { name: "候選宿: 皆生松月/華水亭", lat: 35.4585, lng: 133.3577 }
+        ]
+      },
+      2: {
+        center: [35.5500, 134.2000],
+        zoom: 9,
+        points: [
+          { name: "1. JR米子站（出發）", lat: 35.4228, lng: 133.3364 },
+          { name: "2. JR由良站（柯南小鎮／青山剛昌故鄉館）", lat: 35.4980, lng: 133.7618 },
+          { name: "3. JR鳥取站（換乘／便當）", lat: 35.4940, lng: 134.2259 },
+          { name: "4. JR城崎溫泉站", lat: 35.6237, lng: 134.8144 },
+          { name: "5. 川口屋城崎河畔酒店（入住）", lat: 35.6267, lng: 134.8149 }
+        ]
+      },
+      3: {
+        center: [35.5500, 134.8300],
+        zoom: 11,
+        points: [
+          { name: "1. 川口屋城崎河畔酒店", lat: 35.6267, lng: 134.8149 },
+          { name: "2. 城崎空中纜車", lat: 35.6253, lng: 134.8016 },
+          { name: "3. 玄武洞公園&博物館", lat: 35.5894, lng: 134.8035 },
+          { name: "4. 出石辰鼓樓(皿蕎麥)", lat: 35.4619, lng: 134.8738 },
+          { name: "5. 曼陀羅湯", lat: 35.6245, lng: 134.8057 }
+        ]
+      },
+      4: {
+        center: [35.6200, 135.2000],
+        zoom: 11,
+        points: [
+          { name: "1. 川口屋城崎", lat: 35.6267, lng: 134.8149 },
+          { name: "2. 天橋立傘松公園", lat: 35.5861, lng: 135.1953 },
+          { name: "3. 智恩寺文殊堂", lat: 35.5583, lng: 135.1903 },
+          { name: "4. 伊根舟屋&向井酒造", lat: 35.6722, lng: 135.2917 },
+          { name: "5. 天橋立/宮津飯店", lat: 35.5342, lng: 135.2008 }
+        ]
+      },
+      5: {
+        center: [35.5400, 134.2000],
+        zoom: 11,
+        points: [
+          { name: "1. 宮津/天橋立", lat: 35.5342, lng: 135.2008 },
+          { name: "2. 浦富海岸", lat: 35.5900, lng: 134.3000 },
+          { name: "3. 鳥取港賀露市場", lat: 35.5372, lng: 134.1836 },
+          { name: "4. 鳥取砂丘&砂之美術館", lat: 35.5422, lng: 134.2278 },
+          { name: "5. 白兔神社", lat: 35.5283, lng: 134.1333 },
+          { name: "6. 鳥取車站飯店", lat: 35.4942, lng: 134.2261 }
+        ]
+      },
+      6: {
+        center: [34.9000, 134.0500],
+        zoom: 10,
+        points: [
+          { name: "1. 鳥取車站", lat: 35.4942, lng: 134.2261 },
+          { name: "2. 智頭町石谷家", lat: 35.2683, lng: 134.2283 },
+          { name: "3. 岡山城&後樂園", lat: 34.6653, lng: 133.9361 },
+          { name: "4. 吉備津神社(長迴廊)", lat: 34.6707, lng: 133.8506 },
+          { name: "5. 岡山站周邊飯店", lat: 34.6664, lng: 133.9185 }
+        ]
+      },
+      7: {
+        center: [34.5500, 133.8000],
+        zoom: 11,
+        points: [
+          { name: "1. 岡山車站", lat: 34.6664, lng: 133.9185 },
+          { name: "2. 倉敷美觀&大原美術館", lat: 34.5958, lng: 133.7719 },
+          { name: "3. 三井Outlet倉敷", lat: 34.6036, lng: 133.7615 },
+          { name: "4. 鷲羽山展望台(瀨戶大橋)", lat: 34.4361, lng: 133.8111 }
+        ]
+      },
+      8: {
+        center: [34.7100, 133.8800],
+        zoom: 12,
+        points: [
+          { name: "1. 岡山車站(伴手禮)", lat: 34.6664, lng: 133.9185 },
+          { name: "2. 機場租車門市還車", lat: 34.7550, lng: 133.8530 },
+          { name: "3. 岡山桃太郎機場", lat: 34.7572, lng: 133.8550 }
+        ]
+      }
+    };
+
+    function initMapForDay(d) {
+      if (mapInstances[d]) {
+        setTimeout(() => mapInstances[d].invalidateSize(), 100);
+        return;
+      }
+      const mapDiv = document.getElementById(`map-d${d}`);
+      if (!mapDiv) return;
+
+      const data = daysGeoData[d];
+      if (!data) return;
+
+      if (!window.L) {
+        mapDiv.classList.add('flex', 'items-center', 'justify-center', 'px-4', 'text-center', 'text-xs', 'text-stone-500');
+        mapDiv.textContent = '地圖服務目前不可用；請使用上方「在 Google 地圖開啟」確認導航與道路狀況。';
+        return;
+      }
+
+      const map = L.map(mapDiv).setView(data.center, data.zoom);
+      mapInstances[d] = map;
+
+      // CartoDB Positron elegant tiles
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+
+      const latlngs = [];
+      data.points.forEach((pt, i) => {
+        const markerIcon = L.divIcon({
+          className: 'custom-marker',
+          html: `${i + 1}`,
+          iconSize: [24, 24],
+          iconAnchor: [12, 12]
+        });
+        const m = L.marker([pt.lat, pt.lng], { icon: markerIcon }).addTo(map);
+        m.bindPopup(`<strong>${pt.name}</strong>`);
+        latlngs.push([pt.lat, pt.lng]);
+      });
+
+      if (latlngs.length > 1) {
+        L.polyline(latlngs, { color: '#991B1B', weight: 3, opacity: 0.65, dashArray: '6, 6' }).addTo(map);
+      }
+    }
+
+    // Tab switcher
+    function switchDay(day) {
+      document.querySelectorAll('.day-nav-item').forEach(btn => {
+        if (Number(btn.dataset.day) === day) {
+          btn.classList.add('tab-active');
+          btn.classList.remove('text-stone-500');
+        } else {
+          btn.classList.remove('tab-active');
+          btn.classList.add('text-stone-500');
+        }
+      });
+
+      for (let d = 0; d <= 8; d++) {
+        const panel = document.getElementById(`day-panel-${d}`);
+        if (panel) {
+          if (d === day) {
+            panel.classList.remove('hidden');
+            if (d > 0) setTimeout(() => initMapForDay(d), 50);
+          } else {
+            panel.classList.add('hidden');
+          }
+        }
+      }
+    }
+
+    // Meeting decisions persist only in this browser, never to a remote service.
+    const decisionKey = 'sanin-sanyo-2027-decisions-v1';
+    const dayMeta = {
+      1: ['由住宿方案決定', '第一晚住宿', '第一晚住宿與抵達後交通'],
+      2: ['JR 山陰本線／轉乘', '川口屋（連住第 1 晚）', '列車時刻、由良站與城崎接駁'],
+      3: ['由已選方案決定', '川口屋（連住第 2 晚）', '纜車／玄武洞冬季營運'],
+      4: ['由已選方案決定', '宮津／天橋立', '第 4 晚住宿、伊根船班'],
+      5: ['由已選方案決定', '鳥取市區', '砂之美術館冬季開館'],
+      6: ['由已選方案決定', '岡山車站周邊', '吉備津神社參拜時間'],
+      7: ['由已選方案決定', '岡山車站周邊', '鷲羽山日落與購物時間'],
+      8: ['由返程方案決定', '—', '機場交通與報到時間']
+    };
+    const planRationales = {
+      '1-1': '以抵達後的移動最少為優先；適合想保留境港夜間散步的人。',
+      '1-2': '以溫泉與晚餐品質為優先；需接受第一天多一段車程。',
+      '1-3': '以餐飲與生活機能為優先；適合先搭機場巴士進市區、隔日再依方案安排租車。',
+      '2-1': '保留柯南小鎮，但必須先核對由良站寄物、轉乘與城崎接駁時間。',
+      '2-2': '減少冬季轉乘與步行負擔，將時間留給城崎入住與外湯。',
+      '3-1': '用短程自駕串起自然地景與城下町；需先核對纜車與博物館營運。',
+      '3-2': '把體力與天候風險降到最低，適合降雪或偏好慢旅行時採用。',
+      '4-1': '傘松公園動線較順，適合以伊根與住宿銜接為首要考量。',
+      '4-2': '保留經典飛龍觀角度，但需要更精準控管停車與跨海移動時間。',
+      '7-1': '優先完成倉敷與採買，適合購物清單較長或日落條件不佳時採用。',
+      '7-2': '把瀨戶大橋夕景設為主角；需以冬日日落與回程夜駕安全為前提。'
+    };
+    let decisionState = { decisions: {}, statuses: {}, notes: {}, collapsed: {} };
+
+    function readDecisionState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(decisionKey));
+        if (saved && typeof saved === 'object') decisionState = { ...decisionState, ...saved };
+      } catch (_) { /* Private browsing or a blocked local file still remains usable for this view. */ }
+    }
+
+    function persistDecisionState() {
+      const saveStatus = document.getElementById('save-status');
+      try {
+        localStorage.setItem(decisionKey, JSON.stringify(decisionState));
+        if (saveStatus) saveStatus.textContent = '已儲存於此瀏覽器';
+      } catch (_) {
+        if (saveStatus) saveStatus.textContent = '此瀏覽器未開放儲存；請另外記錄拍板結果';
+      }
+    }
+
+    function planName(day, index) {
+      const card = document.getElementById(`card-d${day}-${index}`);
+      return card ? card.querySelector('h3').textContent.replace(/\s+/g, ' ').trim() : `Plan ${index}`;
+    }
+
+    function escapeWordHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function selectedPlanDetails(day, index) {
+      const card = document.getElementById(`card-d${day}-${index}`);
+      if (!card) return [];
+      const details = [...card.querySelectorAll('p, li')]
+        .map(node => node.textContent.replace(/\s+/g, ' ').trim())
+        .filter(text => text && !text.startsWith('標記選取') && !text.startsWith('改選此方案') && !text.startsWith('✓ 已拍板'));
+      return [...new Set(details)];
+    }
+
+    async function exportWordProposal() {
+      const feedback = document.getElementById('export-feedback');
+      const exportButton = document.getElementById('export-word-button');
+      if (!window.docx) {
+        feedback.textContent = 'Word 匯出元件尚未載入，請重新整理後再試。';
+        feedback.classList.remove('hidden');
+        return;
+      }
+      const { AlignmentType, BorderStyle, Document, Footer, Packer, PageNumber, Paragraph, Table, TableCell, TableRow, TextRun, VerticalAlign, WidthType } = window.docx;
+      const colors = { ink: '123047', gold: 'C68C38', rust: 'A94F32', mist: 'EDF4F2', paper: 'F8F7F2', line: 'D7E0E4', muted: '64748B', white: 'FFFFFF' };
+      const fontSpec = { ascii: 'Aptos', hAnsi: 'Aptos', eastAsia: 'PingFang TC', hint: 'eastAsia' };
+      const border = { style: BorderStyle.SINGLE, size: 4, color: colors.line };
+      const fullyBooked = Object.keys(dayMeta).every(day => decisionState.statuses[day] === '已訂');
+      const stage = fullyBooked ? '定稿' : '討論整理版';
+      const generatedAt = new Intl.DateTimeFormat('zh-TW', { dateStyle: 'long' }).format(new Date());
+      const run = (text, options = {}) => new TextRun({ text, font: fontSpec, size: 22, color: colors.ink, ...options });
+      const cell = (text, { header = false, width = 70 } = {}) => new TableCell({
+        width: { size: width, type: WidthType.PERCENTAGE },
+        verticalAlign: VerticalAlign.CENTER,
+        shading: { fill: header ? colors.mist : colors.white },
+        margins: { top: 120, bottom: 120, left: 150, right: 150 },
+        borders: { top: border, bottom: border, left: border, right: border },
+        children: [new Paragraph({ spacing: { after: 0 }, children: [run(text, { bold: header, size: 20, color: header ? colors.ink : colors.ink })] })]
+      });
+      const infoTable = (items) => new Table({
+        width: { size: 100, type: WidthType.PERCENTAGE },
+        borders: { top: border, bottom: border, left: border, right: border, insideHorizontal: border, insideVertical: border },
+        rows: items.map(([label, value]) => new TableRow({ children: [cell(label, { header: true, width: 28 }), cell(value, { width: 72 })] }))
+      });
+      const dailySections = Object.entries(dayMeta).flatMap(([day, [transport, lodging, pending]]) => {
+        const picked = decisionState.decisions[day];
+        const status = decisionState.statuses[day] || '候選';
+        const title = document.querySelector(`#day-panel-${day} h2`)?.textContent.replace(/\s+/g, ' ').trim() || `第 ${day} 天`;
+        const choice = picked ? `Plan ${String.fromCharCode(64 + picked)}｜${planName(day, picked)}` : '尚未拍板';
+        const details = picked ? selectedPlanDetails(day, picked) : [];
+        const notes = decisionState.notes[day] || [];
+        const children = [
+          new Paragraph({ pageBreakBefore: true, spacing: { after: 80 }, children: [run(`DAY ${String(day).padStart(2, '0')}`, { bold: true, size: 20, color: colors.gold, characterSpacing: 80 })] }),
+          new Paragraph({ keepNext: true, spacing: { after: 180 }, children: [run(title, { bold: true, size: 32 })] }),
+          infoTable([['行程狀態', status], ['交通安排', transport], ['住宿／選定方案', picked ? choice : lodging], ['待查證事項', pending]]),
+          new Paragraph({ spacing: { before: 240, after: 80 }, children: [run(picked ? '選定方案重點' : '討論尚未完成', { bold: true, size: 22, color: colors.rust })] })
+        ];
+        if (details.length) children.push(...details.map(detail => new Paragraph({ bullet: { level: 0 }, spacing: { after: 70 }, children: [run(detail, { size: 21 })] })));
+        else children.push(new Paragraph({ spacing: { after: 70 }, children: [run('本日尚未選定方案，請於討論完成後再輸出定稿。', { size: 21, color: colors.muted })] }));
+        if (notes.length) {
+          children.push(new Paragraph({ spacing: { before: 170, after: 80 }, children: [run('旅伴備忘', { bold: true, size: 22, color: colors.rust })] }));
+          children.push(...notes.map(note => new Paragraph({ bullet: { level: 0 }, spacing: { after: 70 }, children: [run(note, { size: 21 })] })));
+        }
+        return children;
+      });
+      const overviewRows = Object.entries(dayMeta).map(([day, [transport, lodging]]) => {
+        const picked = decisionState.decisions[day];
+        const choice = picked ? `Plan ${String.fromCharCode(64 + picked)}｜${planName(day, picked)}` : lodging;
+        return new TableRow({ children: [cell(`Day ${String(day).padStart(2, '0')}`, { header: true, width: 12 }), cell(transport, { width: 28 }), cell(choice, { width: 42 }), cell(decisionState.statuses[day] || '候選', { width: 18 })] });
+      });
+      const footer = new Footer({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [run('2027 日本山陰海之京都山陽 ｜ ', { size: 18, color: colors.muted }), new TextRun({ children: ['第 ', PageNumber.CURRENT, ' 頁'], font: fontSpec, size: 18, color: colors.muted })] })] });
+      const doc = new Document({
+        creator: '旅伴行程決策冊',
+        title: '2027日本山陰海之京都山陽8天7夜自由行企劃書',
+        styles: { default: { document: { run: { font: fontSpec, size: 22, color: colors.ink }, paragraph: { spacing: { line: 330 } } } } },
+        sections: [
+          {
+            properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1700, right: 1300, bottom: 1500, left: 1300 } } },
+            children: [
+              new Paragraph({ spacing: { before: 800, after: 160 }, children: [run('COMPANION MADE WINTER ROUTE', { bold: true, size: 19, color: colors.gold, characterSpacing: 120 })] }),
+              new Paragraph({ spacing: { after: 220 }, children: [run('2027 日本山陰海之京都山陽', { bold: true, size: 42 })] }),
+              new Paragraph({ spacing: { after: 520 }, children: [run('8天7夜自由行企劃書', { bold: true, size: 32, color: colors.rust })] }),
+              new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, rows: [new TableRow({ children: [new TableCell({ shading: { fill: colors.ink }, margins: { top: 360, bottom: 360, left: 360, right: 360 }, children: [new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 120 }, children: [run('冬日山陰・海之京都・山陽', { bold: true, size: 28, color: colors.white })] }), new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 0 }, children: [run('妖怪街、JR 日本海雪景、城崎溫泉、天橋立、伊根、鳥取砂丘、岡山與倉敷', { size: 20, color: 'DCE8ED' })] })] })] })] }),
+              new Paragraph({ spacing: { before: 480, after: 110 }, children: [run(`版本｜${stage}`, { bold: true, size: 22, color: colors.ink })] }),
+              new Paragraph({ spacing: { after: 0 }, children: [run(`旅伴討論成果匯出｜${generatedAt}`, { size: 20, color: colors.muted })] })
+            ]
+          },
+          {
+            properties: { page: { size: { width: 12240, height: 15840 }, margin: { top: 1100, right: 1300, bottom: 1000, left: 1300 } } },
+            footers: { default: footer },
+            children: [
+              new Paragraph({ spacing: { after: 70 }, children: [run('TRAVEL OVERVIEW', { bold: true, size: 19, color: colors.gold, characterSpacing: 100 })] }),
+              new Paragraph({ spacing: { after: 150 }, children: [run('八日行程總覽', { bold: true, size: 34 })] }),
+              new Paragraph({ spacing: { after: 250 }, children: [run('本企劃書依旅伴每日討論結果整理。交通與節奏以各日選定方案為準；Day 2 為 JR 山陰鐵道行程。', { size: 21, color: colors.muted })] }),
+              new Table({ width: { size: 100, type: WidthType.PERCENTAGE }, borders: { top: border, bottom: border, left: border, right: border, insideHorizontal: border, insideVertical: border }, rows: [new TableRow({ children: [cell('日程', { header: true, width: 12 }), cell('交通', { header: true, width: 28 }), cell('住宿／方案', { header: true, width: 42 }), cell('狀態', { header: true, width: 18 })] }), ...overviewRows] }),
+              ...dailySections
+            ]
+          }
+        ]
+      });
+      exportButton.disabled = true;
+      exportButton.classList.add('opacity-60', 'cursor-wait');
+      try {
+        const blob = await Packer.toBlob(doc);
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `2027日本山陰海之京都山陽8天7夜自由行企劃書_${stage}.docx`;
+        document.body.append(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+        feedback.textContent = `已開始下載 ${stage} Word 企劃書。`;
+        feedback.classList.remove('hidden');
+      } catch (_) {
+        feedback.textContent = 'Word 檔產生失敗，請重新整理後再試。';
+        feedback.classList.remove('hidden');
+      } finally {
+        exportButton.disabled = false;
+        exportButton.classList.remove('opacity-60', 'cursor-wait');
+      }
+    }
+
+    function decorateProposalCards() {
+      Object.entries(planRationales).forEach(([key, reason]) => {
+        const [day, index] = key.split('-');
+        const card = document.getElementById(`card-d${day}-${index}`);
+        const anchor = card && card.querySelector('h3');
+        if (!card || !anchor || card.querySelector('.decision-reason')) return;
+        const rationale = document.createElement('p');
+        rationale.className = 'decision-reason text-[11px] text-stone-600 leading-relaxed px-3 py-2 mt-3';
+        rationale.innerHTML = '<strong class="text-amber-800">決策依據</strong>　';
+        rationale.append(document.createTextNode(reason));
+        anchor.insertAdjacentElement('afterend', rationale);
+      });
+      document.querySelectorAll('a[target="_blank"]').forEach(link => link.rel = 'noopener noreferrer');
+      document.querySelectorAll('[id^="map-d"]').forEach(map => {
+        const note = document.createElement('p');
+        note.className = 'text-[10px] text-stone-400 mt-2';
+        note.textContent = '此圖為點位概覽，非實際道路／鐵道路線；導航與道路狀況請以外連地圖為準。';
+        map.insertAdjacentElement('afterend', note);
+      });
+    }
+
+    function showDependencyStatus() {
+      const status = document.getElementById('dependency-status');
+      if (!status || (navigator.onLine && window.L)) return;
+      status.classList.remove('hidden');
+      status.textContent = '離線檢視模式：決策總表、時間軸與備忘仍可使用；互動地圖與外部字型／圖示可能無法載入。導航請改用每日日程的 Google 地圖連結。';
+    }
+
+    function setDecision(day, index, shouldPersist = true, collapse = true) {
+      decisionState.decisions[day] = index;
+      if (collapse) decisionState.collapsed[day] = true;
+      document.querySelectorAll(`[id^="card-d${day}-"]`).forEach(card => {
+        const cardIndex = Number(card.id.split('-').pop());
+        const selected = cardIndex === index;
+        const button = card.querySelector('button');
+        card.classList.toggle('card-active', selected);
+        card.classList.toggle('candidate-collapsed', !selected && decisionState.collapsed[day]);
+        card.style.borderColor = selected ? '#991B1B' : '#E7E5E4';
+        button.classList.toggle('bg-red-800', selected);
+        button.classList.toggle('text-white', selected);
+        button.classList.toggle('bg-stone-100', !selected);
+        button.classList.toggle('text-stone-800', !selected);
+        button.classList.remove('bg-stone-900');
+        button.innerText = selected ? `✓ 已拍板：Plan ${String.fromCharCode(64 + cardIndex)} · 再按一次即可取消選擇` : `改選此方案 (Plan ${String.fromCharCode(64 + cardIndex)})`;
+      });
+      refreshLedger();
+      if (shouldPersist) persistDecisionState();
+    }
+
+    function toggleAlternatives(day) {
+      decisionState.collapsed[day] = !decisionState.collapsed[day];
+      const selected = decisionState.decisions[day];
+      if (selected) setDecision(day, selected, false, false);
+      refreshLedger();
+      persistDecisionState();
+      if (!decisionState.collapsed[day]) switchDay(Number(day));
+    }
+
+    function updateStatus(day, status) {
+      decisionState.statuses[day] = status;
+      refreshLedger();
+      persistDecisionState();
+    }
+
+    function refreshLedger() {
+      const rows = document.getElementById('decision-ledger-rows');
+      if (!rows) return;
+      rows.innerHTML = '';
+      Object.entries(dayMeta).forEach(([day, [transport, lodging, pending]]) => {
+        const picked = decisionState.decisions[day];
+        const status = decisionState.statuses[day] || '候選';
+        const row = document.createElement('div');
+        row.className = 'ledger-row px-5 py-4 md:px-6 grid grid-cols-1 md:grid-cols-[70px_1.15fr_1.45fr_1.3fr_110px] gap-2 md:gap-4 items-center text-xs';
+        const choice = picked ? `Plan ${String.fromCharCode(64 + picked)}・${planName(day, picked)}` : '尚未拍板';
+        row.innerHTML = `<div class="font-en-serif text-amber-300 tracking-wider">DAY ${String(day).padStart(2, '0')}</div><div><span class="text-stone-400 block text-[10px]">交通</span>${transport}</div><div><span class="text-stone-400 block text-[10px]">住宿／方案</span>${picked ? choice : lodging}</div><div><span class="text-stone-400 block text-[10px]">待查證</span>${pending}</div><div></div>`;
+        const controls = row.lastElementChild;
+        const select = document.createElement('select');
+        select.className = 'w-full bg-stone-800 border border-stone-600 rounded px-2 py-1.5 text-[11px] focus:outline-none focus:ring-1 focus:ring-amber-300';
+        ['候選', '待訂', '已訂'].forEach(value => {
+          const option = new Option(value, value, false, value === status);
+          select.add(option);
+        });
+        select.addEventListener('change', event => updateStatus(day, event.target.value));
+        controls.append(select);
+        if (picked) {
+          const toggle = document.createElement('button');
+          toggle.className = 'mt-1.5 text-[10px] text-amber-200 underline underline-offset-2';
+          toggle.textContent = decisionState.collapsed[day] ? '查看候選方案' : '收起候選方案';
+          toggle.addEventListener('click', () => toggleAlternatives(day));
+          controls.append(toggle);
+        }
+        rows.append(row);
+      });
+    }
+
+    function clearDecision(day) {
+      delete decisionState.decisions[day];
+      delete decisionState.collapsed[day];
+      document.querySelectorAll(`[id^="card-d${day}-"]`).forEach(card => {
+        const cardIndex = Number(card.id.split('-').pop());
+        const button = card.querySelector('button');
+        card.classList.remove('card-active', 'candidate-collapsed');
+        card.style.borderColor = '#E7E5E4';
+        button.classList.remove('bg-red-800', 'text-white', 'bg-stone-900');
+        button.classList.add('bg-stone-100', 'text-stone-800');
+        button.innerText = `標記選取此方案 (Plan ${String.fromCharCode(64 + cardIndex)})`;
+      });
+      refreshLedger();
+      persistDecisionState();
+    }
+
+    function toggleDecision(day, index) {
+      if (decisionState.decisions[day] === index) clearDecision(day);
+      else setDecision(day, index);
+    }
+
+    function highlightD1(index) { toggleDecision(1, index); }
+    function highlightD2(index) { toggleDecision(2, index); }
+    function highlightD3(index) { toggleDecision(3, index); }
+    function highlightD4(index) { toggleDecision(4, index); }
+    function highlightD7(index) { toggleDecision(7, index); }
+
+    // Add preset spot to notes
+    function addPresetSpot(day, spotName) {
+      decisionState.notes[day] = decisionState.notes[day] || [];
+      decisionState.notes[day].push(spotName);
+      renderNotes(day);
+      persistDecisionState();
+    }
+
+    // Add custom typed spot to notes
+    function addCustomSpot(day) {
+      const input = document.getElementById(`custom-spot-input-${day}`);
+      if (!input || !input.value.trim()) return;
+      const spotName = input.value.trim();
+      addPresetSpot(day, spotName);
+      input.value = '';
+    }
+
+    function removeNote(day, index) {
+      decisionState.notes[day].splice(index, 1);
+      renderNotes(day);
+      persistDecisionState();
+    }
+
+    function renderNotes(day) {
+      const container = document.getElementById(`spot-notes-${day}`);
+      if (!container) return;
+      const notes = decisionState.notes[day] || [];
+      container.replaceChildren();
+      if (!notes.length) {
+        const empty = document.createElement('p');
+        empty.className = 'text-stone-400 italic text-[11px] py-1';
+        empty.textContent = '尚未記錄新景點…';
+        container.append(empty);
+        return;
+      }
+      notes.forEach((spot, index) => {
+        const item = document.createElement('div');
+        item.className = 'flex items-center justify-between bg-white px-2.5 py-1.5 rounded border border-stone-200 shadow-2xs';
+        const name = document.createElement('span');
+        name.className = 'text-stone-800 font-medium';
+        name.textContent = `📍 ${spot}`;
+        const remove = document.createElement('button');
+        remove.className = 'text-stone-400 hover:text-red-700 text-xs ml-2 font-mono';
+        remove.type = 'button';
+        remove.setAttribute('aria-label', `移除 ${spot}`);
+        remove.textContent = '×';
+        remove.addEventListener('click', () => removeNote(day, index));
+        item.append(name, remove);
+        container.append(item);
+      });
+    }
+
+    // Initial map for Day 1
+    window.addEventListener('DOMContentLoaded', () => {
+      readDecisionState();
+      decorateProposalCards();
+      showDependencyStatus();
+      refreshLedger();
+      document.getElementById('export-word-button')?.addEventListener('click', exportWordProposal);
+      for (let day = 1; day <= 8; day++) {
+        renderNotes(day);
+        const selected = decisionState.decisions[day];
+        if (selected) setDecision(day, selected, false);
+      }
+      initMapForDay(1);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+# Markdown uses two trailing spaces intentionally for explicit line breaks.
+*.md whitespace=-trailing-space
+trip_discussion.html whitespace=-trailing-space
