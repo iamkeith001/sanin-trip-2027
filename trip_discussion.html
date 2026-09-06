@@ -176,7 +176,7 @@
   <!-- Day Selector -->
   <nav class="journey-nav" aria-label="行程日別導覽">
       <button onclick="switchDay(1)" id="tab-1" data-day="1" class="day-nav-item tab-active py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent text-stone-900">
-        Day 1 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/11 (一)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">境港・米子住宿決策</span>
+        Day 1 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/11 (一)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">境港御宿野乃・已訂</span>
       </button>
       <button onclick="switchDay(2)" id="tab-2" data-day="2" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
         Day 2 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/12 (二)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">柯南小鎮・城崎川口屋</span>
@@ -257,10 +257,10 @@
           <div>
             <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 01 DISCUSSION</span>
             <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第一天：山陰初抵達，晚間住宿點與生活節奏拍板
+              第一天：山陰初抵達 ➔ 境港御宿野乃（已訂）➔ 妖怪街夜遊
             </h2>
             <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              航班 12:00 落地後，六人入境加提行李約需 45~60 分鐘；<strong>1/11 是成人之日國定假日</strong>，2027 年航班與假日班表尚未公告。今天不把三地串成一線，而是選一個落腳方式：<strong>境港的初日體驗、皆生的溫泉晚餐，或米子站的全程穩定度。</strong>
+              航班 12:00 落地後，六人入境加提行李約需 45~60 分鐘；<strong>1/11 是成人之日國定假日</strong>，2027 年航班與假日班表尚未公告。第一晚已訂<strong>境港「御宿野乃」</strong>；當日只需確認 JR 境線銜接，並以妖怪街與夜間散步為主。
             </p>
           </div>
           <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
@@ -274,12 +274,10 @@
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 1 點位概覽：一個起點、三個互斥方案</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 1 已確認路線：米子鬼太郎空港 ➔ 境港 ➔ 御宿野乃</h4>
           </div>
           <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs font-medium">
             <a href="https://www.google.com/maps/dir/米子鬼太郎空港/水木しげる記念館/天然温泉+境港+夕凪の湯+御宿+野乃" target="_blank" class="text-blue-700 hover:text-blue-900 underline">Plan A 導航</a>
-            <a href="https://www.google.com/maps/dir/米子鬼太郎空港/皆生松月" target="_blank" class="text-blue-700 hover:text-blue-900 underline">Plan B 導航</a>
-            <a href="https://www.google.com/maps/dir/米子鬼太郎空港/米子駅" target="_blank" class="text-blue-700 hover:text-blue-900 underline">Plan C 導航</a>
           </div>
         </div>
         <div id="map-d1" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
@@ -291,8 +289,8 @@
         <article id="card-d1-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
-              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A ・ 初日體驗</span>
-              <span class="text-xs text-stone-400 font-light">境港站前</span>
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">已確認・已訂</span>
+              <span class="text-xs text-emerald-700 font-medium">境港站前</span>
             </div>
             <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
               天然溫泉 夕凪之湯<br>御宿野乃 境港
@@ -325,10 +323,10 @@
           </div>
           <div class="mt-6 pt-4 border-t border-stone-100">
             <p class="text-[11px] text-stone-700 bg-amber-50 border border-amber-200 rounded px-3 py-2 mb-3 leading-relaxed">
-              <strong class="text-amber-800">硬條件</strong>　現行參考班次約 13:09、14:11；出關晚或錯過一班，紀念館可用時間會大幅縮短。<strong>每人現行參考 ¥190</strong>；不要把水產市場當作保證行程。
+              <strong class="text-amber-800">已訂住宿・待確認交通</strong>　現行參考班次約 13:09、14:11；出關晚或錯過一班，紀念館可用時間會大幅縮短。<strong>每人現行參考 ¥190</strong>；2027 成人之日班次公布後確認，且不要把水產市場當作保證行程。
             </p>
             <button onclick="highlightD1(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
-              標記選取此方案 (Plan A)
+              Day 1 已確認入住
             </button>
           </div>
         </article>
@@ -337,7 +335,7 @@
         <article id="card-d1-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
-              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B ・ 海邊溫泉</span>
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-500 rounded font-semibold">未採用・舊案保留</span>
               <span class="text-xs text-stone-400 font-light">皆生溫泉海濱</span>
             </div>
             <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
@@ -374,7 +372,7 @@
               <strong class="text-amber-800">硬條件</strong>　直達接駁若續行，反而是最快抵達的一案；但 13:00 開車與六人出關時間重疊。<strong>未搭上就立即切換計程車備援</strong>，且 2027 假日班次仍待查。
             </p>
             <button onclick="highlightD1(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
-              標記選取此方案 (Plan B)
+              Day 1 未採用
             </button>
           </div>
         </article>
@@ -383,7 +381,7 @@
         <article id="card-d1-3" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
-              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan C ・ 機能效率</span>
+              <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-500 rounded font-semibold">未採用・舊案保留</span>
               <span class="text-xs text-stone-400 font-light">米子車站前</span>
             </div>
             <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">
@@ -420,7 +418,7 @@
               <strong class="text-amber-800">硬條件</strong>　2027 年接駁與假日班次待查；若照現行模式抵達，Plan C 是隔日 JR 東行最穩、行李與天候風險最低的一案。
             </p>
             <button onclick="highlightD1(3)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">
-              標記選取此方案 (Plan C)
+              Day 1 未採用
             </button>
           </div>
         </article>
@@ -2457,6 +2455,7 @@
       applyingRemote = true;
       try {
         STATE_FIELDS.forEach(k => { if (data[k] && typeof data[k] === 'object') decisionState[k] = data[k]; });
+        enforceConfirmedDayOne();
         renderAllFromState();
         try { localStorage.setItem(decisionKey, JSON.stringify(decisionState)); } catch (_) {}
       } finally {
@@ -2510,7 +2509,7 @@
     }
 
     const dayMeta = {
-      1: ['由當日方案決定（皆為大眾運輸）', '第一晚住宿', '🔴 1/11 成人之日假日班表、台灣便 13:00 直達接駁是否續行、六人入境時間；Plan A 的紀念館最終入館 16:30'],
+      1: ['已確認：JR 境線至境港', '御宿野乃 境港（已訂）', '🔴 1/11 成人之日 JR 境線班次、六人入境時間；水木茂紀念館最終入館 16:30'],
       2: ['由當日方案決定（兩案皆為 JR）', '川口屋（連住第 1 晚）', '🔴 Day 1 住宿地回米子站、鳥取–濱坂–城崎的稀疏班次與兩次轉乘、週二鴻之湯固定休湯及 2027 臨時休館'],
       3: ['玄武洞或出石二擇一／留城崎', '川口屋（連住第 2 晚）', '🔴 玄武洞公園一月開園日、博物館年曆、全但巴士去回與末班；外湯固定休湯日與鴻之湯長期休館狀態'],
       4: ['Plan B 推薦／Plan A 僅早抵採用', '文珠荘候選／待訂（6 人 2 間房）', '🔴 伊根遊覽船末班 16:00；13:58 巴士為建議目標、14:37 僅最後備援；2027 鐵道接續與文珠荘訂房'],
@@ -2539,7 +2538,7 @@
       '8-2': 'JR 吉備線＋利木津巴士'
     };
     const planRationales = {
-      '1-1': '以妖怪街與夜間散步為主角；必須接受 JR 假日班距與紀念館最終入館時間的壓力。',
+      '1-1': '御宿野乃境港已訂；以妖怪街與夜間散步為主角，2027 成人之日 JR 班距與紀念館最終入館時間仍須確認。',
       '1-2': '以海景溫泉與一泊二食為主角；現行直達接駁很快，但 13:00 發車與入境時間重疊，必須備妥計程車方案。',
       '1-3': '以生活機能與隔日 JR 東行為優先；景點較少，但六人行李、冬季天候與 Day 2 銜接最穩。',
       '2-1': '保留柯南小鎮，但必須先核對由良站寄物、轉乘與城崎接駁時間。',
@@ -2559,11 +2558,19 @@
     };
     let decisionState = { decisions: {}, statuses: {}, notes: {}, collapsed: {} };
 
+    // Day 1 的旅宿已訂，避免舊的本機／共享討論狀態把它還原為候選方案。
+    function enforceConfirmedDayOne() {
+      decisionState.decisions[1] = 1;
+      decisionState.statuses[1] = '已訂';
+      decisionState.collapsed[1] = true;
+    }
+
     function readDecisionState() {
       try {
         const saved = JSON.parse(localStorage.getItem(decisionKey));
         if (saved && typeof saved === 'object') decisionState = { ...decisionState, ...saved };
       } catch (_) { /* Private browsing or a blocked local file still remains usable for this view. */ }
+      enforceConfirmedDayOne();
     }
 
     function persistDecisionState() {
@@ -2843,7 +2850,7 @@
       else setDecision(day, index);
     }
 
-    function highlightD1(index) { toggleDecision(1, index); }
+    function highlightD1(index) { enforceConfirmedDayOne(); setDecision(1, 1); }
     function highlightD2(index) { toggleDecision(2, index); }
     function highlightD3(index) { toggleDecision(3, index); }
     function highlightD4(index) { toggleDecision(4, index); }
