@@ -115,6 +115,9 @@
     .day-panel > section:first-child { margin-bottom: 2.5rem; padding: 0 0 1.5rem; border-color: var(--line); }
     .day-panel > section:first-child h2 { font-size: clamp(1.8rem, 3vw, 2.75rem); line-height: 1.25; color: var(--ink); }
     .day-panel > section:first-child > div > div:last-child { border-color: rgba(18,38,58,.12); background: #E9F0EE; color: var(--pine); border-radius: 999px; }
+    .day-illustration { position: relative; aspect-ratio: 16 / 6; margin: 0 0 2.5rem; overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: var(--ink); box-shadow: 0 12px 28px rgba(18,38,58,.08); }
+    .day-illustration::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,.16), inset 0 -32px 54px rgba(18,38,58,.10); }
+    .day-illustration img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
     .day-panel article[id^="card-"] { position: relative; border-color: var(--line); border-radius: 1rem; box-shadow: 0 8px 24px rgba(18,38,58,.045); overflow: hidden; }
     .day-panel article[id^="card-"]::before { content: ''; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--sea), var(--gold)); opacity: .6; }
     .day-panel article[id^="card-"].card-active { border-color: var(--persimmon) !important; box-shadow: 0 16px 38px rgba(104,56,35,.14); }
@@ -268,6 +271,11 @@
           </div>
         </div>
       </section>
+
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-01-sakaiminato-yokai-street.png" width="1794" height="877" loading="eager" decoding="async" alt="冬夜積雪的境港妖怪街，暖色街燈、地方列車與妖怪雕像剪影交織在濕亮的石板路上">
+        <figcaption class="sr-only">Day 1：境港妖怪街的冬夜抵達</figcaption>
+      </figure>
 
       <!-- Day 1 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -498,6 +506,11 @@
           </div>
         </div>
       </section>
+
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-02-sanin-rail-journey.png" width="1693" height="929" loading="lazy" decoding="async" alt="冬季的山陰海岸旁，一列地方列車駛過雪景車站，旅人提著行李走向月台">
+        <figcaption class="sr-only">Day 2：沿山陰海岸前往城崎的鐵道旅程</figcaption>
+      </figure>
 
       <!-- Day 2 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -731,6 +744,11 @@
         </div>
       </section>
 
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-03-kinosaki-onsen.png" width="1823" height="863" loading="lazy" decoding="async" alt="雪夜的城崎溫泉，兩名穿浴衣的旅人在石橋上散步，溫泉蒸氣與旅館燈火映在運河上">
+        <figcaption class="sr-only">Day 3：城崎溫泉的雪夜外湯</figcaption>
+      </figure>
+
       <!-- Day 3 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
@@ -952,6 +970,11 @@
         </div>
       </section>
 
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-04-amanohashidate-ine.png" width="1774" height="887" loading="lazy" decoding="async" alt="從高處眺望雪覆松林的天橋立與靛藍海灣，遠方有伊根舟屋與航行中的小船">
+        <figcaption class="sr-only">Day 4：天橋立與伊根舟屋的冬季海景</figcaption>
+      </figure>
+
       <!-- Day 4 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
@@ -1170,6 +1193,11 @@
           </div>
         </div>
       </section>
+
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-05-tottori-sand-dunes.png" width="1693" height="929" loading="lazy" decoding="async" alt="冬雲下的鳥取砂丘，兩名旅人沿著風紋沙脊前行，雪覆的沙丘延伸到海邊">
+        <figcaption class="sr-only">Day 5：鳥取砂丘的冬日風紋</figcaption>
+      </figure>
 
       <!-- Day 5 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -1430,6 +1458,11 @@
         </div>
       </section>
 
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-06-okayama-garden-castle.png" width="1774" height="887" loading="lazy" decoding="async" alt="雪覆庭園中的岡山城與長廊，旅人沿著石徑朝冬日庭園前行">
+        <figcaption class="sr-only">Day 6：岡山城、庭園與吉備津長廊</figcaption>
+      </figure>
+
       <!-- Day 6 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
@@ -1689,6 +1722,11 @@
         </div>
       </section>
 
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-07-kurashiki-canal.png" width="1536" height="1024" loading="lazy" decoding="async" alt="黃昏的倉敷美觀地區運河，白壁倉庫、垂柳與一艘點著燈的小舟倒映在水面">
+        <figcaption class="sr-only">Day 7：倉敷運河的黃昏</figcaption>
+      </figure>
+
       <!-- Day 7 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
@@ -1911,6 +1949,11 @@
           </div>
         </div>
       </section>
+
+      <figure class="day-illustration">
+        <img src="assets/day-illustrations/day-08-okayama-departure.png" width="1774" height="887" loading="lazy" decoding="async" alt="冬日清晨的岡山機場窗前，一只行李箱與風呂敷包裹面向跑道上的飛機">
+        <figcaption class="sr-only">Day 8：岡山機場的返程收束</figcaption>
+      </figure>
 
       <!-- Day 8 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
