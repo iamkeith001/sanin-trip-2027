@@ -122,6 +122,142 @@
     .day-panel article[id^="card-"]::before { content: ''; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--sea), var(--gold)); opacity: .6; }
     .day-panel article[id^="card-"].card-active { border-color: var(--persimmon) !important; box-shadow: 0 16px 38px rgba(104,56,35,.14); }
     .day-panel article[id^="card-"] button { min-height: 44px; cursor: pointer; }
+
+    /* Day 4 — Sea of Kyoto editorial chapter */
+    #day-panel-4 { --d4-ink: #102e3d; --d4-sea: #6f9caf; --d4-foam: #eff4f2; --d4-rust: #aa5d3e; }
+    #day-panel-4 .day4-chapter { margin-bottom: 1.35rem; padding: .4rem 0 1.6rem; border-bottom: 1px solid rgba(16,46,61,.18); }
+    #day-panel-4 .day4-eyebrow, #day-panel-4 .day4-hero-caption p { color: var(--d4-rust); font: 700 .69rem/1.1 'Cinzel', serif; letter-spacing: .18em; text-transform: uppercase; }
+    #day-panel-4 .day4-kicker { margin: .55rem 0 .2rem; color: var(--d4-sea); font: 600 .85rem/1.3 'Noto Serif TC', serif; letter-spacing: .14em; }
+    #day-panel-4 .day4-title { margin: 0; color: var(--d4-ink); font: 700 clamp(2.65rem, 5.7vw, 5rem)/.98 'Noto Serif TC', serif; letter-spacing: -.06em; }
+    #day-panel-4 .day4-deck { max-width: 48rem; margin-top: 1rem; color: #365367; font-size: .92rem; line-height: 1.85; }
+    #day-panel-4 .day4-stay { max-width: 22rem; padding: .7rem .85rem; border: 1px solid rgba(16,46,61,.16); border-radius: .2rem; background: var(--d4-foam); color: var(--d4-ink); font-size: .73rem; line-height: 1.6; }
+    #day-panel-4 .day4-hero { position: relative; aspect-ratio: 16 / 7; margin: 0 0 1.35rem; overflow: hidden; border: 1px solid rgba(16,46,61,.18); border-radius: 1rem; background: var(--d4-ink); box-shadow: 0 16px 34px rgba(16,46,61,.13); }
+    #day-panel-4 .day4-hero img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+    #day-panel-4 .day4-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,32,44,.62), rgba(8,32,44,.04) 64%); pointer-events: none; }
+    #day-panel-4 .day4-hero-caption { position: absolute; z-index: 1; left: clamp(1.2rem, 4vw, 3rem); bottom: clamp(1.2rem, 4vw, 2.5rem); color: white; }
+    #day-panel-4 .day4-hero-caption p { margin: 0 0 .45rem; color: #dce9e9; }
+    #day-panel-4 .day4-hero-caption h3 { margin: 0; font: 700 clamp(1.75rem, 3.5vw, 3rem)/1.1 'Noto Serif TC', serif; letter-spacing: -.04em; }
+    #day-panel-4 .day4-at-a-glance { display: grid; grid-template-columns: minmax(14rem, .8fr) minmax(0, 2fr); gap: 1.2rem 1.75rem; margin-bottom: 3rem; padding: 1.3rem; border-top: 3px solid var(--d4-ink); background: var(--d4-foam); }
+    #day-panel-4 .day4-section-label { margin: 0 0 .45rem; color: var(--d4-rust); font: 700 .66rem/1.2 'Cinzel', serif; letter-spacing: .16em; }
+    #day-panel-4 .day4-at-a-glance h3, #day-panel-4 .day4-plan-heading h3 { margin: 0; color: var(--d4-ink); font: 700 clamp(1.35rem, 2.4vw, 2rem)/1.3 'Noto Serif TC', serif; }
+    #day-panel-4 .day4-at-a-glance header > p:last-child, #day-panel-4 .day4-plan-heading > p:last-child { margin: .6rem 0 0; color: #486272; font-size: .78rem; line-height: 1.65; }
+    #day-panel-4 .day4-timeline { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); align-self: end; border-left: 1px solid rgba(16,46,61,.18); }
+    #day-panel-4 .day4-moment { min-height: 5.1rem; padding: .2rem .6rem .1rem; border-right: 1px solid rgba(16,46,61,.18); }
+    #day-panel-4 .day4-moment time { display: block; color: var(--d4-ink); font: 700 1.06rem/1 'Cinzel', serif; }
+    #day-panel-4 .day4-moment span { display: block; margin-top: .46rem; color: var(--d4-ink); font-size: .7rem; font-weight: 700; line-height: 1.35; }
+    #day-panel-4 .day4-moment small { display: block; margin-top: .2rem; color: #587180; font-size: .62rem; line-height: 1.35; }
+    #day-panel-4 .day4-guardrail { grid-column: 1 / -1; display: flex; gap: .8rem; align-items: baseline; padding-top: .9rem; border-top: 1px solid rgba(16,46,61,.18); color: var(--d4-ink); }
+    #day-panel-4 .day4-guardrail strong { flex: none; color: var(--d4-rust); font: 700 .72rem/1 'Cinzel', serif; letter-spacing: .12em; }
+    #day-panel-4 .day4-guardrail p { margin: 0; font-size: .78rem; line-height: 1.55; }
+    #day-panel-4 .day4-plan-heading { margin: 0 0 1rem; max-width: 43rem; }
+    #day-panel-4 .day4-plan-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+    #day-panel-4 .day4-plan { padding: 1.45rem; }
+    #day-panel-4 #card-d4-2 { order: 1; border-color: rgba(16,46,61,.42); box-shadow: 0 16px 34px rgba(16,46,61,.11); }
+    #day-panel-4 #card-d4-2::before { height: 6px; background: var(--d4-ink); opacity: 1; }
+    #day-panel-4 #card-d4-1 { order: 2; background: #fbfaf6; }
+    #day-panel-4 .day4-route-signal { margin: 1rem 0; padding: .7rem .8rem; border-left: 2px solid var(--d4-sea); background: rgba(111,156,175,.10); color: #29495a; font-size: .75rem; font-weight: 600; line-height: 1.6; }
+    #day-panel-4 .day4-detail { margin: 1rem 0; border-top: 1px solid rgba(16,46,61,.14); border-bottom: 1px solid rgba(16,46,61,.14); }
+    #day-panel-4 .day4-detail summary { padding: .82rem 0; color: var(--d4-ink); cursor: pointer; font-size: .73rem; font-weight: 700; letter-spacing: .05em; list-style: none; }
+    #day-panel-4 .day4-detail summary::-webkit-details-marker { display: none; }
+    #day-panel-4 .day4-detail summary::after { content: '+'; float: right; color: var(--d4-rust); font: 400 1.1rem/1 'Cinzel', serif; }
+    #day-panel-4 .day4-detail[open] summary::after { content: '–'; }
+    #day-panel-4 .day4-detail > div { margin-top: 0 !important; border-top: 1px solid rgba(16,46,61,.08); border-bottom: 0 !important; }
+    #day-panel-4 .day4-map-box { margin: 1.5rem 0 0; border-color: rgba(16,46,61,.18); border-radius: .75rem; }
+    #day-panel-4 .day4-reveal { animation: day4-rise .52s both cubic-bezier(.2,.7,.2,1); }
+    #day-panel-4 .day4-delay-1 { animation-delay: .1s; }
+    #day-panel-4 .day4-delay-2 { animation-delay: .2s; }
+    @keyframes day4-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Day 3 — Kinosaki's unhurried winter rhythm */
+    #day-panel-3 { --d3-ink: #3c302d; --d3-plum: #6e4540; --d3-steam: #f2e9de; --d3-glow: #b86b43; }
+    #day-panel-3 .day3-chapter { margin-bottom: 1.35rem; padding: .4rem 0 1.6rem; border-bottom: 1px solid rgba(60,48,45,.18); }
+    #day-panel-3 .day3-eyebrow, #day-panel-3 .day3-hero-caption p { color: var(--d3-glow); font: 700 .69rem/1.1 'Cinzel', serif; letter-spacing: .18em; text-transform: uppercase; }
+    #day-panel-3 .day3-kicker { margin: .55rem 0 .2rem; color: var(--d3-plum); font: 600 .85rem/1.3 'Noto Serif TC', serif; letter-spacing: .14em; }
+    #day-panel-3 .day3-title { margin: 0; color: var(--d3-ink); font: 700 clamp(2.65rem, 5.7vw, 5rem)/.98 'Noto Serif TC', serif; letter-spacing: -.06em; }
+    #day-panel-3 .day3-deck { max-width: 48rem; margin-top: 1rem; color: #66504a; font-size: .92rem; line-height: 1.85; }
+    #day-panel-3 .day3-stay { max-width: 22rem; padding: .7rem .85rem; border: 1px solid rgba(60,48,45,.16); border-radius: .2rem; background: var(--d3-steam); color: var(--d3-ink); font-size: .73rem; line-height: 1.6; }
+    #day-panel-3 .day3-hero { position: relative; aspect-ratio: 16 / 7; margin: 0 0 1.35rem; overflow: hidden; border: 1px solid rgba(60,48,45,.18); border-radius: 1rem; background: var(--d3-ink); box-shadow: 0 16px 34px rgba(60,48,45,.13); }
+    #day-panel-3 .day3-hero img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+    #day-panel-3 .day3-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(42,26,25,.66), rgba(42,26,25,.04) 64%); pointer-events: none; }
+    #day-panel-3 .day3-hero-caption { position: absolute; z-index: 1; left: clamp(1.2rem, 4vw, 3rem); bottom: clamp(1.2rem, 4vw, 2.5rem); color: white; }
+    #day-panel-3 .day3-hero-caption p { margin: 0 0 .45rem; color: #f1d5bc; }
+    #day-panel-3 .day3-hero-caption h3 { margin: 0; font: 700 clamp(1.75rem, 3.5vw, 3rem)/1.1 'Noto Serif TC', serif; letter-spacing: -.04em; }
+    #day-panel-3 .day3-rhythm { display: grid; grid-template-columns: minmax(14rem, .8fr) minmax(0, 2fr); gap: 1.2rem 1.75rem; margin-bottom: 3rem; padding: 1.3rem; border-top: 3px solid var(--d3-plum); background: var(--d3-steam); }
+    #day-panel-3 .day3-section-label { margin: 0 0 .45rem; color: var(--d3-glow); font: 700 .66rem/1.2 'Cinzel', serif; letter-spacing: .16em; }
+    #day-panel-3 .day3-rhythm h3, #day-panel-3 .day3-plan-heading h3 { margin: 0; color: var(--d3-ink); font: 700 clamp(1.35rem, 2.4vw, 2rem)/1.3 'Noto Serif TC', serif; }
+    #day-panel-3 .day3-rhythm header > p:last-child, #day-panel-3 .day3-plan-heading > p:last-child { margin: .6rem 0 0; color: #725c54; font-size: .78rem; line-height: 1.65; }
+    #day-panel-3 .day3-beats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-self: end; border-left: 1px solid rgba(60,48,45,.18); }
+    #day-panel-3 .day3-beat { min-height: 5.1rem; padding: .2rem .65rem .1rem; border-right: 1px solid rgba(60,48,45,.18); }
+    #day-panel-3 .day3-beat time { display: block; color: var(--d3-plum); font: 700 1.06rem/1 'Cinzel', serif; }
+    #day-panel-3 .day3-beat span { display: block; margin-top: .46rem; color: var(--d3-ink); font-size: .7rem; font-weight: 700; line-height: 1.35; }
+    #day-panel-3 .day3-beat small { display: block; margin-top: .2rem; color: #806960; font-size: .62rem; line-height: 1.35; }
+    #day-panel-3 .day3-checkin { grid-column: 1 / -1; display: flex; gap: .8rem; align-items: baseline; padding-top: .9rem; border-top: 1px solid rgba(60,48,45,.18); color: var(--d3-ink); }
+    #day-panel-3 .day3-checkin strong { flex: none; color: var(--d3-glow); font: 700 .72rem/1 'Cinzel', serif; letter-spacing: .12em; }
+    #day-panel-3 .day3-checkin p { margin: 0; font-size: .78rem; line-height: 1.55; }
+    #day-panel-3 .day3-plan-heading { margin: 0 0 1rem; max-width: 43rem; }
+    #day-panel-3 .day3-plan-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+    #day-panel-3 .day3-plan { padding: 1.45rem; }
+    #day-panel-3 #card-d3-2 { order: 1; border-color: rgba(110,69,64,.42); box-shadow: 0 16px 34px rgba(60,48,45,.11); }
+    #day-panel-3 #card-d3-2::before { height: 6px; background: var(--d3-plum); opacity: 1; }
+    #day-panel-3 #card-d3-1 { order: 2; background: #fcf9f5; }
+    #day-panel-3 .day3-route-signal { margin: 1rem 0; padding: .7rem .8rem; border-left: 2px solid var(--d3-glow); background: rgba(184,107,67,.10); color: #60463f; font-size: .75rem; font-weight: 600; line-height: 1.6; }
+    #day-panel-3 .day3-detail { margin: 1rem 0; border-top: 1px solid rgba(60,48,45,.14); border-bottom: 1px solid rgba(60,48,45,.14); }
+    #day-panel-3 .day3-detail summary { padding: .82rem 0; color: var(--d3-ink); cursor: pointer; font-size: .73rem; font-weight: 700; letter-spacing: .05em; list-style: none; }
+    #day-panel-3 .day3-detail summary::-webkit-details-marker { display: none; }
+    #day-panel-3 .day3-detail summary::after { content: '+'; float: right; color: var(--d3-glow); font: 400 1.1rem/1 'Cinzel', serif; }
+    #day-panel-3 .day3-detail[open] summary::after { content: '–'; }
+    #day-panel-3 .day3-detail > div { margin-top: 0 !important; border-top: 1px solid rgba(60,48,45,.08); border-bottom: 0 !important; }
+    #day-panel-3 .day3-map-box { margin: 1.5rem 0 0; border-color: rgba(60,48,45,.18); border-radius: .75rem; }
+    #day-panel-3 .day3-reveal { animation: day3-rise .52s both cubic-bezier(.2,.7,.2,1); }
+    #day-panel-3 .day3-delay-1 { animation-delay: .1s; }
+    #day-panel-3 .day3-delay-2 { animation-delay: .2s; }
+    @keyframes day3-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Remaining chapters share a reading rhythm, while each keeps its own landscape colour. */
+    .editorial-day { --ed-ink: #17313e; --ed-muted: #55717e; --ed-paper: #edf2ef; --ed-accent: #b35e3d; }
+    #day-panel-1 { --ed-ink: #293044; --ed-muted: #596071; --ed-paper: #f0edf1; --ed-accent: #af6043; }
+    #day-panel-2 { --ed-ink: #244655; --ed-muted: #51747e; --ed-paper: #edf4f1; --ed-accent: #a8643e; }
+    #day-panel-5 { --ed-ink: #4d3d2b; --ed-muted: #7d694f; --ed-paper: #f4efe2; --ed-accent: #b45f35; }
+    #day-panel-6 { --ed-ink: #263a32; --ed-muted: #5d7568; --ed-paper: #edf1e9; --ed-accent: #a54b38; }
+    #day-panel-7 { --ed-ink: #3e3830; --ed-muted: #70665a; --ed-paper: #f3efe6; --ed-accent: #9c543d; }
+    #day-panel-8 { --ed-ink: #294052; --ed-muted: #587184; --ed-paper: #edf3f6; --ed-accent: #a65b3c; }
+    .editorial-day .editorial-chapter { margin-bottom: 1.35rem; padding: .4rem 0 1.6rem; border-bottom: 1px solid color-mix(in srgb, var(--ed-ink) 18%, transparent); }
+    .editorial-day .editorial-eyebrow, .editorial-day .editorial-hero-caption p { color: var(--ed-accent); font: 700 .69rem/1.1 'Cinzel', serif; letter-spacing: .18em; text-transform: uppercase; }
+    .editorial-day .editorial-kicker { margin: .55rem 0 .2rem; color: var(--ed-muted); font: 600 .85rem/1.3 'Noto Serif TC', serif; letter-spacing: .14em; }
+    .editorial-day .editorial-title { margin: 0; color: var(--ed-ink); font: 700 clamp(2.55rem, 5.5vw, 4.7rem)/.98 'Noto Serif TC', serif; letter-spacing: -.06em; }
+    .editorial-day .editorial-deck { max-width: 48rem; margin-top: 1rem; color: var(--ed-muted); font-size: .92rem; line-height: 1.85; }
+    .editorial-day .editorial-stay { max-width: 22rem; padding: .7rem .85rem; border: 1px solid color-mix(in srgb, var(--ed-ink) 16%, transparent); border-radius: .2rem; background: var(--ed-paper); color: var(--ed-ink); font-size: .73rem; line-height: 1.6; }
+    .editorial-day .editorial-hero { position: relative; aspect-ratio: 16 / 7; margin: 0 0 1.25rem; overflow: hidden; border: 1px solid color-mix(in srgb, var(--ed-ink) 18%, transparent); border-radius: 1rem; background: var(--ed-ink); box-shadow: 0 16px 34px color-mix(in srgb, var(--ed-ink) 15%, transparent); }
+    .editorial-day .editorial-hero img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+    .editorial-day .editorial-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--ed-ink) 74%, transparent), transparent 66%); pointer-events: none; }
+    .editorial-day .editorial-hero-caption { position: absolute; z-index: 1; left: clamp(1.2rem, 4vw, 3rem); bottom: clamp(1.2rem, 4vw, 2.5rem); color: white; }
+    .editorial-day .editorial-hero-caption p { margin: 0 0 .45rem; color: color-mix(in srgb, white 84%, var(--ed-accent)); }
+    .editorial-day .editorial-hero-caption h3 { margin: 0; font: 700 clamp(1.65rem, 3.2vw, 2.8rem)/1.1 'Noto Serif TC', serif; letter-spacing: -.04em; }
+    .editorial-day .editorial-pulse { display: grid; grid-template-columns: minmax(12rem, .7fr) minmax(0, 2fr); gap: 1rem 1.75rem; margin-bottom: 2.6rem; padding: 1.15rem 1.3rem; border-top: 3px solid var(--ed-ink); background: var(--ed-paper); }
+    .editorial-day .editorial-pulse-label { margin: 0 0 .45rem; color: var(--ed-accent); font: 700 .66rem/1.2 'Cinzel', serif; letter-spacing: .16em; }
+    .editorial-day .editorial-pulse h3 { margin: 0; color: var(--ed-ink); font: 700 clamp(1.2rem, 2.2vw, 1.75rem)/1.35 'Noto Serif TC', serif; }
+    .editorial-day .editorial-pulse p { margin: .55rem 0 0; color: var(--ed-muted); font-size: .78rem; line-height: 1.65; }
+    .editorial-day .editorial-beats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-self: end; border-left: 1px solid color-mix(in srgb, var(--ed-ink) 18%, transparent); }
+    .editorial-day .editorial-beat { min-height: 4.8rem; padding: .25rem .75rem; border-right: 1px solid color-mix(in srgb, var(--ed-ink) 18%, transparent); }
+    .editorial-day .editorial-beat strong { display: block; color: var(--ed-ink); font: 700 .84rem/1.25 'Noto Serif TC', serif; }
+    .editorial-day .editorial-beat span { display: block; margin-top: .35rem; color: var(--ed-muted); font-size: .66rem; line-height: 1.45; }
+    .editorial-day .editorial-plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+    .editorial-day .editorial-plan { padding: 1.45rem; }
+    .editorial-day .editorial-detail { margin: 1rem 0; border-top: 1px solid color-mix(in srgb, var(--ed-ink) 14%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--ed-ink) 14%, transparent); }
+    .editorial-day .editorial-detail summary { padding: .82rem 0; color: var(--ed-ink); cursor: pointer; font-size: .73rem; font-weight: 700; letter-spacing: .05em; list-style: none; }
+    .editorial-day .editorial-detail summary::-webkit-details-marker { display: none; }
+    .editorial-day .editorial-detail summary::after { content: '+'; float: right; color: var(--ed-accent); font: 400 1.1rem/1 'Cinzel', serif; }
+    .editorial-day .editorial-detail[open] summary::after { content: '–'; }
+    .editorial-day .editorial-detail > div { margin-top: 0 !important; border-top: 1px solid color-mix(in srgb, var(--ed-ink) 8%, transparent); border-bottom: 0 !important; }
+    .editorial-day .editorial-map-box { border-color: color-mix(in srgb, var(--ed-ink) 18%, transparent); border-radius: .75rem; }
+    .editorial-day [id^="map-d"] { height: 15rem !important; }
+    .editorial-day .editorial-reveal { animation: editorial-rise .52s both cubic-bezier(.2,.7,.2,1); }
+    .editorial-day .editorial-delay-1 { animation-delay: .1s; }
+    .editorial-day .editorial-delay-2 { animation-delay: .2s; }
+    #day-panel-1 #card-d1-1, #day-panel-2 #card-d2-2, #day-panel-5 #card-d5-1, #day-panel-6 #card-d6-1, #day-panel-7 #card-d7-1, #day-panel-8 #card-d8-1 { order: 1; border-color: color-mix(in srgb, var(--ed-ink) 40%, transparent); box-shadow: 0 16px 34px color-mix(in srgb, var(--ed-ink) 11%, transparent); }
+    #day-panel-1 #card-d1-2, #day-panel-2 #card-d2-1, #day-panel-5 #card-d5-2, #day-panel-6 #card-d6-2, #day-panel-7 #card-d7-2, #day-panel-8 #card-d8-2 { order: 2; background: color-mix(in srgb, var(--ed-paper) 35%, white); }
+    #day-panel-1 #card-d1-1::before, #day-panel-2 #card-d2-2::before, #day-panel-5 #card-d5-1::before, #day-panel-6 #card-d6-1::before, #day-panel-7 #card-d7-1::before, #day-panel-8 #card-d8-1::before { height: 6px; background: var(--ed-ink); opacity: 1; }
+    @keyframes editorial-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .day-panel [id^="map-d"] { border-color: var(--line); border-radius: 1rem; box-shadow: 0 10px 28px rgba(18,38,58,.05); }
     .decision-ledger { border-radius: 1rem; box-shadow: 0 20px 40px rgba(18,38,58,.14); }
     .ledger-row { transition: background-color 180ms ease; }
@@ -134,10 +270,52 @@
       .hero-title { max-width: 7em; }
       .day-panel > section:first-child h2 { font-size: 1.75rem; }
       .day-panel article[id^="card-"] { border-radius: .8rem; }
+      .journey-nav { scroll-snap-type: x proximity; }
+      .journey-nav .day-nav-item { flex: 0 0 auto; scroll-snap-align: center; }
+      #day-panel-4 .day4-chapter { margin-bottom: 1rem; padding-bottom: 1.25rem; }
+      #day-panel-4 .day4-title { font-size: 2.55rem; }
+      #day-panel-4 .day4-stay { max-width: none; }
+      #day-panel-4 .day4-hero { aspect-ratio: 4 / 3; margin-bottom: 1rem; }
+      #day-panel-4 .day4-hero img { object-position: 58% center; }
+      #day-panel-4 .day4-at-a-glance { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2.1rem; padding: 1rem; }
+      #day-panel-4 .day4-timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      #day-panel-4 .day4-moment { min-height: 4.65rem; padding: .45rem .45rem .2rem; border-bottom: 1px solid rgba(16,46,61,.18); }
+      #day-panel-4 .day4-moment:nth-child(3n) { border-right: 0; }
+      #day-panel-4 .day4-plan-grid { grid-template-columns: 1fr; gap: 1rem; }
+      #day-panel-4 .day4-plan { padding: 1.2rem; }
+      #day-panel-4 .day4-guardrail { display: block; }
+      #day-panel-4 .day4-guardrail p { margin-top: .45rem; }
+      #day-panel-3 .day3-chapter { margin-bottom: 1rem; padding-bottom: 1.25rem; }
+      #day-panel-3 .day3-title { font-size: 2.55rem; }
+      #day-panel-3 .day3-stay { max-width: none; }
+      #day-panel-3 .day3-hero { aspect-ratio: 4 / 3; margin-bottom: 1rem; }
+      #day-panel-3 .day3-hero img { object-position: 54% center; }
+      #day-panel-3 .day3-rhythm { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2.1rem; padding: 1rem; }
+      #day-panel-3 .day3-beats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      #day-panel-3 .day3-beat { min-height: 4.65rem; padding: .45rem .45rem .2rem; border-bottom: 1px solid rgba(60,48,45,.18); }
+      #day-panel-3 .day3-beat:nth-child(3n) { border-right: 0; }
+      #day-panel-3 .day3-plan-grid { grid-template-columns: 1fr; gap: 1rem; }
+      #day-panel-3 .day3-plan { padding: 1.2rem; }
+      #day-panel-3 .day3-checkin { display: block; }
+      #day-panel-3 .day3-checkin p { margin-top: .45rem; }
+      .editorial-day .editorial-chapter { margin-bottom: 1rem; padding-bottom: 1.25rem; }
+      .editorial-day .editorial-title { font-size: 2.45rem; }
+      .editorial-day .editorial-stay { max-width: none; }
+      .editorial-day .editorial-hero { aspect-ratio: 4 / 3; margin-bottom: 1rem; }
+      .editorial-day .editorial-pulse { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem; padding: 1rem; }
+      .editorial-day .editorial-beats { grid-template-columns: 1fr; }
+      .editorial-day .editorial-beat { min-height: auto; padding: .6rem 0; border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--ed-ink) 15%, transparent); }
+      .editorial-day .editorial-beat:last-child { border-bottom: 0; }
+      .editorial-day .editorial-plan-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .editorial-day .editorial-plan { padding: 1.2rem; }
+      .editorial-day [id^="map-d"] { height: 12rem !important; }
     }
     @media (min-width: 1024px) { .journey-nav { justify-content: center; } }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+      #day-panel-4 .day4-reveal { animation: none !important; }
+      #day-panel-3 .day3-reveal { animation: none !important; }
+      .editorial-day .editorial-reveal { animation: none !important; }
     }
   </style>
 </head>
@@ -254,28 +432,30 @@
     </template>
 
     <!-- ================= DAY 1 PANEL ================= -->
-    <div id="day-panel-1" class="day-panel block">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+    <div id="day-panel-1" class="day-panel block editorial-day">
+      <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 01 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第一天：山陰初抵達 ➔ 境港御宿野乃（已訂）➔ 妖怪街夜遊
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              六人機票與第一晚<strong>境港「御宿野乃」均已訂</strong>。以 12:00 落地為基準，入境、提行李與整隊預留約 90 分鐘，再步行至車站搭 JR 境線。<strong>1/11 是成人之日</strong>，實際假日班次待查；下午先寄物、簡餐與紀念館，晚餐後看妖怪街光影。以下時間窗為建議安排，航班依航空公司訂位通知複核。
-            </p>
+            <span class="editorial-eyebrow">Route 01 · Arrival after dark</span>
+            <p class="editorial-kicker">從跑道，走進妖怪的夜</p>
+            <h2 class="editorial-title">第一晚，<br>交給境港的燈</h2>
+            <p class="editorial-deck">把抵達日留給入境、放行李、吃一頓暖晚餐；夜裡才走進妖怪街。第一晚旅宿已訂，今天不需要用景點塞滿。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="editorial-stay self-start">
             1/11 (一・成人之日)<br>夜遊安排在晚餐後
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="editorial-hero editorial-reveal editorial-delay-1">
         <img src="assets/day-illustrations/day-01-sakaiminato-yokai-street.png" width="1794" height="877" loading="eager" decoding="async" alt="冬夜積雪的境港妖怪街，暖色街燈、地方列車與妖怪雕像剪影交織在濕亮的石板路上">
-        <figcaption class="sr-only">Day 1：境港妖怪街的冬夜抵達</figcaption>
+        <figcaption class="editorial-hero-caption"><p>First night in san'in</p><h3>晚餐後，才是妖怪的時間</h3></figcaption>
       </figure>
+
+      <section class="editorial-pulse editorial-reveal editorial-delay-2" aria-label="Day 1 的抵達節奏">
+        <header><p class="editorial-pulse-label">Arrival rhythm</p><h3>第一天只做<br>三件剛剛好的事</h3><p>成人之日班次待複核；把延誤緩衝留在白天，夜遊留給抵達後的身體狀態。</p></header>
+        <div class="editorial-beats"><div class="editorial-beat"><strong>落地後</strong><span>入境、提行李、六人整隊</span></div><div class="editorial-beat"><strong>下午</strong><span>寄物、簡餐與紀念館</span></div><div class="editorial-beat"><strong>晚餐後</strong><span>妖怪街光影與回館泡湯</span></div></div>
+      </section>
 
       <!-- Day 1 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -292,9 +472,9 @@
       </div>
 
       <!-- Three Architectural Style Options -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="editorial-plan-grid">
         <!-- Plan A: 境港 野乃 -->
-        <article id="card-d1-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d1-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">已確認・已訂</span>
@@ -357,7 +537,7 @@
         </article>
 
         <!-- Plan B: 皆生 松月/華水亭 -->
-        <article id="card-d1-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d1-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-500 rounded font-semibold">未採用・舊案保留</span>
@@ -403,7 +583,7 @@
         </article>
 
         <!-- Plan C: 米子站前 -->
-        <article id="card-d1-3" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d1-3" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-500 rounded font-semibold">未採用・舊案保留</span>
@@ -506,28 +686,30 @@
     </div>
 
     <!-- ================= DAY 2 PANEL ================= -->
-    <div id="day-panel-2" class="day-panel hidden">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+    <div id="day-panel-2" class="day-panel hidden editorial-day">
+      <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 02 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第二天：JR 山陰鐵道之旅 ➔ 入住城崎溫泉川口屋（連住第1晚）
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              從已訂的<strong>御宿野乃境港</strong>出發，先搭境線到米子。<strong>推薦 Plan B：鳥取午餐後搭濱風 4 號直達城崎，濱坂不用換車</strong>；柯南小鎮保留為條件候選。以下是 2026 班次組成的規劃示例，2027/1/12 同日接續與六人座位仍須確認，尚未代替旅伴拍板。
-            </p>
+            <span class="editorial-eyebrow">Route 02 · Along the san'in rail</span>
+            <p class="editorial-kicker">把移動，當成看海的方式</p>
+            <h2 class="editorial-title">沿著山陰，<br>抵達城崎</h2>
+            <p class="editorial-deck">推薦在鳥取吃完午餐後直奔城崎；濱坂不搬行李換車，傍晚能把第一夜還給入住與一座外湯。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="editorial-stay self-start">
             宿：川口屋城崎河畔酒店 (連住第1晚)
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="editorial-hero editorial-reveal editorial-delay-1">
         <img src="assets/day-illustrations/day-02-sanin-rail-journey.png" width="1693" height="929" loading="lazy" decoding="async" alt="冬季的山陰海岸旁，一列地方列車駛過雪景車站，旅人提著行李走向月台">
-        <figcaption class="sr-only">Day 2：沿山陰海岸前往城崎的鐵道旅程</figcaption>
+        <figcaption class="editorial-hero-caption"><p>Railway to kinosaki</p><h3>窗外是冬海，終點是溫泉</h3></figcaption>
       </figure>
+
+      <section class="editorial-pulse editorial-reveal editorial-delay-2" aria-label="Day 2 的鐵道節奏">
+        <header><p class="editorial-pulse-label">Railway rhythm</p><h3>少一次轉乘，<br>多一段城崎的晚上</h3><p>2026 班次僅作規劃參考；2027 同日接續與六人座位尚待確認，柯南小鎮只作條件候選。</p></header>
+        <div class="editorial-beats"><div class="editorial-beat"><strong>境港 → 米子</strong><span>從已訂旅宿出發</span></div><div class="editorial-beat"><strong>鳥取午餐</strong><span>把行李與節奏安頓好</span></div><div class="editorial-beat"><strong>濱風直達</strong><span>入住、晚餐與外湯優先</span></div></div>
+      </section>
 
       <!-- Day 2 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -545,9 +727,9 @@
       </div>
 
       <!-- Two Architectural Style Options (Plan A vs Plan B) -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+      <div class="editorial-plan-grid">
         <!-- Plan A: 柯南朝聖 + 城崎溫泉 -->
-        <article id="card-d2-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d2-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
@@ -607,7 +789,7 @@
         </article>
 
         <!-- Plan B: 推薦濱風直達城崎 + 外湯一座 -->
-        <article id="card-d2-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d2-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B・推薦</span>
@@ -764,51 +946,50 @@
 
     <!-- ================= DAY 3 PANEL ================= -->
     <div id="day-panel-3" class="day-panel hidden">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+      <section class="day3-chapter day3-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 03 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第三天：推薦城崎慢遊 ➔ 纜車看天候、外湯一座 ➔ 續住川口屋
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              <strong>推薦 Plan B，尚待旅伴拍板</strong>：前一天移動、隔天又要出發，今天保留連住休息。外出案只在玄武洞與出石中擇一，取代上午纜車，不再疊加；川口屋訂房、同房續住與餐食仍待確認。
-            </p>
+            <span class="day3-eyebrow">Route 03 · Kinosaki onsen</span>
+            <p class="day3-kicker">讓熱氣，把時間放慢</p>
+            <h2 class="day3-title">慢慢泡進<br>城崎的雪夜</h2>
+            <p class="day3-deck">前一天剛移動、隔天又要早出發；今天推薦把連住的空白留回來。看景、午休、泡一座湯、好好吃晚餐，讓城崎不只是行程中的一個站。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="day3-stay self-start">
             指定宿：川口屋（第2晚；訂房待確認）
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="day3-hero day3-reveal day3-delay-1">
         <img src="assets/day-illustrations/day-03-kinosaki-onsen.png" width="1823" height="863" loading="lazy" decoding="async" alt="雪夜的城崎溫泉，兩名穿浴衣的旅人在石橋上散步，溫泉蒸氣與旅館燈火映在運河上">
-        <figcaption class="sr-only">Day 3：城崎溫泉的雪夜外湯</figcaption>
+        <figcaption class="day3-hero-caption"><p>Steam, snow and a slower hour</p><h3>一座湯，就是今天的主角</h3></figcaption>
       </figure>
 
-      <!-- Day 3 Map Box -->
-      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 3 點位概覽：推薦留城崎；玄武洞、出石僅為替代案，不代表串聯路線</h4>
-          </div>
-          <div class="flex flex-wrap gap-x-3 gap-y-1">
-            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/玄武洞公園" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 玄武洞候選導航
-            </a>
-            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/出石辰鼓楼" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 出石候選導航
-            </a>
-          </div>
+      <section class="day3-rhythm day3-reveal day3-delay-2" aria-labelledby="day3-rhythm-title">
+        <header>
+          <p class="day3-section-label">The unhurried day</p>
+          <h3 id="day3-rhythm-title">不蒐集湯屋，<br>留下一段呼吸</h3>
+          <p>纜車可因天候刪除；外湯只先鎖一座。午後不追行程，讓晚餐前仍有餘裕。</p>
+        </header>
+        <div class="day3-beats" aria-label="推薦城崎慢遊的關鍵節奏">
+          <div class="day3-beat"><time>09:30</time><span>纜車或平地散步</span><small>依天候決定</small></div>
+          <div class="day3-beat"><time>11:15</time><span>老街午餐</span><small>不綁定店家</small></div>
+          <div class="day3-beat"><time>13:00</time><span>回館午休</span><small>先查清掃安排</small></div>
+          <div class="day3-beat"><time>14:30</time><span>外湯一座</span><small>御所之湯優先</small></div>
+          <div class="day3-beat"><time>18:00</time><span>晚餐與整理</span><small>為隔日早出發</small></div>
         </div>
-        <div id="map-d3" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
-      </div>
+        <aside class="day3-checkin"><strong>Before soaking</strong><p>先確認外湯營業、外湯券效期、同房續住與清掃；遇雪或纜車停駛，就把上午縮成平地散步與咖啡。</p></aside>
+      </section>
 
       <!-- Two Parallel Plan Cards for Day 3 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+      <section class="day3-plan-heading" aria-labelledby="day3-plan-title">
+        <p class="day3-section-label">Choose the pace</p>
+        <h3 id="day3-plan-title">今天，要留在城崎還是出門？</h3>
+        <p>慢遊是推薦主案；若真的想外出，只選玄武洞或出石其中一個，並以回程能否成立為前提。</p>
+      </section>
+      <div class="day3-plan-grid">
         <!-- Plan A: 冬季外出候選 -->
-        <article id="card-d3-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d3-1" class="day3-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
@@ -821,8 +1002,11 @@
             <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-red-800 leading-relaxed font-light">
               「想外出就只選一個主題，先鎖定回程，再排遊覽。目標 16:00 前回城崎、17:00 前回館；班次、營業或雪況不合，就採城崎慢遊案。」
             </p>
+            <p class="day3-route-signal">只選玄武洞或出石其中一個。回程、營業與雪況有一項不成立，就留在城崎。</p>
 
-            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+            <details class="day3-detail">
+              <summary>查看外出方案的查核條件</summary>
+              <div class="my-4 border-t border-b border-stone-100 py-3.5">
               <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
               </h4>
@@ -844,7 +1028,8 @@
                   <span><strong>回城崎，最多外湯一座</strong>：有餘裕才泡御所之湯、地藏湯或 15:00 後柳湯，約 17:00 回館。延誤則取消外湯並聯絡旅館；這是規劃目標，不是業者截止。晚餐約 18:00～19:30，依實際開席。</span>
                 </li>
               </ol>
-            </div>
+              </div>
+            </details>
 
             <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
               <div class="flex items-baseline gap-2">
@@ -870,7 +1055,7 @@
         </article>
 
         <!-- Plan B: 推薦全日城崎溫泉慢活 -->
-        <article id="card-d3-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d3-2" class="day3-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B・推薦</span>
@@ -883,8 +1068,11 @@
             <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-amber-600 leading-relaxed font-light">
               「吃完旅館早餐再出門，上午看景、中午休息，下午好好泡一座外湯。冬季穿保暖外套與防滑鞋，不用趕著蒐集每一座湯。」
             </p>
+            <p class="day3-route-signal">上午看景可刪；午後只鎖一座外湯。把午休和晚餐前的空白，當成今天真正的行程。</p>
 
-            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+            <details class="day3-detail">
+              <summary>查看慢遊時程與外湯查核</summary>
+              <div class="my-4 border-t border-b border-stone-100 py-3.5">
               <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
               </h4>
@@ -920,7 +1108,8 @@
               </ol>
               <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>2027 一月官方休館表已核對：</strong>1/13 一之湯、曼陀羅湯休湯；鴻之湯、御所之湯、柳湯、地藏湯未列休湯。御所之湯、柳湯 1/14 休湯，故今天優先評估。鴻之湯公告預計 2026 年 11 月重開，不等於已復業，仍查臨時異動；里之湯不納入。</p>
               <p class="text-[11px] text-stone-500 mt-3 leading-relaxed">查核（2026/09/12）：<a href="https://kinosaki-onsen.wixsite.com/kinosaki-onsen" target="_blank" class="underline">官方年度休館表與公告</a>、<a href="https://kinosaki-spa.gr.jp/about/spa/" target="_blank" class="underline">外湯時段</a>、<a href="https://www.kinosaki-ropeway.jp/ropeway/" target="_blank" class="underline">纜車票價／運行</a>、<a href="https://www.kawaguchiya.co.jp/kannai/index.php" target="_blank" class="underline">川口屋餐飲／浴場</a>。出發前仍須複核臨時異動。</p>
-            </div>
+              </div>
+            </details>
 
             <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
               <div class="flex items-baseline gap-2">
@@ -944,6 +1133,25 @@
             </button>
           </div>
         </article>
+      </div>
+
+      <!-- The map is for the optional outing decision, not the default slow day. -->
+      <div class="day3-map-box bg-white border rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">替代案地圖：玄武洞、出石僅為二擇一，不是串聯路線</h4>
+          </div>
+          <div class="flex flex-wrap gap-x-3 gap-y-1">
+            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/玄武洞公園" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 玄武洞候選導航
+            </a>
+            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/出石辰鼓楼" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> 出石候選導航
+            </a>
+          </div>
+        </div>
+        <div id="map-d3" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
       </div>
 
       <!-- 連住提醒 -->
@@ -1008,51 +1216,51 @@
 
     <!-- ================= DAY 4 PANEL ================= -->
     <div id="day-panel-4" class="day-panel hidden">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+      <section class="day4-chapter day4-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 04 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第四天：京都府北部海之京都 ➔ 日本三景天橋立 ➔ 伊根水上舟屋
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              推薦南側 Plan B，<strong>早出發才排 View Land＋伊根船</strong>；旅館正常早餐後出發，就改南側短散步＋伊根，或只遊天橋立。伊根以 <strong>13:03 巴士 → 14:30 遊覽船 → 15:12 回程</strong>為目標，不趕 7 分鐘轉船或 16:00 末船。1/14 為週四：<strong>向井酒造定休、傘松單人吊椅不排</strong>。六人雙景方案仍須確認早餐、2027 鐵道與文珠荘訂房。
-            </p>
+            <span class="day4-eyebrow">Route 04 · Sea of Kyoto</span>
+            <p class="day4-kicker">一座沙洲，一灣舟屋</p>
+            <h2 class="day4-title">天橋立<br>向伊根出航</h2>
+            <p class="day4-deck">早出發才把飛龍觀與伊根船排在同一天；正常早餐後抵達，就減少登高，讓午餐與候車仍有餘裕。今天不是追景點，而是守住兩個會決定全日節奏的班次。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="day4-stay self-start">
             宿候選／待訂：天橋立溫泉 和のリゾート 文珠荘（6 人 2 間房）
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="day4-hero day4-reveal day4-delay-1">
         <img src="assets/day-illustrations/day-04-amanohashidate-ine.png" width="1774" height="887" loading="lazy" decoding="async" alt="從高處眺望雪覆松林的天橋立與靛藍海灣，遠方有伊根舟屋與航行中的小船">
-        <figcaption class="sr-only">Day 4：天橋立與伊根舟屋的冬季海景</figcaption>
+        <figcaption class="day4-hero-caption"><p>The inland sea, in winter</p><h3>一座沙洲，一灣舟屋</h3></figcaption>
       </figure>
 
-      <!-- Day 4 Map Box -->
-      <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
-          <div class="flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">Day 4 點位概覽：天橋立南／北側二擇一 ➔ 伊根 ➔ 文珠荘候選</h4>
-          </div>
-          <div class="flex flex-wrap gap-x-3 gap-y-1">
-            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/天橋立駅/天橋立ケーブル下/傘松公園/伊根湾めぐり遊覧船/和のリゾート文珠荘" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Plan A 點位（非班表）
-            </a>
-            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/天橋立駅/天橋立ビューランド/智恩寺/伊根湾めぐり遊覧船/和のリゾート文珠荘" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Plan B 點位（非班表）
-            </a>
-          </div>
+      <section class="day4-at-a-glance day4-reveal day4-delay-2" aria-labelledby="day4-rhythm-title">
+        <header>
+          <p class="day4-section-label">Today’s rhythm</p>
+          <h3 id="day4-rhythm-title">把兩個硬時限<br>放在風景之前</h3>
+          <p>正常早餐版約 11:05 抵達：刪 View Land，或放棄伊根；不以短轉乘賭全日。</p>
+        </header>
+        <div class="day4-timeline" aria-label="推薦早出發版的關鍵時間">
+          <div class="day4-moment"><time>09:48</time><span>抵達天橋立</span><small>早出發版</small></div>
+          <div class="day4-moment"><time>10:15</time><span>登 View Land</span><small>僅早抵版</small></div>
+          <div class="day4-moment"><time>13:03</time><span>往伊根巴士</span><small>去程硬時限</small></div>
+          <div class="day4-moment"><time>14:30</time><span>伊根灣遊覽船</span><small>25 分鐘航程</small></div>
+          <div class="day4-moment"><time>15:12</time><span>回天橋立巴士</span><small>回程硬時限</small></div>
+          <div class="day4-moment"><time>16:20</time><span>文珠入住</span><small>候選／待訂</small></div>
         </div>
-        <div id="map-d4" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
-      </div>
+        <aside class="day4-guardrail"><strong>Hold the line</strong><p><b>13:03</b> 去伊根、<b>15:12</b> 回天橋立；錯過其一就減項，不把 7 分鐘轉船或末班車當作正常接續。</p></aside>
+      </section>
 
       <!-- Two Parallel Plan Cards for Day 4 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+      <section class="day4-plan-heading" aria-labelledby="day4-plan-title">
+        <p class="day4-section-label">Choose your view</p>
+        <h3 id="day4-plan-title">兩條觀看天橋立的方式</h3>
+        <p>推薦從南側飛龍觀開始；北側昇龍觀只在早餐、早班鐵道、寄物與轉乘都成立時採用。</p>
+      </section>
+      <div class="day4-plan-grid">
         <!-- Plan A: 傘松公園 昇龍觀 -->
-        <article id="card-d4-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d4-1" class="day4-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
@@ -1065,8 +1273,11 @@
             <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-red-800 leading-relaxed font-light">
               「早班抵天橋立、寄妥行李後，搭巴士至北側府中，纜車登上傘松公園，看沙洲如青龍飛升；午後到日出碼頭，從海上欣賞伊根舟屋。不再加成相寺或舟屋咖啡館。」
             </p>
+            <p class="day4-route-signal">早早餐、早班鐵道、寄物與 13:29 巴士四項皆成立，才走這條北側路線。</p>
 
-            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+            <details class="day4-detail">
+              <summary>查看完整時程與查核條件</summary>
+              <div class="my-4 border-t border-b border-stone-100 py-3.5">
               <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
               </h4>
@@ -1096,7 +1307,8 @@
                   <span><strong>約 16:20 入住文珠荘（候選／待訂，6 人 2 間）</strong>：一般入住 15:00–18:00，晚於 18:00 須聯絡。晚餐先詢 18:00／18:30，官網另列 19:00 開席，實際依訂房方案。出發前查巴士與船；停航／大雪取消伊根，不靠末班或未預約的六人計程車救援。</span>
                 </li>
               </ol>
-            </div>
+              </div>
+            </details>
 
             <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
               <div class="flex items-baseline gap-2">
@@ -1116,7 +1328,7 @@
         </article>
 
         <!-- Plan B: View Land 飛龍觀 -->
-        <article id="card-d4-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d4-2" class="day4-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-amber-100 text-amber-900 rounded font-semibold">Plan B・推薦</span>
@@ -1129,8 +1341,11 @@
             <p class="text-xs text-stone-600 italic bg-stone-50 p-3 rounded my-4 border-l-2 border-amber-600 leading-relaxed font-light">
               「JR 到豐岡轉丹鐵，抵天橋立先寄行李。早到才登 View Land 看飛龍觀，午後去伊根搭一趟船，四點多回文珠泡湯；若正常吃早餐，就少排一項，保留午餐與候車時間。」
             </p>
+            <p class="day4-route-signal">早出發版：09:48 抵達 → 13:03 巴士 → 14:30 船 → 15:12 回程。正常早餐後就少排一項。</p>
 
-            <div class="my-4 border-t border-b border-stone-100 py-3.5">
+            <details class="day4-detail">
+              <summary>查看完整時程與查核條件</summary>
+              <div class="my-4 border-t border-b border-stone-100 py-3.5">
               <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800 mb-3 flex items-center gap-1.5">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-700"></i> 當日生活與探索時程
               </h4>
@@ -1156,7 +1371,8 @@
                   <span><strong>15:12→16:08 原站巴士回天橋立，約 16:20 入住</strong>：下船至巴士有約 17 分鐘，仍留意靠岸延遲；錯過則 16:04→17:00，通知旅館。文珠荘仍為候選／待訂（6 人 2 間），一般入住 15:00–18:00，晚於 18:00 須聯絡；晚餐先詢 18:00／18:30，實際依訂房方案。</span>
                 </li>
               </ol>
-            </div>
+              </div>
+            </details>
 
             <div class="space-y-2 text-xs text-stone-600 font-light bg-stone-50 p-3 rounded">
               <div class="flex items-baseline gap-2">
@@ -1177,6 +1393,25 @@
       </div>
 
       <p class="text-xs text-stone-600 leading-relaxed">2026-09-12 查核：鐵道為 JR 2026/8 與丹鐵 2026/3/14 參考，非 2027 定案；巴士採 2026/10/1 改正平日表。來源：<a href="https://trains.willer.co.jp/timetable/" target="_blank" class="underline">丹鐵</a>、<a href="https://www.tankai.jp/routebus/timetable/?d=weekday&amp;id=17892" target="_blank" class="underline">丹海巴士</a>、<a href="https://www.tankai.jp/trip/ineboat/" target="_blank" class="underline">伊根船</a>、<a href="https://www.tankai.jp/trip/cable/" target="_blank" class="underline">傘松運行</a>、<a href="https://www.ine-kankou.jp/shop/mukai-brewery" target="_blank" class="underline">向井酒造</a>、<a href="https://www.monjusou.com/08qa/index.html" target="_blank" class="underline">文珠荘</a>。完整車次來源與減項規則見 <a href="itinerary.md" class="underline">行程文件第四天</a>。</p>
+
+      <!-- Map follows the route decision, instead of interrupting it. -->
+      <div class="day4-map-box bg-white border rounded-lg p-4 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-800"></span>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">路線地圖：南／北側二擇一 ➔ 伊根 ➔ 文珠荘候選</h4>
+          </div>
+          <div class="flex flex-wrap gap-x-3 gap-y-1">
+            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/天橋立駅/天橋立ケーブル下/傘松公園/伊根湾めぐり遊覧船/和のリゾート文珠荘" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Plan A 點位（非班表）
+            </a>
+            <a href="https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/天橋立駅/天橋立ビューランド/智恩寺/伊根湾めぐり遊覧船/和のリゾート文珠荘" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 flex items-center gap-1 font-medium underline">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Plan B 點位（非班表）
+            </a>
+          </div>
+        </div>
+        <div id="map-d4" class="w-full h-80 rounded border border-stone-200 bg-stone-100"></div>
+      </div>
 
       <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
       <div class="mt-8 bg-white border border-stone-200 rounded-lg p-5 shadow-sm">
@@ -1233,28 +1468,27 @@
     </div>
 
     <!-- ================= DAY 5 PANEL ================= -->
-    <div id="day-panel-5" class="day-panel hidden">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+    <div id="day-panel-5" class="day-panel hidden editorial-day">
+      <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 05 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第五天：山陰海岸折返 ➔ 冬季鳥取雪砂丘 ➔ 白兔神話 ➔ 鳥取和牛盛宴
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              從天橋立一路搭鐵道回鳥取。🔴 <strong>砂之美術館每年 4 月中旬展到隔年 1 月 3 日，1 月 4 日起休館製作下期砂雕，1/15 這天進不去</strong>——今天的重頭戲只剩<strong>下過雪的鳥取砂丘</strong>本身：白雪落在黃沙上，爬上「馬背」就能看見日本海的浪。晚上吃鳥取和牛炭火燒肉。
-            </p>
+            <span class="editorial-eyebrow">Route 05 · Dunes in winter</span>
+            <p class="editorial-kicker">當白雪，落在風紋上</p>
+            <h2 class="editorial-title">把下午，<br>留給一座砂丘</h2>
+            <p class="editorial-deck">砂之美術館休館，反而讓今天更單純：長程鐵道後，只走雪砂丘、回市區入住，再用一頓和牛收尾。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="editorial-stay self-start">
             宿：鳥取溫泉 觀水庭こぜにや（已訂）
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="editorial-hero editorial-reveal editorial-delay-1">
         <img src="assets/day-illustrations/day-05-tottori-sand-dunes.png" width="1693" height="929" loading="lazy" decoding="async" alt="冬雲下的鳥取砂丘，兩名旅人沿著風紋沙脊前行，雪覆的沙丘延伸到海邊">
-        <figcaption class="sr-only">Day 5：鳥取砂丘的冬日風紋</figcaption>
+        <figcaption class="editorial-hero-caption"><p>A white line across the dune</p><h3>走到馬背，看見冬海</h3></figcaption>
       </figure>
+
+      <section class="editorial-pulse editorial-reveal editorial-delay-2" aria-label="Day 5 的砂丘節奏"><header><p class="editorial-pulse-label">Dune rhythm</p><h3>少排一處，<br>多留一段風景</h3><p>砂丘是唯一主角；鳥取城跡僅在提早回站時加選，白兔神社只適用於事先成立的預約案。</p></header><div class="editorial-beats"><div class="editorial-beat"><strong>上午</strong><span>天橋立到鳥取的鐵道</span></div><div class="editorial-beat"><strong>下午</strong><span>雪砂丘與冬海</span></div><div class="editorial-beat"><strong>晚上</strong><span>入住、和牛與溫泉</span></div></div></section>
 
       <!-- Day 5 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -1272,8 +1506,8 @@
       </div>
 
       <!-- Two Parallel Plan Cards for Day 5 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
-        <article id="card-d5-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+      <div class="editorial-plan-grid">
+        <article id="card-d5-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">推薦 Plan A</span>
@@ -1340,7 +1574,7 @@
           </div>
         </article>
 
-        <article id="card-d5-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d5-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">預約制 Plan B</span>
@@ -1497,28 +1731,27 @@
     </div>
 
     <!-- ================= DAY 6 PANEL ================= -->
-    <div id="day-panel-6" class="day-panel hidden">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+    <div id="day-panel-6" class="day-panel hidden editorial-day">
+      <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 06 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第六天：南下穿越中國山地 ➔ 晴天之國岡山 ➔ 岡山城烏城 ➔ 桃太郎吉備津神社
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              從鳥取穿過中國山地到岡山。想在同日完成岡山城、後樂園與【Google Maps 收藏景點：吉備津神社】，必須搭<strong>早班直達特急</strong>；現行晚班抵岡山已近中午，只適合把重點留在岡山城與後樂園。2027 班次公布後再定案。
-            </p>
+            <span class="editorial-eyebrow">Route 06 · Into okayama</span>
+            <p class="editorial-kicker">穿過山地，換一座城與庭園</p>
+            <h2 class="editorial-title">早一班車，<br>多一段迴廊</h2>
+            <p class="editorial-deck">早班直達特急才有岡山城、後樂園與吉備津神社的完整版本；若晚到，就誠實留下兩處市區風景。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="editorial-stay self-start">
             宿：岡山格蘭比亞酒店（已訂；連住 2 晚）
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="editorial-hero editorial-reveal editorial-delay-1">
         <img src="assets/day-illustrations/day-06-okayama-garden-castle.png" width="1774" height="887" loading="lazy" decoding="async" alt="雪覆庭園中的岡山城與長廊，旅人沿著石徑朝冬日庭園前行">
-        <figcaption class="sr-only">Day 6：岡山城、庭園與吉備津長廊</figcaption>
+        <figcaption class="editorial-hero-caption"><p>Castle, garden, corridor</p><h3>把早起，換成一段長迴廊</h3></figcaption>
       </figure>
+
+      <section class="editorial-pulse editorial-reveal editorial-delay-2" aria-label="Day 6 的岡山節奏"><header><p class="editorial-pulse-label">The early train</p><h3>早起的價值，<br>不是塞滿而是完整</h3><p>2027 班次公布後再定案。早班才延伸到吉備津；晚班就留在岡山市區，不用追趕。</p></header><div class="editorial-beats"><div class="editorial-beat"><strong>07:02 參考</strong><span>早班直達特急</span></div><div class="editorial-beat"><strong>上午</strong><span>烏城與後樂園</span></div><div class="editorial-beat"><strong>午後</strong><span>吉備津或市區餘裕</span></div></div></section>
 
       <!-- Day 6 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -1536,8 +1769,8 @@
       </div>
 
       <!-- Two Parallel Plan Cards for Day 6 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
-        <article id="card-d6-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+      <div class="editorial-plan-grid">
+        <article id="card-d6-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">推薦 Plan A</span>
@@ -1608,7 +1841,7 @@
           </div>
         </article>
 
-        <article id="card-d6-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d6-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B</span>
@@ -1761,28 +1994,27 @@
     </div>
 
     <!-- ================= DAY 7 PANEL ================= -->
-    <div id="day-panel-7" class="day-panel hidden">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+    <div id="day-panel-7" class="day-panel hidden editorial-day">
+      <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 07 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第七天：倉敷美觀水鄉小舟 ➔ 三井 Outlet 採買 ➔ 瀨戶大橋夕景
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              上午以川舟與大原美術館完成倉敷美觀，下午到【三井 OUTLET PARK 倉敷】採買——兩區都在倉敷站步行範圍。✅ <strong>川舟流し 1~2 月只在週六日與假日運航，1/17 正好是週日。</strong>鷲羽山夕景須等 2027 週日班表證實可達，確認前不列為可選行程。
-            </p>
+            <span class="editorial-eyebrow">Route 07 · Kurashiki canal</span>
+            <p class="editorial-kicker">白壁、運河與一艘冬日小舟</p>
+            <h2 class="editorial-title">在倉敷，<br>慢慢把行李裝滿</h2>
+            <p class="editorial-deck">先把週日限定的川舟與冬季提早關館的大原美術館完成，下午再走到 Outlet。鷲羽山夕景仍是未核定的條件案。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="editorial-stay self-start">
             宿：岡山格蘭比亞酒店（已訂；連住第 2 晚）
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="editorial-hero editorial-reveal editorial-delay-1">
         <img src="assets/day-illustrations/day-07-kurashiki-canal.png" width="1536" height="1024" loading="lazy" decoding="async" alt="黃昏的倉敷美觀地區運河，白壁倉庫、垂柳與一艘點著燈的小舟倒映在水面">
-        <figcaption class="sr-only">Day 7：倉敷運河的黃昏</figcaption>
+        <figcaption class="editorial-hero-caption"><p>White walls, still water</p><h3>先坐一艘船，再慢慢採買</h3></figcaption>
       </figure>
+
+      <section class="editorial-pulse editorial-reveal editorial-delay-2" aria-label="Day 7 的倉敷節奏"><header><p class="editorial-pulse-label">Sunday in kurashiki</p><h3>把限時的，<br>放在最前面</h3><p>川舟只在冬季週末與假日運航；大原美術館冬季關館較早。這兩件完成後，下午就不必趕。</p></header><div class="editorial-beats"><div class="editorial-beat"><strong>上午</strong><span>川舟與大原美術館</span></div><div class="editorial-beat"><strong>午後</strong><span>Outlet 與倉敷站周邊</span></div><div class="editorial-beat"><strong>傍晚</strong><span>回岡山，不追未核定夕景</span></div></div></section>
 
       <!-- Day 7 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -1800,9 +2032,9 @@
       </div>
 
       <!-- Two Parallel Plan Cards for Day 7 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
+      <div class="editorial-plan-grid">
         <!-- Plan A: 採買到底 -->
-        <article id="card-d7-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d7-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">推薦 Plan A</span>
@@ -1866,7 +2098,7 @@
         </article>
 
         <!-- Plan B: 鷲羽山夕陽（條件方案） -->
-        <article id="card-d7-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d7-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">條件 Plan B</span>
@@ -1989,28 +2221,27 @@
     </div>
 
     <!-- ================= DAY 8 PANEL ================= -->
-    <div id="day-panel-8" class="day-panel hidden">
-      <section class="mb-6 pb-4 border-b border-stone-200">
+    <div id="day-panel-8" class="day-panel hidden editorial-day">
+      <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
-            <span class="text-xs font-en-serif text-amber-800 tracking-widest uppercase font-semibold">DAY 08 DISCUSSION</span>
-            <h2 class="text-2xl font-serif-title font-bold text-stone-900 mt-1">
-              第八天：岡山最後採買 ➔ 利木津巴士往岡山桃太郎機場 ➔ 15:25 起飛返台
-            </h2>
-            <p class="text-stone-600 text-sm mt-1 max-w-3xl font-light">
-              最後一天不趕。早上在岡山站的伴手禮商場買大手饅頭和白桃名產，中午從岡山站搭利木津巴士到機場，下午就回到台灣了。
-            </p>
+            <span class="editorial-eyebrow">Route 08 · Homeward bound</span>
+            <p class="editorial-kicker">把最後的時間，留給想帶回家的東西</p>
+            <h2 class="editorial-title">收好行李，<br>再看一眼岡山</h2>
+            <p class="editorial-deck">最後一天不趕。採買完成後，從岡山站搭利木津巴士直達機場，為 15:25 的班機保留該有的緩衝。</p>
           </div>
-          <div class="bg-stone-100 text-stone-700 text-xs px-3 py-2 rounded font-mono border border-stone-200 whitespace-nowrap self-start">
+          <div class="editorial-stay self-start">
             17:30 抵達桃園國際機場第一航廈
           </div>
         </div>
       </section>
 
-      <figure class="day-illustration">
+      <figure class="editorial-hero editorial-reveal editorial-delay-1">
         <img src="assets/day-illustrations/day-08-okayama-departure.png" width="1774" height="887" loading="lazy" decoding="async" alt="冬日清晨的岡山機場窗前，一只行李箱與風呂敷包裹面向跑道上的飛機">
-        <figcaption class="sr-only">Day 8：岡山機場的返程收束</figcaption>
+        <figcaption class="editorial-hero-caption"><p>One last look</p><h3>把餘裕，一起帶上飛機</h3></figcaption>
       </figure>
+
+      <section class="editorial-pulse editorial-reveal editorial-delay-2" aria-label="Day 8 的返程節奏"><header><p class="editorial-pulse-label">Departure rhythm</p><h3>回程日的主角，<br>是緩衝而不是多一站</h3><p>若採買仍未完成，直接採用站前採買方案；神社收尾只在採買完成且可保留約兩小時機場緩衝時成立。</p></header><div class="editorial-beats"><div class="editorial-beat"><strong>上午</strong><span>岡山站前伴手禮</span></div><div class="editorial-beat"><strong>中午</strong><span>西口 21 號站牌、利木津</span></div><div class="editorial-beat"><strong>13:25 目標</strong><span>抵機場，預留登機緩衝</span></div></div></section>
 
       <!-- Day 8 Map Box -->
       <div class="mb-8 bg-white border border-stone-200 rounded-lg p-4 shadow-sm">
@@ -2027,8 +2258,8 @@
       </div>
 
       <!-- Two Parallel Plan Cards for Day 8 -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
-        <article id="card-d8-1" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+      <div class="editorial-plan-grid">
+        <article id="card-d8-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-red-50 text-red-800 rounded font-semibold border border-red-200">Plan A</span>
@@ -2087,7 +2318,7 @@
           </div>
         </article>
 
-        <article id="card-d8-2" class="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between transition-all duration-300">
+        <article id="card-d8-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
           <div>
             <div class="flex justify-between items-start mb-3">
               <span class="text-[11px] font-en-serif uppercase tracking-widest px-2 py-0.5 bg-stone-100 text-stone-700 rounded font-semibold">Plan B</span>
@@ -2242,6 +2473,20 @@
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
+
+    // Keep long plan evidence available without making each day read like a spreadsheet.
+    function enhanceEditorialDetails() {
+      document.querySelectorAll('.editorial-day article[id^="card-"] > div > div.my-4, .editorial-day article[id^="card-"] > div > div.my-5').forEach(section => {
+        if (section.closest('details')) return;
+        const details = document.createElement('details');
+        details.className = 'editorial-detail';
+        const summary = document.createElement('summary');
+        summary.textContent = '查看完整安排與查核條件';
+        section.before(details);
+        details.append(summary, section);
+      });
+    }
+    enhanceEditorialDetails();
 
     // Map store & data
     const mapInstances = {};
@@ -2469,6 +2714,13 @@
           btn.classList.add('text-stone-500');
         }
       });
+
+      const activeTab = document.querySelector(`.day-nav-item[data-day="${day}"]`);
+      const nav = document.querySelector('.journey-nav');
+      if (activeTab && nav && window.matchMedia('(max-width: 767px)').matches) {
+        const targetLeft = activeTab.offsetLeft - (nav.clientWidth - activeTab.offsetWidth) / 2;
+        nav.scrollTo({ left: Math.max(0, targetLeft), behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
 
       for (let d = 0; d <= 8; d++) {
         const panel = document.getElementById(`day-panel-${d}`);
