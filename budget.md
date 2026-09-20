@@ -152,4 +152,4 @@
 2. **海外高回饋信用卡**：
    * 住宿、鐵道車票、三井 Outlet 購物可多刷海外消費回饋 3% 以上之信用卡（如吉鶴卡、玉山熊本熊卡、富邦 J 卡等）。
 
-**Day 6 大統領採買（2026-09-19 參考）**：購買意向已確認，口味、容量及瓶數未定；おかやま館網店「名作大統領うま口 400g」含稅 ¥594 僅作參考，不當作照片同款或店頭報價。確認同款後以實價×瓶數計算，不乘全團六人、不先併入總額。[商品頁](https://www.okayamakan.or.jp/products/detail/1631)／[店鋪資訊](https://www.okayamakan.or.jp/help/about)／[製造商品項](https://www.kurosakijapan.com/shop-1)。
+**Day 6 大統領採買（2026-09-19 參考）**：購買意向已確認，口味、容量及瓶數未定；おかやま館網店「名作大統領うま口 400g」含稅 ¥594 僅作參考，不當作照片同款或店頭報價。兩案共通採買，僅計一次；確認同款後以實價×瓶數計算，不乘全團六人、不先併入總額。[商品頁](https://www.okayamakan.or.jp/products/detail/1631)／[店鋪資訊](https://www.okayamakan.or.jp/help/about)／[製造商品項](https://www.kurosakijapan.com/shop-1)。
