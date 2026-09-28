@@ -1,5 +1,5 @@
-# GitHub Pages 只公開旅伴討論頁 trip_discussion.html；
-# 行程 Markdown（含 README 首頁）不轉成網頁，根網址回 404。
+# GitHub Pages 只公開旅伴討論頁 trip_discussion.html 與其 assets/；
+# 行程 Markdown（含 README 首頁）、根目錄圖片與 Firebase 設定不上網頁，根網址回 404。
 exclude:
   - README.md
   - ANTIGRAVITY.md
@@ -8,3 +8,9 @@ exclude:
   - spots.md
   - transportation.md
   - "*.md"
+  - S__46088321.jpg
+  - "截圖 2026-09-05 10.58.13.png"
+  - "*.jpg"
+  - "*.png"
+  - firebase.json
+  - firestore.rules
