@@ -1,0 +1,10 @@
+# GitHub Pages 只公開旅伴討論頁 trip_discussion.html；
+# 行程 Markdown（含 README 首頁）不轉成網頁，根網址回 404。
+exclude:
+  - README.md
+  - ANTIGRAVITY.md
+  - itinerary.md
+  - budget.md
+  - spots.md
+  - transportation.md
+  - "*.md"
