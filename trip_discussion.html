@@ -413,6 +413,25 @@
       </div>
       <div id="decision-ledger-rows" class="divide-y divide-stone-600"></div>
       <p id="dependency-status" class="hidden mx-5 my-4 text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded px-3 py-2"></p>
+      <div id="luggage-strategy" class="mx-5 my-5 rounded bg-stone-50 text-stone-800 p-4 text-xs leading-relaxed">
+        <p class="font-en-serif text-[10px] tracking-[0.2em] text-amber-800 uppercase">Luggage strategy</p>
+        <h3 class="font-serif-title text-base font-bold mt-1">🧳 八件大行李怎麼移動？<span class="ml-1 text-[11px] font-semibold text-amber-800">🗳 待旅伴討論</span></h3>
+        <p class="mt-1 text-stone-600">用ヤマト宅急便把大行李先寄到下一間住宿，人只帶一晚份隨身包。各段均查得<strong>隔天、可指定午前中</strong>送達（2026-09-28 以實際日期查詢）；各旅館是否受理仍待確認。</p>
+        <div class="mt-3 overflow-x-auto">
+          <table class="min-w-[640px] w-full text-left border-collapse">
+            <thead><tr class="border-b border-stone-300 text-stone-600"><th class="py-1.5 pr-3">方案</th><th class="py-1.5 pr-3">寄送區段（寄出 → 送達）</th><th class="py-1.5 pr-3">運費（160／180 尺寸）</th><th class="py-1.5 pr-3">只帶隨身包的夜晚</th><th class="py-1.5">仍要搬大行李</th></tr></thead>
+            <tbody class="divide-y divide-stone-200">
+              <tr><td class="py-1.5 pr-3 font-semibold">A 全程自己搬</td><td class="py-1.5 pr-3">—</td><td class="py-1.5 pr-3">¥0</td><td class="py-1.5 pr-3">無</td><td class="py-1.5">Day 1、2、4、5、6、8</td></tr>
+              <tr><td class="py-1.5 pr-3 font-semibold">B 寄兩段</td><td class="py-1.5 pr-3">境港→川口屋（1/12→1/13）<br>文珠荘→岡山格蘭比亞（1/15→1/16）</td><td class="py-1.5 pr-3">¥48,320／¥58,880<br>每人約 ¥8,050</td><td class="py-1.5 pr-3">1/12、1/15</td><td class="py-1.5">Day 1、4、8</td></tr>
+              <tr class="bg-amber-50"><td class="py-1.5 pr-3 font-semibold">C 跳過城崎（推薦）</td><td class="py-1.5 pr-3">境港→文珠荘（1/12→1/13，先代收一天）<br>文珠荘→岡山格蘭比亞（1/15→1/16）</td><td class="py-1.5 pr-3">同 B</td><td class="py-1.5 pr-3">1/12、1/13、1/15</td><td class="py-1.5">Day 1、8</td></tr>
+              <tr><td class="py-1.5 pr-3 font-semibold">D 寄三段</td><td class="py-1.5 pr-3">B 兩段＋川口屋→文珠荘（1/13→1/14）</td><td class="py-1.5 pr-3">¥72,480／¥88,320<br>每人約 ¥12,080</td><td class="py-1.5 pr-3">1/12、1/15</td><td class="py-1.5">Day 1、8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-3 text-stone-600"><strong>取捨：</strong>C 只在 Day 1、Day 8 搬大行李；城崎兩晚是溫泉旅館連住、有浴衣，最適合輕裝，但要文珠荘同意提前一天代收。不行就改 B（只剩 Day 4 要把八件帶上丹鐵）。D 要在 1/13 行李到川口屋後當天再寄出，費用最高，不建議。</p>
+        <p class="mt-1 text-stone-600"><strong>採用後：</strong>Day 2 鳥取午餐不必搶置物櫃；Day 5「行李 14:30 前寄妥才去砂丘」的條件消失；Day 6 不必在岡山寄放入住前行李。</p>
+        <p class="mt-1 text-[11px] text-stone-500">運費為 2025/10/1 起現金價：每件 160 尺寸 ¥3,020（25 kg 內）、180 尺寸 ¥3,680；以實際量測為準。來源：<a href="https://www.yamato-hd.co.jp/important/pdf/info_250501_1.pdf" target="_blank" rel="noopener noreferrer" class="underline">ヤマト運賃表</a>、<a href="https://date.kuronekoyamato.co.jp/date/Takkyubin" target="_blank" rel="noopener noreferrer" class="underline">お届け予定日検索</a>。</p>
+      </div>
     </section>
 
     <!-- Function to render Map Box for each day -->
@@ -848,7 +867,7 @@
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="font-mono text-stone-900 font-medium whitespace-nowrap">17:15 後</span>
-                  <span><strong>回館休息，約 18:00～19:30 晚餐</strong>：開席依旅館確認，官網 18:00～21:00 是用餐時段，不表示可到 21:00 才入席。餐後短程散步或館內泡湯；第二座外湯只作加選。</span>
+                  <span><strong>回館休息，18:00～19:30 晚餐</strong>：18:00 開席已獲旅館同意（2026-09-28 回信）。餐後短程散步或館內泡湯；第二座外湯只作加選。</span>
                 </li>
               </ol>
               <p class="text-[11px] text-stone-500 mt-3 leading-relaxed"><strong>時間資料範圍：</strong>三段已用同一平日（2026/10/13）重查，屬 2026/3/14 改正後現行班表；1/12 仍在此期內，但不是 2027/1/12 保證接續，購票時以當日重查。</p>
@@ -989,7 +1008,7 @@
           <div class="day3-beat"><time>14:30</time><span>外湯一座</span><small>御所之湯優先</small></div>
           <div class="day3-beat"><time>18:00</time><span>晚餐與整理</span><small>為隔日早出發</small></div>
         </div>
-        <aside class="day3-checkin"><strong>Before soaking</strong><p>先確認外湯營業、外湯券效期與房間清掃；遇雪或纜車停駛，就把上午縮成平地散步與咖啡。</p></aside>
+        <aside class="day3-checkin"><strong>Before soaking</strong><p>外湯券效期到退房日 13:00、清掃時段外可自由回房（旅館 9/28 回覆）；先確認外湯營業，遇雪或纜車停駛，就把上午縮成平地散步與咖啡。</p></aside>
       </section>
 
       <!-- Two Parallel Plan Cards for Day 3 -->
@@ -1090,7 +1109,7 @@
               <ol class="space-y-3 text-xs text-stone-600 font-light pl-1">
                 <li class="flex items-start gap-2">
                   <span class="font-mono text-stone-900 font-medium whitespace-nowrap">07:30～09:30</span>
-                  <span><strong>早餐、休息與當日確認</strong>：早餐先抓 07:30～08:30，官網供餐時段為 07:30～09:00，依訂房入席。確認外湯營業、續住外湯券效期、房間清掃與晚餐；纜車停駛就改平地散步／咖啡。</span>
+                  <span><strong>早餐、休息與當日確認</strong>：早餐先抓 07:30～08:30，官網供餐時段為 07:30～09:00，依訂房入席。確認外湯營業（外湯券效期到退房日 13:00）；纜車停駛就改平地散步／咖啡。</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="font-mono text-stone-900 font-medium whitespace-nowrap">09:30～11:20</span>
@@ -1102,7 +1121,7 @@
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="font-mono text-stone-900 font-medium whitespace-nowrap">13:00～14:30</span>
-                  <span><strong>回館午休或室內咖啡</strong>：回房配合旅館續住清掃規定；館內大浴場現行 09:00～15:00 不在營業時段，午休不等於中午可泡館內湯。</span>
+                  <span><strong>回館午休</strong>：旅館確認清掃（10:00 或 10:30 開始）以外可自由回房；館內大浴場現行 09:00～15:00 不在營業時段，午休不等於中午可泡館內湯。</span>
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="font-mono text-stone-900 font-medium whitespace-nowrap">14:30～16:00</span>
@@ -1114,7 +1133,7 @@
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="font-mono text-stone-900 font-medium whitespace-nowrap">18:00 後</span>
-                  <span><strong>晚餐與整理隔日行李</strong>：晚餐暫抓 18:00～19:30，早晚餐已含；實際開席與兩晚菜色依旅館確認；不預設一泊二食含指定松葉蟹或藍標蟹。官網 21:00 非最晚入席。餐後休息，查隔日天氣及 JR／丹鐵運行計畫，不以多留 1.5～2 小時保證能銜接。</span>
+                  <span><strong>晚餐與整理隔日行李</strong>：晚餐 18:00 開席已獲同意，第二晚為「おまかせ会席」；不預設一泊二食含指定松葉蟹或藍標蟹。官網 21:00 非最晚入席。餐後休息，查隔日天氣及 JR／丹鐵運行計畫，不以多留 1.5～2 小時保證能銜接。</span>
                 </li>
               </ol>
               <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>外湯查核邊界：</strong>既有 2026-09-12 查核紀錄記載曾核對 2027 一月表；2026-09-19 與 09-26 均未能從官方頁面重新讀出該表，故不將舊紀錄當作再次確認。觀光協會現列定休：鴻之湯週二、一之湯與曼陀羅湯週三、御所之湯與柳湯週四、地藏湯週一。依此規則，週三一之湯、曼陀羅湯休；御所之湯優先、地藏湯或 15:00 後柳湯備選。御所之湯、柳湯週四休，適合今天評估；2027 當日及臨時異動仍須複核。鴻之湯整修公告（9/26 再查）仍寫預計 2026 年 11 月重開，復業後週三可泡，但仍須確認；里之湯不納入。</p>
@@ -1129,7 +1148,7 @@
               </div>
               <div class="flex items-baseline gap-2">
                 <span class="text-stone-500 font-medium whitespace-nowrap">注意事項：</span>
-                <span>連住不代表客房全天可用，需確認清掃與外湯券效期；穿保暖外套、防滑防潑水鞋，厚袍／足袋襪是否供應另問。依雪況縮短戶外活動，不預設一定有雪景。掛湯後再入池，避免酒後及飯後立即泡湯，不突然起身、不勉強久泡，不適就停止並告知同行者。</span>
+                <span>連住客房清掃從 10:00 或 10:30 開始，其餘時間可自由進出；外湯券效期為入住日 15:00 至退房日 13:00；穿保暖外套、防滑防潑水鞋，厚袍／足袋襪是否供應另問。依雪況縮短戶外活動，不預設一定有雪景。掛湯後再入池，避免酒後及飯後立即泡湯，不突然起身、不勉強久泡，不適就停止並告知同行者。</span>
               </div>
             </div>
           </div>
@@ -1168,7 +1187,7 @@
       <!-- 連住提醒 -->
       <div class="bg-stone-50 border border-stone-200 rounded-lg p-4 text-xs text-stone-600 font-light flex items-center gap-3">
         <i data-lucide="info" class="w-4 h-4 text-amber-700 shrink-0"></i>
-        <span><strong>川口屋已訂同房續住</strong>：兩晚兩間房、含早晚餐已確認；白天客房使用／清掃、外湯券效期與實際開席尚待確認。館內大浴場現行 15:00～00:00、05:00～09:00，不預設午間開放。</span>
+        <span><strong>川口屋已訂同房續住</strong>：兩晚兩間房、含早晚餐已確認；9/28 旅館回覆：兩晚 18:00 開席、清掃時段外可回房、外湯券到退房日 13:00、可代收宅急便行李、1/14 有 08:30 送站接駁車。館內大浴場現行 15:00～00:00、05:00～09:00，不預設午間開放。</span>
       </div>
 
       <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
@@ -1273,7 +1292,7 @@
         <p class="font-semibold text-amber-900 mb-1.5">✓ 已選 B：下午留在天橋立</p>
         <ol class="list-decimal pl-5 space-y-1">
           <li><strong>下午行程</strong>：View Land＋智恩寺與松林短線；不去伊根。登高停駛則改平地短遊。</li>
-          <li><strong>文珠荘訂位內容回填</strong>：訂了幾間房、已含 Day 4 晚餐安排在 18:00／18:30／19:00 哪個時段；Day 5 早餐已含。</li>
+          <li><strong>文珠荘訂位內容</strong>：已訂 2 間房（2026-09-28 確認）；已含 Day 4 晚餐的開席時段（18:00／18:30／19:00）待確認；Day 5 早餐已含。</li>
         </ol>
         <p class="mt-1.5 text-stone-500">鐵道時刻與票價是現行參考，2027 當日接續待核。</p>
       </aside>
@@ -2643,9 +2662,9 @@
 
     const dayMeta = {
       1: ['已確認：JR 境線至境港', '御宿野乃 境港（已訂、含次日早餐）', '🔴 成人之日 JR 班次、飯店預先同意八件寄物、訂房不含晚餐（候選待選定）、六人餐廳座位；入境抓約 90 分，紀念館目標 15:10 入館；晚到依簡化方案調整'],
-      2: ['採用 Plan B：境線＋超級松風＋濱風', '川口屋（已訂第 1 晚；兩間房、含早晚餐、同房續住）', '🔴 2027/1/12 三段接續與六人指定席、魚鮮水產午餐訂位、川口屋實際開席；站前有免費入住巴士；濱風備案為鳥取 13:33 直達普通車。柯南中停已不採用'],
-      3: ['推薦 Plan B：城崎慢遊、纜車看天候', '川口屋（已訂第 2 晚；兩間房、含早晚餐、同房續住）', '🔴 午間客房使用／外湯券效期與實際開席；週三固定一之湯、曼陀羅湯休；2027/1/13 當日表與臨時異動待複核；外出案須另核開園與巴士去回'],
-      4: ['已選 B：正常早餐後天橋立 View Land、智恩寺與松林短線', '文珠荘（已訂、含早晚餐）', '🔴 2027 鐵道接續與票價、View Land 雪況及臨時停駛、六人寄物、文珠荘房數與晚餐開席時段待核；伊根未採用'],
+      2: ['採用 Plan B：境線＋超級松風＋濱風', '川口屋（已訂第 1 晚；兩間房、含早晚餐、同房續住）', '🔴 2027/1/12 三段接續與六人指定席、魚鮮水產午餐訂位；川口屋 18:00 開席已確認；站前有免費入住巴士；濱風備案為鳥取 13:33 直達普通車。柯南中停已不採用'],
+      3: ['推薦 Plan B：城崎慢遊、纜車看天候', '川口屋（已訂第 2 晚；兩間房、含早晚餐、同房續住）', '✅ 川口屋已回覆：清掃時段外可回房、外湯券到退房日 13:00、18:00 開席；週三固定一之湯、曼陀羅湯休；2027/1/13 當日表與臨時異動待複核；外出案須另核開園與巴士去回'],
+      4: ['已選 B：正常早餐後天橋立 View Land、智恩寺與松林短線', '文珠荘（已訂 2 間房、含早晚餐）', '🔴 2027 鐵道接續與票價、View Land 雪況及臨時停駛、六人寄物、文珠荘晚餐開席時段待核；伊根未採用'],
       5: ['已選 Plan A′：早餐後丹鐵＋JR，砂丘條件式短遊', '鳥取溫泉・觀水庭こぜにや（已訂、不含餐）', '🔴 2027/1/15 鐵道接續、六人座位與票價待核；14:00 抵鳥取後，八件行李須 14:30 前寄妥並回站才搭 14:40 砂丘線，否則取消砂丘。文珠荘早餐已含；觀水庭晚餐與 Day 6 早餐自費'],
       6: ['已選 Plan A′：自費早餐＋10:02 特急＋吉備津＋大統領', '岡山格蘭比亞酒店（已訂、不含餐；連住 2 晚）', '🔴 觀水庭早餐未含，須自費；2027/1/16 特急與吉備線班次、六人指定席、票價、岡山飯店八件寄物與大統領店頭庫存待核。已選 A′ 不排岡山城及後樂園'],
       7: ['已選 Plan A：JR＋步行完成倉敷與Outlet；蒜山不去', '岡山格蘭比亞酒店（已訂、不含餐；連住第 2 晚）', '🔴 2027 JR 班次、大原美術館臨時休館／倉敷戶外步行遇雨；鷲羽山待週日交通驗證'],
