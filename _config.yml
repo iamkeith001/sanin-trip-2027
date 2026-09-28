@@ -10,7 +10,5 @@ exclude:
   - "*.md"
   - S__46088321.jpg
   - "截圖 2026-09-05 10.58.13.png"
-  - "*.jpg"
-  - "*.png"
   - firebase.json
   - firestore.rules
