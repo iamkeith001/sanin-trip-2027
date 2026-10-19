@@ -24,7 +24,7 @@ f.write_text('''<template>
 <style>
 @font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.otf');font-weight:700;font-display:block}
 #root{position:absolute;inset:0;width:100%;height:100%}
-.pr2-row{position:absolute;left:100px;width:1735px;height:155px;border-top:2px solid var(--line);display:flex;align-items:center;gap:32px}.pr2-num{font-size:56px;color:var(--accent);width:100px}.pr2-cell{width:440px;font-size:38px;line-height:1.5}.pr2-small{display:block;font-size:26px;color:var(--muted)}.pr2-arrow{width:100px;height:50px;overflow:visible;color:var(--accent)}.pr2-result{font-size:37px;width:470px}.pr2-route{fill:none;stroke:var(--line);stroke-width:4}.pr2-token{fill:var(--accent)}.pr2-note{position:absolute;left:233px;top:839px;font-size:29px;color:var(--muted)}
+.pr2-row{position:absolute;left:100px;width:1735px;height:155px;border-top:2px solid var(--line);display:flex;align-items:center;gap:32px}.pr2-num{font-size:56px;color:var(--accent);width:100px}.pr2-cell{width:440px;font-size:38px;line-height:1.5}.pr2-small{display:block;font-size:26px;color:var(--muted)}.pr2-arrow{width:100px;height:50px;overflow:visible;color:var(--accent)}.pr2-result{font-size:37px;width:470px}.pr2-route{fill:none;stroke:var(--line);stroke-width:4}.pr2-token{fill:var(--accent)}.pr2-note{position:absolute;left:233px;top:824px;font-size:27px;line-height:1.2;color:var(--muted)}
 </style>
 <div id="root" data-composition-id="11-practical" data-duration="16.78" data-width="1920" data-height="1080"><div class="scene">
 <div class="eyebrow">BEFORE WE GO</div><div class="date">行前再確認</div><div class="rule"></div><div class="day">TRAVEL LOGIC</div><h1 id="pr2-title" class="heading">三個安排，換來旅途的餘裕</h1>

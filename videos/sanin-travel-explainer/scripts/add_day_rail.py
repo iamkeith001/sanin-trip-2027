@@ -11,5 +11,5 @@ for n,f in enumerate(sorted((P/'compositions/frames').glob('*.html'))[2:10],1):
  if pos>=0:s=s[:pos+19]+rail+s[pos+19:]
  else:
   # data-hf-id may decorate the inner scene; inject after its opening tag.
-  s=re.sub(r'(<div[^>]*class="scene"[^>]*>)',lambda m:m[1]+rail,s,count=1)
+  s=re.sub(r'(<div[^>]*id="root"[^>]*>)',lambda m:m[1]+rail,s,count=1)
  f.write_text(s)
