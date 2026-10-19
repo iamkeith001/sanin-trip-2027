@@ -34,7 +34,7 @@
       "start_time": "0.000000",
       "duration_ts": 2882048,
       "duration": "187.633333",
-      "bit_rate": "2623444",
+      "bit_rate": "2623747",
       "bits_per_raw_sample": "8",
       "nb_frames": "5629",
       "extradata_size": 50,
@@ -88,7 +88,7 @@
       "start_time": "0.000000",
       "duration_ts": 9006384,
       "duration": "187.633000",
-      "bit_rate": "191532",
+      "bit_rate": "191635",
       "nb_frames": "8797",
       "extradata_size": 5,
       "disposition": {
@@ -127,8 +127,8 @@
     "format_long_name": "QuickTime / MOV",
     "start_time": "0.000000",
     "duration": "187.633333",
-    "size": "66187148",
-    "bit_rate": "2821978",
+    "size": "66196655",
+    "bit_rate": "2822383",
     "probe_score": 100,
     "tags": {
       "minor_version": "512",
