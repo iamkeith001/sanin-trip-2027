@@ -1,0 +1,3 @@
+# Preserve upstream vendor files verbatim, including original whitespace.
+assets/gsap.min.js -whitespace
+assets/fonts/OFL-GenSekiGothic.txt -whitespace

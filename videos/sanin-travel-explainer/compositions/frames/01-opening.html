@@ -1,0 +1,47 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700;font-display:block}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:700 34px/1.5 GenSekiGothic,sans-serif}
+.opening-sheet{position:absolute;inset:0}.opening-label{position:absolute;left:86px;top:68px;font-size:24px;letter-spacing:5px}.opening-date{position:absolute;right:86px;top:68px;font-size:25px}.opening-rule{position:absolute;left:86px;top:119px;width:1748px;height:2px;background:var(--line)}
+#opening-title{position:absolute;left:86px;top:220px;font-size:100px;line-height:1.25;letter-spacing:2px}
+.opening-place{position:absolute;left:86px;top:160px;font-size:29px;letter-spacing:3px;color:var(--accent)}
+.opening-deck{position:absolute;left:91px;top:490px;font-size:32px;line-height:1.5}.opening-numbers{position:absolute;left:86px;top:600px;width:890px;display:flex;gap:58px;border-top:2px solid var(--line);padding-top:17px}.opening-stat{display:flex;align-items:baseline;gap:13px}.opening-stat strong{color:var(--accent);font-size:68px;line-height:1.2}.opening-stat span{font-size:29px}
+#opening-photo{position:absolute;left:1078px;top:160px;width:758px;height:650px;overflow:hidden;background:var(--ink)}#opening-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:48% 50%}
+.opening-photo-title{position:absolute;left:1078px;top:827px;font-size:25px}.opening-credit{position:absolute;left:1078px;top:868px;width:758px;font-size:20px;color:var(--muted);line-height:1.5}.opening-note{position:absolute;left:86px;top:861px;font-size:25px;color:var(--muted);line-height:1.6}.opening-wordmark{position:absolute;left:86px;top:916px;font-size:20px;letter-spacing:3px;color:var(--muted)}
+#opening-route{position:absolute;left:86px;top:790px;width:850px;height:35px}#opening-route path{fill:none;stroke:var(--accent);stroke-width:3}.opening-route-dot{fill:var(--accent)}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+.op-story{width:278px;display:flex;align-items:center;gap:14px;border-top:2px solid var(--line);padding-top:15px;font-size:32px}.op-story svg{width:84px;height:74px;fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}#op-yokai svg,#op-onsen svg,#op-canal svg{overflow:visible}</style>
+<div data-hf-id="hf-52o0" id="root" data-composition-id="01-opening" data-duration="12.48" data-width="1920" data-height="1080">
+ <div data-hf-id="hf-c8ce" class="opening-sheet">
+  <p data-hf-id="hf-beyq" class="opening-label">2027 WINTER JOURNEY</p><p data-hf-id="hf-0rya" class="opening-date">2027.01.11 — 01.18</p><div data-hf-id="hf-spnn" class="opening-rule"></div>
+  <p data-hf-id="hf-k335" class="opening-place">山陰・海之京都・山陽</p>
+  <h1 data-hf-id="hf-g7p8" id="opening-title"><span data-hf-id="hf-f5hm" style="display:block">冬日，沿著</span><span data-hf-id="hf-ikro" style="display:block">山陰慢行</span></h1>
+  <p data-hf-id="hf-9rgl" class="opening-deck"><span data-hf-id="hf-kbke" style="display:block">妖怪街、溫泉與日本海</span><span data-hf-id="hf-q0vs" style="display:block">米子進，岡山出。</span></p>
+  <div data-hf-id="hf-l8hp" class="opening-numbers"><p data-hf-id="hf-bzek" class="opening-stat"><strong data-hf-id="hf-e7p0">6</strong><span data-hf-id="hf-hcx1">位旅伴</span></p><p data-hf-id="hf-ncz8" class="opening-stat"><strong data-hf-id="hf-i6ra">8</strong><span data-hf-id="hf-84uw">天</span></p><p data-hf-id="hf-m625" class="opening-stat"><strong data-hf-id="hf-dtdz">7</strong><span data-hf-id="hf-n2mf">夜</span></p></div>
+  <div id="op-stories" style="position:absolute;left:86px;top:710px;width:890px;height:126px;display:flex;gap:28px">
+   <div id="op-yokai" class="op-story"><svg viewBox="0 0 92 66"><path d="M20 56V17H72V56M17 17H75M26 9H66M35 33H57M35 42H57"/><circle cx="46" cy="22" r="4"/></svg><span>妖怪街</span></div>
+   <div id="op-onsen" class="op-story"><svg viewBox="0 0 92 66"><path d="M11 37Q11 61 46 61Q81 61 81 37M11 37Q46 49 81 37"/><g id="op-steam"><path d="M29 31C17 20 39 17 28 6M47 31C35 20 57 17 46 6M65 31C53 20 75 17 64 6"/></g></svg><span>城崎溫泉</span></div>
+   <div id="op-canal" class="op-story"><svg viewBox="0 0 92 66"><path d="M7 37Q46 2 85 37M7 37H85M20 37V50M72 37V50"/><g id="op-water"><path d="M5 55Q19 47 33 55T61 55T89 55M5 63Q19 55 33 63T61 63T89 63"/></g></svg><span>白壁運河</span></div>
+  </div>
+  <p data-hf-id="hf-0sra" class="opening-note">以已討論行程為主；冬季資訊出發前再核。</p>
+  <p data-hf-id="hf-2s1l" class="opening-wordmark">A JOURNEY WITH ROOM TO BREATHE</p>
+  <figure data-hf-id="hf-3eul" id="opening-photo"><img data-hf-id="hf-3jlh" src="../../assets/images/treated/amanohashidate.jpg" alt="從天橋立 View Land 俯瞰沙洲與日本海"></figure>
+  <p data-hf-id="hf-pmm5" class="opening-photo-title">天橋立｜從山上，看海之京都</p>
+  <p data-hf-id="hf-yqhh" class="opening-credit">照片：brian25_tw · CC BY-SA 2.0 · Wikimedia Commons<br data-hf-id="hf-x5px">保留景點原色；非本次行程拍攝。</p>
+ </div>
+</div>
+<script>
+(()=>{const T=window.TL.scenes['opening'];const D=T.duration;const tl=gsap.timeline({paused:true});
+tl.fromTo('#opening-photo img',{scale:1.015},{scale:1.085,duration:D,ease:'none'},0);
+tl.fromTo('.opening-numbers .opening-stat',{opacity:0,y:24},{opacity:1,y:0,duration:.8,stagger:.22,ease:'expo.out'},T.clauses[3].at);
+['#op-yokai','#op-onsen','#op-canal'].forEach((sel,i)=>tl.fromTo(sel,{opacity:.18,y:12},{opacity:1,y:0,duration:.7,ease:'expo.out'},T.clauses[Math.min(i+1,2)].at+i*.24));
+tl.fromTo('#op-steam',{y:5,opacity:.3},{y:-4,opacity:1,duration:1.2,ease:'power2.inOut',repeat:1,yoyo:true},T.clauses[2].at);
+tl.fromTo('#op-water',{x:-4},{x:4,duration:2.3,ease:'power2.inOut',repeat:1,yoyo:true},T.clauses[2].at+.5);
+window.__timelines['01-opening']=tl;})();
+</script>
+</template>

@@ -1,0 +1,39 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700;font-display:block}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:700 34px/1.5 GenSekiGothic,sans-serif}
+.closing-eyebrow{position:absolute;left:86px;top:68px;font-size:24px;letter-spacing:5px}.closing-date{position:absolute;right:86px;top:68px;font-size:25px}.closing-rule{position:absolute;left:86px;top:119px;width:1748px;height:2px;background:var(--line)}#closing-photo{position:absolute;left:86px;top:160px;width:900px;height:650px;background:var(--ink);overflow:hidden}#closing-photo img{width:100%;height:100%;object-fit:cover;object-position:53% 50%;display:block}
+.closing-caption{position:absolute;left:86px;top:828px;font-size:25px}.closing-credit{position:absolute;left:86px;top:868px;font-size:20px;color:var(--muted);line-height:1.5;width:900px}
+.closing-kicker{position:absolute;left:1050px;top:168px;font-size:29px;letter-spacing:4px;color:var(--accent)}#closing-title{position:absolute;left:1050px;top:252px;font-size:69px;line-height:1.38;letter-spacing:0}.closing-lead{position:absolute;left:1050px;top:490px;font-size:35px;line-height:1.65}.closing-invite{position:absolute;left:1050px;top:656px;font-size:39px;color:var(--accent);line-height:1.5;border-top:2px solid var(--line);width:784px;padding-top:24px}.closing-note{position:absolute;left:1050px;top:836px;font-size:24px;line-height:1.6;color:var(--muted)}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+.cl2-stop{width:212px;font-size:35px;line-height:1.5;border-bottom:3px solid var(--line);padding-bottom:12px}.cl2-stop span{display:block;font-size:27px;color:var(--muted)}.cl2-arrow{font-size:32px;color:var(--muted);padding-top:25px}</style>
+<div data-hf-id="hf-kwoy" id="root" data-composition-id="12-closing" data-duration="14.78" data-width="1920" data-height="1080">
+ <p data-hf-id="hf-8rk0" class="closing-eyebrow">SEE YOU IN SANIN</p><p data-hf-id="hf-qpx9" class="closing-date">2027.01.11 — 01.18</p><div data-hf-id="hf-rek8" class="closing-rule"></div>
+ <figure data-hf-id="hf-qwww" id="closing-photo"><img data-hf-id="hf-vkkj" src="../../assets/images/treated/kurashiki.jpg" alt="倉敷美觀地區的白壁建築與運河"></figure>
+ <p data-hf-id="hf-fpqh" class="closing-caption">倉敷｜把白壁與運河，留到最後</p>
+ <p data-hf-id="hf-bu4f" class="closing-credit">照片：David Monniaux · CC BY-SA 3.0 · Wikimedia Commons<br data-hf-id="hf-x5px">保留景點原色；非本次行程拍攝。</p>
+ <p data-hf-id="hf-s8pz" class="closing-kicker">六個人，一起慢慢走</p>
+ <h2 data-hf-id="hf-r66q" id="closing-title">把風景看進去，<br data-hf-id="hf-rsrt">把餘裕留下來。</h2>
+ <div class="cl2-flow" style="position:absolute;left:1050px;top:492px;width:784px;height:134px;display:flex;gap:20px">
+ <div id="cl2-1" class="cl2-stop">境港<span>妖怪街</span></div><div class="cl2-arrow">→</div><div id="cl2-2" class="cl2-stop">城崎<span>溫泉連住</span></div><div class="cl2-arrow">→</div><div id="cl2-3" class="cl2-stop">倉敷<span>白壁運河</span></div>
+ </div>
+ <div id="cl2-room" style="position:absolute;left:1050px;top:675px;width:784px;height:72px;border-top:3px solid var(--line);padding-top:20px;font-size:34px"><span id="cl2-scenery">想看的風景</span><span id="cl2-plus" style="margin:0 24px;color:var(--accent)">＋</span><span id="cl2-buffer">冬天的餘裕</span></div>
+ <p class="closing-invite" style="top:761px;border:0;padding-top:0;font-size:35px">準備，一起出發。</p>
+ <p data-hf-id="hf-uur2" class="closing-note">行程依資料夾整理<br data-hf-id="hf-qluq">官方資料查核：2026-10-19 · 詳細來源另附</p>
+</div>
+<script>
+(()=>{const T=window.TL.scenes['closing'];const D=T.duration;const tl=gsap.timeline({paused:true});
+tl.fromTo('#closing-photo img',{scale:1.06},{scale:1,duration:D*.8,ease:'power2.out'},0);
+tl.fromTo('#closing-title',{y:24,opacity:0},{y:0,opacity:1,duration:.8,ease:'expo.out'},T.title);
+['#cl2-1','#cl2-2','#cl2-3'].forEach((sel,i)=>{tl.fromTo(sel,{opacity:.2,y:14},{opacity:1,y:0,duration:.75,ease:'expo.out'},T.clauses[i].at);tl.fromTo(sel,{borderBottomColor:'var(--line)'},{borderBottomColor:'var(--accent)',duration:.5},T.clauses[i].at+.2);});
+tl.fromTo('#cl2-scenery',{opacity:0,y:12},{opacity:1,y:0,duration:.7,ease:'expo.out'},T.clauses[3].at);
+tl.fromTo('#cl2-plus,#cl2-buffer',{opacity:0,y:12},{opacity:1,y:0,duration:.7,ease:'expo.out'},T.clauses[4].at);
+tl.fromTo('.closing-invite',{y:24,opacity:0},{y:0,opacity:1,duration:.9,ease:'expo.out'},T.clauses[6].at);
+window.__timelines['12-closing']=tl;})();
+</script>
+</template>

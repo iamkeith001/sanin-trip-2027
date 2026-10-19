@@ -1,0 +1,50 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700;font-display:block}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font:700 34px/1.5 GenSekiGothic,sans-serif}
+.route-eyebrow{position:absolute;left:86px;top:68px;font-size:24px;letter-spacing:5px}.route-date{position:absolute;right:86px;top:68px;font-size:25px}.route-rule{position:absolute;left:86px;top:119px;width:1748px;height:2px;background:var(--line)}.route-chapter{position:absolute;top:155px;left:86px;color:var(--accent);font-size:30px;letter-spacing:4px}#route-title{position:absolute;top:213px;left:86px;font-size:72px;line-height:1.28}
+#route-map{position:absolute;left:86px;top:345px;width:1748px;height:450px;overflow:visible}#route-map text{font-family:GenSekiGothic,sans-serif;fill:var(--ink);font-weight:700}#route-map .route-city{font-size:39px}#route-map .route-detail{font-size:25px;fill:var(--muted)}#route-map .route-step{font-size:26px;fill:var(--accent)}#route-map .route-water{font-size:25px;letter-spacing:8px;fill:var(--muted)}#route-map .route-base{fill:none;stroke:var(--line);stroke-width:2}#route-map .route-east{fill:none;stroke:var(--accent);stroke-width:7;stroke-linecap:round}#route-map .route-west{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round}#route-map .route-south{fill:none;stroke:var(--accent);stroke-width:7;stroke-linecap:round}#route-map .route-trip{fill:none;stroke:var(--ink);stroke-width:4;stroke-dasharray:10 10}#route-map .route-node{fill:var(--bg);stroke:var(--ink);stroke-width:4}#route-map .route-arrow{fill:var(--accent)}
+.route-summary{position:absolute;left:86px;top:811px;width:1748px;display:flex;gap:56px;border-top:2px solid var(--line);padding-top:18px}.route-summary p{font-size:29px}.route-summary b{color:var(--accent);margin-right:16px}.route-footnote{position:absolute;left:86px;top:901px;font-size:25px;color:var(--muted)}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+</style>
+<div data-hf-id="hf-hla7" id="root" data-composition-id="02-route" data-duration="14.98" data-width="1920" data-height="1080">
+ <p data-hf-id="hf-e2fm" class="route-eyebrow">THE ROUTE</p><p data-hf-id="hf-ostz" class="route-date">8 DAYS / 7 NIGHTS</p><div data-hf-id="hf-uh7m" class="route-rule"></div><p data-hf-id="hf-uuee" class="route-chapter">全程路線</p>
+ <h2 data-hf-id="hf-413q" id="route-title">先沿海東行，再南下岡山</h2>
+ <svg data-hf-id="hf-29k2" id="route-map" viewBox="0 0 1748 450" aria-label="境港經米子鳥取至城崎、天橋立，折返鳥取南下岡山並往返倉敷的示意路線">
+  <text data-hf-id="hf-7g5h" class="route-water" x="770" y="27">日 本 海</text>
+  <path data-hf-id="hf-11s5" class="route-base" d="M120 155 Q340 105 620 155 T1140 130 Q1390 130 1620 190"/>
+  <path data-hf-id="hf-jqx0" id="route-east-path" class="route-east" d="M120 155 Q340 105 620 155 T1140 130 Q1390 130 1620 190"/>
+  <path data-hf-id="hf-a024" id="route-west-path" class="route-west" d="M1620 198 C1460 310 1050 320 635 176"/>
+  <path data-hf-id="hf-gfjy" id="route-south-path" class="route-south" d="M620 175 C620 280 620 320 620 375"/>
+  <path data-hf-id="hf-toyz" id="route-trip-path" class="route-trip" d="M599 375 H300"/>
+  <g data-hf-id="hf-fokl" id="route-east-label"><text data-hf-id="hf-8ghi" class="route-step" x="770" y="95">DAY 2 → DAY 4　東行</text><path data-hf-id="hf-v98v" class="route-arrow" d="M1015 151 l16 8 -15 8z"/></g>
+  <g data-hf-id="hf-owef" id="route-west-label"><text data-hf-id="hf-dhy4" class="route-detail" x="1160" y="318">← DAY 5　折返鳥取</text></g>
+  <g data-hf-id="hf-fz83" id="route-south-label"><text data-hf-id="hf-y8gs" class="route-step" x="655" y="326">DAY 6　南下</text></g>
+  <g data-hf-id="hf-t3y3" id="route-saka"><circle data-hf-id="hf-iiiw" class="route-node" cx="120" cy="155" r="12"/><text data-hf-id="hf-icdd" class="route-city" x="60" y="83">境港</text><text data-hf-id="hf-1zly" class="route-detail" x="38" y="251">DAY 1 · 1 晚</text><text data-hf-id="hf-w5z0" class="route-detail" x="38" y="285">米子機場進</text></g>
+  <g data-hf-id="hf-7alo" id="route-tottori"><circle data-hf-id="hf-cpzb" class="route-node" cx="620" cy="155" r="12"/><text data-hf-id="hf-ofz9" class="route-city" x="567" y="84">鳥取</text><text data-hf-id="hf-zlv4" class="route-detail" x="325" y="203">DAY 2 轉乘</text><text data-hf-id="hf-9q94" class="route-detail" x="325" y="241">DAY 5 · 1 晚</text></g>
+  <g data-hf-id="hf-60jy" id="route-kinosaki"><circle data-hf-id="hf-nexq" class="route-node" cx="1140" cy="130" r="12"/><text data-hf-id="hf-lv4a" class="route-city" x="1052" y="208">城崎溫泉</text><text data-hf-id="hf-nhoq" class="route-detail" x="1055" y="248">DAY 2–3 · 2 晚</text></g>
+  <g data-hf-id="hf-cdrf" id="route-amano"><circle data-hf-id="hf-41pl" class="route-node" cx="1620" cy="190" r="12"/><text data-hf-id="hf-j93j" class="route-city" x="1535" y="103">天橋立</text><text data-hf-id="hf-fryg" class="route-detail" x="1506" y="143">DAY 4 · 1 晚</text></g>
+  <g data-hf-id="hf-xr6a" id="route-okayama"><circle data-hf-id="hf-5dlr" class="route-node" cx="620" cy="375" r="12"/><text data-hf-id="hf-wcf9" class="route-city" x="660" y="391">岡山</text><text data-hf-id="hf-5syc" class="route-detail" x="660" y="433">DAY 6–8 · 2 晚／機場出</text></g>
+  <g data-hf-id="hf-xruu" id="route-kurashiki"><circle data-hf-id="hf-vr0t" class="route-node" cx="280" cy="375" r="12"/><text data-hf-id="hf-4z33" class="route-city" x="80" y="391">倉敷</text><text data-hf-id="hf-8hmf" class="route-detail" x="80" y="433">DAY 7 往返</text></g>
+ </svg>
+ <div data-hf-id="hf-zli8" class="route-summary"><p data-hf-id="hf-7p74"><b data-hf-id="hf-t4n0">1</b>沿海東行</p><p data-hf-id="hf-tef3"><b data-hf-id="hf-rxpx">2</b>天橋立折返鳥取</p><p data-hf-id="hf-u13b"><b data-hf-id="hf-sc0y">3</b>岡山連住，輕裝遊倉敷</p></div>
+ <p data-hf-id="hf-2sv6" class="route-footnote">路線示意，非比例；連線不代表列車直達。實際轉乘與 2027 冬季班次另核。</p>
+</div>
+<script>
+(()=>{const T=window.TL.scenes['route'];const D=T.duration;const tl=gsap.timeline({paused:true});
+tl.fromTo('#route-title',{y:24,opacity:0},{y:0,opacity:1,duration:.8,ease:'expo.out'},T.title);
+const draw=(id,at,dur)=>{const el=document.getElementById(id),n=el.getTotalLength();tl.fromTo(el,{strokeDasharray:n,strokeDashoffset:n},{strokeDashoffset:0,duration:dur,ease:'power2.inOut'},at);};
+draw('route-east-path',T.items[0],D*.19);draw('route-west-path',T.items[1],D*.16);draw('route-south-path',T.items[2],D*.1);draw('route-trip-path',T.items[3],D*.08);
+tl.fromTo('#route-east-label',{opacity:0,y:12},{opacity:1,y:0,duration:.7,ease:'expo.out'},T.items[0]);
+tl.fromTo('#route-west-label',{opacity:0,y:12},{opacity:1,y:0,duration:.7,ease:'expo.out'},T.items[1]);
+tl.fromTo('#route-south-label',{opacity:0,y:12},{opacity:1,y:0,duration:.7,ease:'expo.out'},T.items[2]);
+tl.fromTo('#route-okayama',{opacity:.18},{opacity:1,duration:.7,ease:'expo.out'},T.items[2]);tl.fromTo('#route-kurashiki',{opacity:.18},{opacity:1,duration:.7,ease:'expo.out'},T.items[3]);
+tl.fromTo('.route-summary p',{opacity:0,y:24},{opacity:1,y:0,duration:.8,stagger:.22,ease:'expo.out'},T.items[1]);
+window.__timelines['02-route']=tl;})();
+</script>
+</template>

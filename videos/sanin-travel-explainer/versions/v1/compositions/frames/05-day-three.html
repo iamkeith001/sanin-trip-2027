@@ -1,0 +1,44 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.photo-frame{left:900px;top:348px;width:934px;height:470px}
+.photo-frame img{object-position:center}
+.credit{left:900px;top:829px;width:934px}
+.tagbox{position:absolute;left:86px;top:351px;width:755px}
+.leadbox{position:absolute;left:86px;top:426px;width:755px}
+.rows{position:absolute;left:86px;top:555px;width:755px}
+.row{padding:15px 0;gap:18px}
+.row .when{min-width:151px;font-size:27px}
+.row .what{font-size:29px}
+.source{bottom:119px}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+</style>
+<div data-hf-id="hf-fqls" id="root" data-composition-id="05-day-three" data-duration="16.52" data-width="1920" data-height="1080">
+<div data-hf-id="hf-wua0" class="scene">
+ <p data-hf-id="hf-tg96" class="eyebrow">KINOSAKI ONSEN</p><p data-hf-id="hf-r6we" class="date">01.13 WED</p><div data-hf-id="hf-a46i" class="rule"></div>
+ <p data-hf-id="hf-yhr2" class="day">DAY 3</p><h1 data-hf-id="hf-3zqe" class="heading" id="day-three-heading">在城崎，留一整天給慢遊</h1>
+ <div data-hf-id="hf-6to9" class="tagbox" id="day-three-tag"><p data-hf-id="hf-fu81" class="tag">推薦方案 · 待旅伴拍板</p></div>
+ <div data-hf-id="hf-9ya7" class="leadbox" id="day-three-lead"><p data-hf-id="hf-o5zi" class="lead">纜車看天候，午休不省略</p></div>
+ <div data-hf-id="hf-hnc7" class="rows"><div data-hf-id="hf-q3q7" class="row" id="day-three-row-0"><span data-hf-id="hf-vvt7" class="when">上午</span><span data-hf-id="hf-yyex" class="what">纜車／平地散步</span></div><div data-hf-id="hf-m5m6" class="row" id="day-three-row-1"><span data-hf-id="hf-g1p0" class="when">中午</span><span data-hf-id="hf-vvmw" class="what">老街午餐＋回房午休</span></div><div data-hf-id="hf-i7i5" class="row" id="day-three-row-2"><span data-hf-id="hf-mo1e" class="when">下午</span><span data-hf-id="hf-pbp6" class="what">御所之湯優先</span></div></div>
+ <figure data-hf-id="hf-4p1d" class="photo-frame" id="day-three-photo"><img data-hf-id="hf-9o9r" id="day-three-image" src="../../assets/images/treated/kinosaki.jpg" alt="在城崎，留一整天給慢遊，景點參考照片"></figure>
+ <p data-hf-id="hf-i16w" class="credit">Photo: 663highland · CC BY 2.5 · Wikimedia Commons</p>
+ <p data-hf-id="hf-bhkq" class="footnote">外湯休湯日與纜車運行，出發前再確認</p><p data-hf-id="hf-9g18" class="source">城崎觀光協會／纜車官網 · 2026-10-19 查核</p><p data-hf-id="hf-wscd" class="page-number">05 / 12</p>
+</div></div>
+<script>
+(()=>{
+ const C=window.TL.scenes['day-three'];const D=C.duration;const tl=gsap.timeline({paused:true});
+ tl.fromTo('#day-three-heading',{y:24,opacity:0},{y:0,opacity:1,duration:0.8,ease:'power3.out'},C.title);
+ tl.fromTo('#day-three-tag',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.5);
+ tl.fromTo('#day-three-lead',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.7);
+ tl.fromTo('#day-three-photo',{x:30,opacity:0},{x:0,opacity:1,duration:0.9,ease:'power3.out'},C.enter+0.2);
+ tl.fromTo('#day-three-image',{scale:1.03},{scale:1.0,duration:D-1,ease:'none'},C.enter);
+ tl.fromTo('#day-three-row-0',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[0]);tl.fromTo('#day-three-row-1',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[1]);tl.fromTo('#day-three-row-2',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[2]);
+ window.__timelines['05-day-three']=tl;
+})();
+</script></template>

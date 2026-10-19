@@ -1,0 +1,44 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.photo-frame{left:900px;top:348px;width:934px;height:470px}
+.photo-frame img{object-position:center}
+.credit{left:900px;top:829px;width:934px}
+.tagbox{position:absolute;left:86px;top:351px;width:755px}
+.leadbox{position:absolute;left:86px;top:426px;width:755px}
+.rows{position:absolute;left:86px;top:555px;width:755px}
+.row{padding:15px 0;gap:18px}
+.row .when{min-width:151px;font-size:27px}
+.row .what{font-size:29px}
+.source{bottom:119px}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+</style>
+<div data-hf-id="hf-a7wa" id="root" data-composition-id="06-day-four" data-duration="16" data-width="1920" data-height="1080">
+<div data-hf-id="hf-wua0" class="scene">
+ <p data-hf-id="hf-ols1" class="eyebrow">AMANOHASHIDATE</p><p data-hf-id="hf-hktg" class="date">01.14 THU</p><div data-hf-id="hf-a46i" class="rule"></div>
+ <p data-hf-id="hf-xatz" class="day">DAY 4</p><h1 data-hf-id="hf-a144" class="heading" id="day-four-heading">天橋立，從山上看海之京都</h1>
+ <div data-hf-id="hf-x0s1" class="tagbox" id="day-four-tag"><p data-hf-id="hf-4bkt" class="tag">文珠荘 · 已訂，含早晚餐</p></div>
+ <div data-hf-id="hf-uzgb" class="leadbox" id="day-four-lead"><p data-hf-id="hf-xiga" class="lead">View Land、智恩寺與松林短線</p></div>
+ <div data-hf-id="hf-hnc7" class="rows"><div data-hf-id="hf-9z3h" class="row" id="day-four-row-0"><span data-hf-id="hf-vvt7" class="when">上午</span><span data-hf-id="hf-00k5" class="what">豐岡轉丹鐵</span></div><div data-hf-id="hf-6ztw" class="row" id="day-four-row-1"><span data-hf-id="hf-iphx" class="when">午後</span><span data-hf-id="hf-t3q4" class="what">登高俯瞰天橋立</span></div><div data-hf-id="hf-hvbj" class="row" id="day-four-row-2"><span data-hf-id="hf-b951" class="when">15:30 目標</span><span data-hf-id="hf-7zp8" class="what">入住文珠荘</span></div></div>
+ <figure data-hf-id="hf-fq15" class="photo-frame" id="day-four-photo"><img data-hf-id="hf-g0n5" id="day-four-image" src="../../assets/images/treated/amanohashidate.jpg" alt="天橋立，從山上看海之京都，景點參考照片"></figure>
+ <p data-hf-id="hf-ap8t" class="credit">Photo: brian25_tw · CC BY-SA 2.0 · Wikimedia Commons</p>
+ <p data-hf-id="hf-26ac" class="footnote">已選天橋立，不去伊根 · 登高視天候調整</p><p data-hf-id="hf-14ls" class="source">天橋立 View Land 官網 · 2026-10-19 查核</p><p data-hf-id="hf-yx8y" class="page-number">06 / 12</p>
+</div></div>
+<script>
+(()=>{
+ const C=window.TL.scenes['day-four'];const D=C.duration;const tl=gsap.timeline({paused:true});
+ tl.fromTo('#day-four-heading',{y:24,opacity:0},{y:0,opacity:1,duration:0.8,ease:'power3.out'},C.title);
+ tl.fromTo('#day-four-tag',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.5);
+ tl.fromTo('#day-four-lead',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.7);
+ tl.fromTo('#day-four-photo',{x:30,opacity:0},{x:0,opacity:1,duration:0.9,ease:'power3.out'},C.enter+0.2);
+ tl.fromTo('#day-four-image',{scale:1.03},{scale:1.0,duration:D-1,ease:'none'},C.enter);
+ tl.fromTo('#day-four-row-0',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[0]);tl.fromTo('#day-four-row-1',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[1]);tl.fromTo('#day-four-row-2',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[2]);
+ window.__timelines['06-day-four']=tl;
+})();
+</script></template>

@@ -1,0 +1,24 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf');font-weight:700;font-display:block}
+#root{position:absolute;inset:0;width:100%;height:100%}
+.pr2-row{position:absolute;left:100px;width:1735px;height:155px;border-top:2px solid var(--line);display:flex;align-items:center;gap:32px}.pr2-num{font-size:56px;color:var(--accent);width:100px}.pr2-cell{width:440px;font-size:38px;line-height:1.5}.pr2-small{display:block;font-size:26px;color:var(--muted)}.pr2-arrow{width:100px;height:50px;overflow:visible;color:var(--accent)}.pr2-result{font-size:37px;width:470px}.pr2-route{fill:none;stroke:var(--line);stroke-width:4}.pr2-token{fill:var(--accent)}.pr2-note{position:absolute;left:233px;top:839px;font-size:29px;color:var(--muted)}
+</style>
+<div id="root" data-composition-id="11-practical" data-duration="16.78" data-width="1920" data-height="1080"><div class="scene">
+<div class="eyebrow">BEFORE WE GO</div><div class="date">行前再確認</div><div class="rule"></div><div class="day">TRAVEL LOGIC</div><h1 id="pr2-title" class="heading">三個安排，換來旅途的餘裕</h1>
+<div id="pr2-luggage" class="pr2-row" style="top:350px"><span class="pr2-num">01</span><div class="pr2-cell">八件大行李<span class="pr2-small">Day 1 先交寄川口屋</span></div><svg class="pr2-arrow" viewBox="0 0 100 50"><path id="pr2-p1" class="pr2-route" d="M0 25H95L80 10M95 25L80 40"/><rect id="pr2-bag" class="pr2-token" x="0" y="10" width="24" height="30" rx="3"/></svg><div id="pr2-r1" class="pr2-result">隔天輕裝轉乘<span class="pr2-small">後續寄送仍待決定</span></div></div>
+<div id="pr2-meal" class="pr2-row" style="top:510px"><span class="pr2-num">02</span><div class="pr2-cell">含餐的住宿<span class="pr2-small">城崎、文珠荘依訂房用餐</span></div><svg class="pr2-arrow" viewBox="0 0 100 50"><path id="pr2-p2" class="pr2-route" d="M0 25H95L80 10M95 25L80 40"/><circle id="pr2-meal-token" class="pr2-token" cx="0" cy="25" r="10"/></svg><div id="pr2-r2" class="pr2-result">保留回館與用餐時間<span class="pr2-small">其餘餐廳多數尚未訂位</span></div></div>
+<div id="pr2-winter" class="pr2-row" style="top:670px"><span class="pr2-num">03</span><div class="pr2-cell">冬季交通與天候<span class="pr2-small">出發前核對班次、六人座位</span></div><svg class="pr2-arrow" viewBox="0 0 100 50"><path id="pr2-p3" class="pr2-route" d="M0 25H95L80 10M95 25L80 40"/><circle id="pr2-winter-token" class="pr2-token" cx="0" cy="25" r="10"/></svg><div id="pr2-r3" class="pr2-result">風雪大，就減少景點<span class="pr2-small">把休息與返程緩衝留下來</span></div></div>
+<p id="pr2-note" class="pr2-note">先處理限制，再決定景點的多寡。</p>
+<p class="footnote">已訂住宿與候選餐廳，分開看待。</p><p class="source">依專案行程、交通與訂房文件整理 · 官方資訊查核 2026-10-19</p><div class="page-number">11 / 12</div>
+</div></div>
+<script>
+(()=>{const T=window.TL.scenes.practical;const c=T.clauses;const tl=gsap.timeline({paused:true});
+tl.fromTo('#pr2-title',{opacity:0,y:20},{opacity:1,y:0,duration:.8,ease:'expo.out'},T.title);
+const rows=['luggage','meal','winter'],ats=[c[1].at,c[3].at,c[5].at],res=[c[1].at+1,c[3].at+1,c[7].at];
+rows.forEach((n,i)=>{tl.fromTo('#pr2-'+n,{opacity:.15,y:18},{opacity:1,y:0,duration:.75,ease:'expo.out'},ats[i]);tl.fromTo('#pr2-r'+(i+1),{opacity:0,x:-15},{opacity:1,x:0,duration:.7,ease:'expo.out'},res[i]);});
+['#pr2-bag','#pr2-meal-token','#pr2-winter-token'].forEach((s,i)=>tl.fromTo(s,{x:0},{x:77,duration:.95,ease:'power2.inOut'},ats[i]+.2));
+tl.fromTo('#pr2-note',{opacity:0,y:8},{opacity:1,y:0,duration:.6,ease:'expo.out'},c[7].at);
+window.__timelines['11-practical']=tl;})();
+</script></template>

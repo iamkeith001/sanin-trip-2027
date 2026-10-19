@@ -1,0 +1,44 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.photo-frame{left:900px;top:348px;width:934px;height:470px}
+.photo-frame img{object-position:center}
+.credit{left:900px;top:829px;width:934px}
+.tagbox{position:absolute;left:86px;top:351px;width:755px}
+.leadbox{position:absolute;left:86px;top:426px;width:755px}
+.rows{position:absolute;left:86px;top:555px;width:755px}
+.row{padding:15px 0;gap:18px}
+.row .when{min-width:151px;font-size:27px}
+.row .what{font-size:29px}
+.source{bottom:119px}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+</style>
+<div data-hf-id="hf-4ogn" id="root" data-composition-id="09-day-seven" data-duration="16.36" data-width="1920" data-height="1080">
+<div data-hf-id="hf-wua0" class="scene">
+ <p data-hf-id="hf-s0wp" class="eyebrow">KURASHIKI</p><p data-hf-id="hf-tqu8" class="date">01.17 SUN</p><div data-hf-id="hf-a46i" class="rule"></div>
+ <p data-hf-id="hf-wwiy" class="day">DAY 7</p><h1 data-hf-id="hf-5zc9" class="heading" id="day-seven-heading">倉敷，把白壁與運河留到最後</h1>
+ <div data-hf-id="hf-5j6i" class="tagbox" id="day-seven-tag"><p data-hf-id="hf-pil1" class="tag">大行李留在岡山飯店</p></div>
+ <div data-hf-id="hf-kmku" class="leadbox" id="day-seven-lead"><p data-hf-id="hf-k9o5" class="lead">上午看藝術，午後散步與採買</p></div>
+ <div data-hf-id="hf-hnc7" class="rows"><div data-hf-id="hf-2t78" class="row" id="day-seven-row-0"><span data-hf-id="hf-ost4" class="when">09:30 目標</span><span data-hf-id="hf-32ol" class="what">先參觀大原美術館</span></div><div data-hf-id="hf-3kv1" class="row" id="day-seven-row-1"><span data-hf-id="hf-sjoo" class="when">午餐前後</span><span data-hf-id="hf-hlyo" class="what">白壁運河短線</span></div><div data-hf-id="hf-7iz2" class="row" id="day-seven-row-2"><span data-hf-id="hf-ws02" class="when">14:30 目標</span><span data-hf-id="hf-4oz3" class="what">Outlet，傍晚回岡山</span></div></div>
+ <figure data-hf-id="hf-7aga" class="photo-frame" id="day-seven-photo"><img data-hf-id="hf-n7dq" id="day-seven-image" src="../../assets/images/treated/kurashiki.jpg" alt="倉敷，把白壁與運河留到最後，景點參考照片"></figure>
+ <p data-hf-id="hf-llhs" class="credit">Photo: David Monniaux · CC BY-SA 3.0 · Wikimedia Commons</p>
+ <p data-hf-id="hf-4h04" class="footnote">大原美術館冬季 09:00–15:00 · 川舟不搭</p><p data-hf-id="hf-l6az" class="source">大原美術館官方入館資訊與年度日曆 · 2026-10-19 查核</p><p data-hf-id="hf-lr5t" class="page-number">09 / 12</p>
+</div></div>
+<script>
+(()=>{
+ const C=window.TL.scenes['day-seven'];const D=C.duration;const tl=gsap.timeline({paused:true});
+ tl.fromTo('#day-seven-heading',{y:24,opacity:0},{y:0,opacity:1,duration:0.8,ease:'power3.out'},C.title);
+ tl.fromTo('#day-seven-tag',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.5);
+ tl.fromTo('#day-seven-lead',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.7);
+ tl.fromTo('#day-seven-photo',{x:30,opacity:0},{x:0,opacity:1,duration:0.9,ease:'power3.out'},C.enter+0.2);
+ tl.fromTo('#day-seven-image',{scale:1.03},{scale:1.0,duration:D-1,ease:'none'},C.enter);
+ tl.fromTo('#day-seven-row-0',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[0]);tl.fromTo('#day-seven-row-1',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[1]);tl.fromTo('#day-seven-row-2',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[2]);
+ window.__timelines['09-day-seven']=tl;
+})();
+</script></template>

@@ -1,0 +1,2046 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 351 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split coherent scenes or layers into separate .html files under compositions/, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      }
+    ],
+    "filesScanned": 14
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 53,
+    "findings": [
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 10.423,
+        "selector": "#opening-photo > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1049.27,
+          "top": 135.37,
+          "right": 1864.73,
+          "bottom": 834.64,
+          "width": 815.46,
+          "height": 699.27
+        },
+        "containerSelector": "#opening-photo",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 1078,
+          "top": 160,
+          "right": 1836,
+          "bottom": 810,
+          "width": 758,
+          "height": 650
+        },
+        "overflow": {
+          "left": 28.73,
+          "right": 28.73,
+          "top": 24.63,
+          "bottom": 24.64
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-3jlh",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 1049.27,
+          "y": 135.37,
+          "width": 815.46,
+          "height": 699.27
+        },
+        "firstSeen": 10.423,
+        "lastSeen": 10.423,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          10.423
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "p.opening-label",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 74,
+          "right": 455.61,
+          "bottom": 98,
+          "width": 369.61,
+          "height": 24
+        },
+        "containerSelector": "p.route-eyebrow",
+        "text": "2027 WINTER JOURNEY",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-beyq"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 86,
+          "y": 74,
+          "width": 369.61,
+          "height": 24
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "p.opening-date",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1598.69,
+          "top": 74,
+          "right": 1834,
+          "bottom": 99,
+          "width": 235.31,
+          "height": 25
+        },
+        "containerSelector": "p.route-date",
+        "text": "2027.01.11 — 01.18",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-0rya"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 1598.69,
+          "y": 74,
+          "width": 235.31,
+          "height": 25
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "p.opening-place",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 167,
+          "right": 406,
+          "bottom": 196,
+          "width": 320,
+          "height": 29
+        },
+        "containerSelector": "p.route-chapter",
+        "text": "山陰・海之京都・山陽",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-k335"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 86,
+          "y": 167,
+          "width": 320,
+          "height": 29
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "#opening-title > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 232,
+          "right": 596,
+          "bottom": 332,
+          "width": 510,
+          "height": 100
+        },
+        "containerSelector": "#route-title",
+        "text": "冬日，沿著",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-f5hm"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 86,
+          "y": 232,
+          "width": 510,
+          "height": 100
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "#opening-title > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 357,
+          "right": 494,
+          "bottom": 457,
+          "width": 408,
+          "height": 100
+        },
+        "containerSelector": "#route-saka > text:nth-of-type(1)",
+        "text": "山陰慢行",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-ikro"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 86,
+          "y": 357,
+          "width": 408,
+          "height": 100
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "p.opening-deck > span:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 91,
+          "top": 520,
+          "right": 451,
+          "bottom": 556,
+          "width": 360,
+          "height": 36
+        },
+        "containerSelector": "#route-tottori > text:nth-of-type(2)",
+        "text": "妖怪街、溫泉與日本海",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-kbke"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 91,
+          "y": 520,
+          "width": 360,
+          "height": 36
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "p.opening-deck > span:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 91,
+          "top": 577.59,
+          "right": 379,
+          "bottom": 613.59,
+          "width": 288,
+          "height": 36
+        },
+        "containerSelector": "#route-saka > text:nth-of-type(2)",
+        "text": "米子進，岡山出。",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-q0vs"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 91,
+          "y": 577.59,
+          "width": 288,
+          "height": 36
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 12.285,
+        "selector": "p.opening-wordmark",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 921,
+          "right": 537.88,
+          "bottom": 941,
+          "width": 451.88,
+          "height": 20
+        },
+        "containerSelector": "p.route-footnote",
+        "text": "A JOURNEY WITH ROOM TO BREATHE",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-2s1l"
+        },
+        "sourceFile": "compositions/frames/01-opening.html",
+        "bbox": {
+          "x": 86,
+          "y": 921,
+          "width": 451.88,
+          "height": 20
+        },
+        "firstSeen": 12.285,
+        "lastSeen": 12.285,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.285
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 41.86,
+        "selector": "#el-03-day-one > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 71,
+          "right": 303.48,
+          "bottom": 95,
+          "width": 217.48,
+          "height": 24
+        },
+        "containerSelector": "#el-04-day-two > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "SAKAIMINATO",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-dd2a"
+        },
+        "sourceFile": "compositions/frames/03-day-one.html",
+        "bbox": {
+          "x": 86,
+          "y": 71,
+          "width": 217.48,
+          "height": 24
+        },
+        "firstSeen": 41.86,
+        "lastSeen": 41.86,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          41.86
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 41.86,
+        "selector": "#el-03-day-one > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1549.63,
+          "top": 74,
+          "right": 1834,
+          "bottom": 99,
+          "width": 284.37,
+          "height": 25
+        },
+        "containerSelector": "#el-04-day-two > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "text": "01.11 MON · 成人之日",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-dyr4"
+        },
+        "sourceFile": "compositions/frames/03-day-one.html",
+        "bbox": {
+          "x": 1549.63,
+          "y": 74,
+          "width": 284.37,
+          "height": 25
+        },
+        "firstSeen": 41.86,
+        "lastSeen": 41.86,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          41.86
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 41.86,
+        "selector": "#el-03-day-one > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 162,
+          "right": 187.61,
+          "bottom": 192,
+          "width": 101.61,
+          "height": 30
+        },
+        "containerSelector": "#el-04-day-two > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "DAY 1",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-1fof"
+        },
+        "sourceFile": "compositions/frames/03-day-one.html",
+        "bbox": {
+          "x": 86,
+          "y": 162,
+          "width": 101.61,
+          "height": 30
+        },
+        "firstSeen": 41.86,
+        "lastSeen": 41.86,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          41.86
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 41.86,
+        "selector": "#d1-fallback",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1075,
+          "top": 813,
+          "right": 1426,
+          "bottom": 840,
+          "width": 351,
+          "height": 27
+        },
+        "containerSelector": "p.d2-credit",
+        "text": "晚到：先寄件，紀念館可取消",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-4f80"
+        },
+        "sourceFile": "compositions/frames/03-day-one.html",
+        "bbox": {
+          "x": 1075,
+          "y": 813,
+          "width": 351,
+          "height": 27
+        },
+        "firstSeen": 41.86,
+        "lastSeen": 41.86,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          41.86
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 41.86,
+        "selector": "#el-03-day-one > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 876.25,
+          "right": 520.13,
+          "bottom": 901.25,
+          "width": 434.13,
+          "height": 25
+        },
+        "containerSelector": "#el-04-day-two > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "text": "紀念館現行最終入館 16:30 · 寄件優先",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-6c48"
+        },
+        "sourceFile": "compositions/frames/03-day-one.html",
+        "bbox": {
+          "x": 86,
+          "y": 876.25,
+          "width": 434.13,
+          "height": 25
+        },
+        "firstSeen": 41.86,
+        "lastSeen": 41.86,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          41.86
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 41.86,
+        "selector": "#el-03-day-one > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 927,
+          "right": 428.78,
+          "bottom": 947,
+          "width": 342.78,
+          "height": 20
+        },
+        "containerSelector": "#el-04-day-two > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "text": "水木茂紀念館官網 · 2026-10-19 查核",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-ia0e"
+        },
+        "sourceFile": "compositions/frames/03-day-one.html",
+        "bbox": {
+          "x": 86,
+          "y": 927,
+          "width": 342.78,
+          "height": 20
+        },
+        "firstSeen": 41.86,
+        "lastSeen": 41.86,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          41.86
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 41.86,
+        "selector": "#el-03-day-one > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(10)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1757.19,
+          "top": 938,
+          "right": 1834,
+          "bottom": 962,
+          "width": 76.81,
+          "height": 24
+        },
+        "containerSelector": "#el-04-day-two > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(11)",
+        "text": "03 / 12",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-v95w"
+        },
+        "sourceFile": "compositions/frames/03-day-one.html",
+        "bbox": {
+          "x": 1757.19,
+          "y": 938,
+          "width": 76.81,
+          "height": 24
+        },
+        "firstSeen": 41.86,
+        "lastSeen": 41.86,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          41.86
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 52.117,
+        "selector": "#d2-img",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1212.49,
+          "top": 366.04,
+          "right": 1839.51,
+          "bottom": 815.96,
+          "width": 627.03,
+          "height": 449.91
+        },
+        "containerSelector": "#d2-photo",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 1218,
+          "top": 370,
+          "right": 1834,
+          "bottom": 812,
+          "width": 616,
+          "height": 442
+        },
+        "overflow": {
+          "left": 5.51,
+          "right": 5.51,
+          "top": 3.96,
+          "bottom": 3.96
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-yr2o",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/frames/04-day-two.html",
+        "bbox": {
+          "x": 1212.49,
+          "y": 366.04,
+          "width": 627.03,
+          "height": 449.91
+        },
+        "firstSeen": 52.117,
+        "lastSeen": 52.117,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          52.117
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 89.343,
+        "selector": "#el-06-day-four > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 71,
+          "right": 378.47,
+          "bottom": 95,
+          "width": 292.47,
+          "height": 24
+        },
+        "containerSelector": "#el-07-day-five > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "AMANOHASHIDATE",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-ols1"
+        },
+        "sourceFile": "compositions/frames/06-day-four.html",
+        "bbox": {
+          "x": 86,
+          "y": 71,
+          "width": 292.47,
+          "height": 24
+        },
+        "firstSeen": 89.343,
+        "lastSeen": 89.343,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          89.343
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 89.343,
+        "selector": "#el-06-day-four > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1699,
+          "top": 74,
+          "right": 1834,
+          "bottom": 99,
+          "width": 135,
+          "height": 25
+        },
+        "containerSelector": "#el-07-day-five > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "text": "01.14 THU",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-hktg"
+        },
+        "sourceFile": "compositions/frames/06-day-four.html",
+        "bbox": {
+          "x": 1699,
+          "y": 74,
+          "width": 135,
+          "height": 25
+        },
+        "firstSeen": 89.343,
+        "lastSeen": 89.343,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          89.343
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 89.343,
+        "selector": "#el-06-day-four > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 162,
+          "right": 187.64,
+          "bottom": 192,
+          "width": 101.64,
+          "height": 30
+        },
+        "containerSelector": "#el-07-day-five > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "text": "DAY 4",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-xatz"
+        },
+        "sourceFile": "compositions/frames/06-day-four.html",
+        "bbox": {
+          "x": 86,
+          "y": 162,
+          "width": 101.64,
+          "height": 30
+        },
+        "firstSeen": 89.343,
+        "lastSeen": 89.343,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          89.343
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 89.343,
+        "selector": "#el-06-day-four > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(4)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 900,
+          "top": 833,
+          "right": 1468.97,
+          "bottom": 853,
+          "width": 568.97,
+          "height": 20
+        },
+        "containerSelector": "#el-07-day-five > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(4)",
+        "text": "Photo: brian25_tw · CC BY-SA 2.0 · Wikimedia Commons",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-ap8t"
+        },
+        "sourceFile": "compositions/frames/06-day-four.html",
+        "bbox": {
+          "x": 900,
+          "y": 833,
+          "width": 568.97,
+          "height": 20
+        },
+        "firstSeen": 89.343,
+        "lastSeen": 89.343,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          89.343
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 89.343,
+        "selector": "#el-06-day-four > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(5)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 876.25,
+          "right": 547.36,
+          "bottom": 901.25,
+          "width": 461.36,
+          "height": 25
+        },
+        "containerSelector": "#el-07-day-five > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(5)",
+        "text": "已選天橋立，不去伊根 · 登高視天候調整",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-26ac"
+        },
+        "sourceFile": "compositions/frames/06-day-four.html",
+        "bbox": {
+          "x": 86,
+          "y": 876.25,
+          "width": 461.36,
+          "height": 25
+        },
+        "firstSeen": 89.343,
+        "lastSeen": 89.343,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          89.343
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 89.343,
+        "selector": "#el-06-day-four > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(6)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 927,
+          "right": 478.75,
+          "bottom": 947,
+          "width": 392.75,
+          "height": 20
+        },
+        "containerSelector": "#el-07-day-five > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(6)",
+        "text": "天橋立 View Land 官網 · 2026-10-19 查核",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-14ls"
+        },
+        "sourceFile": "compositions/frames/06-day-four.html",
+        "bbox": {
+          "x": 86,
+          "y": 927,
+          "width": 392.75,
+          "height": 20
+        },
+        "firstSeen": 89.343,
+        "lastSeen": 89.343,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          89.343
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 89.343,
+        "selector": "#el-06-day-four > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(7)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1757.19,
+          "top": 938,
+          "right": 1834,
+          "bottom": 962,
+          "width": 76.81,
+          "height": 24
+        },
+        "containerSelector": "#el-07-day-five > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(7)",
+        "text": "06 / 12",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-yx8y"
+        },
+        "sourceFile": "compositions/frames/06-day-four.html",
+        "bbox": {
+          "x": 1757.19,
+          "y": 938,
+          "width": 76.81,
+          "height": 24
+        },
+        "firstSeen": 89.343,
+        "lastSeen": 89.343,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          89.343
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 93.81,
+        "selector": "#day-five-image",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 889.91,
+          "top": 342.92,
+          "right": 1844.09,
+          "bottom": 823.08,
+          "width": 954.17,
+          "height": 480.15
+        },
+        "containerSelector": "#day-five-photo",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 900,
+          "top": 348,
+          "right": 1834,
+          "bottom": 818,
+          "width": 934,
+          "height": 470
+        },
+        "overflow": {
+          "left": 10.09,
+          "right": 10.09,
+          "top": 5.08,
+          "bottom": 5.08
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-ijy7",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/frames/07-day-five.html",
+        "bbox": {
+          "x": 889.91,
+          "y": 342.92,
+          "width": 954.17,
+          "height": 480.15
+        },
+        "firstSeen": 93.81,
+        "lastSeen": 93.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          93.81
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 114.657,
+        "selector": "#day-six-image",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 892.67,
+          "top": 344.31,
+          "right": 1841.33,
+          "bottom": 821.69,
+          "width": 948.66,
+          "height": 477.38
+        },
+        "containerSelector": "#day-six-photo",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 900,
+          "top": 348,
+          "right": 1834,
+          "bottom": 818,
+          "width": 934,
+          "height": 470
+        },
+        "overflow": {
+          "left": 7.33,
+          "right": 7.33,
+          "top": 3.69,
+          "bottom": 3.69
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-bscd",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 892.67,
+          "y": 344.31,
+          "width": 948.66,
+          "height": 477.38
+        },
+        "firstSeen": 114.657,
+        "lastSeen": 114.657,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          114.657
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 124.44,
+        "selector": "#el-08-day-six > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 71,
+          "right": 401.27,
+          "bottom": 95,
+          "width": 315.27,
+          "height": 24
+        },
+        "containerSelector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "OKAYAMA / KIBITSU",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-5yyn"
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 86,
+          "y": 71,
+          "width": 315.27,
+          "height": 24
+        },
+        "firstSeen": 124.44,
+        "lastSeen": 124.44,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          124.44
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 124.44,
+        "selector": "#el-08-day-six > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1706.92,
+          "top": 74,
+          "right": 1834,
+          "bottom": 99,
+          "width": 127.08,
+          "height": 25
+        },
+        "containerSelector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "text": "01.16 SAT",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-f0rl"
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 1706.92,
+          "y": 74,
+          "width": 127.08,
+          "height": 25
+        },
+        "firstSeen": 124.44,
+        "lastSeen": 124.44,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          124.44
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 124.44,
+        "selector": "#el-08-day-six > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 162,
+          "right": 187.64,
+          "bottom": 192,
+          "width": 101.64,
+          "height": 30
+        },
+        "containerSelector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "text": "DAY 6",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-wi7x"
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 86,
+          "y": 162,
+          "width": 101.64,
+          "height": 30
+        },
+        "firstSeen": 124.44,
+        "lastSeen": 124.44,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          124.44
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 124.44,
+        "selector": "#el-08-day-six > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(4)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 900,
+          "top": 833,
+          "right": 1471.63,
+          "bottom": 853,
+          "width": 571.63,
+          "height": 20
+        },
+        "containerSelector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(4)",
+        "text": "Photo: Reggaeman · CC BY-SA 3.0 · Wikimedia Commons",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-7uke"
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 900,
+          "y": 833,
+          "width": 571.63,
+          "height": 20
+        },
+        "firstSeen": 124.44,
+        "lastSeen": 124.44,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          124.44
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 124.44,
+        "selector": "#el-08-day-six > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(5)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 876.25,
+          "right": 772.28,
+          "bottom": 901.25,
+          "width": 686.28,
+          "height": 25
+        },
+        "containerSelector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(5)",
+        "text": "360 公尺為廻廊全長，不要求走完全程 · 不排岡山城／後樂園",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-l81w"
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 86,
+          "y": 876.25,
+          "width": 686.28,
+          "height": 25
+        },
+        "firstSeen": 124.44,
+        "lastSeen": 124.44,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          124.44
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 124.44,
+        "selector": "#el-08-day-six > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(6)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 927,
+          "right": 408.78,
+          "bottom": 947,
+          "width": 322.78,
+          "height": 20
+        },
+        "containerSelector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(6)",
+        "text": "吉備津神社官網 · 2026-10-19 查核",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-vgq8"
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 86,
+          "y": 927,
+          "width": 322.78,
+          "height": 20
+        },
+        "firstSeen": 124.44,
+        "lastSeen": 124.44,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          124.44
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 124.44,
+        "selector": "#el-08-day-six > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(7)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1757.19,
+          "top": 938,
+          "right": 1834,
+          "bottom": 962,
+          "width": 76.81,
+          "height": 24
+        },
+        "containerSelector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(7)",
+        "text": "08 / 12",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-ld6k"
+        },
+        "sourceFile": "compositions/frames/08-day-six.html",
+        "bbox": {
+          "x": 1757.19,
+          "y": 938,
+          "width": 76.81,
+          "height": 24
+        },
+        "firstSeen": 124.44,
+        "lastSeen": 124.44,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          124.44
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 135.503,
+        "selector": "#day-seven-image",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 896.59,
+          "top": 346.28,
+          "right": 1837.41,
+          "bottom": 819.72,
+          "width": 940.82,
+          "height": 473.43
+        },
+        "containerSelector": "#day-seven-photo",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 900,
+          "top": 348,
+          "right": 1834,
+          "bottom": 818,
+          "width": 934,
+          "height": 470
+        },
+        "overflow": {
+          "left": 3.41,
+          "right": 3.41
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-n7dq",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 896.59,
+          "y": 346.28,
+          "width": 940.82,
+          "height": 473.43
+        },
+        "firstSeen": 135.503,
+        "lastSeen": 135.503,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          135.503
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 140.3,
+        "selector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 71,
+          "right": 261.97,
+          "bottom": 95,
+          "width": 175.97,
+          "height": 24
+        },
+        "containerSelector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "KURASHIKI",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-s0wp"
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 86,
+          "y": 71,
+          "width": 175.97,
+          "height": 24
+        },
+        "firstSeen": 140.3,
+        "lastSeen": 140.3,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          140.3
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 140.3,
+        "selector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1699.22,
+          "top": 74,
+          "right": 1834,
+          "bottom": 99,
+          "width": 134.78,
+          "height": 25
+        },
+        "containerSelector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "text": "01.17 SUN",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-tqu8"
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 1699.22,
+          "y": 74,
+          "width": 134.78,
+          "height": 25
+        },
+        "firstSeen": 140.3,
+        "lastSeen": 140.3,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          140.3
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 140.3,
+        "selector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 162,
+          "right": 187.64,
+          "bottom": 192,
+          "width": 101.64,
+          "height": 30
+        },
+        "containerSelector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "DAY 7",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-wwiy"
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 86,
+          "y": 162,
+          "width": 101.64,
+          "height": 30
+        },
+        "firstSeen": 140.3,
+        "lastSeen": 140.3,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          140.3
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 140.3,
+        "selector": "#day-seven-heading",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 223,
+          "right": 1022,
+          "bottom": 295,
+          "width": 936,
+          "height": 72
+        },
+        "containerSelector": "#d8-title",
+        "text": "倉敷，把白壁與運河留到最後",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-5zc9"
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 86,
+          "y": 223,
+          "width": 936,
+          "height": 72
+        },
+        "firstSeen": 140.3,
+        "lastSeen": 140.3,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          140.3
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 140.3,
+        "selector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(5)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 876.25,
+          "right": 550.86,
+          "bottom": 901.25,
+          "width": 464.86,
+          "height": 25
+        },
+        "containerSelector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "text": "大原美術館冬季 09:00–15:00 · 川舟不搭",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-4h04"
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 86,
+          "y": 876.25,
+          "width": 464.86,
+          "height": 25
+        },
+        "firstSeen": 140.3,
+        "lastSeen": 140.3,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          140.3
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 140.3,
+        "selector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(6)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 927,
+          "right": 588.78,
+          "bottom": 947,
+          "width": 502.78,
+          "height": 20
+        },
+        "containerSelector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "text": "大原美術館官方入館資訊與年度日曆 · 2026-10-19 查核",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-l6az"
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 86,
+          "y": 927,
+          "width": 502.78,
+          "height": 20
+        },
+        "firstSeen": 140.3,
+        "lastSeen": 140.3,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          140.3
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 140.3,
+        "selector": "#el-09-day-seven > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(7)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1757.19,
+          "top": 938,
+          "right": 1834,
+          "bottom": 962,
+          "width": 76.81,
+          "height": 24
+        },
+        "containerSelector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(8)",
+        "text": "09 / 12",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-lr5t"
+        },
+        "sourceFile": "compositions/frames/09-day-seven.html",
+        "bbox": {
+          "x": 1757.19,
+          "y": 938,
+          "width": 76.81,
+          "height": 24
+        },
+        "firstSeen": 140.3,
+        "lastSeen": 140.3,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          140.3
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 156.81,
+        "selector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 71,
+          "right": 392.08,
+          "bottom": 95,
+          "width": 306.08,
+          "height": 24
+        },
+        "containerSelector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "HOMEWARD BOUND",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-6avo"
+        },
+        "sourceFile": "compositions/frames/10-day-eight.html",
+        "bbox": {
+          "x": 86,
+          "y": 71,
+          "width": 306.08,
+          "height": 24
+        },
+        "firstSeen": 156.81,
+        "lastSeen": 156.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          156.81
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 156.81,
+        "selector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1692.94,
+          "top": 74,
+          "right": 1834,
+          "bottom": 99,
+          "width": 141.06,
+          "height": 25
+        },
+        "containerSelector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "text": "01.18 MON",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-p3c4"
+        },
+        "sourceFile": "compositions/frames/10-day-eight.html",
+        "bbox": {
+          "x": 1692.94,
+          "y": 74,
+          "width": 141.06,
+          "height": 25
+        },
+        "firstSeen": 156.81,
+        "lastSeen": 156.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          156.81
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 156.81,
+        "selector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 162,
+          "right": 187.64,
+          "bottom": 192,
+          "width": 101.64,
+          "height": 30
+        },
+        "containerSelector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4)",
+        "text": "DAY 8",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-ynj8"
+        },
+        "sourceFile": "compositions/frames/10-day-eight.html",
+        "bbox": {
+          "x": 86,
+          "y": 162,
+          "width": 101.64,
+          "height": 30
+        },
+        "firstSeen": 156.81,
+        "lastSeen": 156.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          156.81
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 156.81,
+        "selector": "#d8-title",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 223,
+          "right": 806,
+          "bottom": 295,
+          "width": 720,
+          "height": 72
+        },
+        "containerSelector": "#pr-title",
+        "text": "返程，把機場緩衝留足",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-z0ft"
+        },
+        "sourceFile": "compositions/frames/10-day-eight.html",
+        "bbox": {
+          "x": 86,
+          "y": 223,
+          "width": 720,
+          "height": 72
+        },
+        "firstSeen": 156.81,
+        "lastSeen": 156.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          156.81
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 156.81,
+        "selector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 876.25,
+          "right": 612.03,
+          "bottom": 901.25,
+          "width": 526.03,
+          "height": 25
+        },
+        "containerSelector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "text": "依資料夾已訂航班 · 2027 機場巴士時刻待確認",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-lads"
+        },
+        "sourceFile": "compositions/frames/10-day-eight.html",
+        "bbox": {
+          "x": 86,
+          "y": 876.25,
+          "width": 526.03,
+          "height": 25
+        },
+        "firstSeen": 156.81,
+        "lastSeen": 156.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          156.81
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 156.81,
+        "selector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(3)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 927,
+          "right": 548.77,
+          "bottom": 947,
+          "width": 462.77,
+          "height": 20
+        },
+        "containerSelector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(2)",
+        "text": "航班與返程安排：專案行程文件 · 2026-10-11 複核",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-cwfr"
+        },
+        "sourceFile": "compositions/frames/10-day-eight.html",
+        "bbox": {
+          "x": 86,
+          "y": 927,
+          "width": 462.77,
+          "height": 20
+        },
+        "firstSeen": 156.81,
+        "lastSeen": 156.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          156.81
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 156.81,
+        "selector": "#el-10-day-eight > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(8)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1757.22,
+          "top": 938,
+          "right": 1834,
+          "bottom": 962,
+          "width": 76.78,
+          "height": 24
+        },
+        "containerSelector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(9)",
+        "text": "10 / 12",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-w48k"
+        },
+        "sourceFile": "compositions/frames/10-day-eight.html",
+        "bbox": {
+          "x": 1757.22,
+          "y": 938,
+          "width": 76.78,
+          "height": 24
+        },
+        "firstSeen": 156.81,
+        "lastSeen": 156.81,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          156.81
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 173.102,
+        "selector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 71,
+          "right": 323.78,
+          "bottom": 95,
+          "width": 237.78,
+          "height": 24
+        },
+        "containerSelector": "p.closing-eyebrow",
+        "text": "BEFORE WE GO",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-pvz8"
+        },
+        "sourceFile": "compositions/frames/11-practical.html",
+        "bbox": {
+          "x": 86,
+          "y": 71,
+          "width": 237.78,
+          "height": 24
+        },
+        "firstSeen": 173.102,
+        "lastSeen": 173.102,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          173.102
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 173.102,
+        "selector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 1704,
+          "top": 74,
+          "right": 1834,
+          "bottom": 99,
+          "width": 130,
+          "height": 25
+        },
+        "containerSelector": "p.closing-date",
+        "text": "行前再確認",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-0l5f"
+        },
+        "sourceFile": "compositions/frames/11-practical.html",
+        "bbox": {
+          "x": 1704,
+          "y": 74,
+          "width": 130,
+          "height": 25
+        },
+        "firstSeen": 173.102,
+        "lastSeen": 173.102,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          173.102
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 173.102,
+        "selector": "#pr-bottom",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 105,
+          "top": 832,
+          "right": 525,
+          "bottom": 860,
+          "width": 420,
+          "height": 28
+        },
+        "containerSelector": "p.closing-caption",
+        "text": "已訂住宿與候選餐廳，分開看待。",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-ou7e"
+        },
+        "sourceFile": "compositions/frames/11-practical.html",
+        "bbox": {
+          "x": 105,
+          "y": 832,
+          "width": 420,
+          "height": 28
+        },
+        "firstSeen": 173.102,
+        "lastSeen": 173.102,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          173.102
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "info",
+        "time": 173.102,
+        "selector": "#el-11-practical > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 86,
+          "top": 876.25,
+          "right": 611,
+          "bottom": 901.25,
+          "width": 525,
+          "height": 25
+        },
+        "containerSelector": "p.closing-credit",
+        "text": "行李先處理，吃飯留時間，天候不佳就減少景點",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply.",
+        "dataAttributes": {
+          "data-hf-id": "hf-bmxa"
+        },
+        "sourceFile": "compositions/frames/11-practical.html",
+        "bbox": {
+          "x": 86,
+          "y": 876.25,
+          "width": 525,
+          "height": 25
+        },
+        "firstSeen": 173.102,
+        "lastSeen": 173.102,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          173.102
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 177.197,
+        "selector": "#closing-photo > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 79.11,
+          "top": 155.03,
+          "right": 992.89,
+          "bottom": 814.97,
+          "width": 913.77,
+          "height": 659.95
+        },
+        "containerSelector": "#closing-photo",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 86,
+          "top": 160,
+          "right": 986,
+          "bottom": 810,
+          "width": 900,
+          "height": 650
+        },
+        "overflow": {
+          "left": 6.89,
+          "right": 6.89,
+          "top": 4.97,
+          "bottom": 4.97
+        },
+        "dataAttributes": {
+          "data-hf-id": "hf-vkkj",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/frames/12-closing.html",
+        "bbox": {
+          "x": 79.11,
+          "y": 155.03,
+          "width": 913.77,
+          "height": 659.95
+        },
+        "firstSeen": 177.197,
+        "lastSeen": 177.197,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          177.197
+        ]
+      }
+    ],
+    "duration": 187.62,
+    "samples": [
+      10.423,
+      31.27,
+      52.117,
+      72.963,
+      93.81,
+      114.657,
+      135.503,
+      156.35,
+      177.197
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 53,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "samples": [
+      10.423,
+      52.117,
+      93.81,
+      135.503,
+      177.197
+    ],
+    "checked": 80,
+    "passed": 80
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  },
+  "saved": {
+    "id": "b8f295f4-1210-4723-85bf-9874bd4922da",
+    "revision": "641981ae-95ad-40e2-9cf5-667125d68b90",
+    "report": ".hyperframes/artifacts/checks/b8f295f4-1210-4723-85bf-9874bd4922da.json",
+    "attribution": "recorded-revision"
+  },
+  "_meta": {
+    "version": "0.8.171",
+    "latestVersion": "0.8.171",
+    "updateAvailable": false
+  }
+}

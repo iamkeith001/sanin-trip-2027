@@ -1,0 +1,27 @@
+# Dependencies and local HyperFrames state
+node_modules/
+.hyperframes/
+.thumbnails/
+.waveform-cache/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Working captures, render drafts, diagnostics
+capture/
+*.log
+catalog-v2.json
+timeline-report*.json
+assets/voice/raw/
+assets/voice/fix/
+assets/voice/sample-*.wav
+
+# Keep only the reviewed delivery video and compact review evidence
+renders/*
+!renders/冬日山陰八天七夜_動態解說版.mp4
+boards/*
+!boards/final-v2-review/
+!boards/final-v2-stills/
+boards/final-v2-stills/*
+!boards/final-v2-stills/poster.png
+!boards/旅程總覽_動態解說版.jpg

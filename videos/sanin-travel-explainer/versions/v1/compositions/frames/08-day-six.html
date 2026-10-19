@@ -1,0 +1,44 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.photo-frame{left:900px;top:348px;width:934px;height:470px}
+.photo-frame img{object-position:center}
+.credit{left:900px;top:829px;width:934px}
+.tagbox{position:absolute;left:86px;top:351px;width:755px}
+.leadbox{position:absolute;left:86px;top:426px;width:755px}
+.rows{position:absolute;left:86px;top:555px;width:755px}
+.row{padding:15px 0;gap:18px}
+.row .when{min-width:151px;font-size:27px}
+.row .what{font-size:29px}
+.source{bottom:119px}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+</style>
+<div data-hf-id="hf-peyb" id="root" data-composition-id="08-day-six" data-duration="17.91" data-width="1920" data-height="1080">
+<div data-hf-id="hf-wua0" class="scene">
+ <p data-hf-id="hf-5yyn" class="eyebrow">OKAYAMA / KIBITSU</p><p data-hf-id="hf-f0rl" class="date">01.16 SAT</p><div data-hf-id="hf-a46i" class="rule"></div>
+ <p data-hf-id="hf-wi7x" class="day">DAY 6</p><h1 data-hf-id="hf-dpso" class="heading" id="day-six-heading">岡山，參拜吉備津神社</h1>
+ <div data-hf-id="hf-izo1" class="tagbox" id="day-six-tag"><p data-hf-id="hf-7k16" class="tag">岡山格蘭比亞 · 已訂，連住兩晚</p></div>
+ <div data-hf-id="hf-jdmn" class="leadbox" id="day-six-lead"><p data-hf-id="hf-c07v" class="lead">先寄行李，再走進長廊</p></div>
+ <div data-hf-id="hf-hnc7" class="rows"><div data-hf-id="hf-iccv" class="row" id="day-six-row-0"><span data-hf-id="hf-vvt7" class="when">上午</span><span data-hf-id="hf-kf34" class="what">自費早餐、特急南下</span></div><div data-hf-id="hf-ee8u" class="row" id="day-six-row-1"><span data-hf-id="hf-mo1e" class="when">下午</span><span data-hf-id="hf-q1ov" class="what">吉備津神社參拜</span></div><div data-hf-id="hf-ag4t" class="row" id="day-six-row-2"><span data-hf-id="hf-6dnu" class="when">傍晚</span><span data-hf-id="hf-biny" class="what">表町採買、回館休息</span></div></div>
+ <figure data-hf-id="hf-ilmx" class="photo-frame" id="day-six-photo"><img data-hf-id="hf-bscd" id="day-six-image" src="../../assets/images/treated/kibitsu.jpg" alt="岡山，參拜吉備津神社，景點參考照片"></figure>
+ <p data-hf-id="hf-7uke" class="credit">Photo: Reggaeman · CC BY-SA 3.0 · Wikimedia Commons</p>
+ <p data-hf-id="hf-l81w" class="footnote">360 公尺為廻廊全長，不要求走完全程 · 不排岡山城／後樂園</p><p data-hf-id="hf-vgq8" class="source">吉備津神社官網 · 2026-10-19 查核</p><p data-hf-id="hf-ld6k" class="page-number">08 / 12</p>
+</div></div>
+<script>
+(()=>{
+ const C=window.TL.scenes['day-six'];const D=C.duration;const tl=gsap.timeline({paused:true});
+ tl.fromTo('#day-six-heading',{y:24,opacity:0},{y:0,opacity:1,duration:0.8,ease:'power3.out'},C.title);
+ tl.fromTo('#day-six-tag',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.5);
+ tl.fromTo('#day-six-lead',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.7);
+ tl.fromTo('#day-six-photo',{x:30,opacity:0},{x:0,opacity:1,duration:0.9,ease:'power3.out'},C.enter+0.2);
+ tl.fromTo('#day-six-image',{scale:1.03},{scale:1.0,duration:D-1,ease:'none'},C.enter);
+ tl.fromTo('#day-six-row-0',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[0]);tl.fromTo('#day-six-row-1',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[1]);tl.fromTo('#day-six-row-2',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[2]);
+ window.__timelines['08-day-six']=tl;
+})();
+</script></template>

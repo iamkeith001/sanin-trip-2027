@@ -1,0 +1,48 @@
+{
+  "kinosaki": {
+    "src": "assets/images/web/kinosaki.jpg",
+    "mode": "keep",
+    "size": [
+      1440,
+      1000
+    ]
+  },
+  "amanohashidate": {
+    "src": "assets/images/web/amanohashidate.jpg",
+    "mode": "keep",
+    "size": [
+      1440,
+      1000
+    ]
+  },
+  "tottori": {
+    "src": "assets/images/web/tottori.jpg",
+    "mode": "keep",
+    "size": [
+      1440,
+      1000
+    ]
+  },
+  "kurashiki": {
+    "src": "assets/images/web/kurashiki.jpg",
+    "mode": "keep",
+    "size": [
+      1440,
+      1000
+    ],
+    "crop": [
+      422,
+      0,
+      1920,
+      1440
+    ]
+  },
+  "kibitsu": {
+    "src": "assets/images/web/kibitsu.jpg",
+    "mode": "keep",
+    "size": [
+      1440,
+      1000
+    ]
+  }
+}

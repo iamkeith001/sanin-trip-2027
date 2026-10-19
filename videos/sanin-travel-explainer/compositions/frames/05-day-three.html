@@ -1,0 +1,63 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+#root,#root *{font-family:GenSekiGothic,sans-serif;font-weight:700}
+.diagram{position:absolute;left:86px;top:350px;width:1064px;height:490px;overflow:visible}
+.diagram text{fill:var(--ink);font-size:34px}.diagram .small{font-size:32px}.diagram .accent{fill:var(--accent)}
+.diagram .track{fill:none;stroke:var(--line);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.diagram .active{fill:none;stroke:var(--accent);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.diagram .node{fill:var(--bg);stroke:var(--ink);stroke-width:3}.diagram .focus{fill:var(--bg);stroke:var(--accent);stroke-width:4}
+.photo-frame{left:1220px;top:350px;width:614px;height:320px;border:3px solid var(--ink)}
+.credit{left:1220px;top:684px;width:614px;font-size:19px!important}
+.side{position:absolute;left:1220px;top:741px;width:614px;font-size:38px;line-height:1.5}
+.side p+p{margin-top:8px}.side .accent{color:var(--accent)}
+.footnote{top:875px;bottom:auto!important;font-size:25px!important}
+.source{top:925px;bottom:auto!important}
+.dayrail{position:absolute;left:1050px;top:153px;width:784px;height:42px;display:flex;gap:18px;align-items:center;font-size:24px;line-height:1;z-index:5}.dayrail span{width:80px;border-bottom:3px solid var(--line);padding:0 0 9px;color:var(--muted)}.dayrail span.past{border-color:var(--ink)}.dayrail span.today{color:var(--accent);border-color:var(--accent)}</style>
+<div id="root" data-composition-id="05-day-three" data-duration="16.52" data-width="1920" data-height="1080"><div class="scene"><div class="dayrail" aria-label="八日旅程進度"><span class="past">DAY 1</span><span class="past">DAY 2</span><span class="today">DAY 3</span><span class="future">DAY 4</span><span class="future">DAY 5</span><span class="future">DAY 6</span><span class="future">DAY 7</span><span class="future">DAY 8</span></div>
+<p class="eyebrow">KINOSAKI ONSEN</p><p class="date">01.13 WED</p><div class="rule"></div><p class="day">DAY 3</p><h1 class="heading" id="f05-day-three-heading">在城崎，留一整天給慢遊</h1>
+<svg class="diagram" viewBox="0 0 1064 490" role="img" aria-label="在城崎，留一整天給慢遊的動態安排圖"><defs>
+<g id="f05-day-three-person"><circle cy="-20" r="9" fill="var(--ink)"/><path d="M0 -9V17M-14 0L0 -7L14 0M0 17L-11 32M0 17L12 32" fill="none" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/></g>
+<g id="f05-day-three-bag"><rect x="-15" y="-20" width="30" height="38" rx="4" fill="var(--bg)" stroke="var(--accent)" stroke-width="4"/><path d="M-6 -20V-29H6V-20M-10 19V24M10 19V24" stroke="var(--accent)" stroke-width="4" fill="none"/></g>
+<g id="f05-day-three-car"><path d="M-25 -18H25V16H-25Z" fill="var(--bg)" stroke="var(--accent)" stroke-width="5"/><path d="M-25 -1H25M0 -18V-31M-8 -31H8" fill="none" stroke="var(--accent)" stroke-width="4"/></g>
+<g id="f05-day-three-train"><rect x="-45" y="-24" width="90" height="43" rx="8" fill="var(--bg)" stroke="var(--accent)" stroke-width="5"/><path d="M-27 -12H-8V0H-27ZM6 -12H25V0H6Z" fill="var(--ink)"/><circle cx="-26" cy="23" r="6" fill="var(--ink)"/><circle cx="26" cy="23" r="6" fill="var(--ink)"/></g>
+</defs>
+<text x="0" y="28" class="accent">推薦方案 · 待旅伴拍板</text>
+<g id="f05-day-three-calm"><text x="0" y="105">天候合適</text><path class="track" d="M215 95H320"/>
+<path d="M330 270L600 75L890 270Z" fill="var(--line)" opacity=".35"/>
+<path class="track" d="M345 230L617 73"/><path id="f05-day-three-cable" class="active" pathLength="1" stroke-dasharray="1" d="M345 230L617 73"/>
+<text x="700" y="115">纜車登高</text><use id="f05-day-three-gondola" href="#f05-day-three-car"/></g>
+<g id="f05-day-three-snow"><text x="0" y="236">風雪較大</text><path id="f05-day-three-flat" class="active" pathLength="1" stroke-dasharray="1" d="M215 258H935"/><text x="703" y="305">平地散步</text><use id="f05-day-three-walker" href="#f05-day-three-person"/></g>
+<path class="track" d="M120 408H932"/>
+<path id="f05-day-three-afternoon" class="active" pathLength="1" stroke-dasharray="1" d="M120 408H932"/>
+<rect class="node" x="0" y="369" width="220" height="82" rx="12"/><text x="110" y="421" text-anchor="middle">午餐</text>
+<rect id="f05-day-three-rest-ring" class="focus" x="267" y="356" width="235" height="108" rx="12"/><text x="384" y="421" text-anchor="middle">回房午休</text>
+<rect class="node" x="555" y="369" width="220" height="82" rx="12"/><text x="665" y="421" text-anchor="middle">外湯一座</text>
+<rect class="node" x="825" y="369" width="235" height="82" rx="12"/><text x="942" y="421" text-anchor="middle">回館晚餐</text>
+<circle id="f05-day-three-day-dot" r="13" fill="var(--accent)"/>
+<text x="942" y="488" class="small" text-anchor="middle">18:00</text>
+</svg>
+<figure class="photo-frame" id="f05-day-three-photo"><img src="../../assets/images/treated/kinosaki.jpg" alt="在城崎，留一整天給慢遊景點參考照片"></figure>
+<p class="credit">Photo: 663highland · CC BY 2.5 · Wikimedia Commons</p><div class="side"><p class="accent" id="f05-day-three-protect">午休保留，不趕行程</p><p id="f05-day-three-scope">不加玄武洞／出石</p></div>
+<p class="footnote">外湯休湯日與纜車運行，出發前再確認</p><p class="source">城崎觀光協會／纜車官網 · 2026-10-19 查核</p><p class="page-number">05 / 12</p>
+</div></div><script>(()=>{
+const C=window.TL.scenes['day-three'];const tl=gsap.timeline({paused:true});const q=i=>C.clauses[i].at;const span=i=>C.clauses[i].end-q(i);
+const draw=(s,a,d)=>tl.fromTo(s,{strokeDashoffset:1},{strokeDashoffset:0,duration:d,ease:'power2.inOut'},a);
+const show=(s,a,d=.5)=>tl.fromTo(s,{opacity:0},{opacity:1,duration:d,ease:'power3.out'},a);
+const moving=new Set();const move=(s,pts,a,d)=>{if(!moving.has(s)){tl.set(s,{x:pts[0][0],y:pts[0][1]},0);moving.add(s);}for(let i=1;i<pts.length;i++)tl.fromTo(s,{x:pts[i-1][0],y:pts[i-1][1]},{x:pts[i][0],y:pts[i][1],duration:d/(pts.length-1),ease:'power2.inOut',immediateRender:false},a+d*(i-1)/(pts.length-1));};
+tl.fromTo('#f05-day-three-heading',{y:24,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out'},C.title);
+tl.fromTo('#f05-day-three-photo',{x:24,opacity:0},{x:0,opacity:1,duration:.8,ease:'power3.out'},C.enter+.15);
+
+show('#f05-day-three-gondola',q(1),.15);draw('#f05-day-three-cable',q(1),span(1));move('#f05-day-three-gondola',[[345,230],[617,73]],q(1),span(1));
+show('#f05-day-three-snow',q(2),.3);draw('#f05-day-three-flat',q(2),span(2));move('#f05-day-three-walker',[[270,220],[870,220]],q(2),span(2));
+tl.fromTo('#f05-day-three-calm',{opacity:1},{opacity:.25,duration:.45},q(2));
+show('#f05-day-three-day-dot',q(3),.15);move('#f05-day-three-day-dot',[[110,347],[384,334]],q(3),span(3));
+tl.fromTo('#f05-day-three-rest-ring',{scaleY:.8,transformOrigin:'center center'},{scaleY:1,duration:.65,ease:'back.out(1.2)'},q(3)+.4);show('#f05-day-three-protect',q(3),.6);
+move('#f05-day-three-day-dot',[[384,334],[665,347]],q(4),span(4));draw('#f05-day-three-afternoon',q(3),C.clauses[4].end-q(3));
+move('#f05-day-three-day-dot',[[665,347],[942,347]],q(5),span(5));
+show('#f05-day-three-scope',q(6),.6);
+
+window.__timelines['05-day-three']=tl;
+})();</script></template>

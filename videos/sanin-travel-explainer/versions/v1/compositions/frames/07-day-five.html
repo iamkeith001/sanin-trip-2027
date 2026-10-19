@@ -1,0 +1,44 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.otf') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.photo-frame{left:900px;top:348px;width:934px;height:470px}
+.photo-frame img{object-position:center}
+.credit{left:900px;top:829px;width:934px}
+.tagbox{position:absolute;left:86px;top:351px;width:755px}
+.leadbox{position:absolute;left:86px;top:426px;width:755px}
+.rows{position:absolute;left:86px;top:555px;width:755px}
+.row{padding:15px 0;gap:18px}
+.row .when{min-width:151px;font-size:27px}
+.row .what{font-size:29px}
+.source{bottom:119px}
+
+  /* themed (theme.py) */
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("../../assets/fonts/GenSekiGothic2TW-B.subset.otf"); font-weight: 100 900; }
+  #root, #root * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+</style>
+<div data-hf-id="hf-p04i" id="root" data-composition-id="07-day-five" data-duration="18.18" data-width="1920" data-height="1080">
+<div data-hf-id="hf-wua0" class="scene">
+ <p data-hf-id="hf-mj24" class="eyebrow">TOTTORI SAND DUNES</p><p data-hf-id="hf-as73" class="date">01.15 FRI</p><div data-hf-id="hf-a46i" class="rule"></div>
+ <p data-hf-id="hf-xp50" class="day">DAY 5</p><h1 data-hf-id="hf-y52y" class="heading" id="day-five-heading">鳥取砂丘，是有條件的驚喜</h1>
+ <div data-hf-id="hf-h495" class="tagbox" id="day-five-tag"><p data-hf-id="hf-7b47" class="tag">觀水庭こぜにや · 已訂，不含餐</p></div>
+ <div data-hf-id="hf-u16f" class="leadbox" id="day-five-lead"><p data-hf-id="hf-gol2" class="lead">寄物與乘車順利，才短遊砂丘</p></div>
+ <div data-hf-id="hf-hnc7" class="rows"><div data-hf-id="hf-zwht" class="row" id="day-five-row-0"><span data-hf-id="hf-pkcs" class="when">早餐後</span><span data-hf-id="hf-d2rc" class="what">丹鐵＋JR 前往鳥取</span></div><div data-hf-id="hf-z4u0" class="row" id="day-five-row-1"><span data-hf-id="hf-ql97" class="when">條件成立</span><span data-hf-id="hf-fqdz" class="what">砂丘入口短遊約 45 分</span></div><div data-hf-id="hf-7spv" class="row" id="day-five-row-2"><span data-hf-id="hf-bnih" class="when">來不及／風雪</span><span data-hf-id="hf-eev3" class="what">直接入住、泡湯休息</span></div></div>
+ <figure data-hf-id="hf-hk35" class="photo-frame" id="day-five-photo"><img data-hf-id="hf-ijy7" id="day-five-image" src="../../assets/images/treated/tottori.jpg" alt="鳥取砂丘，是有條件的驚喜，景點參考照片"></figure>
+ <p data-hf-id="hf-8jau" class="credit">Photo: Suicasmo · CC BY-SA 4.0 · Wikimedia Commons</p>
+ <p data-hf-id="hf-8rqs" class="footnote">砂之美術館不入館 · 照片為冬季景觀參考，積雪不保證</p><p data-hf-id="hf-31g4" class="source">砂之美術館／砂丘遊客中心 · 2026-10-19 查核</p><p data-hf-id="hf-9ycf" class="page-number">07 / 12</p>
+</div></div>
+<script>
+(()=>{
+ const C=window.TL.scenes['day-five'];const D=C.duration;const tl=gsap.timeline({paused:true});
+ tl.fromTo('#day-five-heading',{y:24,opacity:0},{y:0,opacity:1,duration:0.8,ease:'power3.out'},C.title);
+ tl.fromTo('#day-five-tag',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.5);
+ tl.fromTo('#day-five-lead',{y:18,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.enter+0.7);
+ tl.fromTo('#day-five-photo',{x:30,opacity:0},{x:0,opacity:1,duration:0.9,ease:'power3.out'},C.enter+0.2);
+ tl.fromTo('#day-five-image',{scale:1.03},{scale:1.0,duration:D-1,ease:'none'},C.enter);
+ tl.fromTo('#day-five-row-0',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[0]);tl.fromTo('#day-five-row-1',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[1]);tl.fromTo('#day-five-row-2',{y:20,opacity:0},{y:0,opacity:1,duration:0.7,ease:'power3.out'},C.items[2]);
+ window.__timelines['07-day-five']=tl;
+})();
+</script></template>
