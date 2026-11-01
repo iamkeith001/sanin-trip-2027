@@ -1,0 +1,35 @@
+# Dependencies and local HyperFrames state
+node_modules/
+.hyperframes/
+.thumbnails/
+.waveform-cache/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Working captures, render drafts, diagnostics
+capture/
+*.log
+timeline-report*.json
+assets/voice/raw/
+assets/voice/fix/
+assets/voice/sample-*.wav
+
+# Rendered videos stay local only (public repo); keep compact review evidence
+renders/*
+boards/*
+!boards/v3-overview.jpg
+!boards/v3-poster.jpg
+
+# Raw generated images (keep only the treated JPEGs used in scenes)
+assets/images/gen/
+
+# Full CJK font (15 MB) is a build input only; scenes load the subset. Restore with the skill fetch_fonts.sh.
+assets/fonts/GenSekiGothic2TW-B.otf
+
+# Source music bed is identical to ../sanin-travel-explainer/assets/audio/music-bed.wav; only the trimmed copy is used
+assets/audio/music-bed.wav
+assets/audio/music-bed-v3.wav
+
+# Local check output contains absolute paths
+check-report.json

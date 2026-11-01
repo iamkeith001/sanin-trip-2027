@@ -1,0 +1,39 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.woff2') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+#root,#root *{font-family:GenSekiGothic,sans-serif;font-weight:700}
+.dayrail{position:absolute;left:1050px;top:153px;width:784px;height:42px;display:flex;gap:18px;align-items:center;font-size:24px;line-height:1;z-index:5}
+.dayrail span{width:80px;border-bottom:3px solid var(--line);padding:0 0 9px;color:var(--muted)}
+.dayrail span.past{border-color:var(--ink)}
+.dayrail span.today{color:var(--accent);border-color:var(--accent)}
+.tagbox{position:absolute;left:86px;top:342px}
+.rows{position:absolute;left:86px;top:414px;width:748px}
+.scene .row{padding:10px 0;gap:22px}.scene .row .when{min-width:112px;font-size:28px}.scene .row .what{font-size:30px}
+.note{position:absolute;left:86px;top:878px;width:748px;font-size:25px;line-height:1.45;color:var(--accent)}
+.photo-frame{left:880px;top:342px;width:954px;height:537px;border-radius:6px}
+.inset{position:absolute;left:1470px;top:640px;width:384px;height:256px;margin:0;overflow:hidden;border:8px solid var(--bg);border-radius:6px;box-shadow:0 18px 40px rgba(23,57,74,.28);background:var(--ink)}
+.inset img{width:100%;height:100%;object-fit:cover;display:block}
+</style>
+<div id="root" data-composition-id="08-day-six" data-duration="13.16" data-width="1920" data-height="1080"><div class="scene">
+<div class="dayrail" aria-label="八日旅程進度"><span class="past">DAY 1</span><span class="past">DAY 2</span><span class="past">DAY 3</span><span class="past">DAY 4</span><span class="past">DAY 5</span><span class="today">DAY 6</span><span class="future">DAY 7</span><span class="future">DAY 8</span></div>
+<p class="eyebrow">OKAYAMA · KIBITSU</p><p class="date">01.16 SAT</p><div class="rule"></div>
+<p class="day">DAY 6</p><h1 class="heading" id="h8">岡山，走一段吉備津長廊</h1>
+<div class="tagbox" id="t8"><p class="tag">已訂：岡山格蘭比亞（連住 2 晚）</p></div>
+<div class="rows"><div class="row" id="r8-0"><span class="when">10:02</span><span class="what">超級因幡 4 號 → 11:49 岡山</span></div><div class="row" id="r8-1"><span class="when">12:25</span><span class="what">寄放八件・站前午餐</span></div><div class="row" id="r8-2"><span class="when">13:52</span><span class="what">桃太郎線 → 吉備津</span></div><div class="row" id="r8-3"><span class="when">14:25</span><span class="what">參拜，走一段長廊</span></div><div class="row" id="r8-4"><span class="when">16:30</span><span class="what">表町買大統領中辛</span></div></div>
+<figure class="photo-frame" id="p8"><img id="pi8" src="../../assets/images/treated/08a-shrine-corridor.jpg" alt="岡山，走一段吉備津長廊示意圖"></figure>
+<figure class="inset" id="i8"><img id="ii8" src="../../assets/images/treated/08b-streetcar.jpg" alt="岡山，走一段吉備津長廊補充示意圖"></figure>
+<p class="note" id="n8">停止點｜13:40 未到月台就取消吉備津</p><p class="page-number">08 / 12</p>
+</div></div><script>(()=>{
+const C=window.TL.scenes['day-six'];const D=C.duration;const tl=gsap.timeline({paused:true});
+tl.fromTo('#h8',{y:24,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out'},C.title);
+tl.fromTo('#t8',{y:16,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},C.enter+.45);
+tl.fromTo('#p8',{x:30,opacity:0},{x:0,opacity:1,duration:.9,ease:'power3.out'},C.enter+.2);
+tl.fromTo('#pi8',{scale:1.08,xPercent:1.5},{scale:1,xPercent:0,duration:D,ease:'none'},0);
+tl.fromTo('#r8-0',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[0].at));tl.fromTo('#r8-1',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[1].at));tl.fromTo('#r8-2',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[2].at));tl.fromTo('#r8-3',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[3].at));tl.fromTo('#r8-4',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[5].at));
+tl.fromTo('#i8',{opacity:0,scale:.9,rotation:-3},{opacity:1,scale:1,rotation:-1.5,duration:.8,ease:'back.out(1.4)'},C.clauses[4].at);tl.fromTo('#ii8',{scale:1.08},{scale:1,duration:D-C.clauses[4].at,ease:'none'},C.clauses[4].at);
+tl.fromTo('#n8',{opacity:0},{opacity:1,duration:.6,ease:'power2.out'},C.clauses[5].at);
+tl.to({},{duration:D},0);
+window.__timelines['08-day-six']=tl;
+})();</script></template>

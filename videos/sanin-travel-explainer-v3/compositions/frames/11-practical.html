@@ -1,0 +1,28 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.woff2') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+#root,#root *{font-family:GenSekiGothic,sans-serif;font-weight:700}
+.dayrail{position:absolute;left:1050px;top:153px;width:784px;height:42px;display:flex;gap:18px;align-items:center;font-size:24px;line-height:1;z-index:5}
+.dayrail span{width:80px;border-bottom:3px solid var(--line);padding:0 0 9px;color:var(--muted)}
+.dayrail span.past{border-color:var(--ink)}
+.dayrail span.today{color:var(--accent);border-color:var(--accent)}
+.cards{position:absolute;left:86px;top:350px;width:1748px;display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.card{background:#FBF8F1;border:2px solid var(--line);border-top:6px solid var(--accent);border-radius:8px;padding:30px 32px;min-height:500px}
+.card .num{color:var(--accent);font-size:34px;letter-spacing:3px}
+.card .big{font-size:54px;line-height:1.3;margin-top:18px}
+.card .sub{font-size:38px;line-height:1.4;margin-top:16px;color:var(--ink)}
+.card .fine{margin-top:28px;font-size:30px;line-height:1.55}
+</style>
+<div id="root" data-composition-id="11-practical" data-duration="13.46" data-width="1920" data-height="1080"><div class="scene">
+<p class="eyebrow">BEFORE WE GO</p><p class="date">2026.11.01 查核</p><div class="rule"></div>
+<p class="day">出發前</p><h1 class="heading" id="h11">出發前的三件事</h1>
+<div class="cards"><div class="card" id="c0"><p class="num">01</p><p class="big">12/12・12/16 10:00</p><p class="sub">搶六人特急指定席</p><p class="fine">日本時間（台灣 09:00）。Day 2 超級松風＋濱風、Day 6 超級因幡；e5489 事前受付 12/5、12/9 起</p></div><div class="card" id="c1"><p class="num">02</p><p class="big">晚餐多數未訂位</p><p class="sub">Day 1、5、6、7 自行訂位</p><p class="fine">Day 2–4 旅館含晚餐；其他晚餐先訂六人座位</p></div><div class="card" id="c2"><p class="num">03</p><p class="big">冬季班次與天候</p><p class="sub">出發前再核對一次</p><p class="fine">JR 運行情報、外湯休館表、飯店退房時間；風雪大就減少景點</p></div></div><p class="page-number">11 / 12</p>
+</div></div><script>(()=>{
+const C=window.TL.scenes['practical'];const D=C.duration;const q=i=>C.clauses[i].at;const tl=gsap.timeline({paused:true});
+tl.fromTo('#h11',{y:24,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out'},C.title);
+tl.fromTo('#c0',{y:30,opacity:0},{y:0,opacity:1,duration:.7,ease:'power3.out'},q(1));tl.fromTo('#c1',{y:30,opacity:0},{y:0,opacity:1,duration:.7,ease:'power3.out'},q(3));tl.fromTo('#c2',{y:30,opacity:0},{y:0,opacity:1,duration:.7,ease:'power3.out'},q(4));
+tl.to({},{duration:D},0);
+window.__timelines['11-practical']=tl;
+})();</script></template>

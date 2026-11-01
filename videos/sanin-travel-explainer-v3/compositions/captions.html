@@ -1,0 +1,259 @@
+<template id="captions-template" data-composition-id="captions" data-width="1920" data-height="1080">
+<script src="assets/gsap.min.js"></script>
+
+
+<style data-brand-tokens>
+      @font-face { font-family: 'GenSekiGothic'; src: url('assets/fonts/HankenGrotesk-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: block; }
+      @font-face { font-family: 'GenSekiGothic'; src: url('assets/fonts/HankenGrotesk-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: block; }
+      @font-face { font-family: 'GenSekiGothic'; src: url('assets/fonts/HankenGrotesk-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+      @font-face { font-family: 'GenSekiGothic'; src: url('assets/fonts/HankenGrotesk-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: block; }
+      :root {
+      --paper: #F4F0E7;
+      --paper-2: #F4F0E7;
+      --ink: #17394A;
+      --ink-soft: #597079;
+      --grid: rgba(23, 57, 74,0.10);
+      --ink-faint: rgba(23, 57, 74,0.18);
+      --cap-ink: #17394A;
+      --cap-canvas: #F4F0E7;
+      --cap-accent: #597079;
+      --cap-accent-2: #F4F0E7;
+      --font-display: "GenSekiGothic", system-ui, serif;
+      --font-body: "GenSekiGothic", system-ui, sans-serif;
+      --cap-band-top: 900px;
+      --cap-band-height: 180px;
+      }
+
+  /* caption face (patch_captions.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("assets/fonts/GenSekiGothic2TW-B.subset.woff2"); font-weight: 200 900; }
+  @font-face { font-family: "DM Mono"; src: url("assets/fonts/DMMono-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "DM Mono"; src: url("assets/fonts/DMMono-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "GenSekiGothic"; src: url("assets/fonts/HankenGrotesk-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+  @font-face { font-family: "GenSekiGothic"; src: url("assets/fonts/HankenGrotesk-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; }
+  @font-face { font-family: "GenSekiGothic"; src: url("assets/fonts/HankenGrotesk-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "GenSekiGothic"; src: url("assets/fonts/HankenGrotesk-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+  .caption-line { font-family: "GenSekiGothic", "GenSekiGothic", sans-serif !important; font-weight: 700 !important; letter-spacing: 0.02em !important; line-height: 1.3 !important; }
+
+  /* theme accents (theme.py) */
+  .caption-word.is-active { background: #BE4939 !important; color: #F4F0E7 !important; box-shadow: 0 0 0 0.06em #BE4939 !important; }
+  .caption-word.is-spoken { color: #17394A !important; }
+
+  /* theme font (theme.py) */
+  @font-face { font-family: "GenSekiGothic"; src: url("assets/fonts/GenSekiGothic2TW-B.subset.woff2"); font-weight: 100 900; }
+  .caption-line, .caption-line * { font-family: "GenSekiGothic", sans-serif !important; font-weight: 700 !important; }
+</style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE cream card — graph-paper grid behind the line + top/bottom 1.5px cobalt
+     hairlines (cobalt's frame furniture), square corners, NO drop shadow */
+  .caption-pill {
+    position: relative;
+    max-width: 78%;
+    padding: 20px 44px 24px;
+    background: var(--cap-canvas, #F4F0E7);
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--cap-ink, #17394A) 10%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--cap-ink, #17394A) 10%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 16px 16px;
+    border-top: 1.5px solid var(--cap-ink, #17394A);
+    border-bottom: 1.5px solid var(--cap-ink, #17394A);
+    border-radius: 0;
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em 0.34em;
+    font-family: "GenSekiGothic", GenSekiGothic, serif;
+    font-weight: 400;
+    font-size: clamp(40px, 4.4vw, 58px);
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+  }
+
+  /* upcoming — faint cobalt, no block */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.06em;
+    color: color-mix(in srgb, var(--cap-ink, #17394A) 42%, var(--cap-canvas, #F4F0E7));
+  }
+  /* current word — THE cobalt flat block (risograph knockout): a solid cobalt fill
+     via box-shadow spread = a hard square block w/o layout shift, no blur; the cream
+     paper reads on top */
+  .caption-word.is-active {
+    color: var(--cap-canvas, #F4F0E7);
+    background: var(--cap-ink, #17394A);
+    box-shadow: 0 0 0 0.06em var(--cap-ink, #17394A);
+  }
+  /* already spoken — solid cobalt ink, block cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #17394A);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — GenSekiGothic italic, cobalt's only display inflection */
+  .caption-word.cap-brand {
+    font-style: italic;
+  }
+  /* numerals / data — the body sans voice, slightly recessed */
+  .caption-word.cap-num {
+    font-family: "GenSekiGothic", ui-monospace, monospace;
+    color: color-mix(in srgb, var(--cap-ink, #17394A) 72%, var(--cap-canvas, #F4F0E7));
+  }
+  /* emphasis — a cobalt hairline underline (no second hue; emphasis is the ink) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--cap-accent, #597079);
+    text-underline-offset: 0.1em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="187.62"
+  data-fps="30"
+  data-width="1920"
+  data-height="1080"
+>
+  <div class="caption-layer" aria-hidden="true">
+    <div id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.0,"end":1.215,"text":"一月的日本海","words":[{"id":"caption-word-0-0","text":"一月的日本海","start":0.0,"end":1.095}]},{"id":"caption-group-1","frame":1,"start":1.317,"end":2.397,"text":"串起妖怪街","words":[{"id":"caption-word-1-0","text":"串起妖怪街","start":1.317,"end":2.277}]},{"id":"caption-group-2","frame":1,"start":2.538,"end":3.966,"text":"溫泉和白壁運河","words":[{"id":"caption-word-2-0","text":"溫泉和白壁運河","start":2.538,"end":3.846}]},{"id":"caption-group-3","frame":1,"start":4.71,"end":6.748,"text":"這趟六人八天的冬日旅行","words":[{"id":"caption-word-3-0","text":"這趟六人八天的冬日旅行","start":4.71,"end":6.628}]},{"id":"caption-group-4","frame":1,"start":6.881,"end":7.799,"text":"從米子進","words":[{"id":"caption-word-4-0","text":"從米子進","start":6.881,"end":7.679}]},{"id":"caption-group-5","frame":1,"start":7.945,"end":8.73,"text":"岡山出","words":[{"id":"caption-word-5-0","text":"岡山出","start":7.945,"end":8.61}]},{"id":"caption-group-6","frame":1,"start":8.855,"end":11.352,"text":"把風景和休息一起排進行程","words":[{"id":"caption-word-6-0","text":"把風景和休息一起排進行程","start":8.855,"end":11.232}]},{"id":"caption-group-7","frame":2,"start":11.98,"end":13.479,"text":"先在境港住一晚","words":[{"id":"caption-word-7-0","text":"先在境港住一晚","start":11.98,"end":13.359}]},{"id":"caption-group-8","frame":2,"start":13.616,"end":14.485,"text":"再經米子","words":[{"id":"caption-word-8-0","text":"再經米子","start":13.616,"end":14.365}]},{"id":"caption-group-9","frame":2,"start":14.639,"end":15.938,"text":"鳥取前往城崎","words":[{"id":"caption-word-9-0","text":"鳥取前往城崎","start":14.639,"end":15.818}]},{"id":"caption-group-10","frame":2,"start":16.106,"end":17.004,"text":"連住兩晚","words":[{"id":"caption-word-10-0","text":"連住兩晚","start":16.106,"end":16.884}]},{"id":"caption-group-11","frame":2,"start":17.783,"end":19.185,"text":"第四天到天橋立","words":[{"id":"caption-word-11-0","text":"第四天到天橋立","start":17.783,"end":19.065}]},{"id":"caption-group-12","frame":2,"start":19.339,"end":20.687,"text":"第五天折返鳥取","words":[{"id":"caption-word-12-0","text":"第五天折返鳥取","start":19.339,"end":20.567}]},{"id":"caption-group-13","frame":2,"start":20.842,"end":22.259,"text":"第六天南下岡山","words":[{"id":"caption-word-13-0","text":"第六天南下岡山","start":20.842,"end":22.139}]},{"id":"caption-group-14","frame":2,"start":22.411,"end":24.275,"text":"最後兩晚以岡山為基地","words":[{"id":"caption-word-14-0","text":"最後兩晚以岡山為基地","start":22.411,"end":24.155}]},{"id":"caption-group-15","frame":2,"start":24.444,"end":25.83,"text":"安排倉敷一日遊","words":[{"id":"caption-word-15-0","text":"安排倉敷一日遊","start":24.444,"end":25.71}]},{"id":"caption-group-16","frame":3,"start":26.46,"end":28.17,"text":"第一天中午抵達米子","words":[{"id":"caption-word-16-0","text":"第一天中午抵達米子","start":26.46,"end":28.05}]},{"id":"caption-group-17","frame":3,"start":28.33,"end":29.777,"text":"在機場買好午餐","words":[{"id":"caption-word-17-0","text":"在機場買好午餐","start":28.33,"end":29.657}]},{"id":"caption-group-18","frame":3,"start":29.944,"end":32.017,"text":"搭兩點十一分的境線到境港","words":[{"id":"caption-word-18-0","text":"搭兩點十一分的境線到境港","start":29.944,"end":31.897}]},{"id":"caption-group-19","frame":3,"start":32.809,"end":34.056,"text":"先到御宿野乃","words":[{"id":"caption-word-19-0","text":"先到御宿野乃","start":32.809,"end":33.936}]},{"id":"caption-group-20","frame":3,"start":34.18,"end":36.69,"text":"把八件大行李寄到城崎的川口屋","words":[{"id":"caption-word-20-0","text":"把八件大行李寄到城崎的川口屋","start":34.18,"end":36.57}]},{"id":"caption-group-21","frame":3,"start":36.845,"end":38.378,"text":"再去水木茂紀念館","words":[{"id":"caption-word-21-0","text":"再去水木茂紀念館","start":36.845,"end":38.258}]},{"id":"caption-group-22","frame":3,"start":39.161,"end":39.961,"text":"晚餐後","words":[{"id":"caption-word-22-0","text":"晚餐後","start":39.161,"end":39.841}]},{"id":"caption-group-23","frame":3,"start":40.079,"end":41.685,"text":"走一段點燈的妖怪街","words":[{"id":"caption-word-23-0","text":"走一段點燈的妖怪街","start":40.079,"end":41.565}]},{"id":"caption-group-24","frame":4,"start":42.32,"end":43.845,"text":"第二天輕裝出發","words":[{"id":"caption-word-24-0","text":"第二天輕裝出發","start":42.32,"end":43.725}]},{"id":"caption-group-25","frame":4,"start":44.588,"end":46.368,"text":"境線刷交通卡到米子","words":[{"id":"caption-word-25-0","text":"境線刷交通卡到米子","start":44.588,"end":46.248}]},{"id":"caption-group-26","frame":4,"start":46.545,"end":48.283,"text":"在米子領好特急車票","words":[{"id":"caption-word-26-0","text":"在米子領好特急車票","start":46.545,"end":48.163}]},{"id":"caption-group-27","frame":4,"start":48.445,"end":50.122,"text":"經鳥取轉乘濱風號","words":[{"id":"caption-word-27-0","text":"經鳥取轉乘濱風號","start":48.445,"end":50.002}]},{"id":"caption-group-28","frame":4,"start":50.254,"end":52.402,"text":"下午兩點十一分抵達城崎","words":[{"id":"caption-word-28-0","text":"下午兩點十一分抵達城崎","start":50.254,"end":52.282}]},{"id":"caption-group-29","frame":4,"start":53.197,"end":54.488,"text":"入住川口屋後","words":[{"id":"caption-word-29-0","text":"入住川口屋後","start":53.197,"end":54.368}]},{"id":"caption-group-30","frame":4,"start":54.616,"end":55.992,"text":"外湯選一座就好","words":[{"id":"caption-word-30-0","text":"外湯選一座就好","start":54.616,"end":55.872}]},{"id":"caption-group-31","frame":4,"start":56.142,"end":58.04,"text":"晚上六點享用旅館晚餐","words":[{"id":"caption-word-31-0","text":"晚上六點享用旅館晚餐","start":56.142,"end":57.92}]},{"id":"caption-group-32","frame":5,"start":58.67,"end":60.985,"text":"第三天推薦留在城崎慢遊","words":[{"id":"caption-word-32-0","text":"第三天推薦留在城崎慢遊","start":58.67,"end":60.865}]},{"id":"caption-group-33","frame":5,"start":61.741,"end":64.138,"text":"天候合適就搭纜車上山看海","words":[{"id":"caption-word-33-0","text":"天候合適就搭纜車上山看海","start":61.741,"end":64.018}]},{"id":"caption-group-34","frame":5,"start":64.306,"end":66.084,"text":"中午在溫泉街吃海鮮","words":[{"id":"caption-word-34-0","text":"中午在溫泉街吃海鮮","start":64.306,"end":65.964}]},{"id":"caption-group-35","frame":5,"start":66.226,"end":67.498,"text":"午後回房休息","words":[{"id":"caption-word-35-0","text":"午後回房休息","start":66.226,"end":67.378}]},{"id":"caption-group-36","frame":5,"start":67.63,"end":68.783,"text":"再泡一座外湯","words":[{"id":"caption-word-36-0","text":"再泡一座外湯","start":67.63,"end":68.663}]},{"id":"caption-group-37","frame":5,"start":69.52,"end":70.727,"text":"這一天的安排","words":[{"id":"caption-word-37-0","text":"這一天的安排","start":69.52,"end":70.607}]},{"id":"caption-group-38","frame":5,"start":70.831,"end":72.337,"text":"還等旅伴一起拍板","words":[{"id":"caption-word-38-0","text":"還等旅伴一起拍板","start":70.831,"end":72.217}]},{"id":"caption-group-39","frame":6,"start":72.97,"end":74.519,"text":"第四天吃完早餐","words":[{"id":"caption-word-39-0","text":"第四天吃完早餐","start":72.97,"end":74.399}]},{"id":"caption-group-40","frame":6,"start":74.625,"end":76.231,"text":"經豐岡轉丹後鐵道","words":[{"id":"caption-word-40-0","text":"經豐岡轉丹後鐵道","start":74.625,"end":76.111}]},{"id":"caption-group-41","frame":6,"start":76.365,"end":78.17,"text":"上午十一點抵達天橋立","words":[{"id":"caption-word-41-0","text":"上午十一點抵達天橋立","start":76.365,"end":78.05}]},{"id":"caption-group-42","frame":6,"start":78.956,"end":80.082,"text":"先寄放行李","words":[{"id":"caption-word-42-0","text":"先寄放行李","start":78.956,"end":79.962}]},{"id":"caption-group-43","frame":6,"start":80.207,"end":81.004,"text":"吃午餐","words":[{"id":"caption-word-43-0","text":"吃午餐","start":80.207,"end":80.884}]},{"id":"caption-group-44","frame":6,"start":81.16,"end":82.429,"text":"再登上展望台","words":[{"id":"caption-word-44-0","text":"再登上展望台","start":81.16,"end":82.309}]},{"id":"caption-group-45","frame":6,"start":82.583,"end":83.891,"text":"看沙洲和松林","words":[{"id":"caption-word-45-0","text":"看沙洲和松林","start":82.583,"end":83.771}]},{"id":"caption-group-46","frame":6,"start":84.075,"end":85.459,"text":"傍晚走過智恩寺","words":[{"id":"caption-word-46-0","text":"傍晚走過智恩寺","start":84.075,"end":85.339}]},{"id":"caption-group-47","frame":6,"start":85.637,"end":86.688,"text":"入住文珠莊","words":[{"id":"caption-word-47-0","text":"入住文珠莊","start":85.637,"end":86.568}]},{"id":"caption-group-48","frame":7,"start":87.32,"end":89.594,"text":"第五天從天橋立移動到鳥取","words":[{"id":"caption-word-48-0","text":"第五天從天橋立移動到鳥取","start":87.32,"end":89.474}]},{"id":"caption-group-49","frame":7,"start":89.753,"end":90.95,"text":"午餐先準備好","words":[{"id":"caption-word-49-0","text":"午餐先準備好","start":89.753,"end":90.83}]},{"id":"caption-group-50","frame":7,"start":91.116,"end":92.05,"text":"在車上吃","words":[{"id":"caption-word-50-0","text":"在車上吃","start":91.116,"end":91.93}]},{"id":"caption-group-51","frame":7,"start":92.805,"end":94.406,"text":"只有八件行李寄妥","words":[{"id":"caption-word-51-0","text":"只有八件行李寄妥","start":92.805,"end":94.286}]},{"id":"caption-group-52","frame":7,"start":94.559,"end":96.423,"text":"趕上兩點四十分的巴士","words":[{"id":"caption-word-52-0","text":"趕上兩點四十分的巴士","start":94.559,"end":96.303}]},{"id":"caption-group-53","frame":7,"start":96.589,"end":98.23,"text":"才去鳥取砂丘短遊","words":[{"id":"caption-word-53-0","text":"才去鳥取砂丘短遊","start":96.589,"end":98.11}]},{"id":"caption-group-54","frame":7,"start":98.419,"end":99.163,"text":"來不及","words":[{"id":"caption-word-54-0","text":"來不及","start":98.419,"end":99.043}]},{"id":"caption-group-55","frame":7,"start":99.278,"end":101.066,"text":"就直接到觀水庭休息","words":[{"id":"caption-word-55-0","text":"就直接到觀水庭休息","start":99.278,"end":100.946}]},{"id":"caption-group-56","frame":8,"start":101.7,"end":103.772,"text":"第六天搭特急直達岡山","words":[{"id":"caption-word-56-0","text":"第六天搭特急直達岡山","start":101.7,"end":103.652}]},{"id":"caption-group-57","frame":8,"start":103.9,"end":105.544,"text":"先把行李寄放飯店","words":[{"id":"caption-word-57-0","text":"先把行李寄放飯店","start":103.9,"end":105.424}]},{"id":"caption-group-58","frame":8,"start":106.308,"end":108.764,"text":"午後搭桃太郎線到吉備津神社","words":[{"id":"caption-word-58-0","text":"午後搭桃太郎線到吉備津神社","start":106.308,"end":108.644}]},{"id":"caption-group-59","frame":8,"start":108.916,"end":111.161,"text":"走一段沿著山勢延伸的長廊","words":[{"id":"caption-word-59-0","text":"走一段沿著山勢延伸的長廊","start":108.916,"end":111.041}]},{"id":"caption-group-60","frame":8,"start":111.319,"end":112.309,"text":"傍晚到表町","words":[{"id":"caption-word-60-0","text":"傍晚到表町","start":111.319,"end":112.189}]},{"id":"caption-group-61","frame":8,"start":112.42,"end":114.232,"text":"買指定的大統領燒肉醬","words":[{"id":"caption-word-61-0","text":"買指定的大統領燒肉醬","start":112.42,"end":114.112}]},{"id":"caption-group-62","frame":9,"start":114.86,"end":116.218,"text":"第七天去倉敷","words":[{"id":"caption-word-62-0","text":"第七天去倉敷","start":114.86,"end":116.098}]},{"id":"caption-group-63","frame":9,"start":116.341,"end":118.095,"text":"上午先看大原美術館","words":[{"id":"caption-word-63-0","text":"上午先看大原美術館","start":116.341,"end":117.975}]},{"id":"caption-group-64","frame":9,"start":118.266,"end":119.971,"text":"再沿著白壁運河散步","words":[{"id":"caption-word-64-0","text":"再沿著白壁運河散步","start":118.266,"end":119.851}]},{"id":"caption-group-65","frame":9,"start":120.735,"end":122.088,"text":"午後到 outlet 購物","words":[{"id":"caption-word-65-0","text":"午後到 outlet 購物","start":120.735,"end":121.968}]},{"id":"caption-group-66","frame":9,"start":122.234,"end":123.693,"text":"傍晚回岡山吃飯","words":[{"id":"caption-word-66-0","text":"傍晚回岡山吃飯","start":122.234,"end":123.573}]},{"id":"caption-group-67","frame":9,"start":123.851,"end":125.69,"text":"晚上把八件行李整理好","words":[{"id":"caption-word-67-0","text":"晚上把八件行李整理好","start":123.851,"end":125.57}]},{"id":"caption-group-68","frame":10,"start":126.32,"end":128.618,"text":"最後一天在房間慢慢裝箱","words":[{"id":"caption-word-68-0","text":"最後一天在房間慢慢裝箱","start":126.32,"end":128.498}]},{"id":"caption-group-69","frame":10,"start":128.719,"end":130.217,"text":"十點四十分退房","words":[{"id":"caption-word-69-0","text":"十點四十分退房","start":128.719,"end":130.097}]},{"id":"caption-group-70","frame":10,"start":130.358,"end":132.357,"text":"搭十一點十分的機場巴士","words":[{"id":"caption-word-70-0","text":"搭十一點十分的機場巴士","start":130.358,"end":132.237}]},{"id":"caption-group-71","frame":10,"start":133.123,"end":135.023,"text":"到機場先辦退稅確認","words":[{"id":"caption-word-71-0","text":"到機場先辦退稅確認","start":133.123,"end":134.903}]},{"id":"caption-group-72","frame":10,"start":135.182,"end":136.26,"text":"再託運行李","words":[{"id":"caption-word-72-0","text":"再託運行李","start":135.182,"end":136.14}]},{"id":"caption-group-73","frame":10,"start":136.387,"end":138.793,"text":"下午三點二十五分搭機返台","words":[{"id":"caption-word-73-0","text":"下午三點二十五分搭機返台","start":136.387,"end":138.673}]},{"id":"caption-group-74","frame":11,"start":139.42,"end":141.261,"text":"出發前還有三件事","words":[{"id":"caption-word-74-0","text":"出發前還有三件事","start":139.42,"end":141.141}]},{"id":"caption-group-75","frame":11,"start":142.038,"end":144.83,"text":"十二月十二日和十六日早上十點","words":[{"id":"caption-word-75-0","text":"十二月十二日和十六日早上十點","start":142.038,"end":144.71}]},{"id":"caption-group-76","frame":11,"start":144.984,"end":147.083,"text":"記得搶六人的特急指定席","words":[{"id":"caption-word-76-0","text":"記得搶六人的特急指定席","start":144.984,"end":146.963}]},{"id":"caption-group-77","frame":11,"start":147.248,"end":148.858,"text":"多數晚餐還沒訂位","words":[{"id":"caption-word-77-0","text":"多數晚餐還沒訂位","start":147.248,"end":148.738}]},{"id":"caption-group-78","frame":11,"start":149.009,"end":150.478,"text":"冬季班次和天候","words":[{"id":"caption-word-78-0","text":"冬季班次和天候","start":149.009,"end":150.358}]},{"id":"caption-group-79","frame":11,"start":150.618,"end":152.254,"text":"出發前再核對一次","words":[{"id":"caption-word-79-0","text":"出發前再核對一次","start":150.618,"end":152.134}]},{"id":"caption-group-80","frame":12,"start":152.88,"end":154.353,"text":"從境港的妖怪街","words":[{"id":"caption-word-80-0","text":"從境港的妖怪街","start":152.88,"end":154.233}]},{"id":"caption-group-81","frame":12,"start":154.485,"end":155.756,"text":"到城崎的溫泉","words":[{"id":"caption-word-81-0","text":"到城崎的溫泉","start":154.485,"end":155.636}]},{"id":"caption-group-82","frame":12,"start":155.887,"end":157.253,"text":"再到倉敷的運河","words":[{"id":"caption-word-82-0","text":"再到倉敷的運河","start":155.887,"end":157.133}]},{"id":"caption-group-83","frame":12,"start":158.011,"end":159.785,"text":"把想看的風景排進來","words":[{"id":"caption-word-83-0","text":"把想看的風景排進來","start":158.011,"end":159.665}]},{"id":"caption-group-84","frame":12,"start":159.922,"end":162.027,"text":"也把冬天需要的餘裕留下來","words":[{"id":"caption-word-84-0","text":"也把冬天需要的餘裕留下來","start":159.922,"end":161.907}]},{"id":"caption-group-85","frame":12,"start":162.781,"end":164.523,"text":"這就是我們的八天七夜","words":[{"id":"caption-word-85-0","text":"這就是我們的八天七夜","start":162.781,"end":164.403}]},{"id":"caption-group-86","frame":12,"start":164.665,"end":165.834,"text":"準備一起出發","words":[{"id":"caption-word-86-0","text":"準備一起出發","start":164.665,"end":165.714}]}];
+  var DURATION = 167.66;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.985 }, { scale: 1, duration: 0.1, ease: "power3.out" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+<style id="caption-band-travel">
+ #captions-root{width:100%;height:100%;font-family:GenSekiGothic,sans-serif}
+ .caption-stage{top:970px!important;height:110px!important;background:#17394A}
+ .caption-pill{max-width:94%!important;padding:5px 30px!important;background:transparent!important;background-image:none!important;border:0!important;box-shadow:none!important}
+ .caption-line{font-family:GenSekiGothic,sans-serif!important;font-size:38px!important;font-weight:700!important;line-height:1.4!important;letter-spacing:0!important;gap:0 12px!important}
+ .caption-word,.caption-word.is-active,.caption-word.is-spoken{color:#F4F0E7!important;background:transparent!important;box-shadow:none!important;font-style:normal!important}
+ </style></template>

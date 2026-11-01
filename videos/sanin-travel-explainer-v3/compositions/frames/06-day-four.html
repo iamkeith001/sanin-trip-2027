@@ -1,0 +1,39 @@
+<template>
+<link rel="stylesheet" href="../../assets/base.css">
+<style>
+@font-face{font-family:GenSekiGothic;src:url('../../assets/fonts/GenSekiGothic2TW-B.subset.woff2') format('opentype');font-weight:700}
+#root{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+#root,#root *{font-family:GenSekiGothic,sans-serif;font-weight:700}
+.dayrail{position:absolute;left:1050px;top:153px;width:784px;height:42px;display:flex;gap:18px;align-items:center;font-size:24px;line-height:1;z-index:5}
+.dayrail span{width:80px;border-bottom:3px solid var(--line);padding:0 0 9px;color:var(--muted)}
+.dayrail span.past{border-color:var(--ink)}
+.dayrail span.today{color:var(--accent);border-color:var(--accent)}
+.tagbox{position:absolute;left:86px;top:342px}
+.rows{position:absolute;left:86px;top:414px;width:748px}
+.scene .row{padding:10px 0;gap:22px}.scene .row .when{min-width:112px;font-size:28px}.scene .row .what{font-size:30px}
+.note{position:absolute;left:86px;top:878px;width:748px;font-size:25px;line-height:1.45;color:var(--accent)}
+.photo-frame{left:880px;top:342px;width:954px;height:537px;border-radius:6px}
+.inset{position:absolute;left:1470px;top:640px;width:384px;height:256px;margin:0;overflow:hidden;border:8px solid var(--bg);border-radius:6px;box-shadow:0 18px 40px rgba(23,57,74,.28);background:var(--ink)}
+.inset img{width:100%;height:100%;object-fit:cover;display:block}
+</style>
+<div id="root" data-composition-id="06-day-four" data-duration="14.35" data-width="1920" data-height="1080"><div class="scene">
+<div class="dayrail" aria-label="八日旅程進度"><span class="past">DAY 1</span><span class="past">DAY 2</span><span class="past">DAY 3</span><span class="today">DAY 4</span><span class="future">DAY 5</span><span class="future">DAY 6</span><span class="future">DAY 7</span><span class="future">DAY 8</span></div>
+<p class="eyebrow">AMANOHASHIDATE</p><p class="date">01.14 THU</p><div class="rule"></div>
+<p class="day">DAY 4</p><h1 class="heading" id="h6">天橋立，從山上看海之京都</h1>
+<div class="tagbox" id="t6"><p class="tag">已訂：文珠荘（含早晚餐）</p></div>
+<div class="rows"><div class="row" id="r6-0"><span class="when">08:58</span><span class="what">JR → 豐岡轉丹後鐵道</span></div><div class="row" id="r6-1"><span class="when">11:05</span><span class="what">抵達天橋立，寄放行李</span></div><div class="row" id="r6-2"><span class="when">11:40</span><span class="what">橋立大丸午餐</span></div><div class="row" id="r6-3"><span class="when">13:00</span><span class="what">View Land 展望台</span></div><div class="row" id="r6-4"><span class="when">14:30</span><span class="what">智恩寺・松林短走</span></div><div class="row" id="r6-5"><span class="when">15:30</span><span class="what">入住文珠荘</span></div></div>
+<figure class="photo-frame" id="p6"><img id="pi6" src="../../assets/images/treated/06a-sandbar-view.jpg" alt="天橋立，從山上看海之京都示意圖"></figure>
+
+<p class="note" id="n6">錯過 08:58 → 改 10:34 特急，11:54 到</p><p class="page-number">06 / 12</p>
+</div></div><script>(()=>{
+const C=window.TL.scenes['day-four'];const D=C.duration;const tl=gsap.timeline({paused:true});
+tl.fromTo('#h6',{y:24,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out'},C.title);
+tl.fromTo('#t6',{y:16,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},C.enter+.45);
+tl.fromTo('#p6',{x:30,opacity:0},{x:0,opacity:1,duration:.9,ease:'power3.out'},C.enter+.2);
+tl.fromTo('#pi6',{scale:1.08,xPercent:1.5},{scale:1,xPercent:0,duration:D,ease:'none'},0);
+tl.fromTo('#r6-0',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[1].at));tl.fromTo('#r6-1',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[2].at));tl.fromTo('#r6-2',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[4].at));tl.fromTo('#r6-3',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[5].at));tl.fromTo('#r6-4',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[7].at));tl.fromTo('#r6-5',{y:22,opacity:0},{y:0,opacity:1,duration:.6,ease:'power3.out'},Math.max(.7,C.clauses[8].at));
+
+tl.fromTo('#n6',{opacity:0},{opacity:1,duration:.6,ease:'power2.out'},C.clauses[8].at);
+tl.to({},{duration:D},0);
+window.__timelines['06-day-four']=tl;
+})();</script></template>

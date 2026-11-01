@@ -1,0 +1,24 @@
+{
+ "_style": {
+  "watercolor": "Japanese watercolor illustration, soft layered washes and visible paper texture, gentle winter light, muted palette of warm cream, deep navy and small vermilion accents. Absolutely no text, no lettering, no signs with writing, no logos, no watermark.",
+  "photo": "Realistic travel photograph, natural light, 35mm lens, January winter in western Japan. Absolutely no text, no readable signage, no logos, no watermark, no recognizable faces."
+ },
+ "images": [
+  ["01-opening", "watercolor", "A two-car orange and cream local diesel train running along a snowy coastal cliff above the Sea of Japan, a small fishing village and snowy mountains in the distance, wide cinematic composition."],
+  ["03a-sakaiminato-street", "photo", "Dusk on a quiet old shopping street in a Japanese harbor town, small bronze statues of whimsical folklore creatures of original design (not any known character) lining the sidewalk, warm shop lights and paper lanterns, light snow on the ground."],
+  ["03b-luggage-desk", "watercolor", "Eight large hard-shell suitcases lined up neatly in front of a Japanese hotel front desk, each with a blank shipping tag, warm lobby lighting, calm and orderly."],
+  ["04a-coast-express", "photo", "A modern two-car limited express diesel train without logos running on a single track along the rugged Sea of Japan coastline in winter, grey sea, snow on rocks and hills."],
+  ["04b-kinosaki-dusk", "watercolor", "A small hot spring town at dusk, willow trees along a narrow stone-banked canal, small arched stone bridges, warm lanterns, a few people in yukata with umbrellas seen from behind."],
+  ["05a-ropeway", "photo", "A ropeway gondola rising above a snowy hot spring town in a narrow valley, a river winding toward the sea, clear winter morning."],
+  ["05b-outdoor-bath", "watercolor", "Steam rising from a traditional stone outdoor hot spring bath surrounded by snowy rocks and pine branches, no people."],
+  ["06a-sandbar-view", "photo", "View from a mountain observation point of a long narrow sandbar covered with pine trees crossing a deep blue bay, light snow on the surrounding hills, winter afternoon."],
+  ["07a-sand-dunes", "photo", "Vast coastal sand dunes with a light dusting of snow and wind ripples in the sand, the Sea of Japan beyond, overcast winter afternoon, a few tiny distant visitors."],
+  ["07b-train-bento", "watercolor", "A simple Japanese bento lunch box and a bottle of tea on a train window ledge, a snowy coastline passing outside the window."],
+  ["08a-shrine-corridor", "photo", "A very long covered wooden shrine corridor in vermilion and dark wood running straight and gently downhill along a hillside, stone lanterns beside it, winter afternoon light, no people."],
+  ["08b-streetcar", "watercolor", "A small single-car city streetcar on a downtown Japanese shopping arcade street at dusk, warm shop lights, winter."],
+  ["09a-kurashiki-canal", "watercolor", "A historic canal lined with white-walled storehouses with black and white lattice tile patterns, weeping willows, a small wooden boat, calm reflections, soft morning winter light."],
+  ["09b-museum-facade", "photo", "A neoclassical stone museum facade with Greek-style columns in a historic Japanese old town, ivy on the walls, winter morning, no signage."],
+  ["10a-airport-bus", "watercolor", "An airport limousine bus at a station bus stop in the morning, travelers' suitcases lined up beside it, a small regional airport and a departing plane in the distance."],
+  ["12-closing", "watercolor", "Six travelers seen from behind walking together along a snowy old-town street at dusk, holding umbrellas, warm lanterns glowing, a quiet sense of a journey beginning."]
+ ]
+}
