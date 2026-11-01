@@ -4,20 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>冬日山陰・海之京都・山陽｜旅伴行程決策冊</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Noto Serif TC + Noto Sans TC + Cinzel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
   <!-- Leaflet CSS & JS for Maps -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- Bundled locally so Word export works without a CDN. -->
-  <script src="assets/vendor/docx.iife.js" defer></script>
-  <link rel="preload" as="image" href="assets/sanin-winter-journey-hero-sunlit.png">
+  <link rel="preload" as="image" href="assets/sanin-winter-journey-hero-sunlit.jpg">
 
   <style>
     :root {
@@ -255,7 +251,7 @@
     .editorial-day .editorial-delay-1 { animation-delay: .1s; }
     .editorial-day .editorial-delay-2 { animation-delay: .2s; }
     #day-panel-1 #card-d1-1, #day-panel-2 #card-d2-2, #day-panel-5 #card-d5-3, #day-panel-6 #card-d6-3, #day-panel-7 #card-d7-1, #day-panel-8 #card-d8-1 { order: 1; border-color: color-mix(in srgb, var(--ed-ink) 40%, transparent); box-shadow: 0 16px 34px color-mix(in srgb, var(--ed-ink) 11%, transparent); }
-    #day-panel-1 #card-d1-2, #day-panel-2 #card-d2-1, #day-panel-5 #card-d5-1, #day-panel-5 #card-d5-2, #day-panel-6 #card-d6-1, #day-panel-6 #card-d6-2, #day-panel-7 #card-d7-2, #day-panel-8 #card-d8-2 { order: 2; background: color-mix(in srgb, var(--ed-paper) 35%, white); }
+    #day-panel-1 #card-d1-2, #day-panel-2 #card-d2-1, #day-panel-5 #card-d5-1, #day-panel-5 #card-d5-2, #day-panel-6 #card-d6-1, #day-panel-6 #card-d6-2, #day-panel-8 #card-d8-2 { order: 2; background: color-mix(in srgb, var(--ed-paper) 35%, white); }
     #day-panel-1 #card-d1-1::before, #day-panel-2 #card-d2-2::before, #day-panel-5 #card-d5-3::before, #day-panel-6 #card-d6-3::before, #day-panel-7 #card-d7-1::before, #day-panel-8 #card-d8-1::before { height: 6px; background: var(--ed-ink); opacity: 1; }
     @keyframes editorial-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     .day-panel [id^="map-d"] { border-color: var(--line); border-radius: 1rem; box-shadow: 0 10px 28px rgba(18,38,58,.05); }
@@ -317,7 +313,66 @@
       #day-panel-3 .day3-reveal { animation: none !important; }
       .editorial-day .editorial-reveal { animation: none !important; }
     }
+    /* ---- 2026-11-01 readability pass: glance cards, badges, folded old plans ---- */
+    .day-panel .glance-card { background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--persimmon) !important; border-radius: 1rem; padding: 1.1rem 1.35rem 1rem 1.5rem !important; margin: 0 0 1.75rem; box-shadow: 0 10px 28px rgba(18,38,58,.06); }
+    .glance-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: .5rem 1rem; margin-bottom: .85rem; }
+    .glance-eyebrow { margin: 0; color: var(--persimmon); font-size: .8rem; font-weight: 700; letter-spacing: .06em; }
+    .glance-title { margin: .25rem 0 0; color: var(--ink); font: 700 1.2rem/1.35 'Noto Serif TC', serif; }
+    .glance-legend { margin: 0; display: flex; flex-wrap: wrap; gap: .3rem; }
+    .glance-legend .badge { margin-left: 0; }
+    .glance-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+    .glance-steps li { display: grid; grid-template-columns: 3.4rem 1fr; gap: .7rem; font-size: .98rem; line-height: 1.55; color: #292524; }
+    .glance-steps b { color: var(--ink); font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-weight: 700; }
+    .glance-facts { display: grid; gap: .45rem; margin: .95rem 0 0; padding-top: .85rem; border-top: 1px dashed var(--line); font-size: .92rem; line-height: 1.6; }
+    .glance-facts div { display: grid; grid-template-columns: 4rem 1fr; gap: .7rem; }
+    .glance-facts dt { color: #57534e; font-weight: 700; }
+    .glance-facts dd { margin: 0; color: #292524; }
+    .glance-more { margin: .85rem 0 0; color: #78716c; font-size: .82rem; }
+    @media (min-width: 900px) {
+      .day-panel .glance-card { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: 2.25rem; }
+      .glance-head, .glance-more { grid-column: 1 / -1; }
+      .glance-facts { align-self: start; margin-top: 0; padding: 0 0 0 1.75rem; border-top: 0; border-left: 1px dashed var(--line); }
+    }
+    .badge { display: inline-block; margin-left: .35rem; padding: .28rem .5rem; border-radius: 999px; font-size: .72rem; font-weight: 700; line-height: 1; white-space: nowrap; vertical-align: .08em; }
+    .badge-booked { background: #E3F1E7; color: #1F5B35; border: 1px solid #9CCBAA; }
+    .badge-checked { background: #E4EEF7; color: #1E4A73; border: 1px solid #A7C3DE; }
+    .badge-pending { background: #FCEFD9; color: #8A4B0C; border: 1px solid #EBC58A; }
+    .unadopted-wrap { grid-column: 1 / -1; order: 9; border: 1px dashed #d6d3d1; border-radius: .85rem; background: rgba(250,250,249,.85); }
+    .unadopted-wrap > summary { cursor: pointer; list-style: none; padding: .75rem 1rem; color: #57534e; font-size: .88rem; }
+    .unadopted-wrap > summary::-webkit-details-marker { display: none; }
+    .unadopted-wrap > summary::before { content: '＋ '; color: #a8a29e; }
+    .unadopted-wrap[open] > summary::before { content: '－ '; }
+    .unadopted-wrap > article { margin: 0 .75rem .75rem; }
+    /* Minimum readable sizes: tiny utility sizes were hard to read, especially on phones. */
+    .text-\[10px\] { font-size: 11.5px !important; }
+    .text-\[11px\] { font-size: 12px !important; }
+    @media (max-width: 767px) {
+      .travel-meta { display: none; }
+      .travel-hero, .hero-content { min-height: 0 !important; }
+      .hero-content { padding-top: 2.25rem !important; padding-bottom: 1.75rem !important; }
+      .hero-eyebrow { font-size: .62rem; }
+      .hero-title { margin: .5rem 0 .65rem !important; font-size: 2.25rem !important; }
+      .hero-summary { font-size: .9rem !important; line-height: 1.7 !important; }
+      .hero-summary br { display: none; }
+      .hero-stamps { margin-top: 1rem !important; gap: .4rem !important; }
+      .hero-stamps span { padding: .35rem .7rem !important; font-size: .75rem !important; }
+      .day-panel .text-xs, .day-panel .text-\[11px\], .day-panel .text-\[10px\], .decision-ledger .text-xs, .decision-ledger .text-\[11px\], .decision-ledger .text-\[10px\] { font-size: .8125rem !important; line-height: 1.7 !important; }
+      .day-panel .glance-card { padding: 1rem 1rem .9rem 1.15rem !important; }
+      .glance-steps li { grid-template-columns: 3.1rem 1fr; font-size: .95rem; }
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff !important; font-size: 10.5pt; }
+      .skip-link, .travel-meta, .travel-hero, .journey-nav, [id^="map-d"], [id^="map-d"] + p, button, .unadopted-wrap, .editorial-hero, .day3-hero, .day4-hero, #share-hint, #sync-status, #save-status, #export-word-hint, #share-feedback, #export-feedback { display: none !important; }
+      .day-panel { display: block !important; break-before: page; }
+      #day-panel-0 { break-before: auto; }
+      .editorial-reveal, .editorial-day .editorial-reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+      .glance-card { box-shadow: none; break-inside: avoid; }
+      a { color: inherit !important; text-decoration: none !important; }
+    }
   </style>
+  <!-- Tailwind utilities, prebuilt from this page (tailwindcss 3.4.17). Rebuild after adding new utility classes. -->
+  <link rel="stylesheet" href="assets/tailwind.min.css">
 </head>
 <body class="selection:bg-amber-200">
   <a class="skip-link" href="#itinerary-content">跳至行程內容</a>
@@ -340,13 +395,13 @@
 
   <!-- Winter journey hero -->
   <header class="travel-hero">
-    <img class="hero-image" src="assets/sanin-winter-journey-hero-sunlit.png" width="1536" height="1024" fetchpriority="high" alt="陽光下，橘色列車沿著積雪山陰海岸行駛，前方是碧海與溫泉聚落">
+    <img class="hero-image" src="assets/sanin-winter-journey-hero-sunlit.jpg" width="1536" height="1024" fetchpriority="high" alt="陽光下，橘色列車沿著積雪山陰海岸行駛，前方是碧海與溫泉聚落">
     <div class="hero-content">
       <p class="hero-eyebrow">A companion-made winter route · 2027</p>
       <h1 class="hero-title">冬日山陰<br>海之京都・山陽</h1>
-      <p class="hero-summary">一月的山陰，鉛灰色的日本海，雪落在鬼太郎的肩上。<br>從境港的妖怪街啟程，搭 JR 沿海東行；在城崎溫泉街上，穿浴衣、踏木屐，走訪六間外湯。接著前往日本三景之一的天橋立與伊根舟屋，最後在倉敷的運河邊為旅程收尾。<br>八天、六個人，嚐松葉蟹與但馬牛，也把冬日泡到指尖發皺。</p>
+      <p class="hero-summary">一月的山陰，鉛灰色的日本海，雪落在鬼太郎的肩上。<br>從境港的妖怪街啟程，搭 JR 沿海東行；在城崎溫泉連住兩晚，穿浴衣、踏木屐，每天慢慢泡一座外湯。接著登上日本三景之一的天橋立，經鳥取砂丘南下岡山，最後在倉敷的運河邊為旅程收尾。<br>八天、六個人，嚐松葉蟹與但馬牛，也把冬日泡到指尖發皺。</p>
       <div class="hero-stamps" aria-label="行程特色">
-        <span>景點｜妖怪街・伊根・砂丘</span>
+        <span>景點｜妖怪街・天橋立・砂丘・倉敷</span>
         <span>住宿｜城崎溫泉連住</span>
         <span>交通｜JR 與日別方案</span>
         <span>餐飲｜冬蟹・但馬牛・海鮮丼</span>
@@ -356,6 +411,9 @@
 
   <!-- Day Selector -->
   <nav class="journey-nav" aria-label="行程日別導覽">
+      <button onclick="switchDay(0)" id="tab-0" data-day="0" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
+        總覽 <span class="nav-sub text-xs text-stone-400 font-light ml-1">討論成果</span>
+      </button>
       <button onclick="switchDay(1)" id="tab-1" data-day="1" class="day-nav-item tab-active py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent text-stone-900">
         Day 1 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/11 (一)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">境港御宿野乃・已訂</span>
       </button>
@@ -380,9 +438,6 @@
       <button onclick="switchDay(8)" id="tab-8" data-day="8" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
         Day 8 <span class="nav-date text-xs font-mono text-amber-700 ml-1">1/18 (一)</span><span class="nav-sub text-xs text-stone-400 font-light ml-2">伴手禮・返台</span>
       </button>
-      <button onclick="switchDay(0)" id="tab-0" data-day="0" class="day-nav-item text-stone-500 hover:text-stone-900 py-3 font-medium transition whitespace-nowrap border-b-2 border-transparent">
-        總覽 <span class="nav-sub text-xs text-stone-400 font-light ml-1">討論成果</span>
-      </button>
   </nav>
 
   <!-- Content Area -->
@@ -402,6 +457,9 @@
           </button>
           <button id="share-link-button" type="button" class="inline-flex items-center gap-2 rounded border border-stone-400/60 bg-stone-700 px-3 py-2 text-xs font-semibold text-stone-100 shadow-sm transition hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-300" aria-describedby="share-hint">
             <span aria-hidden="true">🔗</span> <span id="share-link-label">複製分享連結</span>
+          </button>
+          <button type="button" onclick="window.print()" class="inline-flex items-center gap-2 rounded border border-stone-400/60 bg-stone-700 px-3 py-2 text-xs font-semibold text-stone-100 shadow-sm transition hover:bg-stone-600">
+            <span aria-hidden="true">🖨</span> 列印／存成 PDF（每天一頁）
           </button>
           <span id="sync-status" class="text-[11px] text-stone-300 border border-stone-500/40 rounded px-2.5 py-1.5">連線中…</span>
           <span id="share-hint" class="text-[10px] text-stone-300">大家開同一個網址就是同一份行程，任何人的拍板都會即時出現在所有人畫面上。</span>
@@ -447,6 +505,7 @@
 
     <!-- ================= DAY 1 PANEL ================= -->
     <div id="day-panel-1" class="day-panel block editorial-day">
+      <section class="glance-card" aria-label="第 1 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 1｜1/11（一・成人之日）</p><h3 class="glance-title">落地、寄行李、逛妖怪街</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>12:00</b><span>抵米子機場（IT724）</span></li><li><b>13:40</b><span>離開航廈，7-Eleven 買午餐</span></li><li><b>14:11</b><span>JR 境線 → 14:26 境港</span></li><li><b>14:30</b><span>御宿野乃交寄八件到川口屋</span></li><li><b>15:35</b><span>水木茂紀念館（16:00 前入館）</span></li><li><b>18:00</b><span>晚餐，餐後走點燈的妖怪街</span></li></ol><dl class="glance-facts"><div><dt>住宿</dt><dd>御宿野乃 境港，含次日早餐<span class="badge badge-booked">已訂</span></dd></div><div><dt>交通</dt><dd>JR 境線 ¥190，1/11 班表<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>趕不上 14:11 先打給飯店；16:00 前進不了紀念館就取消</dd></div><div><dt>待辦</dt><dd>晚餐六人訂位<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
@@ -462,7 +521,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-01-sakaiminato-yokai-street.png" width="1794" height="877" loading="eager" decoding="async" alt="冬夜積雪的境港妖怪街，暖色街燈、地方列車與妖怪雕像剪影交織在濕亮的石板路上">
+        <img src="assets/day-illustrations/day-01-sakaiminato-yokai-street.jpg" width="1200" height="586" loading="eager" decoding="async" alt="冬夜積雪的境港妖怪街，暖色街燈、地方列車與妖怪雕像剪影交織在濕亮的石板路上">
         <figcaption class="editorial-hero-caption"><p>First night in san'in</p><h3>晚餐後，才是妖怪的時間</h3></figcaption>
       </figure>
 
@@ -714,6 +773,7 @@
 
     <!-- ================= DAY 2 PANEL ================= -->
     <div id="day-panel-2" class="day-panel hidden editorial-day">
+      <section class="glance-card" aria-label="第 2 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 2｜1/12（二）</p><h3 class="glance-title">沿山陰海岸到城崎</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>06:30</b><span>早餐，07:40 前離館</span></li><li><b>08:05</b><span>境線（刷 IC）→ 08:56 米子，領 e5489</span></li><li><b>09:52</b><span>超級松風 6 號 → 10:57 鳥取</span></li><li><b>11:10</b><span>魚鮮水產午餐，12:10 前離店</span></li><li><b>12:56</b><span>濱風 4 號 → 14:11 城崎溫泉</span></li><li><b>16:00</b><span>外湯一座（一之湯），18:00 晚餐</span></li></ol><dl class="glance-facts"><div><dt>住宿</dt><dd>川口屋，含早晚餐<span class="badge badge-booked">已訂</span></dd></div><div><dt>車資</dt><dd>每人 ¥6,470（淡季）<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>11:30 未入席改簡餐；16:45 前離開浴場</dd></div><div><dt>待辦</dt><dd>六人指定席 12/12 10:00 開賣<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
@@ -729,7 +789,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-02-sanin-rail-journey.png" width="1693" height="929" loading="lazy" decoding="async" alt="冬季的山陰海岸旁，一列地方列車駛過雪景車站，旅人提著行李走向月台">
+        <img src="assets/day-illustrations/day-02-sanin-rail-journey.jpg" width="1200" height="658" loading="lazy" decoding="async" alt="冬季的山陰海岸旁，一列地方列車駛過雪景車站，旅人提著行李走向月台">
         <figcaption class="editorial-hero-caption"><p>Railway to kinosaki</p><h3>窗外是冬海，終點是溫泉</h3></figcaption>
       </figure>
 
@@ -975,6 +1035,7 @@
 
     <!-- ================= DAY 3 PANEL ================= -->
     <div id="day-panel-3" class="day-panel hidden">
+      <section class="glance-card" aria-label="第 3 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 3｜1/13（三）</p><h3 class="glance-title">留在城崎慢遊（推薦案）</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>07:30</b><span>旅館早餐</span></li><li><b>09:30</b><span>出發，10:30 纜車上山、11:10 下山</span></li><li><b>12:00</b><span>海中苑午餐（12:20 未入席改簡餐）</span></li><li><b>13:15</b><span>回房午休約一小時</span></li><li><b>14:30</b><span>外湯一座（御所之湯）</span></li><li><b>18:00</b><span>おまかせ会席</span></li></ol><dl class="glance-facts"><div><dt>住宿</dt><dd>川口屋第 2 晚<span class="badge badge-booked">已訂</span></dd></div><div><dt>交通</dt><dd>步行為主，纜車 ¥1,200<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>11:10 才能上山就取消纜車；14:30 後才回房就縮短外湯</dd></div><div><dt>待辦</dt><dd>慢遊或外出由旅伴拍板<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="day3-chapter day3-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
@@ -990,7 +1051,7 @@
       </section>
 
       <figure class="day3-hero day3-reveal day3-delay-1">
-        <img src="assets/day-illustrations/day-03-kinosaki-onsen.png" width="1823" height="863" loading="lazy" decoding="async" alt="雪夜的城崎溫泉，兩名穿浴衣的旅人在石橋上散步，溫泉蒸氣與旅館燈火映在運河上">
+        <img src="assets/day-illustrations/day-03-kinosaki-onsen.jpg" width="1200" height="568" loading="lazy" decoding="async" alt="雪夜的城崎溫泉，兩名穿浴衣的旅人在石橋上散步，溫泉蒸氣與旅館燈火映在運河上">
         <figcaption class="day3-hero-caption"><p>Steam, snow and a slower hour</p><h3>一座湯，就是今天的主角</h3></figcaption>
       </figure>
 
@@ -1247,6 +1308,7 @@
 
     <!-- ================= DAY 4 PANEL ================= -->
     <div id="day-panel-4" class="day-panel hidden">
+      <section class="glance-card" aria-label="第 4 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 4｜1/14（四）</p><h3 class="glance-title">天橋立：View Land 與松林</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>07:30</b><span>早餐，08:30 旅館送站</span></li><li><b>08:58</b><span>JR → 豐岡，09:51 丹鐵 → 11:05 天橋立</span></li><li><b>11:05</b><span>文珠荘寄放八件</span></li><li><b>11:40</b><span>橋立大丸午餐，12:40 前離店</span></li><li><b>13:00</b><span>View Land（單軌擠就改吊椅）</span></li><li><b>14:30</b><span>智恩寺、松林短走，15:30 入住</span></li></ol><dl class="glance-facts"><div><dt>住宿</dt><dd>文珠荘，含早晚餐<span class="badge badge-booked">已訂</span></dd></div><div><dt>車資</dt><dd>每人 ¥1,400<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>錯過 08:58 改 10:34 特急，11:54 到</dd></div><div><dt>待辦</dt><dd>晚餐開席時段（18:00／18:30／19:00）<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="day4-chapter day4-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
@@ -1262,7 +1324,7 @@
       </section>
 
       <figure class="day4-hero day4-reveal day4-delay-1">
-        <img src="assets/day-illustrations/day-04-amanohashidate-ine.png" width="1774" height="887" loading="lazy" decoding="async" alt="從高處眺望雪覆松林的天橋立與靛藍海灣，遠方有伊根舟屋與航行中的小船">
+        <img src="assets/day-illustrations/day-04-amanohashidate.jpg" width="1200" height="600" loading="lazy" decoding="async" alt="從高處眺望雪覆松林的天橋立與靛藍海灣，海上有航行中的小船">
         <figcaption class="day4-hero-caption"><p>The inland sea, in winter</p><h3>留在天橋立看飛龍觀</h3></figcaption>
       </figure>
 
@@ -1478,6 +1540,7 @@
 
     <!-- ================= DAY 5 PANEL ================= -->
     <div id="day-panel-5" class="day-panel hidden editorial-day">
+      <section class="glance-card" aria-label="第 5 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 5｜1/15（五）</p><h3 class="glance-title">移動到鳥取，條件式看砂丘</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>07:30</b><span>早餐，09:00 離館</span></li><li><b>09:34</b><span>丹鐵 → 豐岡 11:22 → 城崎 11:56（車上吃午餐）</span></li><li><b>14:00</b><span>抵鳥取，先寄妥八件</span></li><li><b>14:40</b><span>砂丘線 → 15:02 砂丘</span></li><li><b>15:50</b><span>離開砂地，16:20 搭回程巴士</span></li><li><b>18:30</b><span>燒肉晚餐</span></li></ol><dl class="glance-facts"><div><dt>住宿</dt><dd>觀水庭こぜにや，不含餐<span class="badge badge-booked">已訂</span></dd></div><div><dt>車資</dt><dd>每人 ¥3,420，巴士單程 ¥380<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>14:30 未到砂丘線站牌就取消砂丘</dd></div><div><dt>待辦</dt><dd>八件寄物方式（是否改寄岡山）、晚餐訂位<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
@@ -1493,7 +1556,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-05-tottori-sand-dunes.png" width="1693" height="929" loading="lazy" decoding="async" alt="冬雲下的鳥取砂丘，兩名旅人沿著風紋沙脊前行，雪覆的沙丘延伸到海邊">
+        <img src="assets/day-illustrations/day-05-tottori-sand-dunes.jpg" width="1200" height="658" loading="lazy" decoding="async" alt="冬雲下的鳥取砂丘，兩名旅人沿著風紋沙脊前行，雪覆的沙丘延伸到海邊">
         <figcaption class="editorial-hero-caption"><p>A white line across the dune</p><h3>入口短走，看見冬日砂丘</h3></figcaption>
       </figure>
 
@@ -1729,6 +1792,7 @@
 
     <!-- ================= DAY 6 PANEL ================= -->
     <div id="day-panel-6" class="day-panel hidden editorial-day">
+      <section class="glance-card" aria-label="第 6 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 6｜1/16（六）</p><h3 class="glance-title">南下岡山，吉備津與大統領</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>07:30</b><span>自費早餐，09:20 離館</span></li><li><b>10:02</b><span>超級因幡 4 號 → 11:49 岡山</span></li><li><b>12:25</b><span>寄放八件後午餐，13:20 前離店</span></li><li><b>13:52</b><span>桃太郎線 → 吉備津神社</span></li><li><b>15:47</b><span>回岡山，表町買大統領（可搭路面電車）</span></li><li><b>18:30</b><span>晚餐</span></li></ol><dl class="glance-facts"><div><dt>住宿</dt><dd>岡山格蘭比亞，不含餐<span class="badge badge-booked">已訂</span></dd></div><div><dt>車資</dt><dd>特急每人 ¥5,400（淡季）<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>13:40 未到月台就取消吉備津</dd></div><div><dt>待辦</dt><dd>六人指定席 12/16 開賣、晚餐訂位<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
@@ -1744,7 +1808,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-06-okayama-garden-castle.png" width="1774" height="887" loading="lazy" decoding="async" alt="雪覆庭園中的岡山城與長廊，旅人沿著石徑朝冬日庭園前行">
+        <img src="assets/day-illustrations/day-06-okayama-garden-castle.jpg" width="1200" height="600" loading="lazy" decoding="async" alt="雪覆庭園中的岡山城與長廊，旅人沿著石徑朝冬日庭園前行">
         <figcaption class="editorial-hero-caption"><p>Castle, garden, corridor</p><h3>早餐後，走向吉備津長迴廊</h3></figcaption>
       </figure>
 
@@ -1917,13 +1981,14 @@
 
     <!-- ================= DAY 7 PANEL ================= -->
     <div id="day-panel-7" class="day-panel hidden editorial-day">
+      <section class="glance-card" aria-label="第 7 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 7｜1/17（日）</p><h3 class="glance-title">倉敷一日：美術館、運河、Outlet</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>08:26</b><span>JR → 08:43 倉敷</span></li><li><b>09:30</b><span>大原美術館（11:20 館外集合）</span></li><li><b>11:20</b><span>白壁運河散步、午餐</span></li><li><b>14:30</b><span>三井 Outlet（16:45 集合）</span></li><li><b>17:12</b><span>JR → 17:30 岡山</span></li><li><b>18:30</b><span>晚餐，20:00 回房裝箱</span></li></ol><dl class="glance-facts"><div><dt>住宿</dt><dd>岡山格蘭比亞第 2 晚<span class="badge badge-booked">已訂</span></dd></div><div><dt>費用</dt><dd>JR ¥660＋大原 ¥2,000<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>12:40 未入座換較快供餐；退稅者 16:15 起收尾結帳</dd></div><div><dt>待辦</dt><dd>晚餐訂位<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
             <span class="editorial-eyebrow">Route 07 · Kurashiki canal</span>
             <p class="editorial-kicker">白壁、運河與一艘冬日小舟</p>
             <h2 class="editorial-title">在倉敷，<br>慢慢把行李裝滿</h2>
-            <p class="editorial-deck">已選 A：先看大原美術館，再散步倉敷運河與白壁街，午後 Outlet；川舟不搭，蒜山高原與鷲羽山不去。</p>
+            <p class="editorial-deck">已選 A：先看大原美術館，再散步倉敷運河與白壁街，午後 Outlet；川舟不搭。</p>
           </div>
           <div class="editorial-stay self-start">
             宿：岡山格蘭比亞酒店（已訂、不含餐；連住第 2 晚）
@@ -1932,7 +1997,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-07-kurashiki-canal.png" width="1536" height="1024" loading="lazy" decoding="async" alt="黃昏的倉敷美觀地區運河，白壁倉庫、垂柳與一艘點著燈的小舟倒映在水面">
+        <img src="assets/day-illustrations/day-07-kurashiki-canal.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="黃昏的倉敷美觀地區運河，白壁倉庫、垂柳與一艘點著燈的小舟倒映在水面">
         <figcaption class="editorial-hero-caption"><p>White walls, still water</p><h3>先看美術館，再散步與採買</h3></figcaption>
       </figure>
 
@@ -1958,7 +2023,7 @@
 <article id="card-d7-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
 <div><span class="text-xs font-semibold">已選 Plan A｜先美術館，再散步</span>
 <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">大原美術館・倉敷運河散步・午後 Outlet</h3>
-<p class="text-xs text-stone-600 my-4">最後一個完整旅行日，以 JR 與步行串聯。把冬季早關館放上午，晚間回已訂岡山格蘭比亞整理行李；鷲羽山不去。</p>
+<p class="text-xs text-stone-600 my-4">最後一個完整旅行日，以 JR 與步行串聯。把冬季早關館放上午，晚間回已訂岡山格蘭比亞整理行李。</p>
 <section class="my-4 border-t border-b border-stone-100 py-3.5" aria-label="Day 7 Plan A 預劃時刻表"><h4 class="text-xs font-bold text-stone-800 mb-3">當日預劃時刻｜JR 2027 班次待核；川舟不搭</h4>
 <ol class="space-y-3 text-xs text-stone-600"><li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">07:00～08:00</span><span><strong>自費早餐、輕裝出門</strong>：續住格蘭比亞，不退房；八件大行李留酒店，原房續住依訂位確認。前晚安排早餐地點與六人供餐，08:00 出門。飯店 19F 早餐現行 06:00 起、1F 07:00 起，均為另購候選，2027 價格與席位待核。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">08:00～09:00</span><span><strong>飯店 → 岡山站 → JR 倉敷站</strong>：08:15 前六人到乘車月台，JR 普通 08:26→08:43（2027/1/17 班表已查，¥330；前後約 15 分一班）；車程約 17 分。延誤則縮短咖啡或街區停留，不追加景點。</span></li>
@@ -1981,9 +2046,6 @@
 <p>2026/10/03 複核：<a class="underline" href="https://www.ohara.or.jp/visitor_info/" target="_blank" rel="noopener noreferrer">大原美術館</a>／<a class="underline" href="https://mitsui-shopping-park.com/mop/kurashiki/hour/" target="_blank" rel="noopener noreferrer">Outlet 營業</a>／<a class="underline" href="https://www.kurashiki-tabi.jp/access-to-kurashiki/access-by-vehicle/" target="_blank" rel="noopener noreferrer">倉敷交通</a>／<a class="underline" href="https://jrwest-hotels.jp/granvia-okayama/stay/breakfast/" target="_blank" rel="noopener noreferrer">飯店早餐</a>／<a class="underline" href="https://timetable.jr-odekake.net/train-timetable/209932?date=20260919" target="_blank" rel="noopener noreferrer">JR 現行車次示例</a>。</p></details></div>
 <div class="mt-6 pt-4 border-t border-stone-100"><p class="text-xs mb-3">JR 岡山⇄倉敷＋步行，不租車。六人座位與行李袋自行留意；川舟不搭、不訂票。</p>
 <button onclick="highlightD7(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 transition tracking-wider border border-stone-300">✓ 已選 Plan A</button></div></article>
-
-        <!-- Day 7 unselected historical plan -->
-<article id="card-d7-2" class="editorial-plan bg-stone-50 border border-stone-200 rounded-lg"><span class="text-xs font-semibold">舊 Plan B｜未採用</span><h3 class="text-lg font-bold mt-3">鷲羽山不去</h3><p class="text-xs text-stone-600 mt-3">本次已選倉敷與 Outlet，不恢復夕景、兒島轉乘或相關待辦；舊交通資訊請見 Git 歷史。</p></article>
       </div>
 
       <!-- 順路備選景點庫 ＆ 討論備忘欄 -->
@@ -2042,6 +2104,7 @@
 
     <!-- ================= DAY 8 PANEL ================= -->
     <div id="day-panel-8" class="day-panel hidden editorial-day">
+      <section class="glance-card" aria-label="第 8 天重點"><div class="glance-head"><div><p class="glance-eyebrow">今日重點・Day 8｜1/18（一）</p><h3 class="glance-title">提早到機場，返台</h3></div><p class="glance-legend"><span class="badge badge-booked">已訂</span><span class="badge badge-checked">已查核</span><span class="badge badge-pending">待確認</span></p></div><ol class="glance-steps"><li><b>07:30</b><span>早餐，房內裝箱秤重</span></li><li><b>10:00</b><span>站內按清單補買</span></li><li><b>10:40</b><span>退房，走到西口 21 號站牌</span></li><li><b>11:10</b><span>機場巴士 → 11:40 機場，先辦退稅確認</span></li><li><b>12:55</b><span>開櫃，託運八件</span></li><li><b>15:25</b><span>IT215 → 17:30 桃園</span></li></ol><dl class="glance-facts"><div><dt>航班</dt><dd>IT215<span class="badge badge-booked">已訂</span></dd></div><div><dt>巴士</dt><dd>¥1,000，冬季班表<span class="badge badge-checked">已查核</span></dd></div><div><dt>停止點</dt><dd>14:40 報到截止，須已完成</dd></div><div><dt>待辦</dt><dd>飯店退房 12:00、六人八件上巴士<span class="badge badge-pending">待確認</span></dd></div></dl><p class="glance-more">以下是完整時刻、方案理由與查核細節；出門前看這張就夠。</p></section>
       <section class="editorial-chapter editorial-reveal">
         <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
           <div>
@@ -2057,7 +2120,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-08-okayama-departure.png" width="1774" height="887" loading="lazy" decoding="async" alt="冬日清晨的岡山機場窗前，一只行李箱與風呂敷包裹面向跑道上的飛機">
+        <img src="assets/day-illustrations/day-08-okayama-departure.jpg" width="1200" height="600" loading="lazy" decoding="async" alt="冬日清晨的岡山機場窗前，一只行李箱與風呂敷包裹面向跑道上的飛機">
         <figcaption class="editorial-hero-caption"><p>One last look</p><h3>把餘裕，一起帶上飛機</h3></figcaption>
       </figure>
 
@@ -2502,6 +2565,7 @@
 
     function renderAllFromState() {
       refreshLedger();
+      wrapUnadoptedCards();
       for (let day = 1; day <= 8; day++) {
         renderNotes(day);
         const selected = decisionState.decisions[day];
@@ -2600,7 +2664,6 @@
       '6-2': '舊城園市區方案（未採用）',
       '6-3': '已選自費早餐版：09:20 離館、09:40 到站、10:02 特急；11:49～12:25 含出站及八件寄物，13:40 前到月台、13:52 吉備線。15:15 離神社、15:35 回站、15:47 回岡山，16:30 採買；備援成立才順延。2027 班次、寄物與同款庫存待核。',
       '7-1': 'JR 山陽本線＋步行（推薦）',
-      '7-2': '舊夕景方案未採用；鷲羽山不去',
       '8-1': '利木津巴士直達機場',
       '8-2': 'JR 吉備線＋利木津巴士'
     };
@@ -2621,7 +2684,6 @@
       '6-3': '2026/9/27 已選自費早餐版：10:02 特急，13:52 吉備線去吉備津，15:47 回岡山，16:30 表町採買大統領；不排岡山城與後樂園。2027 班次與六人指定席待核。',
       '6-2': '晚班備案走岡山城、後樂園與大統領採買；16:25～16:55 在表町採買，延誤先縮短城園，同款與庫存待確認。',
       '7-1': '已選大原先看、白壁運河短線；14:30～16:30 Outlet、16:45 集合，目標 18:00 回館休息、18:30 晚餐未訂、20:00～21:00 八件裝箱；2027 JR 去回待核。',
-      '7-2': '本次已選倉敷，鷲羽山不去；不恢復夕景轉乘或相關待辦。',
       '8-1': '推薦較早赴機場：10:40 退房提八件、10:55 西口，搭 11:10→約 11:40（冬季表已查）。先海關確認再託運，一般約 12:55 開櫃，目標 13:40 完成、14:30 登機門。',
       '8-2': '未定條件案：採買與寄物確認、2027 JR 可 10:15 前回岡山，10:40 取妥八件、10:55 西口才評估；否則不去，機場流程同 Plan A。'
     };
@@ -2703,7 +2765,19 @@
       const feedback = document.getElementById('export-feedback');
       const exportButton = document.getElementById('export-word-button');
       if (!window.docx) {
-        feedback.textContent = 'Word 匯出元件尚未載入，請重新整理後再試。';
+        // Load the bundled Word library only when someone actually exports.
+        feedback.textContent = '正在載入 Word 匯出元件…';
+        feedback.classList.remove('hidden');
+        await new Promise(resolve => {
+          const script = document.createElement('script');
+          script.src = 'assets/vendor/docx.iife.js';
+          script.onload = resolve;
+          script.onerror = resolve;
+          document.head.appendChild(script);
+        });
+      }
+      if (!window.docx) {
+        feedback.textContent = 'Word 匯出元件載入失敗，請重新整理後再試。';
         feedback.classList.remove('hidden');
         return;
       }
@@ -2839,6 +2913,31 @@
       status.textContent = '離線檢視模式：決策總表、時間軸與備忘仍可使用；互動地圖與外部字型／圖示可能無法載入。導航請改用每日日程的 Google 地圖連結。';
     }
 
+    // Settled-out plans: fold into a one-line "未採用" disclosure so the chosen plan reads first.
+    const UNADOPTED_CARDS = ['1-2', '1-3', '2-1', '4-1', '5-1', '5-2', '6-1', '6-2'];
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('.day-panel details:not(.unadopted-wrap)').forEach(d => { d.dataset.printOpened = d.open ? '' : '1'; d.open = true; });
+    });
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('details[data-print-opened="1"]').forEach(d => { d.open = false; delete d.dataset.printOpened; });
+    });
+
+    function wrapUnadoptedCards() {
+      UNADOPTED_CARDS.forEach(key => {
+        const card = document.getElementById(`card-d${key}`);
+        if (!card || card.closest('.unadopted-wrap')) return;
+        card.dataset.unadopted = '1';
+        const title = (card.querySelector('h3')?.textContent || '').replace(/\s+/g, ' ').trim();
+        const wrap = document.createElement('details');
+        wrap.className = 'unadopted-wrap';
+        const summary = document.createElement('summary');
+        summary.textContent = `未採用：${title}（點開看）`;
+        wrap.appendChild(summary);
+        card.parentNode.insertBefore(wrap, card);
+        wrap.appendChild(card);
+      });
+    }
+
     function setDecision(day, index, shouldPersist = true, collapse = true) {
       decisionState.decisions[day] = index;
       if (collapse) decisionState.collapsed[day] = true;
@@ -2849,6 +2948,7 @@
         card.classList.toggle('card-active', selected);
         card.classList.toggle('candidate-collapsed', !selected && decisionState.collapsed[day]);
         card.style.borderColor = selected ? '#991B1B' : '#E7E5E4';
+        if (!button) return;
         button.classList.toggle('bg-red-800', selected);
         button.classList.toggle('text-white', selected);
         button.classList.toggle('bg-stone-100', !selected);
@@ -2857,6 +2957,12 @@
         button.innerText = day === 4 ? (selected ? '✓ 已選 Plan B' : `未採用備查：Plan ${planCode(day, cardIndex)}`) : (day === 5 || day === 6) ? (selected ? `✓ 已選 Plan A′（車票待訂）` : `舊案備查：Plan ${planCode(day, cardIndex)}`) : (selected ? `✓ 已拍板：Plan ${planCode(day, cardIndex)} · 再按一次即可取消選擇` : `改選此方案 (Plan ${planCode(day, cardIndex)})`);
         if (day === 7) button.innerText = selected ? '✓ 已選 Plan A：倉敷散步' : '2027 班次確認後再啟用';
         button.disabled = day === 4 || day === 5 || day === 6 || day === 7;
+        if (card.dataset.unadopted === '1') {
+          button.disabled = true;
+          button.innerText = '未採用・已拍板';
+          button.classList.remove('bg-red-800', 'text-white');
+          button.classList.add('bg-stone-100', 'text-stone-800');
+        }
       });
       refreshLedger();
       if (shouldPersist) persistDecisionState();
@@ -3018,6 +3124,7 @@
       document.getElementById('share-link-button')?.addEventListener('click', handleShareClick);
       refreshShareUi();
       setSyncStatus('連線中…');
+      wrapUnadoptedCards();
       for (let day = 1; day <= 8; day++) {
         renderNotes(day);
         const selected = decisionState.decisions[day];

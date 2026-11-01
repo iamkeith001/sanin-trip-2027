@@ -16,6 +16,8 @@
 - 主要頁面：`trip_discussion.html`。
 - 主視覺放在 `assets/`；新增或替換影像要保留替代文字、預留文字安全區，並在頁面中實際引用後驗證。
 - 保持日別導覽、方案卡、討論成果總覽與本機保存功能可用；改動互動程式後至少做語法檢查與重複 ID 檢查。
+- 樣式用預先產生的 `assets/tailwind.min.css`（tailwindcss 3.4.17），不再從 CDN 即時產生。HTML 新增 Tailwind class 後要重建：`npx -y tailwindcss@3.4.17 -i input.css -o assets/tailwind.min.css --content trip_discussion.html --minify`（input.css 內容為 `@tailwind base; @tailwind components; @tailwind utilities;`）。
+- 每天開頭的「今日重點」卡是手機上的主要閱讀入口；時刻或停止點改動時要同步更新這張卡。插圖用 JPEG（寬 1200 px 左右），不放大型 PNG。
 
 ## 隱私與版本管理
 
