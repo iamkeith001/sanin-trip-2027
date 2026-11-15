@@ -414,6 +414,39 @@
     @media (max-width: 1023px) {
       .journey-nav { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 44px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 44px), transparent 100%); }
     }
+    /* ===== 2026-11-15 功能提升 ===== */
+    /* 每天最後的前後一天按鈕 */
+    .day-pager { display: flex; justify-content: space-between; gap: .75rem; margin: 2.5rem 0 .5rem; padding-top: 1.25rem; border-top: 1px solid #e7e5e4; }
+    .day-pager button { flex: 1 1 0; min-width: 0; min-height: 44px; display: flex; flex-direction: column; align-items: flex-start; gap: .15rem; padding: .75rem .95rem; border: 1px solid #d6d3d1; border-radius: .5rem; background: #fff; color: #1c1917; text-align: left; cursor: pointer; transition: background-color .15s, border-color .15s; }
+    .day-pager button:hover { background: #fafaf9; border-color: #a8a29e; }
+    .day-pager button:focus-visible { outline: 2px solid #b45309; outline-offset: 2px; }
+    .day-pager button.next { align-items: flex-end; text-align: right; }
+    .day-pager button small { font-size: .75rem; color: #a16207; letter-spacing: .04em; }
+    .day-pager button span { font-size: .9375rem; font-weight: 600; line-height: 1.45; }
+    .day-pager .pager-spacer { flex: 1 1 0; }
+    .decision-ledger > .day-pager { margin: 1.5rem 1.25rem 1.25rem; border-top-color: rgba(255,255,255,.16); }
+    /* 共享待辦清單 */
+    .todo-board { margin: 1.25rem; padding: 1.1rem 1.15rem 1rem; border-radius: .5rem; background: #fafaf9; color: #292524; }
+    .todo-board .todo-eyebrow { font-size: .6875rem; letter-spacing: .2em; text-transform: uppercase; color: #92400e; font-family: 'Cinzel', serif; }
+    .todo-board .todo-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem; margin-top: .2rem; }
+    .todo-board h3 { font-size: 1.125rem; font-weight: 700; }
+    .todo-board .todo-progress { font-size: .8125rem; font-weight: 600; color: #92400e; background: #fef3c7; border-radius: 999px; padding: .15rem .65rem; }
+    .todo-board .todo-lead { margin-top: .35rem; font-size: .875rem; color: #57534e; line-height: 1.65; }
+    .todo-group { margin-top: 1rem; }
+    .todo-group h4 { font-size: .8125rem; font-weight: 700; color: #78716c; letter-spacing: .06em; margin-bottom: .2rem; }
+    .todo-item { display: flex; gap: .65rem; align-items: flex-start; min-height: 44px; padding: .55rem 0; border-top: 1px solid #e7e5e4; font-size: .9375rem; line-height: 1.6; cursor: pointer; }
+    .todo-item input { flex: none; width: 1.15rem; height: 1.15rem; margin-top: .22rem; accent-color: #b45309; cursor: pointer; }
+    .todo-item .todo-due { display: inline-block; margin-right: .45rem; padding: 0 .4rem; border-radius: .25rem; background: #fef3c7; color: #92400e; font-size: .75rem; font-weight: 700; font-variant-numeric: tabular-nums; vertical-align: .08em; }
+    .todo-item small { display: block; margin-top: .1rem; color: #78716c; font-size: .8125rem; line-height: 1.55; }
+    .todo-item.done .todo-main { color: #a8a29e; text-decoration: line-through; text-decoration-color: #d6d3d1; }
+    .todo-item.done .todo-due { background: #f5f5f4; color: #a8a29e; }
+    @media print { .day-pager { display: none !important; } .todo-board { break-inside: avoid; } }
+    /* 兩家六口的新圖：手機取景右移，六個人都入鏡 */
+    @media (max-width: 767px) {
+      #day-panel-1 .editorial-hero img { object-position: 66% center; }
+      #day-panel-7 .editorial-hero img { object-position: 75% center; }
+      #day-panel-8 .editorial-hero img { object-position: 74% center; }
+    }
   </style>
   <!-- Tailwind utilities, prebuilt from this page (tailwindcss 3.4.17). Rebuild after adding new utility classes. -->
   <link rel="stylesheet" href="assets/tailwind.min.css">
@@ -443,8 +476,8 @@
     <div class="hero-content">
       <p class="hero-eyebrow">A companion-made winter route · 2027</p>
       <h1 class="hero-title">冬日山陰<br>海之京都・山陽</h1>
-      <p class="hero-summary">一月的山陰，鉛灰色的日本海，雪落在鬼太郎的肩上。<br>從境港的妖怪街啟程，搭 JR 沿海東行；在城崎溫泉連住兩晚，穿浴衣、披羽織，每天慢慢泡一座外湯。接著登上日本三景之一的天橋立，經鳥取砂丘南下岡山，最後在倉敷的運河邊為旅程收尾。<br>八天、六個人，嚐松葉蟹與但馬牛，也把冬日泡到指尖發皺。</p>
-      <p class="hero-summary hero-summary-short">八天、六個人，從境港的妖怪街出發，沿著冬日的日本海泡湯、看海，最後在倉敷的運河邊收尾。</p>
+      <p class="hero-summary">一月的山陰，鉛灰色的日本海，雪落在鬼太郎的肩上。<br>從境港的妖怪街啟程，搭 JR 沿海東行；在城崎溫泉連住兩晚，穿浴衣、披羽織，每天慢慢泡一座外湯。接著登上日本三景之一的天橋立，經鳥取砂丘南下岡山，最後在倉敷的運河邊為旅程收尾。<br>八天、兩家六口，嚐松葉蟹與但馬牛，也把冬日泡到指尖發皺。</p>
+      <p class="hero-summary hero-summary-short">八天、兩家六口，從境港的妖怪街出發，沿著冬日的日本海泡湯、看海，最後在倉敷的運河邊收尾。</p>
       <div class="hero-stamps" aria-label="行程特色">
         <span>景點｜妖怪街・天橋立・砂丘・倉敷</span>
         <span>住宿｜城崎溫泉連住</span>
@@ -516,6 +549,12 @@
       </div>
       <div id="decision-ledger-rows" class="divide-y divide-stone-600"></div>
       <p id="dependency-status" class="hidden mx-5 my-4 text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded px-3 py-2"></p>
+      <section id="todo-board" class="todo-board" aria-labelledby="todo-board-title">
+        <p class="todo-eyebrow">Shared checklist</p>
+        <div class="todo-head"><h3 id="todo-board-title">出發前待辦</h3><span id="todo-progress" class="todo-progress" role="status" aria-live="polite"></span></div>
+        <p class="todo-lead">誰辦好就打勾，勾選會即時同步到所有人的畫面。日期與時間都是日本時間（比台灣快一小時）。</p>
+        <div id="todo-list"></div>
+      </section>
       <div id="luggage-strategy" class="mx-5 my-5 rounded bg-stone-50 text-stone-800 p-4 text-xs leading-relaxed">
         <p class="font-en-serif text-[10px] tracking-[0.2em] text-amber-800 uppercase">Luggage arrangement</p>
         <h3 class="font-serif-title text-base font-bold mt-1">🧳 八件大行李：第一段已定案</h3>
@@ -529,7 +568,7 @@
             <tr><td class="py-2 pr-3">文珠荘 → 岡山（未定案）</td><td class="pr-3">若採用：1/15 → 1/16</td><td class="pr-3">另加約 ¥24,160／¥29,440</td><td>Day 5／6 保留八件寄物條件，不因第一段已寄便刪除。</td></tr>
             <tr><td class="py-2 pr-3 font-semibold">川口屋 → 岡山（新候選・待討論）</td><td class="pr-3">若採用：1/14 → 目標 1/15，1/16 入住</td><td class="pr-3">另加約 ¥24,160／¥29,440（推估同價，待確認）</td><td>取代後兩段；Day 4～6 只帶隨身包，雪天晚一天仍趕得上入住。須確認川口屋代寄、格蘭比亞提前代收。</td></tr>
           </tbody></table></div>
-        <p class="mt-2 text-xs text-stone-700 bg-stone-50 border border-stone-200 rounded p-3"><strong>建議討論（11/14）：雪天別讓八件跟著人換車。</strong>一月的城崎、豐岡、天橋立、鳥取都在日本海側多雪區。現行基準 Day 4（轉兩次車）、Day 5（轉三次車＋鳥取站寄物）、Day 6（到岡山先寄物）都由六人搬八件，列車停駛或延誤時很難改搭巴士或計程車。若 1/14 退房時從川口屋直接寄到岡山格蘭比亞，三天都只帶隨身包；代價是多一段運費（六人均分約 ¥4,027／¥4,907），隨身包要備 1/14、1/15 兩晚再多一晚換洗。與「文珠荘 → 岡山」擇一，同運費但多避開 Day 4。尚未聯絡旅館、未定案。</p>
+        <p class="mt-2 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視（11/15）：班次沒有接不上的地方，剩下的是「要決定」和「要訂位」。</strong>① 要決定：八件是否 1/14 從川口屋直寄岡山（建議採用，先問格蘭比亞能否代收）；Day 3 是否定案留城崎（建議留）。② 連動：行李寄走，Day 5 砂丘照去、午餐可在城崎站前買；八件隨人，建議不排砂丘。③ 要訂位：Day 1 晚餐（建議加訂館內自助）、Day 2 午餐、Day 5／6／7 晚餐；Day 6 早餐問觀水庭能否加購。④ 要打電話：格蘭比亞 086-234-7000、魚鮮水產 0857-36-7621、おかやま館 086-234-2270、觀水庭 0857-23-3311。⑤ Day 8：11:10 巴士滿座時，12:55 班可作備案。各天細節見該天的「行程檢視建議」。</p><p class="mt-2 text-xs text-stone-700 bg-stone-50 border border-stone-200 rounded p-3"><strong>建議討論（11/14）：雪天別讓八件跟著人換車。</strong>一月的城崎、豐岡、天橋立、鳥取都在日本海側多雪區。現行基準 Day 4（轉兩次車）、Day 5（轉三次車＋鳥取站寄物）、Day 6（到岡山先寄物）都由六人搬八件，列車停駛或延誤時很難改搭巴士或計程車。若 1/14 退房時從川口屋直接寄到岡山格蘭比亞，三天都只帶隨身包；代價是多一段運費（六人均分約 ¥4,027／¥4,907），隨身包要備 1/14、1/15 兩晚再多一晚換洗。與「文珠荘 → 岡山」擇一，同運費但多避開 Day 4。尚未聯絡旅館、未定案。</p>
         <p class="mt-2 text-stone-600">運費沿用 9/28 查核的 2025/10/1 起現金價：160 尺寸每件 ¥3,020、180 尺寸 ¥3,680；尺寸、重量與最終費用依實測及櫃台報價，後續各段未計入基準。<a href="https://www.yamato-hd.co.jp/important/pdf/info_250501_1.pdf" target="_blank" rel="noopener noreferrer" class="underline">運賃表</a>／<a href="https://date.kuronekoyamato.co.jp/date/Takkyubin" target="_blank" rel="noopener noreferrer" class="underline">配送查詢</a></p>
       </div>
     </section>
@@ -568,7 +607,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-01-sakaiminato-yokai-street.jpg" width="1200" height="586" loading="eager" decoding="async" alt="細雪的境港妖怪街冬夜，暖色燈籠映在濕亮石板路上，六位旅伴在妖怪銅像旁笑著拍照">
+        <img src="assets/day-illustrations/day-01-sakaiminato-yokai-street.jpg" width="1200" height="586" loading="eager" decoding="async" alt="細雪的境港妖怪街冬夜，暖色燈籠映在濕亮石板路上；兩家六口沿街散步，灰髮的爸爸指著燈籠，女大學生舉手機拍照，男大學生笑著走在旁邊">
         <figcaption class="editorial-hero-caption"><p>First night in san'in</p><h3>晚餐後，才是妖怪的時間</h3></figcaption>
       </figure>
 
@@ -655,7 +694,7 @@
               <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>交寄優先：</strong>御宿野乃已確認受理ヤマト；1/11 八件受理、約 15～16 時截止已確認；無積雪等影響時預計 1/12 上午到。2026-10-04 使用者確認沿用原條件；仍保留天候延誤可能。紀念館寄物不能替代交寄；趕不上截止就留待隔日集貨（見延誤備案），不必為此調整交通或取消入館。</p>
               <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>出發前待辦：</strong>JR 2027/1/11 班表 11/1、11/7 已查，只看臨時異動；向御宿野乃確認截止後交寄可留待隔日集貨；在家秤八件重量；選定晚餐並確認假日營業與六人 18:00 座位；另安排 e5489 取票車站及時間。境港站不受理 e5489 取票，不為取票先繞米子；已定 Day 2 在米子站轉乘時領票（窗口 07:00～19:30、售票機 05:00～23:30，受理 e5489；須用訂票時的信用卡）。 <a class="underline" href="https://eki.jr-odekake.net/top?id=0641710" target="_blank" rel="noopener noreferrer">JR 境港站取票服務</a>。</p>
               <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>取消門檻：</strong>預估無法在 16:00 前進紀念館，就取消入館，保留老街、入住、晚餐與泡湯，不追 16:30 最終入館。</p>
-              <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>下雪與行李提醒（11/14）：</strong>① 班機：米子機場大雪時須除雪，IT724 可能延誤，前一晚與當天早上看虎航與機場公告。② 機場走到米子空港站約 5 分，路面可能積雪或是雪水；八件先套防雨套或大垃圾袋，電子用品與文件放夾鏈袋，輪子拉不動就提著走。③ 計程車：雪天叫車的人多，預報大雪就先問能載六人八件的大型車與總價，未確認前不視為保證。④ 行李重量：ヤマト 160 尺寸限 25 kg，180／200 尺寸限 30 kg，尺寸與重量取較大一級計價；冬季 28 吋箱容易超過 25 kg，運費以 ¥29,440 預留較保險，超過 30 kg 不受理，出發前在家秤重。<a href="https://kyodonewsprwire.jp/release/202107207909" target="_blank" rel="noopener noreferrer" class="underline">ヤマト尺寸公告</a></p>
+              <p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① 兩晚換洗包：八件抵館就交寄，兩晚換洗要另外帶。虎航手提合計 10 公斤、液體每瓶 100 mL 以內，建議在家把「兩晚包」獨立裝好放進大箱，到櫃台抽出來再交寄。② 晚餐建議先定案：成人之日、和泉只有 23 席、殿營業狀態查不到，建議優先向御宿野乃加訂館內自助（¥4,000／人），雪天不必外出。③ 仍待確認：過了集貨截止，八件能否留待 1/12 集貨。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>下雪與行李提醒（11/14）：</strong>① 班機：米子機場大雪時須除雪，IT724 可能延誤，前一晚與當天早上看虎航與機場公告。② 機場走到米子空港站約 5 分，路面可能積雪或是雪水；八件先套防雨套或大垃圾袋，電子用品與文件放夾鏈袋，輪子拉不動就提著走。③ 計程車：雪天叫車的人多，預報大雪就先問能載六人八件的大型車與總價，未確認前不視為保證。④ 行李重量：ヤマト 160 尺寸限 25 kg，180／200 尺寸限 30 kg，尺寸與重量取較大一級計價；冬季 28 吋箱容易超過 25 kg，運費以 ¥29,440 預留較保險，超過 30 kg 不受理，出發前在家秤重。<a href="https://kyodonewsprwire.jp/release/202107207909" target="_blank" rel="noopener noreferrer" class="underline">ヤマト尺寸公告</a></p>
               <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>其他景點與購物：</strong>水產直賣中心、美保關、夢港塔均不列入第一天主行程。<a href="https://www.kenkyujo.jp/m/index.html" target="_blank" rel="noopener noreferrer" class="underline">妖怪食品研究所</a>現列 09:30～16:00、不定休且可能提前售完；想買目玉老爹和菓子才在入館前短停，排隊就略過。2027 當日營業另核；夜遊不承擔購物。</p>
               <p class="text-[11px] text-stone-500 mt-3 leading-relaxed">2026/10/09 補充複核：<a href="https://www.yonago-air.com/shop/seven-eleven" target="_blank" rel="noopener noreferrer" class="underline">機場簡餐</a>、<a href="https://mizuki.sakaiminato.net/faq/" target="_blank" rel="noopener noreferrer" class="underline">參觀時間</a>與餐飲／購物；八件交寄沿用既有確認，JR 主方案不變。既有官方來源：<a href="https://www.yonago-air.com/flight/taiwan" target="_blank" class="underline">冬季航班</a>、<a href="https://timetable.jr-odekake.net/line-timetable/2412?date=20270111" target="_blank" rel="noopener noreferrer" class="underline">2027/1/11 JR 班表（2026-11-01 查）</a>、<a href="https://www.yonago-air.com/access/train" target="_blank" class="underline">JR 票價</a>、<a href="https://www.yonago-air.com/faq" target="_blank" class="underline">機場步行與餐飲</a>、<a href="https://www.yonago-air.com/access/taxi" target="_blank" class="underline">計程車</a>、<a href="https://mizuki.sakaiminato.net/information/" target="_blank" class="underline">紀念館</a>與<a href="https://mizuki.sakaiminato.net/faq/" target="_blank" class="underline">寄物 FAQ</a>、<a href="https://mizuki.sakaiminato.net/road/" target="_blank" class="underline">妖怪街光影</a>、<a href="https://dormy-hotels.com/dormyinn/hotels/nono_sakaiminato/breakfast/" target="_blank" class="underline">飯店餐飲</a>與<a href="https://dormy-hotels.com/dormyinn/hotels/nono_sakaiminato/faq/" target="_blank" class="underline">入住前寄物 FAQ</a>。</p>
             </div>
@@ -837,12 +876,12 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-02-sanin-rail-journey.jpg" width="1200" height="658" loading="lazy" decoding="async" alt="黃昏金光下，一列透出暖燈的白色柴油列車駛過日本海沿岸的高架鐵橋，車窗裡的旅伴望向浪花與雪岸">
+        <img src="assets/day-illustrations/day-02-sanin-rail-journey.jpg" width="1200" height="658" loading="lazy" decoding="async" alt="從特急車廂裡望出去：夕陽沉進日本海，岩岸積雪、浪花翻白，遠處鐵橋與漁村亮起燈；兩家六口靠窗坐著，男大學生指著海，女大學生捧著熱茶，兩對父母笑著望向窗外，窗台上放著便當">
         <figcaption class="editorial-hero-caption"><p>Railway to kinosaki</p><h3>窗外是冬海，終點是溫泉</h3></figcaption>
       </figure>
 
       <section class="editorial-pulse editorial-reveal editorial-delay-2" aria-label="Day 2 的鐵道節奏">
-        <header><p class="editorial-pulse-label">Railway rhythm</p><h3>少一次轉乘，<br>多一段城崎的晚上</h3><p>現行班表 08:05 出發、14:11 到城崎；2027 同日接續與六人指定席尚待確認。柯南小鎮因故鄉館冬季搬遷閉館，9/26 決定不採用。</p></header>
+        <header><p class="editorial-pulse-label">Railway rhythm</p><h3>少一次轉乘，<br>多一段城崎的晚上</h3><p>2027/1/12 班表 08:05 出發、14:11 到城崎（已查）；六人指定席 12/12 開賣、未訂。柯南小鎮因故鄉館冬季搬遷閉館，9/26 決定不採用。</p></header>
         <div class="editorial-beats"><div class="editorial-beat"><strong>境港 → 米子</strong><span>從已訂旅宿出發</span></div><div class="editorial-beat"><strong>鳥取午餐</strong><span>把行李與節奏安頓好</span></div><div class="editorial-beat"><strong>濱風直達</strong><span>入住、晚餐與外湯優先</span></div></div>
       </section>
 
@@ -977,7 +1016,7 @@
                 </li>
               </ol>
               <p class="text-[11px] text-stone-500 mt-3 leading-relaxed"><strong>時間資料範圍：</strong>三段已於 2026-11-01 用 2027/1/12 當日班表重查，時間全部吻合；不是訂位，出發前再看臨時異動。</p>
-              <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>備案：</strong>沿海仍通車時可重查 13:33 鳥取→15:28 城崎的直達普通車；到館先入住休息，不保證趕上 16:00 送客車。有餘裕才短泡一座、17:15 前回館，否則館內或餐後泡湯。錯過境港 08:05，可先請旅館／車行評估六人帶隨身包分乘計程車直達米子，須確認供車、路況及全員可 09:30 前到站才採用；車資另詢、尚未預約，不保證接續。無法確認就重查全段；米子 12:23→鳥取 13:29 接 13:33 僅 4 分鐘，輕裝也不列六人預設備案。較晚 15:21→濱坂 16:04／16:06→城崎 17:01 的 2 分鐘接續亦須 JR 確認；不保證可接。再晚有 16:21 鳥取發豐岡行普通車直達城崎 18:20（不用換車，2027/1/12 查），趕不上 18:00 晚餐，只作最後手段。預計晚於 17:00 抵館就取消餐前外湯、聯絡旅館。</p>
+              <p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① 午餐：魚鮮水產官網連不上、未訂位，餐後要接 12:56。建議先電話訂 11:10 六人座（0857-36-7621）；訂不到就直接改站內便當或即取簡餐，不在當天候位。② 領票：米子站領 e5489 車票須用訂票時的信用卡，持卡人當天要帶卡同行。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>備案：</strong>沿海仍通車時可重查 13:33 鳥取→15:28 城崎的直達普通車；到館先入住休息，不保證趕上 16:00 送客車。有餘裕才短泡一座、17:15 前回館，否則館內或餐後泡湯。錯過境港 08:05，可先請旅館／車行評估六人帶隨身包分乘計程車直達米子，須確認供車、路況及全員可 09:30 前到站才採用；車資另詢、尚未預約，不保證接續。無法確認就重查全段；米子 12:23→鳥取 13:29 接 13:33 僅 4 分鐘，輕裝也不列六人預設備案。較晚 15:21→濱坂 16:04／16:06→城崎 17:01 的 2 分鐘接續亦須 JR 確認；不保證可接。再晚有 16:21 鳥取發豐岡行普通車直達城崎 18:20（不用換車，2027/1/12 查），趕不上 18:00 晚餐，只作最後手段。預計晚於 17:00 抵館就取消餐前外湯、聯絡旅館。</p>
               <p class="text-xs text-stone-600 mt-2 leading-relaxed"><strong>天候備案（鳥取—城崎區間停駛）：</strong>冬季強風或大雪時沿海段（含餘部橋梁）可能停駛，普通車也走不了，上面的備案不適用。當天早上與米子轉乘時看 JR 西日本運行情報（<a href="https://trafficinfo.westjr.co.jp/chugoku.html" target="_blank" rel="noopener noreferrer" class="underline">中國</a>／<a href="https://trafficinfo.westjr.co.jp/kinki.html" target="_blank" rel="noopener noreferrer" class="underline">近畿</a>）。確定停駛：先聯絡川口屋晚到；若早上已知停駛在境港／米子即請 JR 重排；仍能抵鳥取時提早於 11:40～11:50 結束午餐、留辦票時間，才評估 12:21 超級白兔 8 號→姬路 13:51，15:07 播但線→寺前→和田山 16:51，轉 17:20 特急きのさき 9 號→城崎 18:00（不搭特急則豐岡 17:27，往城崎下一班 18:40→18:52，或計程車車型／台數、供車與車程另詢），或 16:30 播但線→城崎 19:14。繞路段分段買票約 ¥6,830／人，加きのさき 9 號約 ¥7,920／人；Yahoo!乘換 1/12 通票查詢為 ¥8,180／人（乘車券 ¥4,730＋超級白兔 ¥2,360＋きのさき ¥1,090）。姬路另有較早的 14:33 播但線，也接寺前 16:03；原車票能否迂回乘車由鳥取站窗口判斷，不預設免費改乘。搭きのさき約 18:15 抵館、不搭約 19:00，都趕不上已確認 18:00 晚餐；延期／取消需旅館同意，不保證晚餐，並取消當日外湯；姬路方向也異常時改問鳥取住宿，不硬趕。</p>
               <p class="text-xs text-stone-600 mt-2 leading-relaxed"><strong>行李與票券：</strong>車站到旅館用免費入住巴士；旅館送客巴士只送不接，外湯回程步行；雪天外湯回程要走路（旅館巴士只送不接），木屐在雪上容易滑，建議穿自己的鞋子與外套出門（2026-11-14 補充）。2027/1/12 淡季：境線 ¥330＋米子→城崎溫泉 ¥3,080＋兩段指定席各 ¥1,530＝¥6,470／人、六人 ¥38,820（兩段都劃指定席）。境港站沒有窗口、站員 9:00 才上班，早上買不到票也不能領 e5489：境線刷 ICOCA／Suica（沒有 IC 卡者用站內售票機買普通票），米子轉乘時領 e5489（窗口 07:00 起、售票機 05:00 起；須用訂票信用卡）。米子→城崎溫泉超過 100 公里，可在鳥取途中下車，保留後續乘車券；優惠票另按商品規則。<a href="https://www.jrhokkaido.co.jp/faq/qa0024.html" target="_blank" rel="noopener noreferrer" class="underline">JR 途中下車</a>／<a href="https://www.jr-odekake.net/shohindb/ticket/explain/rule.html" target="_blank" rel="noopener noreferrer" class="underline">優惠票規則</a>。</p>
               <aside class="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-xs leading-relaxed text-stone-800" aria-label="第二天三項執行註記"><strong>第二天執行註記｜2026/10/31</strong><ol class="mt-2 list-decimal pl-5 space-y-2"><li><strong>早餐候位：</strong>06:30 開餐就去；約 06:50 仍未入席，就縮短用餐或使用預備簡餐，保留 07:15 離席、07:40 前離館的目標，不為吃完已含早餐而錯過關鍵班車。</li><li><strong>午餐供餐與回站：</strong>保留 11:30 候位停止點，仍無法入席就改即取簡餐。即使 11:30 入席也須確認供餐速度；訂位時告知後續列車時間，約 12:00 開始結帳、12:10 前離店、12:30 前回月台。</li><li><strong>外湯穿妥離場：</strong>約 16:30～16:35 開始更衣，16:45 前全員穿妥離開浴場，留約 30 分鐘回館、17:15 前到館。這是本團的緩衝建議；候位或入住延誤就縮短、取消餐前外湯，保留已確認的 18:00 晚餐。</li></ol></aside>
@@ -1245,7 +1284,7 @@
                 </li>
               </ol>
               <aside class="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-xs leading-relaxed text-stone-800" aria-label="第三天三項執行註記"><strong>第三天執行註記｜2026/10/31</strong><ol class="mt-2 list-decimal pl-5 space-y-2"><li><strong>纜車順延：</strong>10:30 上山約 10:37 抵達，至 11:10 下山約 33 分鐘包含下車、集合與候車，不全是觀景時間；11:00 左右回候車處。錯過 10:30 可評估 10:50 並縮短後段散步；若須拖到 11:10 才上山，建議取消登高，保留午餐與午休。</li><li><strong>午餐離店：</strong>保留「預估 12:20 仍不能入席就改簡餐」的門檻。若 12:20 才入席，先確認能否及時供餐；12:50 開始結帳、13:00 前結帳離店完成，再留 15～30 分鐘回館。現挑海鮮代客料理或蟹套餐須另問時間，不直接套用一小時午餐；週三休業的魚屋のおにぎり不作備案。</li><li><strong>午休與外湯：</strong>以房內休息約一小時為目標；若 14:30 後才回房，就視體力縮短或取消餐前外湯，不把 15:30 送客車當成必搭。採延後外湯方案時，16:30～16:35 開始更衣、16:45 前全員穿妥離場、17:15 前回館，保留已確認的 18:00 晚餐。</li></ol><p class="mt-2">以上為本團節奏建議，非業者保證。</p></aside>
-              <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>午餐備案：</strong>抵海中苑即詢問六人候位與供餐，預估 12:20 仍無法入席就改簡餐。Lawson 城崎湯島店（湯島 901-1；<a href="https://map.yahoo.co.jp/v3/place/aD9BK84s6J6" target="_blank" rel="noopener noreferrer" class="underline">地圖目前列 24 小時</a>）可作外帶候選，2027 營業與當日庫存仍核，不預設店內有六人座位；回館若房間仍在清掃，先請櫃台確認可用餐處。供餐延誤時保留約一小時午休；14:30 後才回房就縮短或取消餐前外湯，不為趕 15:30 車壓縮休息。</p>
+              <p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① 建議定案留城崎（Plan B）：玄武洞 1/13 休園；出石的 2027 巴士未能複查，多家皿蕎麥店週三休。② 12 月再查 2027 年 1 月外湯休館表。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>午餐備案：</strong>抵海中苑即詢問六人候位與供餐，預估 12:20 仍無法入席就改簡餐。Lawson 城崎湯島店（湯島 901-1；<a href="https://map.yahoo.co.jp/v3/place/aD9BK84s6J6" target="_blank" rel="noopener noreferrer" class="underline">地圖目前列 24 小時</a>）可作外帶候選，2027 營業與當日庫存仍核，不預設店內有六人座位；回館若房間仍在清掃，先請櫃台確認可用餐處。供餐延誤時保留約一小時午休；14:30 後才回房就縮短或取消餐前外湯，不為趕 15:30 車壓縮休息。</p>
               <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>外湯查核邊界：</strong>既有 2026-09-12 查核紀錄記載曾核對 2027 一月表；2026-09-19 與 09-26 均未能從官方頁面重新讀出該表，故不將舊紀錄當作再次確認。觀光協會現列定休：鴻之湯週二、一之湯與曼陀羅湯週三、御所之湯與柳湯週四、地藏湯週一。依此規則，週三一之湯、曼陀羅湯休；御所之湯優先、地藏湯或 15:00 後柳湯備選。御所之湯、柳湯週四休，適合今天評估；2027 當日及臨時異動仍須複核。鴻之湯已於 2026/10/28 復業（11/1 觀光協會外湯頁列正常營業與即時人潮），2027/1/13 營業仍核。首頁目前提供 2026 年 10、11 月休館表，本次仍未取得可核讀的 2027 一月表；里之湯不納入。</p>
               <p class="text-[11px] text-stone-500 mt-3 leading-relaxed">查核（2026/10/09 複核纜車、外湯定休與重開公告、海中苑候位與送客巴士；2027 一月當日表仍待核）：<a href="https://kinosaki-onsen.wixsite.com/kinosaki-onsen" target="_blank" class="underline">外湯公告與日曆</a>、<a href="https://kinosaki-spa.gr.jp/about/spa/" target="_blank" class="underline">外湯時段</a>、<a href="https://www.kinosaki-ropeway.jp/ropeway/" target="_blank" class="underline">纜車票價／運行</a>、<a href="https://www.kawaguchiya.co.jp/kannai/index.php" target="_blank" class="underline">川口屋餐飲／浴場</a>、<a href="https://www.kinosaki-ropeway.jp/qa/" target="_blank" class="underline">纜車樓梯／接客</a>、<a href="https://kinosaki-spa.gr.jp/directory/kaichuen-honten/" target="_blank" class="underline">海中苑本店</a>、<a href="https://okesyo.com/pages/kaichu/" target="_blank" rel="noopener noreferrer" class="underline">店家候位及團體條件</a>、<a href="https://okesyo.com/pages/onigiri" target="_blank" class="underline">飯糰店週三休</a>。出發前仍須複核臨時異動。</p>
               </div>
@@ -1382,7 +1421,7 @@
           <h3 id="day4-rhythm-title">早餐後出發<br>下午留在天橋立</h3>
           <p>已選 B：11:05 抵達、寄物與午餐後登 View Land，接智恩寺與松林短線；不去伊根。</p>
         </header>
-        <div class="day4-timeline" aria-label="已選 B 天橋立的預劃時間；鐵路為現行班表，2027 待核">
+        <div class="day4-timeline" aria-label="已選 B 天橋立的預劃時間；鐵路已用 2027/1/14 班表查核">
           <div class="day4-moment"><time>08:58</time><span>城崎出發</span><small>08:30 送站巴士</small></div>
           <div class="day4-moment"><time>11:05</time><span>天橋立寄物</span><small>文珠荘已訂</small></div>
           <div class="day4-moment"><time>11:40</time><span>智恩寺周邊午餐</span><small>六人用餐留緩衝</small></div>
@@ -1500,7 +1539,7 @@
             <aside class="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-xs leading-relaxed text-stone-800" aria-label="第四天三項執行註記"><strong>第四天執行註記｜2026/10/31</strong><ol class="mt-2 list-decimal pl-5 space-y-2"><li><strong>接駁與行李：</strong>前晚整理行李、核對房帳；08:10 結束早餐，建議約 08:20 全員與八件行李到大廳，08:25 前完成退房並備妥上車，08:30 是接駁發車時間。入住川口屋時確認接駁容量及預估到站時間；若早餐或接駁可能延誤，提前請館方協助，不等到 08:30 才處理。豐岡維持 09:35 前全員及八件到丹鐵候車處，不安排站外採買。</li><li><strong>午餐離店：</strong>保留「12:00 仍未入席就改較快供餐」的停止點；即使剛好入席，也先確認供餐速度。12:30 開始結帳、12:40 前結帳離店完成。橋立大丸本店官網列到 View Land 約步行五分鐘，但六人集合、購票及候車仍需時間，13:00 上山只能作目標。 <a href="https://www.hashidate-daimaru.co.jp/about/" target="_blank" rel="noopener noreferrer" class="underline">橋立大丸本店</a></li><li><strong>山頂與減項：</strong>13:00 上山約 13:07 抵達，至 13:50 下山之間的約 43 分鐘包含集合與候車，不能全部當作觀景時間；13:40 左右回候車處。若順延為 13:20 上、14:10 下，縮短後段散步；若預估還要再順延，建議取消登高，保留平地短遊與 15:30 入住。這是本團的節奏建議；單軌每班 40 人、先到先上，不能保證六人搭上指定班次。 <a href="https://www.viewland.jp/lift_mono/" target="_blank" rel="noopener noreferrer" class="underline">View Land 官方乘車資訊</a></li></ol></aside>
             <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>2026/10/09 複核：</strong>丹鐵現行 09:51→11:05 與原稿吻合，2027 當日仍核；<a href="https://trains.willer.co.jp/station/toyooka/" target="_blank" rel="noopener noreferrer" class="underline">豐岡丹鐵站</a>有獨立站舍與 JR 中間改札，41 分鐘先辦票及移動八件，建議 09:35 前全員到候車處、不安排站外採買。錯過原班就請站員重查全段，不將 9 分鐘轉乘當作保證備案。</p>
             <p class="text-xs text-stone-600 mt-3 leading-relaxed"><strong>午餐候選與週四限制：</strong><a href="https://www.hashidate-daimaru.co.jp/about/" target="_blank" rel="noopener noreferrer" class="underline">橋立大丸本店</a>官網列餐廳 10:00～17:00、一般椅子席 100 席；<a href="https://www.amanohashidate.jp/food/syouwabussa/" target="_blank" rel="noopener noreferrer" class="underline">松和物産</a>觀光協會列平日 10:30～18:00 頃、不定休。兩家僅候選，六人座位與當日營業另核。<a href="https://www.viewland.jp/restaurant/" target="_blank" rel="noopener noreferrer" class="underline">View Land 展望餐廳已公告 2027/1/14 休業</a>；<a href="https://www.amanohashidate.jp/food/hashidatetyaya/" target="_blank" rel="noopener noreferrer" class="underline">はしだて茶屋</a>固定週四休，不作正餐備案。冬季售票至 16:30，單軌末班上山 16:20、下山 16:50；本日維持下午早段登高。</p>
-            <p class="text-xs text-stone-600 mt-3 leading-relaxed">下午時段為活動預留，不是已訂車班。錯過 08:58：下一班普通車 09:53 接不上丹鐵 09:51；改搭 10:34 特急きのさき 12 號→豐岡 10:48、丹鐵 10:54→天橋立 11:54（2027/1/14 班表，每人約 ¥3,190、含特急費），午餐與寄物順延約 50 分，先縮短松林。<strong>丹鐵宮豊線（沿海）停駛備案（11/14）：</strong>JR 與宮福線照常時，改 10:34 きのさき 12 號→福知山 11:44、はしだて 5 號 11:53→天橋立 12:36（每人 ¥4,450，指定席），福知山轉乘 9 分先請車站確認月台；午餐與寄物順延約 1.5 小時，View Land 視時間縮短或取消。宮福線也可能受雪影響，兩線都停就聯絡文珠荘、不硬趕。列車／候位延誤先縮短松林；View Land 停駛改平地短遊，不臨時加伊根。2027 檢修公告未列 1/14，一月吊椅檢修為 1/20 下午及 1/21 上午，臨時異動仍核。八件再寄文珠荘未定案，Day 4 基準先按隨人移動。</p>
+            <p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① 八件隨人移動是 Day 4～6 最大的風險，建議採用「1/14 川口屋直寄岡山」；前提是岡山格蘭比亞同意入住前代收並保管到 1/16（086-234-7000）、川口屋可代寄。② 早餐只有 40 分鐘（07:30～08:10）：若採直寄，八張託運單 1/13 晚上填好並交給櫃台。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><p class="text-xs text-stone-600 mt-3 leading-relaxed">下午時段為活動預留，不是已訂車班。錯過 08:58：下一班普通車 09:53 接不上丹鐵 09:51；改搭 10:34 特急きのさき 12 號→豐岡 10:48、丹鐵 10:54→天橋立 11:54（2027/1/14 班表，每人約 ¥3,190、含特急費），午餐與寄物順延約 50 分，先縮短松林。<strong>丹鐵宮豊線（沿海）停駛備案（11/14）：</strong>JR 與宮福線照常時，改 10:34 きのさき 12 號→福知山 11:44、はしだて 5 號 11:53→天橋立 12:36（每人 ¥4,450，指定席），福知山轉乘 9 分先請車站確認月台；午餐與寄物順延約 1.5 小時，View Land 視時間縮短或取消。宮福線也可能受雪影響，兩線都停就聯絡文珠荘、不硬趕。列車／候位延誤先縮短松林；View Land 停駛改平地短遊，不臨時加伊根。2027 檢修公告未列 1/14，一月吊椅檢修為 1/20 下午及 1/21 上午，臨時異動仍核。八件再寄文珠荘未定案，Day 4 基準先按隨人移動。</p>
           </div>
           <div class="mt-6 pt-4 border-t border-stone-100">
             <p class="text-[11px] text-stone-700 bg-amber-50 border border-amber-200 rounded px-3 py-2 mb-3 leading-relaxed"><strong class="text-amber-800">本方案交通</strong>　JR 城崎溫泉 ➔ 豐岡轉京都丹後鐵道 ➔ 天橋立；鎮內步行，不搭伊根巴士或船。2027 鐵道班次、票價與六人座位待核。</p>
@@ -1642,7 +1681,7 @@
 <section aria-label="第5天已選 A′ 預劃時刻"><ol class="space-y-2 text-sm text-stone-700"><li><strong>07:30～08:30</strong>｜文珠荘已含早餐，入住時選定 07:30 入席；<strong>08:30～09:00</strong> 完成退房、核對八件。午餐出發前預備，09:00 離館、<strong>09:10 前到站</strong>；一般步行約 3 分，六人冬季先抓 10 分。</li><li><strong>09:34～10:38</strong>｜丹鐵特急至豐岡；<strong>11:22～11:32</strong> JR 至城崎；<strong>11:56～14:00</strong> JR 至鳥取。豐岡等 44 分，城崎等 24 分；午餐出發前備妥；豐岡辦妥轉乘、確認月台後才考慮順路即取餐，11:10 前全員八件到 JR 乘車處，城崎不出站找店，11:45 前到乘車處。普通車座位與桌面不保證。鐵道自由席參考 ¥3,420／人；指定席及加價另核。</li><li><strong>14:00～14:30</strong>｜先確認站內全部八件的尺寸、容量、費用與取件時間，或可及時回站的旅館接送與寄物流程。旅館距站約 500 m、冬季單程抓 10～15 分，來回步行不作預設。確認採用旅館支線才要求 14:15 前全部八件寄妥、全員準備離館，不是才開始寄物，14:30 前六人到砂丘線乘車處；未確認或來不及就先去旅館、15:00 起入住。不預設八格大型置物櫃同時有空。</li><li><strong>14:40～15:02</strong>｜條件成立才搭 39 砂丘線；<strong>15:05～15:50</strong> 入口短遊，馬背不列必到；約 15:25～15:30 開始折返，15:50 全員已離開砂地再清鞋，16:10 前回往鳥取方向站牌。<strong>16:20～16:42</strong> 回鳥取站，16:50～17:12 僅作漏班備援。巴士往返 ¥760／人（班次 11/14 已查）。</li><li><strong>約 17:00～17:40</strong>｜入住與休息；17:40 前後出門，18:00 自費晚餐，兩家燒肉候選均未訂位。若搭 16:50→17:12 備援，先取八件、回館入住，再留房內約 20～30 分休息；18:00 出門、18:30 晚餐僅目標，延誤聯絡店家順延，先確認六人席位及可調整範圍。餐後泡湯；翌日自費早餐。</li></ol>
 <p class="mt-4 text-xs text-stone-600 bg-amber-50 border border-amber-200 rounded p-3">14:40 巴士趕不上或風雪不宜時，先去觀水庭、15:00 起入住。官網接站現行 14:00～21:50，抵站致電可安排；六人八件容量、寄物與趕回站流程仍先協調，不保證即到即接。白兔、城跡與砂之美術館不排入。</p><p class="mt-2 text-xs text-stone-700 bg-stone-50 border border-stone-200 rounded p-3"><strong>建議討論（11/1）：</strong>14:00～14:30 在鳥取站處理八件是本日最大風險。若 1/15 早上從文珠荘把八件寄到岡山飯店（目標 1/16 到），Day 5、6 都只帶隨身包，砂丘可照 14:40 主案；代價是多一段運費（八件 ¥24,160／¥29,440，11/7 ヤマト官網查天橋立→岡山同價、隔天上午可到）。觀水庭也接受事先寄行李。11/14 另有更早一步的候選：1/14 從川口屋直寄岡山，連 Day 4 也輕裝、運費相同。兩案擇一，尚未定案，待旅伴討論。</p></section><aside class="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-xs leading-relaxed text-stone-800" aria-label="第五天三項執行註記"><strong>第五天執行註記｜2026/10/31</strong><ol class="mt-2 list-decimal pl-5 space-y-2"><li><strong>午餐與轉乘：</strong>前一天選定 07:30 早餐，保留 08:30 結束早餐、09:00 離館、09:10 前到站的目標。午餐出發前備妥，以容易分次吃的簡餐為主；豐岡只有辦妥轉乘、確認月台後，才考慮順路即取餐點，建議 11:10 前全員與八件到 JR 乘車處。城崎維持 11:45 前到乘車處，不出站找店，不預設普通車有座位及桌面可吃便當。</li><li><strong>寄物門檻：</strong>14:15 必須是全部八件寄妥、全員準備離館，不是開始辦理寄物；14:30 前六人到齊砂丘線乘車處。旅館抵站致電接送不代表立即有車、一次載完六人八件，或包含送回車站。旅館支線須事先確認完整流程；若須等車、分批搬運，或列車延誤，就取消砂丘、先去旅館，15:00 起入住。</li><li><strong>砂丘與晚餐：</strong>15:50 應指全員已離開砂地，不到此時才從最遠處折返；短線可抓 15:25～15:30 左右開始回走，依路況提早，保留清鞋、洗手間及 16:10 前到回程站牌的時間。16:50 僅作漏班備援；若 17:12 才回鳥取站，還要取八件、回館及入住，18:00 出門、18:30 晚餐只能作目標。訂位時先確認可調整範圍，延誤就聯絡店家，保留房內約 20～30 分鐘休息。以上是本團緩衝建議。</li></ol></aside></div>
 <p class="mt-3 text-xs text-stone-600 leading-relaxed"><strong>2026/10/10 寄物與展期複核：</strong><a href="https://www.city.tottori.lg.jp/page/5384.html" class="underline" target="_blank" rel="noopener noreferrer">國際遊客服務中心免費寄物</a>限實際使用麒麟獅子巴士一日券者；<a href="https://www.tottori-guide.jp/tourism/tour/view/571" class="underline" target="_blank" rel="noopener noreferrer">麒麟獅子現行主要週末／假日運行</a>，本案週五搭 39 砂丘線，不列為可用寄物。<a href="https://www.sand-museum.jp/news/17ki_k_spa/" class="underline" target="_blank" rel="noopener noreferrer">砂之美術館西班牙展至 2027/1/3</a>，1/15 不排入館。2027 寄物規則與臨時異動仍待核。</p>
-              <p class="mt-2 text-xs text-stone-700 bg-stone-50 border border-stone-200 rounded p-3"><strong>雪天備案（11/14）：</strong>① 丹鐵宮豊線（沿海）停駛、宮福線與 JR 照常：改 09:50 はしだて 2 號 → 福知山 10:39，こうのとり 3 號 10:47 → 城崎 11:52，接原本 11:56 → 鳥取 14:00，<strong>抵達相同、砂丘照常</strong>；每人 ¥6,120（多約 ¥2,700），福知山轉乘 8 分、城崎 4 分，先請車站確認月台。② JR 城崎—鳥取（沿海、餘部）停駛：內陸只能經京都、大阪轉超級白兔，最快約 17:33 到鳥取、轉乘 5 次、每人約 ¥10,850；帶八件幾乎不可行，砂丘取消、提早聯絡觀水庭，行李已寄走才評估此繞路。</p>
+              <p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① 午餐來源未查：09:34 上車、14:00 才到。建議入住文珠荘時問能否代備飯糰或便當；若八件已寄走，可在豐岡改搭 10:56→城崎 11:08，城崎有 48 分鐘，到站前約 6 分的 Lawson 買午餐、11:45 前回乘車處。② 砂丘綁著行李決定：八件已寄走就照 14:40 主案去；八件隨人就直接不排砂丘、抵站後去觀水庭。③ 週五晚六人燒肉先訂位；Day 6 早餐問觀水庭能否加購（0857-23-3311），不行就前晚在鳥取站買。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><p class="mt-2 text-xs text-stone-700 bg-stone-50 border border-stone-200 rounded p-3"><strong>雪天備案（11/14）：</strong>① 丹鐵宮豊線（沿海）停駛、宮福線與 JR 照常：改 09:50 はしだて 2 號 → 福知山 10:39，こうのとり 3 號 10:47 → 城崎 11:52，接原本 11:56 → 鳥取 14:00，<strong>抵達相同、砂丘照常</strong>；每人 ¥6,120（多約 ¥2,700），福知山轉乘 8 分、城崎 4 分，先請車站確認月台。② JR 城崎—鳥取（沿海、餘部）停駛：內陸只能經京都、大阪轉超級白兔，最快約 17:33 到鳥取、轉乘 5 次、每人約 ¥10,850；帶八件幾乎不可行，砂丘取消、提早聯絡觀水庭，行李已寄走才評估此繞路。</p>
 <p class="mt-3 text-[11px] text-stone-500">2026/10/02 複核：<a href="https://www.monjusou.com/08qa/index.html" class="underline" target="_blank" rel="noopener noreferrer">文珠荘早餐與接站</a>、<a href="https://trains.willer.co.jp/timetable/" class="underline" target="_blank" rel="noopener noreferrer">丹鐵現行表</a>、<a href="https://hinomarubus.co.jp/timetable_route/4185/" class="underline" target="_blank" rel="noopener noreferrer">砂丘線</a>、<a href="https://kozeniya.com/faq/" class="underline" target="_blank" rel="noopener noreferrer">觀水庭 FAQ</a>；JR 全段與 2027 當日當時仍待核（11/1 起已查）。</p>
 <div class="mt-6 pt-4 border-t border-stone-100"><button onclick="highlightD5(3)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 text-stone-800 border border-stone-300">✓ 已選 Plan A′</button></div></article>
         <article id="card-d5-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between">
@@ -1893,7 +1932,7 @@
 <article id="card-d6-3" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between" style="grid-column: 1 / -1">
 <div><span class="text-xs font-semibold text-red-800">✓ 已選 Plan A′｜觀水庭早餐自費</span><h3 class="text-xl font-serif-title font-bold mt-3">早餐後直達岡山，下午吉備津與大統領</h3>
 <p class="text-sm text-stone-600 my-4">2027/1/16 特急與吉備線班次、票價已查（11/1、11/7、11/14）；六人指定席 12/16 開賣、未訂。岡山城與後樂園不排入已選方案。</p>
-<p class="mt-2 mb-4 text-xs text-stone-700 bg-stone-50 border border-stone-200 rounded p-3"><strong>雪天備案（11/14）：</strong>超級因幡（和超級白兔）走智頭急行山區段，大雪可能停駛。改走伯備線：09:44 スーパーおき 3 號 → 米子 10:50，やくも 14 號 11:35 → 岡山 13:46（每人 ¥8,970，指定席）；晚約 2 小時，取消吉備津、保留採買與入住。伯備線也可能受雪影響；米子 11:58 高速巴士 → 岡山 14:31 雪天同樣不穩。</p>
+<p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① 大統領中辛可能白跑：網店只有うま口，實體店有無中辛未確認。先打おかやま館（086-234-2270）問；沒貨就刪掉表町這段，吉備津回來直接入住休息。② 週六晚餐六人先訂位。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><p class="mt-2 mb-4 text-xs text-stone-700 bg-stone-50 border border-stone-200 rounded p-3"><strong>雪天備案（11/14）：</strong>超級因幡（和超級白兔）走智頭急行山區段，大雪可能停駛。改走伯備線：09:44 スーパーおき 3 號 → 米子 10:50，やくも 14 號 11:35 → 岡山 13:46（每人 ¥8,970，指定席）；晚約 2 小時，取消吉備津、保留採買與入住。伯備線也可能受雪影響；米子 11:58 高速巴士 → 岡山 14:31 雪天同樣不穩。</p>
 <p class="text-xs text-stone-500 mb-4">2026/10/11 補足午餐與備援入住緩衝，複核 JR 吉備線<a class="underline" href="https://timetable.jr-odekake.net/line-timetable/2404" target="_blank" rel="noopener noreferrer">回程區間表</a>及<a class="underline" href="https://www.jr-odekake.net/goyoyaku/e5489/reservation/" target="_blank" rel="noopener noreferrer">e5489 規則</a>；神社與店家時間 11/14 已複查；吉備津正月公告 1/16 起御朱印 09:00～16:00。</p><section aria-label="第6天已選 A′ 預劃時刻"><ol class="space-y-2 text-sm text-stone-700"><li><strong>07:30～08:30</strong>｜自費早餐：前晚確認六人早餐地點、營業與供餐時間；加購旅館早餐尚未確認。若未安排店家，前晚備妥簡餐，不以當天找店拖延出發。</li><li><strong>08:30～09:20</strong>｜整理、退房與核對八件行李：目標 09:20 前離館；大箱前晚整理好。旅館送站的方向、六人八件容量與出發時間先協調，未確認則按冬季步行 10～15 分規劃，不保證有車。</li><li><strong>09:20～09:40；09:40～10:02</strong>｜到鳥取站、確認票券與候車：09:40 前抵站，09:50 前六人到指定車廂乘車處。需取紙票者盡量前一天完成；冬季運行與八件放置先問站員。</li><li><strong>10:02～11:49</strong>｜超級因幡 4 號：鳥取 → 岡山：2027/1/16 班表已查，直達、全車指定席，淡季 ¥5,400／人。12/16（三）日本 10:00、台灣 09:00 開賣六人指定席；e5489 事前申請須會員註冊，12/9 日本 05:30（台灣 04:30）起受理，一次操作最多六人；不保證有位。行李空間待核。</li><li><strong>11:49～12:25</strong>｜下車、步行至岡山格蘭比亞並寄放八件：包含出站、連通道、電梯與寄物手續；官網列 Bell Desk 行李服務，八件尺寸及容量先確認。清點八件、留憑據；不預設提早用房。入住前代收宅配與保管天數官網未寫，若採直寄岡山先打 086-234-7000 確認。</li><li><strong>12:25～13:20</strong>｜岡山站周邊午餐：多蜜醬豬排丼只是候選，限岡山站周邊、能留足回站時間的店。12:40 前仍無六人座位就改附近可即取或較快供餐，入席也先問供餐；13:10 開始結帳、13:20 前結帳離店完成，留 20 分回站與辦票，不趕 13:03 吉備線。</li><li><strong>13:20～13:40；13:40～13:52</strong>｜回岡山站、辦票與候車：13:40 前六人到桃太郎線月台；八件先留飯店，不帶去神社。尚未寄妥或午餐延誤就取消吉備津，保留市區採買與休息。</li><li><strong>13:52～14:07；14:07～14:25</strong>｜JR 桃太郎線至吉備津、步行至神社：2027/1/16 班表已查、¥210／段；官網一般步行 10 分，本團冬季抓 15～18 分。天候另核。</li><li><strong>14:25～15:15</strong>｜吉備津參拜、御朱印與集合：御朱印先辦；以本殿／拜殿及近端迴廊為主，完整 360 m 迴廊往返不是必完成。約 50 分含登階、御朱印候位及集合；15:00 收尾、15:10 在返站參道口集合、15:15 全員已往車站走，路滑或候位就縮短迴廊、必要時放棄御朱印；不加吉備津彥、御祈禱或鳴釜神事。</li><li><strong>15:15～15:35；15:35～15:47</strong>｜步行回吉備津站、確認方向與候車：15:35 前全員回站，留約 12 分候車。路滑或走遠時提早回，不把 15:45 才到站視為正常安排。</li><li><strong>參考 15:47～16:05</strong>｜吉備津 → 岡山：主回程；備援 16:17→16:36 僅 2026 示例，使用前重查運行。備援到店目標約 17:05，採買 17:05～17:35，入住與晚餐順延。</li><li><strong>16:05～16:30；16:30～17:00</strong>｜步行至表町おかやま館、採買大統領中辛：官網站步行約 15 分，本團含出站與集合抓 25 分；也可搭路面電車（東山方向）約 5 分到「城下」站，可多留約 10 分採買或休息；車資 ¥160 全線均一（2025/10 改定），可刷 ICOCA／Suica，班距另查。現行 10:00～18:00、週二休；1/16 週六營業（11/14 官網無 1 月休館公告）。同款、容量、瓶數、價格及店頭庫存先確認；主案 16:50 結帳、17:00 前帶妥商品離店，備援 17:25 結帳、17:35 前離店。缺貨不追貨、不以うま口替代；照片不等於訂購或保留。</li><li><strong>17:00～17:30；17:30～18:10</strong>｜回飯店、取八件行李、入住與休息：兩段分開留時間；連住兩晚第一晚，是否原房續住待確認。備援改 17:35～18:05 回館、18:05～18:45 取八件、入住與休息，不壓縮這 40 分鐘；取物及入住後盡量留房內約 20～30 分休息，作業延誤聯絡晚餐店家順延。</li><li><strong>約 18:10 出門、18:30 用餐</strong>｜站前自費晚餐：週六六人席位先訂，店家仍為候選。18:10／18:45 出門、18:30／19:00 晚餐皆僅目標；備援暫抓 19:00 用餐，須確認飯店步行 15 分內可到；較遠或入住延誤則協調順延訂位，不壓縮取物與休息。已訂房不含餐，翌日早餐也自費。</li></ol><p class="mt-4 text-xs text-stone-600 bg-amber-50 border border-amber-200 rounded p-3">13:40 前未到月台、寄物未妥或午餐延誤就取消吉備津，不自動改晚班。15:15 離神社、15:35 回站；回程備援須能保留店家關門前至少 30 分採買才用。後續文珠荘→岡山宅配未定案，不保證上午到貨，仍保留八件寄物及核對時間。</p></section><aside class="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-xs leading-relaxed text-stone-800" aria-label="第六天三項執行註記"><strong>第六天執行註記｜2026/10/31</strong><ol class="mt-2 list-decimal pl-5 space-y-2"><li><strong>午餐離店：</strong>保留「12:40 仍無六人座位就改較快供餐」的停止點；即使 12:40 入席，也先確認供餐速度。維持 13:10 開始結帳、13:20 前結帳離店完成、13:40 前六人已到桃太郎線月台。寄物或午餐延誤，就取消吉備津，不把 14:22 晚班自動當作備援，也不靠縮短回站時間補救。</li><li><strong>神社返站：</strong>14:25～15:15 的約 50 分鐘包含登階、御朱印候位、參拜與集合，不全是自由散步時間。15:00 開始收尾、15:10 在原路返回車站的參道口集合、15:15 全員已踏上返站路線、15:35 前到站。候位過長或路滑就縮短迴廊、必要時放棄御朱印，不因官方受理到 16:00 而延後返站。這是本團的緩衝建議。</li><li><strong>採買與休息：</strong>主案 16:50 開始結帳、17:00 前帶妥商品離店；回程備援則 17:25 開始結帳、17:35 前離店。出發前先詢指定中辛的同款、容量與庫存；缺貨不跨區追貨，也不以うま口當同款。回館後先取八件、入住，盡量保留房內約 20～30 分鐘休息；作業延誤就聯絡餐廳順延。18:10／18:45 出門及 18:30／19:00 晚餐都只是目標，不以趕餐壓縮取物與休息。</li></ol></aside></div>
 <div class="mt-6 pt-4 border-t border-stone-100"><button onclick="highlightD6(3)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 text-stone-800 border border-stone-300">✓ 已選 Plan A′</button></div></article>
 <article id="card-d6-1" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between transition-all duration-300">
@@ -2050,7 +2089,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-07-kurashiki-canal.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="晨光下的倉敷美觀地區運河，白壁倉庫與垂柳倒映水面，旅伴們手拿熱飲散步、舉相機拍照">
+        <img src="assets/day-illustrations/day-07-kurashiki-canal.jpg" width="1200" height="800" loading="lazy" decoding="async" alt="金色斜陽下的倉敷美觀地區運河，白壁倉庫與垂柳倒映水面；女大學生舉相機拍運河，男大學生拿著兩杯咖啡，兩對父母挽著手跟在後面散步">
         <figcaption class="editorial-hero-caption"><p>White walls, still water</p><h3>先看美術館，再散步與採買</h3></figcaption>
       </figure>
 
@@ -2077,7 +2116,7 @@
 <div><span class="text-xs font-semibold">已選 Plan A｜先美術館，再散步</span>
 <h3 class="text-xl font-serif-title font-bold text-stone-900 leading-snug">大原美術館・倉敷運河散步・午後 Outlet</h3>
 <p class="text-xs text-stone-600 my-4">最後一個完整旅行日，以 JR 與步行串聯。把冬季早關館放上午，晚間回已訂岡山格蘭比亞整理行李。</p>
-<section class="my-4 border-t border-b border-stone-100 py-3.5" aria-label="Day 7 Plan A 預劃時刻表"><h4 class="text-xs font-bold text-stone-800 mb-3">當日預劃時刻｜JR 2027 班次待核；川舟不搭</h4>
+<section class="my-4 border-t border-b border-stone-100 py-3.5" aria-label="Day 7 Plan A 預劃時刻表"><h4 class="text-xs font-bold text-stone-800 mb-3">當日預劃時刻｜JR 2027/1/17 班次已查；川舟不搭</h4>
 <ol class="space-y-3 text-xs text-stone-600"><li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">07:00～08:00</span><span><strong>自費早餐、輕裝出門</strong>：續住格蘭比亞，不退房；八件大行李留酒店，原房續住依訂位確認。前晚安排早餐地點與六人供餐，08:00 出門。飯店 19F 早餐現行 06:00 起、1F 07:00 起，均為另購候選，2027 價格與席位待核。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">08:00～09:00</span><span><strong>飯店 → 岡山站 → JR 倉敷站</strong>：08:15 前六人到乘車月台，JR 普通 08:26→08:43（2027/1/17 班表已查，¥330；前後約 15 分一班）；車程約 17 分。延誤則縮短咖啡或街區停留，不追加景點。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">09:00～09:30</span><span><strong>倉敷站南口 → 大原美術館</strong>：官方倉敷站至美觀地區一般步行約 13 分，本團冬季含找路及集合抓 20～30 分；早到可短休。美術館 09:00 開館，不保證週日人少。</span></li>
@@ -2092,7 +2131,7 @@
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">18:00～18:30</span><span><strong>放購物袋、短休與往餐廳</strong>：續住房間依訂位確認，不另辦入住；不能回館即開始晚餐。回程延誤先通知餐廳，晚間不補電器、藥妝或其他商圈。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">18:30～19:40；19:40～20:00</span><span><strong>岡山站前自費晚餐、回酒店上樓</strong>：週日六人席位先訂，店家與開席時刻尚未確認；優先飯店／站前可步行範圍，依實際回程協調。19:30 開始結帳、19:40 前離店，留約 15～20 分回酒店上樓，店家位置及供餐先核。延誤聯絡餐廳，裝箱連動順延、仍留約一小時並當晚完成。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">20:00～21:00</span><span><strong>已回房開始八件裝箱、秤重與 Day 8 確認</strong>：20:00 指已回房，不是才吃完晚餐；晚間不追加購物，不把八件大規模整理留到返程早上。每人整理自己的購物紀錄與退稅品，放在可開箱查驗處；消耗品不在日本消費，特殊包裝已取消，不以「不能拆封」概括。確認全部商品、護照、收據／退款資料；核 Day 8 巴士、航空行李額度及醬料防漏，當晚完成大箱整理。</span></li>
-</ol><p class="text-xs text-stone-600 mt-3">2026-10-03 複核官方 2026 年度日曆（涵蓋 2027 年 1 月）：1/17 未列休館，1/12–15 列休館；冬季 09:00～15:00、最終入館 14:30，仍查臨時異動。 <a class="underline" href="https://www.ohara.or.jp/cms/wp-content/themes/ohara/images/top/calendar_pdf/2026calendar.pdf" target="_blank" rel="noopener noreferrer">官方年度日曆</a>。川舟已取消訂票與搭乘安排；大統領優先第六天買，第七天不跨區追貨。</p><p class="text-xs text-stone-600 mt-3">2026/11/1 起採退稅制：同店同日未稅滿 ¥5,000，購買時先付含稅價、用本人護照辦理並確認退款方式；不把不同店消費湊門檻。消耗品特殊包裝取消，但不得在日本消費。按各人、各次購買紀錄整理全部商品；同一筆紀錄少一項，該筆全部商品可能無法退稅。Day 8 託運前持商品及護照辦海關確認，退款由店家／業者處理，非保證機場現金退款。 <a class="underline" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" target="_blank" rel="noopener noreferrer">觀光廳旅客說明</a></p></section>
+</ol><p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① Outlet ¥500 券不列入預算：每天限前 50 名、11:00 起換，本團週日 14:30 才到，可能已發完（推測）；大原票仍留著，到場順便問。② 週日晚餐六人先訂位。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><p class="text-xs text-stone-600 mt-3">2026-10-03 複核官方 2026 年度日曆（涵蓋 2027 年 1 月）：1/17 未列休館，1/12–15 列休館；冬季 09:00～15:00、最終入館 14:30，仍查臨時異動。 <a class="underline" href="https://www.ohara.or.jp/cms/wp-content/themes/ohara/images/top/calendar_pdf/2026calendar.pdf" target="_blank" rel="noopener noreferrer">官方年度日曆</a>。川舟已取消訂票與搭乘安排；大統領優先第六天買，第七天不跨區追貨。</p><p class="text-xs text-stone-600 mt-3">2026/11/1 起採退稅制：同店同日未稅滿 ¥5,000，購買時先付含稅價、用本人護照辦理並確認退款方式；不把不同店消費湊門檻。消耗品特殊包裝取消，但不得在日本消費。按各人、各次購買紀錄整理全部商品；同一筆紀錄少一項，該筆全部商品可能無法退稅。Day 8 託運前持商品及護照辦海關確認，退款由店家／業者處理，非保證機場現金退款。 <a class="underline" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" target="_blank" rel="noopener noreferrer">觀光廳旅客說明</a></p></section>
 <aside class="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-xs leading-relaxed text-stone-800" aria-label="第七天三項執行註記"><strong>第七天執行註記｜2026/10/31</strong><ol class="mt-2 list-decimal pl-5 space-y-2"><li><strong>午餐離店：</strong>保留「12:40 仍未入座就換較快供餐」的停止點；即使入席，也先確認供餐速度。13:10 開始結帳、13:20 前結帳離店完成。延誤先刪咖啡或常春藤廣場；維持 14:00 開始回站，遠端出發、下雨或走慢則 13:50 提早離開，不壓縮往 Outlet 的步行時間。</li><li><strong>購物收尾：</strong>有多店購物或退稅手續者，16:15 起收尾並辦理結帳、護照及退款資料登錄，16:30 停止加買，16:45 全員帶妥商品在同一出口集合。各店手續與排隊時間先問，不預設最後 15 分鐘一定辦得完。Ario 與 Outlet 共用原時段；排隊延誤就減購物並通知同行者。這是本團緩衝建議，店內登錄不等於已完成出境退稅。</li><li><strong>晚餐與裝箱：</strong>20:00 應指已回房開始裝箱，不是才吃完晚餐。若維持 20:00～21:00 裝箱，晚餐 19:30 開始結帳、19:40 前離店，留約 15～20 分鐘回酒店與上樓；店家位置及供餐時間須先確認。回岡山或晚餐延誤就聯絡餐廳調整，裝箱時間連動順延，但仍保留約一小時、當晚完成。晚間不追加購物，不把八件大規模整理留到返程早上。</li></ol></aside>
 <div class="text-xs text-stone-600 bg-stone-50 p-3 rounded"><strong>雨天／臨時休館調整：</strong>大雨或路面濕滑時縮短戶外散步；大原美術館臨時休館則提早前往 Outlet；午餐延誤先刪午後咖啡／常春藤，不壓縮回站步行與集合。川舟不搭，也不保留當日候補。</div>
 <details class="my-4 text-xs text-stone-600"><summary class="font-semibold cursor-pointer">費用與官方來源</summary><p>川舟 ¥0；大原一般 ¥2,000、六成人 ¥12,000，JR 往返參考 ¥660／人、六人 ¥3,960，兩項合計 ¥2,660／人、六人 ¥15,960。早餐未加購：19F 現行成人 ¥5,500、1F 一般 ¥2,200，擇一或另選，2027 待核，餐食／購物另計。大原無團體優惠，票含三館但不強排全看。</p>
@@ -2164,7 +2203,7 @@
             <span class="editorial-eyebrow">Route 08 · Homeward bound</span>
             <p class="editorial-kicker">把最後的時間，留給想帶回家的東西</p>
             <h2 class="editorial-title">收好行李，<br>再看一眼岡山</h2>
-            <p class="editorial-deck">早餐退房、八件取物後，推薦較早巴士赴機場，留退稅查驗與託運時間；2027 班次待核，15:25 航班依既有已訂紀錄保留。</p>
+            <p class="editorial-deck">早餐退房、八件取物後，推薦較早巴士赴機場，留退稅查驗與託運時間；冬季巴士班表已查，15:25 航班依既有已訂紀錄保留。</p>
           </div>
           <div class="editorial-stay self-start">
             17:30 抵達桃園國際機場第一航廈
@@ -2173,7 +2212,7 @@
       </section>
 
       <figure class="editorial-hero editorial-reveal editorial-delay-1">
-        <img src="assets/day-illustrations/day-08-okayama-departure.jpg" width="1200" height="600" loading="lazy" decoding="async" alt="金色斜陽灑進岡山機場候機室，旅伴們並肩望著起飛的客機，身旁是行李箱與風呂敷包裹的伴手禮">
+        <img src="assets/day-illustrations/day-08-okayama-departure.jpg" width="1200" height="600" loading="lazy" decoding="async" alt="金色斜陽灑進機場候機室，兩家六口勾著肩並排站在大片玻璃窗前，媽媽朝起飛的客機揮手；身旁的行李推車堆滿大行李箱，腳邊放著伴手禮紙袋">
         <figcaption class="editorial-hero-caption"><p>One last look</p><h3>把餘裕，一起帶上飛機</h3></figcaption>
       </figure>
 
@@ -2207,10 +2246,10 @@
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">14:40 一般截止</span><span><strong>報到必須已完成</strong>：一般起飛前 45 分截止；如航段／機場通知更早依較早者。不是到場或開始排隊的時間。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">15:25 日本時間</span><span><strong>IT215 岡山出發</strong>：機場官網冬季表每天 15:25→17:30，與六人已訂紀錄一致；本次未登入訂位查驗，出發前核異動。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">17:30 台灣時間</span><span><strong>桃園第一航廈落地、入境領物</strong>：日本快一小時，預定飛行約 3 小時 5 分；點齊八件再離開領物區。接送時間另留入境與領物緩衝，接送未訂。</span></li>
-</ol></section><div class="text-xs text-stone-600 bg-stone-50 p-3 rounded">非預約制，團體聯絡不保留六席；八件行李的行李艙容量另問。前晚確認更早班及六人八件的計程車車型、足夠台數、報價與供車，不假設兩台小車裝得下。可另評估預約車於 12:00～12:25 抵機場，須確認退稅與櫃檯流程能完成；雪況不佳再提早。滿座／取消立即聯絡已確認備援，不等無法銜接的車。</div><section class="my-4 text-xs text-stone-600"><p><strong>班次：</strong>2026-11-01 複核：岡電已公布 2026/10/25～2027/1/31 冬季班表，1/18 上午西口發車為 09:15、10:30、11:10（約 30 分到機場）；主案 11:10→約 11:40，早一班 10:30。原寫的 10:40、10:50 班 1/18 不行駛。12:55→13:25 不再作六人八件加退稅的預設；14:50→15:20 無法銜接 15:25。官網國際線臨時便指機場往市區，不能當去機場的備援。</p><p class="mt-2"><strong>退稅先於託運：</strong>2026/11/1 起先付含稅價，再於購買後 90 天內出境確認持出。按本人各次購買紀錄帶齊全部商品與護照，託運前完成海關確認：設備綠色可結束、紅色須接受查驗；同筆缺一項可能整筆無法退。岡山不在可用 Visit Japan Web 手機辦理的 7 個主要機場內，只能用機場的免稅手續端末；端末位置未公布，到機場先問報到大廳工作人員。退款由店家／業者處理；機場現金退款目前只有主要機場和神戶機場有，岡山拿不到現金。</p><p class="mt-2"><strong>八件裝箱：</strong>八件須逐件點數與秤重，額度以各自實際購買為準；虎航僅同訂位代碼且全員在櫃檯時可合併重量，不同代碼不可合併，一般每件託運不超過 30 公斤；單件長寬高合計超過 203 公分或單邊超過 100 公分算大型行李，要另付費。手提大件加個人物品合計 10 公斤；備用鋰電池／行動電源不可託運，端子防短路，機上不得使用行動電源，也不可放上方行李櫃。醬料大瓶前晚防漏包好、安排託運且仍可供退稅查驗；手提液體每容器不超過 100mL、共裝 1L 透明袋，不能只看剩餘液量。2027 航空規定再核。</p></section><details class="my-4 text-xs text-stone-600"><summary class="font-semibold cursor-pointer">票價、官方來源與待確認</summary><p>現行六成人巴士 ¥6,000，2027 再核；條件案 JR、寄物、餐食及計程車另計，替代交通不重複加總。未代訂或聯絡業者。神社往返未核、未定案；機場流程同 Plan A。鮮果不可攜回台灣，託運亦同。</p><p>2026/10/03 複核，神社沿用紀錄待核：<a class="underline" href="https://www.okayama-airport.org/access/bus" target="_blank" rel="noopener noreferrer">機場巴士／票價</a>／<a class="underline" href="https://www.okayama-airport.org/timetable/taipei" target="_blank" rel="noopener noreferrer">岡山台北線（冬季表）</a>／<a class="underline" href="https://okayama-kido.co.jp/bus/faq.html" target="_blank" rel="noopener noreferrer">岡電乘車規則</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/boarding" target="_blank" rel="noopener noreferrer">虎航報到須知</a>／<a class="underline" href="https://www.tigerairtw.com/zh-TW/useful-link/conditions-carriage" target="_blank" rel="noopener noreferrer">虎航運送條款</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/baggage" target="_blank" rel="noopener noreferrer">虎航行李規定</a>／<a class="underline" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" target="_blank" rel="noopener noreferrer">觀光廳退稅旅客說明</a>／<a class="underline" href="https://sun-ste.com/okayama-ichibangai/" target="_blank" rel="noopener noreferrer">站前商場營業</a>／<a class="underline" href="https://www.aphia.gov.tw/ws.php?id=4502" target="_blank" rel="noopener noreferrer">防檢署旅客檢疫說明</a>／<a class="underline" href="https://kibitsuhiko.or.jp/access.html" target="_blank" rel="noopener noreferrer">吉備津彥交通（沿用待複核）</a></p></details></div><div class="mt-6 pt-4 border-t border-stone-100"><p class="text-xs mb-3">交通：較早利木津巴士；六人八件容量待核</p><button onclick="highlightD8(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-300">標記選取此方案 (Plan A)</button></div></article><article id="card-d8-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between"><div><span class="text-xs font-semibold">條件 Plan B｜未定案</span><h3 class="text-xl font-serif-title font-bold text-stone-900">吉備津彥只在早回門檻成立才去</h3><p class="text-xs text-stone-600 my-4">航班按專案既有六人已訂紀錄保留：2027/1/18 IT215，15:25 日本出發、17:30 台灣抵達；本次未查驗訂位。2026-11-07 機場官網冬季時刻表（2026/10/25～2027/1/31）列 IT215 每天 15:25→17:30，與已訂紀錄一致。以下地面時間為推薦規劃窗；機場巴士已用冬季表核對，機場當日通知仍待核。</p><section class="my-4 border-y border-stone-100 py-3.5" aria-label="Day 8 Plan B 預劃時刻表"><h4 class="text-xs font-semibold mb-3">預劃時刻｜日本境內為日本時間；2027 待核</h4><ol class="space-y-3 text-xs text-stone-600"><li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">出發前核定</span><span><strong>吉備津彥僅保留條件案</strong>：不推薦返程日加景點；與 Day 6 吉備津神社不同、不是直通機場。採買已完成、寄物確認、天候合宜才評估。</span></li>
+</ol></section><p class="mt-3 mb-3 text-xs text-stone-700 bg-amber-50 border border-amber-200 rounded p-3 leading-relaxed"><strong>行程檢視建議（11/15）：</strong>① 巴士滿座的備案：11:10 搭不上時，12:55→13:25 仍可銜接（14:40 報到截止），機場官網也推薦 IT215 搭這班；到機場先辦退稅確認再託運，取消機場用餐購物。大雪或兩班都異常才改計程車。② 退房 12:00 仍須向格蘭比亞確認（086-234-7000）。　<span class="text-stone-500">以上為建議，未聯絡、未代訂。</span></p><div class="text-xs text-stone-600 bg-stone-50 p-3 rounded">非預約制，團體聯絡不保留六席；八件行李的行李艙容量另問。前晚確認更早班及六人八件的計程車車型、足夠台數、報價與供車，不假設兩台小車裝得下。可另評估預約車於 12:00～12:25 抵機場，須確認退稅與櫃檯流程能完成；雪況不佳再提早。滿座／取消立即聯絡已確認備援，不等無法銜接的車。</div><section class="my-4 text-xs text-stone-600"><p><strong>班次：</strong>2026-11-01 複核：岡電已公布 2026/10/25～2027/1/31 冬季班表，1/18 上午西口發車為 09:15、10:30、11:10（約 30 分到機場）；主案 11:10→約 11:40，早一班 10:30。原寫的 10:40、10:50 班 1/18 不行駛。12:55→13:25 不作主案；11:10 滿座搭不上時可作備案（13:25 到、14:40 報到截止，先辦退稅確認再託運）；14:50→15:20 無法銜接 15:25。官網國際線臨時便指機場往市區，不能當去機場的備援。</p><p class="mt-2"><strong>退稅先於託運：</strong>2026/11/1 起先付含稅價，再於購買後 90 天內出境確認持出。按本人各次購買紀錄帶齊全部商品與護照，託運前完成海關確認：設備綠色可結束、紅色須接受查驗；同筆缺一項可能整筆無法退。岡山不在可用 Visit Japan Web 手機辦理的 7 個主要機場內，只能用機場的免稅手續端末；端末位置未公布，到機場先問報到大廳工作人員。退款由店家／業者處理；機場現金退款目前只有主要機場和神戶機場有，岡山拿不到現金。</p><p class="mt-2"><strong>八件裝箱：</strong>八件須逐件點數與秤重，額度以各自實際購買為準；虎航僅同訂位代碼且全員在櫃檯時可合併重量，不同代碼不可合併，一般每件託運不超過 30 公斤；單件長寬高合計超過 203 公分或單邊超過 100 公分算大型行李，要另付費。手提大件加個人物品合計 10 公斤；備用鋰電池／行動電源不可託運，端子防短路，機上不得使用行動電源，也不可放上方行李櫃。醬料大瓶前晚防漏包好、安排託運且仍可供退稅查驗；手提液體每容器不超過 100mL、共裝 1L 透明袋，不能只看剩餘液量。2027 航空規定再核。</p></section><details class="my-4 text-xs text-stone-600"><summary class="font-semibold cursor-pointer">票價、官方來源與待確認</summary><p>現行六成人巴士 ¥6,000，2027 再核；條件案 JR、寄物、餐食及計程車另計，替代交通不重複加總。未代訂或聯絡業者。神社往返未核、未定案；機場流程同 Plan A。鮮果不可攜回台灣，託運亦同。</p><p>2026/10/03 複核，神社沿用紀錄待核：<a class="underline" href="https://www.okayama-airport.org/access/bus" target="_blank" rel="noopener noreferrer">機場巴士／票價</a>／<a class="underline" href="https://www.okayama-airport.org/timetable/taipei" target="_blank" rel="noopener noreferrer">岡山台北線（冬季表）</a>／<a class="underline" href="https://okayama-kido.co.jp/bus/faq.html" target="_blank" rel="noopener noreferrer">岡電乘車規則</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/boarding" target="_blank" rel="noopener noreferrer">虎航報到須知</a>／<a class="underline" href="https://www.tigerairtw.com/zh-TW/useful-link/conditions-carriage" target="_blank" rel="noopener noreferrer">虎航運送條款</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/baggage" target="_blank" rel="noopener noreferrer">虎航行李規定</a>／<a class="underline" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" target="_blank" rel="noopener noreferrer">觀光廳退稅旅客說明</a>／<a class="underline" href="https://sun-ste.com/okayama-ichibangai/" target="_blank" rel="noopener noreferrer">站前商場營業</a>／<a class="underline" href="https://www.aphia.gov.tw/ws.php?id=4502" target="_blank" rel="noopener noreferrer">防檢署旅客檢疫說明</a>／<a class="underline" href="https://kibitsuhiko.or.jp/access.html" target="_blank" rel="noopener noreferrer">吉備津彥交通（沿用待複核）</a></p></details></div><div class="mt-6 pt-4 border-t border-stone-100"><p class="text-xs mb-3">交通：較早利木津巴士；六人八件容量待核</p><button onclick="highlightD8(1)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-300">標記選取此方案 (Plan A)</button></div></article><article id="card-d8-2" class="editorial-plan bg-white border border-stone-200 rounded-lg flex flex-col justify-between"><div><span class="text-xs font-semibold">條件 Plan B｜未定案</span><h3 class="text-xl font-serif-title font-bold text-stone-900">吉備津彥只在早回門檻成立才去</h3><p class="text-xs text-stone-600 my-4">航班按專案既有六人已訂紀錄保留：2027/1/18 IT215，15:25 日本出發、17:30 台灣抵達；本次未查驗訂位。2026-11-07 機場官網冬季時刻表（2026/10/25～2027/1/31）列 IT215 每天 15:25→17:30，與已訂紀錄一致。以下地面時間為推薦規劃窗；機場巴士已用冬季表核對，機場當日通知仍待核。</p><section class="my-4 border-y border-stone-100 py-3.5" aria-label="Day 8 Plan B 預劃時刻表"><h4 class="text-xs font-semibold mb-3">預劃時刻｜日本境內為日本時間；2027 待核</h4><ol class="space-y-3 text-xs text-stone-600"><li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">出發前核定</span><span><strong>吉備津彥僅保留條件案</strong>：不推薦返程日加景點；與 Day 6 吉備津神社不同、不是直通機場。採買已完成、寄物確認、天候合宜才評估。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">10:15 前回岡山</span><span><strong>2027 JR 去回必須先確認</strong>：只有可 10:15 前折返岡山、10:40 提走八件、10:55 到西口的實際班次成立才去；無符合班次就不去，不捏造往返車班。</span></li>
 <li class="grid grid-cols-1 sm:grid-cols-[8rem_1fr] gap-1 sm:gap-3"><span class="font-mono font-semibold text-stone-900">其後同 Plan A</span><span><strong>取物、早班巴士與機場程序</strong>：不加採買；銜接 Plan A 10:25 起流程。若改 10:30 巴士，所有門檻再提前 40 分；不能改搭 12:55 當作自動備援。</span></li>
-</ol></section><div class="text-xs text-stone-600 bg-stone-50 p-3 rounded">非預約制，團體聯絡不保留六席；八件行李的行李艙容量另問。前晚確認更早班及六人八件的計程車車型、足夠台數、報價與供車，不假設兩台小車裝得下。可另評估預約車於 12:00～12:25 抵機場，須確認退稅與櫃檯流程能完成；雪況不佳再提早。滿座／取消立即聯絡已確認備援，不等無法銜接的車。</div><section class="my-4 text-xs text-stone-600"><p><strong>班次：</strong>2026-11-01 複核：岡電已公布 2026/10/25～2027/1/31 冬季班表，1/18 上午西口發車為 09:15、10:30、11:10（約 30 分到機場）；主案 11:10→約 11:40，早一班 10:30。原寫的 10:40、10:50 班 1/18 不行駛。12:55→13:25 不再作六人八件加退稅的預設；14:50→15:20 無法銜接 15:25。官網國際線臨時便指機場往市區，不能當去機場的備援。</p><p class="mt-2"><strong>退稅先於託運：</strong>2026/11/1 起先付含稅價，再於購買後 90 天內出境確認持出。按本人各次購買紀錄帶齊全部商品與護照，託運前完成海關確認：設備綠色可結束、紅色須接受查驗；同筆缺一項可能整筆無法退。岡山不在可用 Visit Japan Web 手機辦理的 7 個主要機場內，只能用機場的免稅手續端末；端末位置未公布，到機場先問報到大廳工作人員。退款由店家／業者處理；機場現金退款目前只有主要機場和神戶機場有，岡山拿不到現金。</p><p class="mt-2"><strong>八件裝箱：</strong>八件須逐件點數與秤重，額度以各自實際購買為準；虎航僅同訂位代碼且全員在櫃檯時可合併重量，不同代碼不可合併，一般每件託運不超過 30 公斤；單件長寬高合計超過 203 公分或單邊超過 100 公分算大型行李，要另付費。手提大件加個人物品合計 10 公斤；備用鋰電池／行動電源不可託運，端子防短路，機上不得使用行動電源，也不可放上方行李櫃。醬料大瓶前晚防漏包好、安排託運且仍可供退稅查驗；手提液體每容器不超過 100mL、共裝 1L 透明袋，不能只看剩餘液量。2027 航空規定再核。</p></section><details class="my-4 text-xs text-stone-600"><summary class="font-semibold cursor-pointer">票價、官方來源與待確認</summary><p>現行六成人巴士 ¥6,000，2027 再核；條件案 JR、寄物、餐食及計程車另計，替代交通不重複加總。未代訂或聯絡業者。神社往返未核、未定案；機場流程同 Plan A。鮮果不可攜回台灣，託運亦同。</p><p>2026/10/03 複核，神社沿用紀錄待核：<a class="underline" href="https://www.okayama-airport.org/access/bus" target="_blank" rel="noopener noreferrer">機場巴士／票價</a>／<a class="underline" href="https://www.okayama-airport.org/timetable/taipei" target="_blank" rel="noopener noreferrer">岡山台北線（冬季表）</a>／<a class="underline" href="https://okayama-kido.co.jp/bus/faq.html" target="_blank" rel="noopener noreferrer">岡電乘車規則</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/boarding" target="_blank" rel="noopener noreferrer">虎航報到須知</a>／<a class="underline" href="https://www.tigerairtw.com/zh-TW/useful-link/conditions-carriage" target="_blank" rel="noopener noreferrer">虎航運送條款</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/baggage" target="_blank" rel="noopener noreferrer">虎航行李規定</a>／<a class="underline" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" target="_blank" rel="noopener noreferrer">觀光廳退稅旅客說明</a>／<a class="underline" href="https://sun-ste.com/okayama-ichibangai/" target="_blank" rel="noopener noreferrer">站前商場營業</a>／<a class="underline" href="https://www.aphia.gov.tw/ws.php?id=4502" target="_blank" rel="noopener noreferrer">防檢署旅客檢疫說明</a>／<a class="underline" href="https://kibitsuhiko.or.jp/access.html" target="_blank" rel="noopener noreferrer">吉備津彥交通（沿用待複核）</a></p></details></div><div class="mt-6 pt-4 border-t border-stone-100"><p class="text-xs mb-3">交通：JR 條件式往返；09:20 回站門檻，機場同 Plan A</p><button onclick="highlightD8(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-300">標記選取此方案 (Plan B)</button></div></article></div>
+</ol></section><div class="text-xs text-stone-600 bg-stone-50 p-3 rounded">非預約制，團體聯絡不保留六席；八件行李的行李艙容量另問。前晚確認更早班及六人八件的計程車車型、足夠台數、報價與供車，不假設兩台小車裝得下。可另評估預約車於 12:00～12:25 抵機場，須確認退稅與櫃檯流程能完成；雪況不佳再提早。滿座／取消立即聯絡已確認備援，不等無法銜接的車。</div><section class="my-4 text-xs text-stone-600"><p><strong>班次：</strong>2026-11-01 複核：岡電已公布 2026/10/25～2027/1/31 冬季班表，1/18 上午西口發車為 09:15、10:30、11:10（約 30 分到機場）；主案 11:10→約 11:40，早一班 10:30。原寫的 10:40、10:50 班 1/18 不行駛。12:55→13:25 不作主案；11:10 滿座搭不上時可作備案（13:25 到、14:40 報到截止，先辦退稅確認再託運）；14:50→15:20 無法銜接 15:25。官網國際線臨時便指機場往市區，不能當去機場的備援。</p><p class="mt-2"><strong>退稅先於託運：</strong>2026/11/1 起先付含稅價，再於購買後 90 天內出境確認持出。按本人各次購買紀錄帶齊全部商品與護照，託運前完成海關確認：設備綠色可結束、紅色須接受查驗；同筆缺一項可能整筆無法退。岡山不在可用 Visit Japan Web 手機辦理的 7 個主要機場內，只能用機場的免稅手續端末；端末位置未公布，到機場先問報到大廳工作人員。退款由店家／業者處理；機場現金退款目前只有主要機場和神戶機場有，岡山拿不到現金。</p><p class="mt-2"><strong>八件裝箱：</strong>八件須逐件點數與秤重，額度以各自實際購買為準；虎航僅同訂位代碼且全員在櫃檯時可合併重量，不同代碼不可合併，一般每件託運不超過 30 公斤；單件長寬高合計超過 203 公分或單邊超過 100 公分算大型行李，要另付費。手提大件加個人物品合計 10 公斤；備用鋰電池／行動電源不可託運，端子防短路，機上不得使用行動電源，也不可放上方行李櫃。醬料大瓶前晚防漏包好、安排託運且仍可供退稅查驗；手提液體每容器不超過 100mL、共裝 1L 透明袋，不能只看剩餘液量。2027 航空規定再核。</p></section><details class="my-4 text-xs text-stone-600"><summary class="font-semibold cursor-pointer">票價、官方來源與待確認</summary><p>現行六成人巴士 ¥6,000，2027 再核；條件案 JR、寄物、餐食及計程車另計，替代交通不重複加總。未代訂或聯絡業者。神社往返未核、未定案；機場流程同 Plan A。鮮果不可攜回台灣，託運亦同。</p><p>2026/10/03 複核，神社沿用紀錄待核：<a class="underline" href="https://www.okayama-airport.org/access/bus" target="_blank" rel="noopener noreferrer">機場巴士／票價</a>／<a class="underline" href="https://www.okayama-airport.org/timetable/taipei" target="_blank" rel="noopener noreferrer">岡山台北線（冬季表）</a>／<a class="underline" href="https://okayama-kido.co.jp/bus/faq.html" target="_blank" rel="noopener noreferrer">岡電乘車規則</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/boarding" target="_blank" rel="noopener noreferrer">虎航報到須知</a>／<a class="underline" href="https://www.tigerairtw.com/zh-TW/useful-link/conditions-carriage" target="_blank" rel="noopener noreferrer">虎航運送條款</a>／<a class="underline" href="https://www.tigerairtw.com/zh-tw/welcome-on-board/baggage" target="_blank" rel="noopener noreferrer">虎航行李規定</a>／<a class="underline" href="https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00021.html" target="_blank" rel="noopener noreferrer">觀光廳退稅旅客說明</a>／<a class="underline" href="https://sun-ste.com/okayama-ichibangai/" target="_blank" rel="noopener noreferrer">站前商場營業</a>／<a class="underline" href="https://www.aphia.gov.tw/ws.php?id=4502" target="_blank" rel="noopener noreferrer">防檢署旅客檢疫說明</a>／<a class="underline" href="https://kibitsuhiko.or.jp/access.html" target="_blank" rel="noopener noreferrer">吉備津彥交通（沿用待複核）</a></p></details></div><div class="mt-6 pt-4 border-t border-stone-100"><p class="text-xs mb-3">交通：JR 條件式往返；09:20 回站門檻，機場同 Plan A</p><button onclick="highlightD8(2)" class="w-full py-2.5 text-xs font-semibold rounded bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-300">標記選取此方案 (Plan B)</button></div></article></div>
 
       <!-- Day 8 Summary（兩案共通） -->
       <div class="bg-white border border-stone-200 rounded-lg p-6 mb-6">
@@ -2428,7 +2467,7 @@
         center: [34.7100, 133.8800],
         zoom: 12,
         points: [
-          { name: "1. 岡山站西口 21 號站牌（推薦早班、2027 待核）", lat: 34.6664, lng: 133.9185 },
+          { name: "1. 岡山站西口 21 號站牌（推薦 11:10 班、已查）", lat: 34.6664, lng: 133.9185 },
           { name: "2. 岡山桃太郎機場（先海關確認再託運）", lat: 34.7572, lng: 133.8550 }
         ]
       }
@@ -2560,7 +2599,7 @@
     }
 
     // Tab switcher
-    function switchDay(day) {
+    function switchDay(day, opts = {}) {
       document.querySelectorAll('.day-nav-item').forEach(btn => {
         if (Number(btn.dataset.day) === day) {
           btn.classList.add('tab-active');
@@ -2589,6 +2628,160 @@
           }
         }
       }
+
+      if (opts.updateHash !== false) {
+        try { history.replaceState(null, '', `${location.pathname}${location.search}#day-${day}`); } catch (_) {}
+      }
+      if (opts.scroll !== false) scrollToPanel(day);
+    }
+
+    // 已捲到下方時才回到該天開頭；停在首頁主視覺時不動
+    function scrollToPanel(day, force = false) {
+      const panel = document.getElementById(`day-panel-${day}`);
+      if (!panel) return;
+      const nav = document.querySelector('.journey-nav');
+      const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+      const target = Math.max(0, panel.getBoundingClientRect().top + window.scrollY - navHeight - 12);
+      if (!force && window.scrollY <= target + 1) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: target, behavior: force || reduce ? 'auto' : 'smooth' });
+    }
+
+    function dayFromHash() {
+      const match = location.hash.match(/^#day-([0-8])$/);
+      return match ? Number(match[1]) : null;
+    }
+
+    // 每天最後放「前一天／下一天」，讀完不必捲回頂端
+    function buildDayPagers() {
+      const describe = d => {
+        const tab = document.getElementById(`tab-${d}`);
+        const date = tab?.querySelector('.nav-date')?.textContent.trim() || '';
+        const sub = tab?.querySelector('.nav-sub')?.textContent.trim() || '';
+        return d === 0 ? { title: '總覽', sub: '討論成果與待辦' } : { title: `Day ${d}　${date}`, sub };
+      };
+      const makeButton = (target, dir) => {
+        const info = describe(target);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = dir;
+        const small = document.createElement('small');
+        small.textContent = dir === 'prev' ? `← ${info.title}` : `${info.title} →`;
+        const span = document.createElement('span');
+        span.textContent = info.sub;
+        button.append(small, span);
+        button.addEventListener('click', () => switchDay(target));
+        return button;
+      };
+      for (let d = 0; d <= 8; d++) {
+        const panel = document.getElementById(`day-panel-${d}`);
+        if (!panel || panel.querySelector(':scope > .day-pager')) continue;
+        const pager = document.createElement('nav');
+        pager.className = 'day-pager';
+        pager.setAttribute('aria-label', '前一天與下一天');
+        const prev = d === 0 ? null : d - 1;
+        const next = d === 8 ? 0 : d + 1;
+        if (prev === null) { const spacer = document.createElement('span'); spacer.className = 'pager-spacer'; pager.append(spacer); }
+        else pager.append(makeButton(prev, 'prev'));
+        pager.append(makeButton(next, 'next'));
+        panel.append(pager);
+      }
+    }
+
+    // 共享待辦：勾選狀態存在 notes.todos（Firestore 規則已允許 notes 欄位）
+    const TRIP_TODOS = [
+      { group: '搶指定席（e5489，日本時間）', items: [
+        { id: 'e5489-d2-apply', due: '12/5 05:30 起', text: '事前申込：Day 2 米子→城崎溫泉，超級松風 6 號＋濱風 4 號，六人指定席', note: '一次最多六人；台灣時間 04:30。領票要用訂票的信用卡。' },
+        { id: 'e5489-d6-apply', due: '12/9 05:30 起', text: '事前申込：Day 6 超級因幡 4 號，鳥取→岡山，六人指定席', note: '台灣時間 04:30。' },
+        { id: 'e5489-d2-open', due: '12/12 10:00', text: 'Day 2 開賣：確認事前申込是否成功，失敗就立刻改訂', note: '' },
+        { id: 'e5489-d6-open', due: '12/16 10:00', text: 'Day 6 開賣：確認事前申込是否成功，失敗就立刻改訂', note: '' }
+      ] },
+      { group: '要大家決定', items: [
+        { id: 'decide-luggage', text: '八件是否 1/14 從川口屋直寄岡山格蘭比亞', note: '建議採用；先問格蘭比亞能否入住前代收。' },
+        { id: 'decide-day3', text: 'Day 3 定案留城崎（Plan B）', note: '玄武洞 1/13 休園，出石班次未能複查。' }
+      ] },
+      { group: '打電話詢問', items: [
+        { id: 'call-granvia', text: '岡山格蘭比亞 086-234-7000', note: '1/15 入住前代收八件、保管到 1/16；1/18 退房時間。' },
+        { id: 'call-kawaguchiya', text: '川口屋 0796-32-2611', note: '若採直寄：能否代寄ヤマト、集貨時間。' },
+        { id: 'call-nono', text: '御宿野乃 境港', note: '過了集貨截止，八件能否留待 1/12 集貨；1/11 館內自助晚餐能否加訂。' },
+        { id: 'call-monju', text: '文珠荘', note: '1/14 晚餐開席時段；1/15 能否代備飯糰或便當。' },
+        { id: 'call-kozeniya', text: '觀水庭こぜにや 0857-23-3311', note: '1/16 早餐能否加購。' },
+        { id: 'call-okayamakan', text: '晴れの国おかやま館 086-234-2270', note: '大統領「中辛」有沒有庫存；沒貨就刪掉 Day 6 表町這段。' }
+      ] },
+      { group: '訂位', items: [
+        { id: 'book-d1-dinner', text: 'Day 1 晚餐（1/11 成人之日）', note: '建議御宿野乃館內自助；或和泉、殿（先確認營業）。' },
+        { id: 'book-d2-lunch', text: 'Day 2 午餐：魚鮮水產 0857-36-7621，1/12 11:10 六人', note: '訂不到就改站內便當。' },
+        { id: 'book-d5-dinner', text: 'Day 5 晚餐（週五）：ジュジュアン 0857-21-1919 或牛王 0857-30-1129', note: '' },
+        { id: 'book-d6-dinner', text: 'Day 6 晚餐（週六，岡山站周邊）', note: '店家未定。' },
+        { id: 'book-d7-dinner', text: 'Day 7 晚餐（週日，岡山站周邊）', note: '店家未定。' }
+      ] },
+      { group: '再查與準備', items: [
+        { id: 'recheck-sotoyu', due: '12 月', text: '查城崎外湯 2027 年 1 月休館表', note: '目前只公布到 11 月。' },
+        { id: 'prep-weigh', text: '出發前在家秤八件', note: '超過 25 kg 按 180 尺寸計，超過 30 kg ヤマト不受理。' },
+        { id: 'prep-bag', text: '兩晚換洗包在家另裝、放進大箱', note: '到御宿野乃櫃台抽出來再交寄；虎航手提合計 10 公斤。' }
+      ] }
+    ];
+
+    function todoState() {
+      const todos = decisionState.notes && decisionState.notes.todos;
+      return todos && typeof todos === 'object' && !Array.isArray(todos) ? todos : {};
+    }
+
+    function renderTodos() {
+      const list = document.getElementById('todo-list');
+      if (!list) return;
+      const done = todoState();
+      let total = 0, finished = 0;
+      list.replaceChildren();
+      TRIP_TODOS.forEach(group => {
+        const section = document.createElement('div');
+        section.className = 'todo-group';
+        const heading = document.createElement('h4');
+        heading.textContent = group.group;
+        section.append(heading);
+        group.items.forEach(item => {
+          total++;
+          const isDone = !!done[item.id];
+          if (isDone) finished++;
+          const label = document.createElement('label');
+          label.className = 'todo-item' + (isDone ? ' done' : '');
+          const box = document.createElement('input');
+          box.type = 'checkbox';
+          box.checked = isDone;
+          box.addEventListener('change', () => toggleTodo(item.id, box.checked));
+          const body = document.createElement('span');
+          const main = document.createElement('span');
+          main.className = 'todo-main';
+          if (item.due) {
+            const due = document.createElement('span');
+            due.className = 'todo-due';
+            due.textContent = item.due;
+            main.append(due);
+          }
+          main.append(document.createTextNode(item.text));
+          body.append(main);
+          if (item.note) {
+            const note = document.createElement('small');
+            note.textContent = item.note;
+            body.append(note);
+          }
+          label.append(box, body);
+          section.append(label);
+        });
+        list.append(section);
+      });
+      const progress = document.getElementById('todo-progress');
+      if (progress) progress.textContent = `已完成 ${finished}／${total}`;
+    }
+
+    function toggleTodo(id, checked) {
+      if (!decisionState.notes || typeof decisionState.notes !== 'object') decisionState.notes = {};
+      const todos = { ...todoState() };
+      if (checked) todos[id] = true;
+      else delete todos[id];
+      decisionState.notes.todos = todos;
+      renderTodos();
+      persistDecisionState();
     }
 
     // 未建立共享連結時只留在本機；建立後改以 Firestore 同步，localStorage 降為離線快取。
@@ -2650,6 +2843,7 @@
 
     function renderAllFromState() {
       refreshLedger();
+      renderTodos();
       wrapUnadoptedCards();
       polishLayout();
       for (let day = 1; day <= 8; day++) {
@@ -2724,14 +2918,14 @@
     function planCode(day, index) { return (Number(day) === 5 || Number(day) === 6) && Number(index) === 3 ? 'A′' : String.fromCharCode(64 + Number(index)); }
 
     const dayMeta = {
-      1: ['已確認：JR 境線至境港', '御宿野乃 境港（已訂、含次日早餐）', '🔴 配送進度、晚餐六人 18:00 訂位與 e5489 取票地點待辦；境港站不能領 e5489 紙票。10/31 執行註記：13:40 離開航廈、13:55 到乘車處；預填八張單、抵館立即交寄。集貨截止約 15～16 時，通常趕得上。11/14 修訂：趕不上 14:11 就搭 15:13 下一班，抵館照樣交寄；過了截止改 1/12 集貨、1/13 到川口屋，Day 2 仍輕裝（待旅館確認）；計程車只在想保住紀念館時才考慮。✅ 八件受理及寄送條件維持已確認，仍保留天候延誤。✅ 11/1 已查 2027/1/11 JR 班表；紀念館假日可能候位，線上票 ¥1,000 不指定時段、不可退。✅ 11/14 複查：航班、境線、機場、旅館、紀念館與和泉不變；殿官網已失效，要訂先打電話確認仍營業。'],
-      2: ['採用 Plan B：境線＋超級松風＋濱風', '川口屋（已訂第 1 晚；兩間房、含早晚餐、同房續住）', '🔴 六人指定席（12/12 開賣）與米子領 e5489、魚鮮水產 11:10～12:10 午餐訂位；第一天交寄八件、第二天輕裝；川口屋 18:00 開席已確認；站前有免費入住巴士；濱風備案為鳥取 13:33 直達普通車。柯南中停已不採用；10/31 執行註記：06:50 早餐候位停止，07:15 離席、07:40 前離館；午餐 11:30 未入席改簡餐，12:00 結帳、12:10 離店、12:30 回月台；外湯 16:30～16:35 開始更衣、16:45 前穿妥離開、17:15 回館，延誤縮短或取消外湯，保留 18:00 晚餐。✅ 11/1 已查 2027/1/12 班表；境港站早上無法購票，境線刷 IC、米子領票；淡季票價 ¥6,470／人。✅ 11/14 複查：全部列車、繞路與票價不變；魚鮮水產官網連不上，訂位時電話確認。'],
-      3: ['推薦 Plan B：城崎慢遊、纜車看天候', '川口屋（已訂第 2 晚；兩間房、含早晚餐、同房續住）', '✅ 川口屋已回覆：清掃時段外可回房、外湯券到退房日 13:00、18:00 開席；海中苑候選採現場候位，預估 12:20 仍無法入席改簡餐；午餐或清掃延誤保留約一小時午休，14:30 後才回房就縮短或取消餐前外湯，15:30 車不必搭；週三固定一之湯、曼陀羅湯休；2027/1/13 當日表與外出案交通仍待核；10/31 註記：11:00 回候車處，須 11:10 才上山就取消；12:50 結帳、13:00 前離店。延後外湯 16:30～16:35 更衣、16:45 前穿妥離場、17:15 前回館。✅ 11/1 查核：纜車、外湯、海中苑時段吻合；鴻之湯已復業；玄武洞 1/13 公告休園，外出只考慮出石。✅ 11/7 複查：纜車、外湯、海中苑不變。✅ 11/14 複查：纜車、外湯、海中苑、川口屋不變；2027 年 1 月外湯休館表未公布；玄武洞 1/13 休園再確認。'],
-      4: ['已選 B：正常早餐後天橋立 View Land、智恩寺與松林短線', '文珠荘（已訂 2 間房、含早晚餐）', '✅ 11/1 已查 2027/1/14 班表與 ¥1,400；錯過 08:58 改 10:34 特急→11:54；單軌擠改吊椅。✅ 11/7 複查：班次、View Land、文珠荘不變，1/14 無檢修或休業。✅ 11/14 複查：班次、View Land、橋立大丸、文珠荘、丹鐵豐岡站不變；新增宮豊線停駛時的福知山內陸備案。🔴 View Land 雪況及臨時停駛、六人及八件接駁／寄物、文珠荘晚餐開席時段待核；伊根未採用；10/31 註記：08:20 全員八件到大廳、08:25 前退房備妥；12:30 結帳、12:40 前離店；13:40 回候車處，13:20 上／14:10 下仍須減項，再延後則取消登高，保留 15:30 入住。'],
-      5: ['已選 Plan A′：早餐後丹鐵＋JR，砂丘條件式短遊', '鳥取溫泉・觀水庭こぜにや（已訂、不含餐）', '✅ 11/1 已查 2027/1/15 列車、砂丘巴士與 ¥3,420；建議討論寄送八件免除鳥取站寄物。🔴 六人座位待核；14:00 到鳥取前先確認站內八件寄物或可及時回站的旅館接送流程，來回步行不作預設；確認採用旅館支線才要求 14:15 前寄妥離館，14:30 前全員到乘車處才搭 14:40 砂丘線。流程未確認即取消砂丘，15:00 起入住；城崎不出站找午餐。文珠荘早餐已含；觀水庭晚餐與 Day 6 早餐自費；10/31 註記：午餐出發前備妥，豐岡 11:10、城崎 11:45 前候車；14:15 已寄妥八件、14:30 到乘車處，等車或分批搬運就取消砂丘。15:25～15:30 折返、15:50 已離砂地、16:10 到站牌；備援回程先入住並留房內 20～30 分休息，18:30 晚餐僅目標，延誤聯絡店家。✅ 11/14 複查：班次、票價、砂丘線、觀水庭、晚餐兩家不變；新增宮豊線停駛改經福知山（同樣 14:00 到）與 JR 城崎—鳥取停駛的繞路評估。'],
-      6: ['已選 Plan A′：自費早餐＋10:02 特急＋吉備津＋大統領', '岡山格蘭比亞酒店（已訂、不含餐；連住 2 晚）', '🔴 2027 車次、六人指定席與八件空間待核；09:20 離館、09:40 到站；八件寄物後午餐，13:10 開始結帳、13:20 前離店、13:40 前到月台，15:15 離神社、15:35 回站。備援採買至 17:35，17:35～18:05 回館、18:05～18:45 取八件與入住休息、18:45 出門；19:00 晚餐須確認飯店步行 15 分內可到；較遠或入住延誤就協調順延訂位，不壓縮取物與休息。店頭中辛同款及當日營業待確認；後續宅配未定案、不保證上午到貨。城園不排。；10/31 註記：12:40 入席也先問供餐，13:20 前結帳離店、13:40 已到月台；15:00 收尾、15:10 在返站參道口集合、15:15 已往車站走。採買主案 16:50 結帳、17:00 離店，備援 17:25 結帳、17:35 離店；入住後盡量留房內 20～30 分休息，出門及晚餐僅目標，延誤聯絡順延。✅ 11/1 已查 2027/1/16 特急與桃太郎線；淡季特急 ¥5,400／人；去表町可搭路面電車 5 分。✅ 11/14 複查：特急、桃太郎線、吉備津、おかやま館不變；吉備津 1/16 起御朱印 09:00～16:00；新增超級因幡停駛改經米子＋やくも（13:46 到）；格蘭比亞入住前代收宅配須電話確認。'],
-      7: ['已選 Plan A：JR＋步行完成倉敷與Outlet；蒜山不去', '岡山格蘭比亞酒店（已訂、不含餐；連住第 2 晚）', '🔴 2027 JR 去回、早餐與六人 18:30 晚餐待核；大原 1/17 未列休館仍查臨時公告。16:30 起結帳、16:45 集合；回館休息後晚餐，20:00～21:00 八件裝箱。退稅商品按本人各次紀錄保存，Day 8 託運前確認。；10/31 註記：13:10 結帳、13:20 前離店；多店或退稅者 16:15 起結帳登錄，16:30 停止加買、16:45 帶妥商品集合。19:30 結帳、19:40 前離店，留 15～20 分回酒店上樓；20:00 已回房開始裝箱。延誤連動順延，仍留約一小時並當晚完成，晚間不加購物。✅ 11/1 已查 2027/1/17 去回列車（回程 17:12／17:22）、大原冬季時段與 Outlet 營業。✅ 11/14 複查：列車、大原（1/17 開館、1/12～15 休館）、Outlet 與 ¥500 券合作、格蘭比亞早餐不變。'],
-      8: ['推薦較早利木津巴士；神社僅條件案未定', '返台（17:30 為台灣落地時間）', '✅ 11/1 冬季巴士表已查：搭 11:10→約 11:40（早一班 10:30）；退房 12:00 免先寄物，10:40 退房、10:55 西口。🔴 六人八件容量、退房時間與機場海關／櫃檯時間待核。先海關確認再託運，目標 13:40 報到完成、14:30 登機門；IT215 冬季表 15:25→17:30 與已訂紀錄一致；岡山不能用 VJW 線上退稅、也沒有機場現金退款。✅ 11/14 複查：IT215 每天 15:25→17:30、機場巴士 09:15／10:30／11:10 不變；虎航規定頁本次打不開，沿用 11/7 紀錄。']
+      1: ['已確認：JR 境線至境港', '御宿野乃 境港（已訂、含次日早餐）', '🔴 配送進度、晚餐六人 18:00 訂位與 e5489 取票地點待辦；境港站不能領 e5489 紙票。10/31 執行註記：13:40 離開航廈、13:55 到乘車處；預填八張單、抵館立即交寄。集貨截止約 15～16 時，通常趕得上。11/14 修訂：趕不上 14:11 就搭 15:13 下一班，抵館照樣交寄；過了截止改 1/12 集貨、1/13 到川口屋，Day 2 仍輕裝（待旅館確認）；計程車只在想保住紀念館時才考慮。✅ 八件受理及寄送條件維持已確認，仍保留天候延誤。✅ 11/1 已查 2027/1/11 JR 班表；紀念館假日可能候位，線上票 ¥1,000 不指定時段、不可退。✅ 11/14 複查：航班、境線、機場、旅館、紀念館與和泉不變；殿官網已失效，要訂先打電話確認仍營業。🟡 11/15 檢視建議：兩晚換洗包在家另裝、放大箱到櫃台再抽出；晚餐建議加訂館內自助。'],
+      2: ['採用 Plan B：境線＋超級松風＋濱風', '川口屋（已訂第 1 晚；兩間房、含早晚餐、同房續住）', '🔴 六人指定席（12/12 開賣）與米子領 e5489、魚鮮水產 11:10～12:10 午餐訂位；第一天交寄八件、第二天輕裝；川口屋 18:00 開席已確認；站前有免費入住巴士；濱風備案為鳥取 13:33 直達普通車。柯南中停已不採用；10/31 執行註記：06:50 早餐候位停止，07:15 離席、07:40 前離館；午餐 11:30 未入席改簡餐，12:00 結帳、12:10 離店、12:30 回月台；外湯 16:30～16:35 開始更衣、16:45 前穿妥離開、17:15 回館，延誤縮短或取消外湯，保留 18:00 晚餐。✅ 11/1 已查 2027/1/12 班表；境港站早上無法購票，境線刷 IC、米子領票；淡季票價 ¥6,470／人。✅ 11/14 複查：全部列車、繞路與票價不變；魚鮮水產官網連不上，訂位時電話確認。🟡 11/15 檢視建議：午餐先電話訂位，訂不到改站內便當；領票的信用卡持卡人要同行。'],
+      3: ['推薦 Plan B：城崎慢遊、纜車看天候', '川口屋（已訂第 2 晚；兩間房、含早晚餐、同房續住）', '✅ 川口屋已回覆：清掃時段外可回房、外湯券到退房日 13:00、18:00 開席；海中苑候選採現場候位，預估 12:20 仍無法入席改簡餐；午餐或清掃延誤保留約一小時午休，14:30 後才回房就縮短或取消餐前外湯，15:30 車不必搭；週三固定一之湯、曼陀羅湯休；2027/1/13 當日表與外出案交通仍待核；10/31 註記：11:00 回候車處，須 11:10 才上山就取消；12:50 結帳、13:00 前離店。延後外湯 16:30～16:35 更衣、16:45 前穿妥離場、17:15 前回館。✅ 11/1 查核：纜車、外湯、海中苑時段吻合；鴻之湯已復業；玄武洞 1/13 公告休園，外出只考慮出石。✅ 11/7 複查：纜車、外湯、海中苑不變。✅ 11/14 複查：纜車、外湯、海中苑、川口屋不變；2027 年 1 月外湯休館表未公布；玄武洞 1/13 休園再確認。🟡 11/15 檢視建議：建議定案留城崎；12 月再查外湯 1 月休館表。'],
+      4: ['已選 B：正常早餐後天橋立 View Land、智恩寺與松林短線', '文珠荘（已訂 2 間房、含早晚餐）', '✅ 11/1 已查 2027/1/14 班表與 ¥1,400；錯過 08:58 改 10:34 特急→11:54；單軌擠改吊椅。✅ 11/7 複查：班次、View Land、文珠荘不變，1/14 無檢修或休業。✅ 11/14 複查：班次、View Land、橋立大丸、文珠荘、丹鐵豐岡站不變；新增宮豊線停駛時的福知山內陸備案。🔴 View Land 雪況及臨時停駛、六人及八件接駁／寄物、文珠荘晚餐開席時段待核；伊根未採用；10/31 註記：08:20 全員八件到大廳、08:25 前退房備妥；12:30 結帳、12:40 前離店；13:40 回候車處，13:20 上／14:10 下仍須減項，再延後則取消登高，保留 15:30 入住。🟡 11/15 檢視建議：建議八件 1/14 直寄岡山（先問格蘭比亞代收）；託運單前一晚填好。'],
+      5: ['已選 Plan A′：早餐後丹鐵＋JR，砂丘條件式短遊', '鳥取溫泉・觀水庭こぜにや（已訂、不含餐）', '✅ 11/1 已查 2027/1/15 列車、砂丘巴士與 ¥3,420；建議討論寄送八件免除鳥取站寄物。🔴 六人座位待核；14:00 到鳥取前先確認站內八件寄物或可及時回站的旅館接送流程，來回步行不作預設；確認採用旅館支線才要求 14:15 前寄妥離館，14:30 前全員到乘車處才搭 14:40 砂丘線。流程未確認即取消砂丘，15:00 起入住；城崎不出站找午餐。文珠荘早餐已含；觀水庭晚餐與 Day 6 早餐自費；10/31 註記：午餐出發前備妥，豐岡 11:10、城崎 11:45 前候車；14:15 已寄妥八件、14:30 到乘車處，等車或分批搬運就取消砂丘。15:25～15:30 折返、15:50 已離砂地、16:10 到站牌；備援回程先入住並留房內 20～30 分休息，18:30 晚餐僅目標，延誤聯絡店家。✅ 11/14 複查：班次、票價、砂丘線、觀水庭、晚餐兩家不變；新增宮豊線停駛改經福知山（同樣 14:00 到）與 JR 城崎—鳥取停駛的繞路評估。🟡 11/15 檢視建議：午餐先問文珠荘代備；砂丘綁行李決定；晚餐訂位、Day 6 早餐問觀水庭。'],
+      6: ['已選 Plan A′：自費早餐＋10:02 特急＋吉備津＋大統領', '岡山格蘭比亞酒店（已訂、不含餐；連住 2 晚）', '🔴 六人指定席（12/16 開賣）與八件空間待核；09:20 離館、09:40 到站；八件寄物後午餐，13:10 開始結帳、13:20 前離店、13:40 前到月台，15:15 離神社、15:35 回站。備援採買至 17:35，17:35～18:05 回館、18:05～18:45 取八件與入住休息、18:45 出門；19:00 晚餐須確認飯店步行 15 分內可到；較遠或入住延誤就協調順延訂位，不壓縮取物與休息。店頭中辛同款及當日營業待確認；後續宅配未定案、不保證上午到貨。城園不排。；10/31 註記：12:40 入席也先問供餐，13:20 前結帳離店、13:40 已到月台；15:00 收尾、15:10 在返站參道口集合、15:15 已往車站走。採買主案 16:50 結帳、17:00 離店，備援 17:25 結帳、17:35 離店；入住後盡量留房內 20～30 分休息，出門及晚餐僅目標，延誤聯絡順延。✅ 11/1 已查 2027/1/16 特急與桃太郎線；淡季特急 ¥5,400／人；去表町可搭路面電車 5 分。✅ 11/14 複查：特急、桃太郎線、吉備津、おかやま館不變；吉備津 1/16 起御朱印 09:00～16:00；新增超級因幡停駛改經米子＋やくも（13:46 到）；格蘭比亞入住前代收宅配須電話確認。🟡 11/15 檢視建議：先電話問中辛庫存，沒貨刪表町；週六晚餐先訂位。'],
+      7: ['已選 Plan A：JR＋步行完成倉敷與Outlet；蒜山不去', '岡山格蘭比亞酒店（已訂、不含餐；連住第 2 晚）', '🔴 早餐與六人 18:30 晚餐未訂；大原 1/17 未列休館仍查臨時公告。16:30 起結帳、16:45 集合；回館休息後晚餐，20:00～21:00 八件裝箱。退稅商品按本人各次紀錄保存，Day 8 託運前確認。；10/31 註記：13:10 結帳、13:20 前離店；多店或退稅者 16:15 起結帳登錄，16:30 停止加買、16:45 帶妥商品集合。19:30 結帳、19:40 前離店，留 15～20 分回酒店上樓；20:00 已回房開始裝箱。延誤連動順延，仍留約一小時並當晚完成，晚間不加購物。✅ 11/1 已查 2027/1/17 去回列車（回程 17:12／17:22）、大原冬季時段與 Outlet 營業。✅ 11/14 複查：列車、大原（1/17 開館、1/12～15 休館）、Outlet 與 ¥500 券合作、格蘭比亞早餐不變。🟡 11/15 檢視建議：Outlet ¥500 券不列入預算；週日晚餐先訂位。'],
+      8: ['推薦較早利木津巴士；神社僅條件案未定', '返台（17:30 為台灣落地時間）', '✅ 11/1 冬季巴士表已查：搭 11:10→約 11:40（早一班 10:30）；退房 12:00 免先寄物，10:40 退房、10:55 西口。🔴 六人八件容量、退房時間與機場海關／櫃檯時間待核。先海關確認再託運，目標 13:40 報到完成、14:30 登機門；IT215 冬季表 15:25→17:30 與已訂紀錄一致；岡山不能用 VJW 線上退稅、也沒有機場現金退款。✅ 11/14 複查：IT215 每天 15:25→17:30、機場巴士 09:15／10:30／11:10 不變；虎航規定頁本次打不開，沿用 11/7 紀錄。🟡 11/15 檢視建議：11:10 滿座時 12:55 班可作備案；退房時間向飯店確認。']
     };
     const planTransport = {
       '1-1': 'JR 境線（現行參考 15 分／¥190）',
@@ -2762,14 +2956,14 @@
       '3-1': '只考慮出石，取代上午纜車、不疊加；玄武洞 1/13 休園。先核 2027 去回巴士與週三營業店家，目標 16:00 回城崎。',
       '3-2': '推薦城崎慢遊：早餐後纜車看天候，午休後外湯一座、御所之湯優先；保留旅館晚餐及隔日整理，第二座湯僅加選。',
       '4-1': '先核早早餐與早班鐵道；寄物後搭 10:58 巴士、傘松纜車，13:29 接往日出碼頭。週四不排吊椅／酒造，不加成相寺；船班未核實不等於一月停航。',
-      '4-2': '已選正常早餐後留在天橋立：11:05 抵達寄物，午餐後12:45～14:30 View Land、14:30～15:30 智恩寺與松林短線；不去伊根。登高停駛改平地短遊；2027 鐵道與開放狀況待核。',
+      '4-2': '已選正常早餐後留在天橋立：11:05 抵達寄物，午餐後12:45～14:30 View Land、14:30～15:30 智恩寺與松林短線；不去伊根。登高停駛改平地短遊；2027/1/14 鐵道已查；View Land 當日天候另看。',
       '5-1': '推薦豐岡轉濱風，2026 示例 12:07 到鳥取；先寄物午餐、14:10 砂丘線、16:20 回程。文珠荘已含早餐的早班餐盒與 2027 接續待核；觀水庭晚餐自理。',
       '5-3': '2026/9/27 已選正常早餐版：07:30 早餐、09:00 離館、09:10 前到站，09:34 丹鐵；午餐提前準備，14:00 抵鳥取。先確認站內八件寄物或可及時回站的旅館接送流程，來回步行不作預設；確認採用旅館支線才要求 14:15 前寄妥離館，14:30 前全員到乘車處才搭 14:40 巴士；否則 15:00 起入住。2027 車次及寄物待核。',
       '5-2': '白兔、砂丘、城跡三小時；優惠每車 ¥6,000、六人兩車且不接受預訂。13:10 前確認兩車可於 13:30 出發才採用，午餐改即取簡餐；未成回 Plan A。2027 額度及車輛待核；希望同車則另詢大型觀光車。',
       '6-1': '07:02 早班為 2026 示例，觀水庭已訂方案不含早餐，須前晚自備簡餐；吉備津優先保留，中午表町買大統領，13:40 午餐後接 14:22→14:37 吉備線、16:17→16:36 回（2026 示例）；延誤先縮短城園，2027 去回班次待核。',
-      '6-3': '2026/9/27 已選自費早餐版：10:02 特急，13:52 吉備線去吉備津，15:47 回岡山，16:30 表町採買大統領；不排岡山城與後樂園。2027 班次與六人指定席待核。',
+      '6-3': '2026/9/27 已選自費早餐版：10:02 特急，13:52 吉備線去吉備津，15:47 回岡山，16:30 表町採買大統領；不排岡山城與後樂園。2027/1/16 班次已查，六人指定席 12/16 開賣。',
       '6-2': '晚班備案走岡山城、後樂園與大統領採買；16:25～16:55 在表町採買，延誤先縮短城園，同款與庫存待確認。',
-      '7-1': '已選大原先看、白壁運河短線；14:30～16:30 Outlet、16:45 集合，目標 18:00 回館休息、18:30 晚餐未訂、20:00～21:00 八件裝箱；2027 JR 去回待核。',
+      '7-1': '已選大原先看、白壁運河短線；14:30～16:30 Outlet、16:45 集合，目標 18:00 回館休息、18:30 晚餐未訂、20:00～21:00 八件裝箱；2027/1/17 JR 去回已查。',
       '8-1': '推薦較早赴機場：10:40 退房提八件、10:55 西口，搭 11:10→約 11:40（冬季表已查）。先海關確認再託運，一般約 12:55 開櫃，目標 13:40 完成、14:30 登機門。',
       '8-2': '未定條件案：採買與寄物確認、2027 JR 可 10:15 前回岡山，10:40 取妥八件、10:55 西口才評估；否則不去，機場流程同 Plan A。'
     };
@@ -3217,7 +3411,16 @@
         const selected = decisionState.decisions[day];
         if (selected) setDecision(day, selected, false);
       }
-      initMapForDay(1);
+      renderTodos();
+      buildDayPagers();
+      const linkedDay = dayFromHash();
+      if (linkedDay !== null && linkedDay !== 1) switchDay(linkedDay, { updateHash: false, scroll: false });
+      else initMapForDay(1);
+      if (linkedDay !== null) window.addEventListener('load', () => scrollToPanel(linkedDay, true), { once: true });
+      window.addEventListener('hashchange', () => {
+        const day = dayFromHash();
+        if (day !== null) switchDay(day, { updateHash: false });
+      });
     });
   </script>
 
