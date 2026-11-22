@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>山陰冬旅手冊</title>
+<meta name="description" content="2027 山陰・海之京都・山陽 8 天 7 夜：總覽、逐日行程、共享待辦與旅遊資訊。">
+<style>
+  :root {
+    --bg: #f4f3ef; --card: #ffffff; --ink: #1d2733; --ink-soft: #55606c; --line: #e3e0d8;
+    --brand: #1f3a5f; --brand-soft: #e8eef5; --accent: #c8553d; --accent-soft: #fbeee9;
+    --ok: #2f7d4f; --ok-soft: #e6f3ea; --check: #2b6cb0; --check-soft: #e7f0fa;
+    --wait: #a86500; --wait-soft: #fdf1dc; --self: #6b6f76; --self-soft: #efefee;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: 112px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.7 -apple-system, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; -webkit-text-size-adjust: 100%; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--brand); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  button { font: inherit; }
+
+  /* 頂部列 */
+  .topbar { position: sticky; top: 0; z-index: 30; background: #fff; border-bottom: 1px solid var(--line); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .brand { font-weight: 700; letter-spacing: .08em; color: var(--brand); }
+  .brand small { display: block; font-size: 11px; letter-spacing: .2em; color: var(--ink-soft); font-weight: 500; line-height: 1; }
+  .countdown { font-size: 13px; color: var(--accent); text-align: right; line-height: 1.3; }
+
+  /* 主圖與商品區 */
+  .hero { max-width: 960px; margin: 0 auto; }
+  .hero img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+  .product { background: var(--card); border-radius: var(--radius) var(--radius) 0 0; margin-top: -20px; position: relative; padding: 0 0 10px; }
+  .badge-type { display: inline-block; background: var(--brand); color: #fff; padding: 6px 14px 4px; border-radius: 0 0 8px 8px; margin-left: 16px; text-align: center; line-height: 1.2; font-weight: 700; }
+  .badge-type small { display: block; font-size: 10px; letter-spacing: .15em; font-weight: 500; opacity: .85; }
+  .product h1 { font-size: 22px; line-height: 1.45; margin: 12px 16px 10px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 16px 12px; padding: 0; list-style: none; }
+  .tags li { background: var(--bg); border-radius: 999px; padding: 2px 12px; font-size: 14px; color: var(--ink-soft); }
+  .meta { margin: 0 16px; display: grid; gap: 2px; font-size: 15px; }
+  .meta b { font-weight: 600; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: 14px 16px 4px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .stats > * { text-align: center; padding: 8px 4px; background: none; border: 0; color: inherit; }
+  .stats > * + * { border-left: 1px solid var(--line); }
+  .stats span { display: block; font-size: 12px; color: var(--ink-soft); }
+  .stats strong { font-size: 18px; }
+  .stats .ok strong { color: var(--ok); }
+  .stats .wait strong { color: var(--wait); }
+  .stats button { cursor: pointer; }
+
+  .flights { display: grid; gap: 10px; margin: 12px 16px 0; }
+  .flight { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .flight-top { display: flex; justify-content: space-between; font-size: 14px; color: var(--ink-soft); margin-bottom: 4px; }
+  .flight-top b { color: var(--ink); }
+  .flight-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; text-align: center; }
+  .flight-row .time { font-size: 21px; font-weight: 700; line-height: 1.2; }
+  .flight-row .port { font-size: 13px; color: var(--ink-soft); }
+  .flight-row .dur { font-size: 12px; color: var(--ink-soft); padding: 0 8px; }
+  .flight-row .dur::before { content: ""; display: block; width: 64px; border-top: 1px dashed #aab; margin: 0 auto 2px; }
+  .fine { font-size: 13px; color: var(--ink-soft); }
+  .product .fine { margin: 6px 16px 0; }
+
+  /* 分頁條 */
+  .tabbar { position: sticky; top: 52px; z-index: 20; background: #fff; border-bottom: 1px solid var(--line); margin-top: 10px; }
+  .tabbar .wrap { display: flex; padding: 0; }
+  .tabbar button { flex: 1; background: none; border: 0; cursor: pointer; text-align: center; padding: 12px 2px 10px; color: var(--ink-soft); font-weight: 600; border-bottom: 3px solid transparent; min-height: 48px; }
+  .tabbar button[aria-selected="true"] { color: var(--brand); border-bottom-color: var(--accent); }
+  .tabbar .count { display: inline-block; font-size: 11px; background: var(--wait-soft); color: var(--wait); border-radius: 999px; padding: 0 6px; margin-left: 2px; vertical-align: 2px; }
+  .tab-panel[hidden] { display: none; }
+
+  .section { background: var(--card); margin-top: 10px; padding: 18px 16px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .section-head h2 { font-size: 20px; margin: 0; }
+  .section-head .en { font-size: 12px; letter-spacing: .14em; color: var(--ink-soft); text-transform: uppercase; }
+
+  .chip { display: inline-block; font-size: 12px; font-weight: 600; line-height: 1; padding: 4px 7px; border-radius: 999px; margin-left: 4px; vertical-align: 1px; white-space: nowrap; }
+  .chip.ok { background: var(--ok-soft); color: var(--ok); }
+  .chip.check { background: var(--check-soft); color: var(--check); }
+  .chip.wait { background: var(--wait-soft); color: var(--wait); }
+  .chip.self { background: var(--self-soft); color: var(--self); }
+
+  /* 總覽 */
+  .slogan { text-align: center; color: var(--brand); font-weight: 700; margin: 0 0 8px; }
+  .intro { color: var(--ink-soft); margin: 0 0 14px; }
+  .ov-list { list-style: none; margin: 0; padding: 0; }
+  .ov-list button { width: 100%; display: grid; grid-template-columns: 52px 1fr auto; gap: 10px; align-items: center; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 10px 0; cursor: pointer; color: inherit; }
+  .ov-list li:first-child button { border-top: 0; }
+  .ov-day { background: var(--accent); color: #fff; border-radius: 6px; text-align: center; line-height: 1.15; padding: 4px 0 5px; font-weight: 700; }
+  .ov-day small { display: block; font-size: 10px; letter-spacing: .1em; }
+  .ov-main b { display: block; font-size: 15px; }
+  .ov-main span { display: block; font-size: 13px; color: var(--ink-soft); }
+  .ov-go { color: var(--accent); font-size: 18px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .feature { margin: 0; }
+  .feature img { border-radius: 8px; aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+  .feature h3 { font-size: 15px; color: var(--accent); margin: 6px 0 2px; }
+  .feature p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+  .remarks ul { margin: 0; padding-left: 1.2em; font-size: 15px; color: var(--ink-soft); }
+  .remarks li { margin-bottom: 4px; }
+
+  /* 每日行程 */
+  .day-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 0 0 16px; }
+  .day-picker button { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 2px; cursor: pointer; color: var(--ink); line-height: 1.25; min-height: 48px; }
+  .day-picker button b { display: block; font-size: 15px; }
+  .day-picker button span { font-size: 12px; color: var(--ink-soft); }
+  .day-picker button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .day-picker button[aria-selected="true"] span { color: #fff; }
+  .day[hidden] { display: none; }
+  .day-head { display: flex; align-items: center; gap: 10px; }
+  .day-badge { background: var(--accent); color: #fff; text-align: center; line-height: 1.05; padding: 4px 10px 6px; border-radius: 4px; font-weight: 700; }
+  .day-badge small { display: block; font-size: 11px; letter-spacing: .12em; font-weight: 600; }
+  .day-badge span { font-size: 22px; }
+  .day-date { color: var(--ink-soft); font-size: 14px; line-height: 1.4; }
+  .day-title { font-size: 21px; line-height: 1.4; margin: 10px 0 4px; }
+  .route { font-size: 15px; font-weight: 600; line-height: 1.6; margin: 0 0 10px; color: var(--ink-soft); }
+  .route .arr { color: var(--accent); font-weight: 400; margin: 0 4px; }
+  .plan-line { font-size: 14px; margin: 0 0 10px; }
+  .day-note { background: var(--wait-soft); border-radius: 8px; padding: 8px 12px; font-size: 14px; color: #5f4a1e; margin: 0 0 12px; }
+  .day-note b { color: var(--wait); }
+  .block-title { font-weight: 700; margin: 14px 0 6px; }
+  .meals { display: grid; gap: 6px; }
+  .meal { background: var(--bg); border-radius: 8px; padding: 7px 10px; font-size: 15px; line-height: 1.5; display: flex; align-items: baseline; gap: 10px; }
+  .meal .k { flex: none; font-size: 13px; color: var(--ink-soft); }
+  .hotel { background: var(--brand-soft); border-radius: 8px; padding: 10px 12px; font-size: 15px; }
+  .timeline { list-style: none; margin: 0 0 12px; padding: 0; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; padding: 2px 0 8px 16px; font-size: 15px; }
+  .timeline li::before { content: ""; position: absolute; left: -6px; top: 10px; width: 10px; height: 10px; border-radius: 50%; background: #fff; border: 2px solid var(--accent); }
+  .timeline time { font-weight: 700; margin-right: 6px; font-variant-numeric: tabular-nums; }
+  .kv { display: grid; grid-template-columns: 4.5em 1fr; gap: 6px 10px; font-size: 14px; margin: 0; }
+  .kv dt { color: var(--ink-soft); }
+  .kv dd { margin: 0; }
+  .review { background: var(--check-soft); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+  .review ul { margin: 0; padding-left: 1.2em; }
+  .review li { margin-bottom: 4px; }
+  .review .fine { margin: 6px 0 0; }
+  .map-link { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; min-height: 44px; border: 1px solid var(--brand); border-radius: 8px; color: var(--brand); text-decoration: none; font-weight: 600; font-size: 15px; }
+  .day-img { border-radius: 10px; aspect-ratio: 16 / 9; object-fit: cover; width: 100%; margin-top: 14px; }
+  .day-pager { display: flex; justify-content: space-between; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .day-pager button { font-size: 15px; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 0 14px; min-height: 44px; cursor: pointer; color: var(--brand); }
+  .day-pager button:disabled { visibility: hidden; }
+
+  /* 待辦 */
+  .sync { font-size: 13px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; margin: -4px 0 10px; }
+  .sync::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--self); }
+  .sync.live::before { background: var(--ok); }
+  .sync.warn::before { background: var(--wait); }
+  .progress { height: 8px; background: var(--bg); border-radius: 999px; overflow: hidden; margin: 0 0 4px; }
+  .progress i { display: block; height: 100%; background: var(--ok); width: 0; transition: width .2s; }
+  .todo-group h3 { font-size: 15px; margin: 18px 0 6px; color: var(--brand); }
+  .todo-item { display: grid; grid-template-columns: 26px 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px dashed var(--line); cursor: pointer; }
+  .todo-item input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--ok); cursor: pointer; }
+  .todo-item .due { display: inline-block; font-size: 12px; font-weight: 700; color: var(--accent); margin-right: 6px; }
+  .todo-item .note { display: block; font-size: 13px; color: var(--ink-soft); }
+  .todo-item.done .text { text-decoration: line-through; color: var(--self); }
+
+  /* 旅遊資訊 */
+  .info-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+  .info-tabs button { font-size: 14px; border: 1px solid var(--line); background: #fff; color: var(--ink-soft); border-radius: 999px; padding: 4px 14px; cursor: pointer; min-height: 36px; }
+  .info-tabs button[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .info-panel { font-size: 15px; }
+  .info-panel[hidden] { display: none; }
+  .info-panel ul { margin: 0; padding-left: 1.2em; }
+  .info-panel li { margin-bottom: 6px; }
+  .phone-list { display: grid; gap: 6px; }
+  .phone-list div { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding-bottom: 4px; }
+  .phone-list a { white-space: nowrap; text-decoration: none; font-variant-numeric: tabular-nums; }
+  .rules details { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .rules summary { cursor: pointer; font-weight: 600; }
+  .rules ol { margin: 8px 0 0; padding-left: 1.3em; font-size: 15px; color: var(--ink-soft); }
+
+  footer { text-align: center; font-size: 13px; color: var(--ink-soft); padding: 24px 16px 40px; }
+  .to-top { position: fixed; right: 16px; bottom: 20px; z-index: 26; width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--accent); color: #fff; font-size: 20px; box-shadow: 0 4px 12px rgba(0,0,0,.18); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity .2s; }
+  .to-top.show { opacity: 1; pointer-events: auto; }
+
+  @media (min-width: 720px) {
+    .product h1 { font-size: 26px; }
+    .section { padding: 24px 28px; border-radius: var(--radius); }
+    .flights { grid-template-columns: 1fr 1fr; }
+    .features { grid-template-columns: repeat(3, 1fr); }
+    .day-picker { grid-template-columns: repeat(8, 1fr); }
+    .meals { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .meal { display: block; font-size: 14px; }
+    .meal .k { display: block; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">山陰冬旅<small>SAN'IN 2027</small></div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+</header>
+
+<div class="hero"><img src="assets/sanin-winter-journey-hero-sunlit.jpg" alt="冬日陽光下的山陰海岸與鐵道風景插圖"></div>
+
+<main class="wrap" style="padding:0">
+  <section class="product" aria-labelledby="trip-title">
+    <div class="badge-type">自由行<small>SELF-GUIDED</small></div>
+    <h1 id="trip-title">冬季山陰鐵道之旅｜境港妖怪街.城崎外湯.天橋立飛龍觀.鳥取砂丘.吉備津神社.倉敷美觀地區八日</h1>
+    <ul class="tags"><li>溫泉旅館</li><li>鐵道移動</li><li>兩家六口</li><li>寒假</li></ul>
+    <div class="meta">
+      <div><b>日期</b>：2027/01/11（一・成人之日）～ 01/18（一），8 天 7 夜</div>
+      <div><b>行程版本</b>：2026-11-15 檢視版</div>
+    </div>
+    <div class="stats" aria-label="準備狀態">
+      <div class="ok"><span>人數</span><strong>6 人</strong></div>
+      <div class="ok"><span>住宿</span><strong>7/7 晚</strong></div>
+      <button type="button" class="wait" id="stat-todo" aria-label="查看出發前待辦"><span>待辦完成</span><strong id="todo-stat">0/0</strong></button>
+    </div>
+    <div class="flights">
+      <div class="flight">
+        <div class="flight-top"><span><b>去程</b> 01/11（一）</span><span>台灣虎航 IT724</span></div>
+        <div class="flight-row">
+          <div><div class="time">08:40</div><div class="port">TPE 桃園 T1</div></div>
+          <div class="dur">2h20m</div>
+          <div><div class="time">12:00</div><div class="port">YGJ 米子鬼太郎</div></div>
+        </div>
+      </div>
+      <div class="flight">
+        <div class="flight-top"><span><b>回程</b> 01/18（一）</span><span>台灣虎航 IT215</span></div>
+        <div class="flight-row">
+          <div><div class="time">15:25</div><div class="port">OKJ 岡山桃太郎</div></div>
+          <div class="dur">3h05m</div>
+          <div><div class="time">17:30</div><div class="port">TPE 桃園 T1</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="fine">六人去回程機票已訂。時刻為當地時間（日本比台灣快 1 小時）；出發前以航空公司公告為準。</p>
+  </section>
+</main>
+
+<nav class="tabbar" id="tabbar" aria-label="頁面分區">
+  <div class="wrap" role="tablist">
+    <button type="button" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true">總覽</button>
+    <button type="button" role="tab" id="tab-daily" aria-controls="panel-daily" aria-selected="false">每日行程</button>
+    <button type="button" role="tab" id="tab-todo" aria-controls="panel-todo" aria-selected="false">待辦<span class="count" id="todo-left"></span></button>
+    <button type="button" role="tab" id="tab-info" aria-controls="panel-info" aria-selected="false">旅遊資訊</button>
+  </div>
+</nav>
+
+<main class="wrap" style="padding:0" id="tab-panels">
+
+  <!-- 總覽 -->
+  <div class="tab-panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview">
+    <section class="section" aria-labelledby="ov-title">
+      <div class="section-head"><h2 id="ov-title">八天一覽</h2><span class="en">At a Glance</span></div>
+      <p class="slogan">～一月的山陰，鉛灰色的日本海，雪落在鬼太郎的肩上～</p>
+      <p class="intro">米子進、岡山出，由西向東一路推進。每天的交通由旅伴逐日討論拍板；點任一天看完整內容。</p>
+      <ul class="ov-list" id="ov-list"></ul>
+    </section>
+
+    <section class="section" aria-labelledby="ft-title">
+      <div class="section-head"><h2 id="ft-title">行程特色</h2><span class="en">Highlights</span></div>
+      <div class="features">
+        <figure class="feature"><img data-img="day-01-sakaiminato-yokai-street" alt="境港妖怪街，兩家六口在銅像間散步的插圖" loading="lazy"><h3>★ 境港妖怪街</h3><p>落地就住境港，晚餐後走點燈的水木茂之路。</p></figure>
+        <figure class="feature"><img data-img="day-02-sanin-rail-journey" alt="車廂內望向冬季日本海的插圖" loading="lazy"><h3>★ 山陰海岸鐵道</h3><p>超級松風接濱風，窗外是冬季日本海。</p></figure>
+        <figure class="feature"><img data-img="day-03-kinosaki-onsen" alt="城崎溫泉柳樹與河畔街道的插圖" loading="lazy"><h3>★ 城崎外湯連住兩晚</h3><p>一天一座外湯，留時間午休與會席晚餐。</p></figure>
+        <figure class="feature"><img data-img="day-04-amanohashidate" alt="從高處望天橋立松林沙洲的插圖" loading="lazy"><h3>★ 天橋立飛龍觀</h3><p>View Land 俯瞰沙洲，再走智恩寺與松林。</p></figure>
+        <figure class="feature"><img data-img="day-05-tottori-sand-dunes" alt="兩家六口站在冬日鳥取砂丘上的插圖" loading="lazy"><h3>★ 鳥取砂丘</h3><p>視行李與天候條件式短走，晚上泡溫泉。</p></figure>
+        <figure class="feature"><img data-img="day-07-kurashiki-canal" alt="倉敷白壁運河與柳樹的插圖" loading="lazy"><h3>★ 吉備津與倉敷</h3><p>神社長迴廊、大原美術館、運河與 Outlet。</p></figure>
+      </div>
+    </section>
+
+    <section class="section remarks" aria-labelledby="rm-title">
+      <div class="section-head"><h2 id="rm-title">行程備註說明</h2><span class="en">Notes</span></div>
+      <ul>
+        <li>自由行，兩家各住一間房，共六人。</li>
+        <li>交通、景點與餐廳時刻依 2027 年 1 月當日班表查核；出發前仍要再看臨時異動。</li>
+        <li>一月日本海側多雪：城崎、天橋立、鳥取遇停駛時，各天都有替代路線；岡山、倉敷少雪。</li>
+        <li>大型行李共 8 件（28 吋），用宅急便分段寄送，移動日盡量輕裝。</li>
+        <li>「檢視建議」只是建議，未聯絡店家或旅館、未代訂；採用與否由旅伴決定。</li>
+        <li>標示：<span class="chip ok">已訂</span><span class="chip check">已查核</span><span class="chip wait">待確認</span><span class="chip self">自理</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- 每日行程 -->
+  <div class="tab-panel" role="tabpanel" id="panel-daily" aria-labelledby="tab-daily" hidden>
+    <section class="section" aria-labelledby="daily-title">
+      <div class="section-head"><h2 id="daily-title">每日行程</h2><span class="en">Daily Itinerary</span></div>
+      <div class="day-picker" id="day-picker" role="tablist" aria-label="選擇日期"></div>
+      <div id="days"></div>
+    </section>
+  </div>
+
+  <!-- 待辦 -->
+  <div class="tab-panel" role="tabpanel" id="panel-todo" aria-labelledby="tab-todo" hidden>
+    <section class="section" aria-labelledby="todo-title">
+      <div class="section-head"><h2 id="todo-title">出發前待辦</h2><span class="en">To-do</span></div>
+      <p class="sync" id="sync-status" role="status" aria-live="polite">本機保存</p>
+      <div class="progress" aria-hidden="true"><i id="todo-bar"></i></div>
+      <p class="fine" id="todo-summary"></p>
+      <div id="todo-list"></div>
+      <p class="fine" style="margin-top:14px">勾選狀態與討論頁的「出發前待辦」是同一份；連上線時所有人畫面會同步更新。</p>
+    </section>
+  </div>
+
+  <!-- 旅遊資訊 -->
+  <div class="tab-panel" role="tabpanel" id="panel-info" aria-labelledby="tab-info" hidden>
+    <section class="section" aria-labelledby="info-title">
+      <div class="section-head"><h2 id="info-title">旅遊資訊</h2><span class="en">Travel Information</span></div>
+      <div class="info-tabs" role="tablist" aria-label="旅遊資訊分類" id="info-tabs"></div>
+      <div id="info-panels"></div>
+    </section>
+    <section class="section rules" aria-labelledby="rules-title">
+      <div class="section-head"><h2 id="rules-title">航班與行李規定</h2><span class="en">Flight Rules</span></div>
+      <details>
+        <summary>台灣虎航 IT724／IT215</summary>
+        <ol>
+          <li>手提行李依已購方案，合計 10 公斤；液體每容器 100 mL 以內。</li>
+          <li>托運行李單件三邊合計超過 203 公分要加收大型行李費。</li>
+          <li>回程：岡山機場約 12:55 開櫃，目標 13:40 前完成報到、14:40 前到登機門。</li>
+          <li>要辦退稅確認的人，先到海關確認再託運。</li>
+          <li>以上依查核當時的航空公司資訊整理，出發前以官網規定為準。</li>
+        </ol>
+      </details>
+    </section>
+  </div>
+</main>
+
+<footer>私人旅遊規劃頁・候選資訊以「待確認」標示，不代表已預訂。</footer>
+<button class="to-top" id="to-top" type="button" aria-label="回到頁首">↑</button>
+
+<script>
+const DAYS = [
+  { n: 1, date: '1/11（一・成人之日）', title: '落地、寄行李、逛妖怪街', img: 'day-01-sakaiminato-yokai-street', alt: '境港妖怪街插圖',
+    route: ['米子鬼太郎機場', 'JR 境線', '境港・御宿野乃', '水木茂紀念館', '妖怪街夜遊'],
+    plan: ['Plan A：住境港', 'ok', '已定'],
+    note: '趕不上 14:11 境線就改搭 15:13，到館照樣交寄行李；16:00 前進不了紀念館就取消。',
+    meals: [['溫暖的家', 'self'], ['機場 7-Eleven 簡餐', 'self'], ['境港六人晚餐・待訂位', 'wait']],
+    hotel: ['御宿野乃 境港（含次日早餐）', 'ok'],
+    times: [['12:00', '抵米子機場（IT724）'], ['13:40', '離開航廈，7-Eleven 買午餐'], ['14:11', 'JR 境線 → 14:26 境港'], ['14:30', '御宿野乃交寄八件到川口屋'], ['15:35', '水木茂紀念館（16:00 前入館）'], ['18:00', '晚餐，餐後走點燈的妖怪街']],
+    fare: 'JR 境線 ¥190（1/11 班表已查）', todo: '晚餐六人訂位',
+    review: ['兩晚換洗包在家先另裝、放進大箱，到御宿野乃櫃台抽出來再交寄。', '晚餐建議先定案：成人之日店家位子少，優先考慮御宿野乃館內自助（住客 ¥4,000／人）。', '仍待確認：過了集貨截止，八件能否留在櫃台等 1/12 集貨。'],
+    map: 'https://www.google.com/maps/dir/米子鬼太郎空港/米子空港駅/境港駅/天然温泉+境港+夕凪の湯+御宿+野乃/水木しげる記念館' },
+  { n: 2, date: '1/12（二）', title: '沿山陰海岸到城崎', img: 'day-02-sanin-rail-journey', alt: '車廂內望冬海插圖',
+    route: ['境港', '米子', '超級松風 6 號', '鳥取・魚鮮水產午餐', '濱風 4 號', '城崎溫泉', '外湯一之湯'],
+    plan: ['Plan B：輕裝直達城崎', 'ok', '已選'],
+    note: '11:30 還沒入席就改簡餐；16:45 前離開浴場，趕上 18:00 晚餐。',
+    meals: [['御宿野乃', 'ok'], ['魚鮮水產 11:10・待訂位', 'wait'], ['川口屋', 'ok']],
+    hotel: ['川口屋城崎河畔酒店（含早晚餐）', 'ok'],
+    times: [['06:30', '早餐，07:40 前離館'], ['08:05', '境線（刷 IC）→ 08:56 米子，領 e5489 車票'], ['09:52', '超級松風 6 號 → 10:57 鳥取'], ['11:10', '魚鮮水產午餐，12:10 前離店'], ['12:56', '濱風 4 號 → 14:11 城崎溫泉'], ['16:00', '外湯一座（一之湯）'], ['18:00', '旅館晚餐']],
+    fare: '每人 ¥6,470（淡季）', todo: '六人指定席 12/12 10:00 開賣',
+    review: ['午餐先電話訂 11:10 六人座；訂不到就改站內便當，不在當天候位。', '米子站領票要用訂票時的信用卡，持卡人當天要帶卡同行。'],
+    map: 'https://www.google.com/maps/dir/境港駅/米子駅/鳥取駅/城崎温泉駅/川口屋城崎リバーサイドホテル' },
+  { n: 3, date: '1/13（三）', title: '留在城崎慢遊', img: 'day-03-kinosaki-onsen', alt: '城崎溫泉街插圖',
+    route: ['城崎慢遊', '纜車看天候', '老街午餐', '回房午休', '外湯御所之湯'],
+    plan: ['推薦留城崎（Plan B）', 'wait', '待拍板'],
+    note: '11:10 才能上山就取消纜車；14:30 後才回房就縮短外湯。',
+    meals: [['川口屋', 'ok'], ['海中苑・候選', 'self'], ['川口屋おまかせ会席', 'ok']],
+    hotel: ['川口屋城崎河畔酒店 第 2 晚', 'ok'],
+    times: [['07:30', '旅館早餐'], ['09:30', '出發，10:30 纜車上山、11:10 下山'], ['12:00', '海中苑午餐（12:20 未入席改簡餐）'], ['13:15', '回房午休約一小時'], ['14:30', '外湯一座（御所之湯）'], ['18:00', 'おまかせ会席']],
+    fare: '步行為主，纜車 ¥1,200', todo: '慢遊或外出由旅伴拍板；查外湯 1 月休館表',
+    review: ['建議定案留城崎：玄武洞 1/13 休園，出石的 2027 巴士未能複查，多家皿蕎麥店週三休。', '12 月再查 2027 年 1 月外湯休館表（目前只公布到 11 月）。'],
+    map: 'https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/城崎温泉ロープウェイ/御所の湯' },
+  { n: 4, date: '1/14（四）', title: '天橋立：View Land 與松林', img: 'day-04-amanohashidate', alt: '天橋立插圖',
+    route: ['城崎溫泉', '豐岡', '丹鐵', '天橋立', 'View Land 飛龍觀', '智恩寺與松林', '文珠溫泉'],
+    plan: ['B：天橋立深入遊覽，不去伊根', 'ok', '已選'],
+    note: '錯過 08:58 改搭 10:34 特急，11:54 到；丹鐵宮豊線停駛時改走內陸路線。',
+    meals: [['川口屋', 'ok'], ['橋立大丸', 'self'], ['文珠荘（含）・開席時段待確認', 'wait']],
+    hotel: ['和のリゾート 文珠荘（含早晚餐）', 'ok'],
+    times: [['07:30', '早餐，08:30 旅館送站'], ['08:58', 'JR → 豐岡，09:51 丹鐵 → 11:05 天橋立'], ['11:05', '文珠荘寄放八件'], ['11:40', '橋立大丸午餐，12:40 前離店'], ['13:00', 'View Land（單軌擠就改吊椅）'], ['14:30', '智恩寺、松林短走，15:30 入住']],
+    fare: '每人 ¥1,400', todo: '晚餐開席時段（18:00／18:30／19:00）',
+    review: ['八件隨人移動是 Day 4～6 最大風險：建議 1/14 從川口屋直寄岡山。前提是格蘭比亞同意入住前代收、川口屋可代寄（兩邊都還沒聯絡）。', '早餐只有約 40 分鐘：若直寄，託運單前一晚就填好交給櫃台。'],
+    map: 'https://www.google.com/maps/dir/川口屋城崎リバーサイドホテル/天橋立駅/天橋立ビューランド/智恩寺/和のリゾート文珠荘' },
+  { n: 5, date: '1/15（五）', title: '移動到鳥取，條件式看砂丘', img: 'day-05-tottori-sand-dunes', alt: '鳥取砂丘插圖',
+    route: ['天橋立', '丹鐵', '豐岡・城崎', 'JR', '鳥取', '鳥取砂丘（條件式）', '鳥取溫泉'],
+    plan: ['A′：文珠荘早餐後出發', 'ok', '已選'],
+    note: '14:30 還沒到砂丘線站牌就取消砂丘；宮豊線停駛改搭 09:50 はしだて 2 號經福知山，一樣 14:00 到鳥取（每人 ¥6,120）。',
+    meals: [['文珠荘', 'ok'], ['車上簡餐・出發前備妥', 'self'], ['燒肉ジュジュアン或牛王・待訂位', 'wait']],
+    hotel: ['鳥取溫泉 觀水庭こぜにや（不含餐）', 'ok'],
+    times: [['07:30', '早餐，09:00 離館'], ['09:34', '丹鐵 → 豐岡 11:22 → 城崎 11:56（車上吃午餐）'], ['14:00', '抵鳥取，先寄妥八件'], ['14:40', '砂丘線 → 15:02 砂丘'], ['15:50', '離開砂地，16:20 搭回程巴士'], ['18:30', '燒肉晚餐']],
+    fare: '每人 ¥3,420，砂丘巴士單程 ¥380', todo: '八件是否改直寄岡山、晚餐訂位',
+    review: ['午餐來源還沒查：入住文珠荘時問能否代備飯糰或便當。', '砂丘看行李決定：八件已寄走就照 14:40 去；八件跟著人就不排砂丘，直接去觀水庭。', '週五燒肉先訂位；Day 6 早餐問觀水庭能否加購，不行就前晚在鳥取站買。'],
+    map: 'https://www.google.com/maps/dir/鳥取駅/観水庭こぜにや/鳥取駅/砂丘会館/鳥取駅/観水庭こぜにや' },
+  { n: 6, date: '1/16（六）', title: '南下岡山，吉備津與大統領', img: 'day-06-kibitsu-shrine-corridor', alt: '吉備津神社迴廊插圖',
+    route: ['鳥取', '超級因幡 4 號', '岡山', '桃太郎線', '吉備津神社', '表町採買大統領'],
+    plan: ['A′：自費早餐後直達岡山', 'ok', '已選'],
+    note: '13:40 還沒到月台就取消吉備津；超級因幡停駛時另有經米子的替代路線。',
+    meals: [['自費早餐（觀水庭不含）', 'self'], ['岡山站周邊', 'self'], ['岡山站周邊・待訂位', 'wait']],
+    hotel: ['岡山格蘭比亞酒店（不含餐）', 'ok'],
+    times: [['07:30', '自費早餐，09:20 離館'], ['10:02', '超級因幡 4 號 → 11:49 岡山'], ['12:25', '寄放八件後午餐，13:20 前離店'], ['13:52', '桃太郎線 → 吉備津神社'], ['15:47', '回岡山，表町買大統領（可搭路面電車）'], ['18:30', '晚餐']],
+    fare: '特急每人 ¥5,400（淡季）', todo: '六人指定席 12/16 開賣、晚餐訂位',
+    review: ['大統領「中辛」可能沒貨：出發前先打おかやま館（086-234-2270）問，沒貨就刪掉表町這段。', '週六晚餐六人先訂位，店家未定。'],
+    map: 'https://www.google.com/maps/dir/鳥取駅/ホテルグランヴィア岡山/岡山駅/吉備津駅/吉備津神社/吉備津駅/岡山駅/晴れの国おかやま館/ホテルグランヴィア岡山' },
+  { n: 7, date: '1/17（日）', title: '倉敷一日：美術館、運河、Outlet', img: 'day-07-kurashiki-canal', alt: '倉敷運河插圖',
+    route: ['岡山', 'JR', '倉敷・大原美術館', '白壁運河散步', '三井 Outlet 倉敷', '岡山'],
+    plan: ['Plan A：倉敷', 'ok', '已選'],
+    note: '12:40 未入座就換較快供餐的店；要退稅的人 16:15 開始收尾結帳。',
+    meals: [['自費早餐（格蘭比亞不含）', 'self'], ['倉敷運河一帶', 'self'], ['岡山站周邊・待訂位', 'wait']],
+    hotel: ['岡山格蘭比亞酒店 第 2 晚', 'ok'],
+    times: [['08:26', 'JR → 08:43 倉敷'], ['09:30', '大原美術館（11:20 館外集合）'], ['11:20', '白壁運河散步、午餐'], ['14:30', '三井 Outlet（16:45 集合）'], ['17:12', 'JR → 17:30 岡山'], ['18:30', '晚餐，20:00 回房裝箱']],
+    fare: 'JR ¥660＋大原美術館 ¥2,000', todo: '晚餐訂位',
+    review: ['Outlet ¥500 券每天限前 50 名、11:00 起換，14:30 才到可能已發完，不列入預算。', '週日晚餐六人先訂位，店家未定。'],
+    map: 'https://www.google.com/maps/dir/ホテルグランヴィア岡山/大原美術館/倉敷美観地区/三井アウトレットパーク+倉敷/ホテルグランヴィア岡山' },
+  { n: 8, date: '1/18（一）', title: '提早到機場，返台', img: 'day-08-okayama-departure', alt: '岡山出發返台插圖',
+    route: ['岡山站西口', '機場巴士', '岡山桃太郎機場', '桃園機場'],
+    plan: ['11:10 機場巴士主案', 'ok', '已定'],
+    note: '14:40 報到截止前必須完成；六人八件一起上巴士。',
+    meals: [['自費早餐', 'self'], ['站內或機場簡餐', 'self'], ['溫暖的家', 'self']],
+    hotel: ['溫暖的家', 'self'],
+    times: [['07:30', '早餐，房內裝箱秤重'], ['10:00', '站內按清單補買'], ['10:40', '退房，走到西口 21 號站牌'], ['11:10', '機場巴士 → 11:40 機場，先辦退稅確認'], ['12:55', '開櫃，託運八件'], ['15:25', 'IT215 → 17:30 桃園']],
+    fare: '機場巴士 ¥1,000（冬季班表）', todo: '確認退房時間與八件上巴士',
+    review: ['11:10 巴士搭不上時，12:55→13:25 仍可銜接；到機場先辦退稅確認再託運，取消機場用餐。', '退房 12:00 是訂房網站所列，仍要向格蘭比亞確認（086-234-7000）。'],
+    map: 'https://www.google.com/maps/dir/岡山駅/岡山桃太郎空港' }
+];
+
+// 與討論頁共用的待辦（id 必須一致，勾選狀態才會同步）
+const TRIP_TODOS = [
+  { group: '搶指定席（e5489，日本時間）', items: [
+    { id: 'e5489-d2-apply', due: '12/5 05:30 起', text: '事前申込：Day 2 米子→城崎溫泉，超級松風 6 號＋濱風 4 號，六人指定席', note: '一次最多六人；台灣時間 04:30。領票要用訂票的信用卡。' },
+    { id: 'e5489-d6-apply', due: '12/9 05:30 起', text: '事前申込：Day 6 超級因幡 4 號，鳥取→岡山，六人指定席', note: '台灣時間 04:30。' },
+    { id: 'e5489-d2-open', due: '12/12 10:00', text: 'Day 2 開賣：確認事前申込是否成功，失敗就立刻改訂', note: '' },
+    { id: 'e5489-d6-open', due: '12/16 10:00', text: 'Day 6 開賣：確認事前申込是否成功，失敗就立刻改訂', note: '' }
+  ] },
+  { group: '要大家決定', items: [
+    { id: 'decide-luggage', text: '八件是否 1/14 從川口屋直寄岡山格蘭比亞', note: '建議採用；先問格蘭比亞能否入住前代收。' },
+    { id: 'decide-day3', text: 'Day 3 定案留城崎（Plan B）', note: '玄武洞 1/13 休園，出石班次未能複查。' }
+  ] },
+  { group: '打電話詢問', items: [
+    { id: 'call-granvia', text: '岡山格蘭比亞 086-234-7000', note: '1/15 入住前代收八件、保管到 1/16；1/18 退房時間。' },
+    { id: 'call-kawaguchiya', text: '川口屋 0796-32-2611', note: '若採直寄：能否代寄ヤマト、集貨時間。' },
+    { id: 'call-nono', text: '御宿野乃 境港', note: '過了集貨截止，八件能否留待 1/12 集貨；1/11 館內自助晚餐能否加訂。' },
+    { id: 'call-monju', text: '文珠荘', note: '1/14 晚餐開席時段；1/15 能否代備飯糰或便當。' },
+    { id: 'call-kozeniya', text: '觀水庭こぜにや 0857-23-3311', note: '1/16 早餐能否加購。' },
+    { id: 'call-okayamakan', text: '晴れの国おかやま館 086-234-2270', note: '大統領「中辛」有沒有庫存；沒貨就刪掉 Day 6 表町這段。' }
+  ] },
+  { group: '訂位', items: [
+    { id: 'book-d1-dinner', text: 'Day 1 晚餐（1/11 成人之日）', note: '建議御宿野乃館內自助；或和泉、殿（先確認營業）。' },
+    { id: 'book-d2-lunch', text: 'Day 2 午餐：魚鮮水產 0857-36-7621，1/12 11:10 六人', note: '訂不到就改站內便當。' },
+    { id: 'book-d5-dinner', text: 'Day 5 晚餐（週五）：ジュジュアン 0857-21-1919 或牛王 0857-30-1129', note: '' },
+    { id: 'book-d6-dinner', text: 'Day 6 晚餐（週六，岡山站周邊）', note: '店家未定。' },
+    { id: 'book-d7-dinner', text: 'Day 7 晚餐（週日，岡山站周邊）', note: '店家未定。' }
+  ] },
+  { group: '再查與準備', items: [
+    { id: 'recheck-sotoyu', due: '12 月', text: '查城崎外湯 2027 年 1 月休館表', note: '目前只公布到 11 月。' },
+    { id: 'prep-weigh', text: '出發前在家秤八件', note: '超過 25 kg 按 180 尺寸計，超過 30 kg ヤマト不受理。' },
+    { id: 'prep-bag', text: '兩晚換洗包在家另裝、放進大箱', note: '到御宿野乃櫃台抽出來再交寄；虎航手提合計 10 公斤。' }
+  ] }
+];
+
+const INFO = [
+  ['交通票券', `<ul>
+    <li>JR 用西日本 e5489 訂指定席；Day 2 在米子站轉乘時領票（窗口 07:00～19:30、售票機 05:00～23:30），須用訂票時的信用卡。</li>
+    <li>境港站不受理 e5489 取票，不要為了取票先繞米子。</li>
+    <li>境線可刷 IC 卡；丹鐵與砂丘巴士依現場方式付款。</li>
+    <li>指定席乘車日一個月前 10:00 開賣；事前申込從開賣前一週 05:30 開始，一次最多六人，不保證有位。</li></ul>`],
+  ['行李', `<ul>
+    <li>大型行李 8 件（28 吋）。1/11 從御宿野乃寄往川口屋，無積雪影響時預計 1/12 上午到。</li>
+    <li>單件超過 25 kg 以 180 尺寸計費，超過 30 kg 宅急便不受理；出發前在家先秤。</li>
+    <li>兩晚換洗包在家另裝、放進大箱，到御宿野乃櫃台抽出來再交寄。</li>
+    <li>待討論：1/14 從川口屋把八件直寄岡山格蘭比亞，Day 4～6 只帶隨身包。</li></ul>`],
+  ['天氣衣著', `<ul>
+    <li>一月日本海側（境港、城崎、天橋立、鳥取）常下雪，岡山、倉敷較少。</li>
+    <li>建議洋蔥式穿法、防水防滑的鞋；外湯之間走路，準備手套與毛帽。</li>
+    <li>城崎外湯可穿旅館浴衣與木屐，另帶保暖外套。</li></ul>`],
+  ['溫泉', `<ul>
+    <li>入池前先在洗身處洗淨身體，毛巾不放進池中。</li>
+    <li>空腹、酒後、剛吃飽不要馬上泡；一次泡太久容易頭暈。</li>
+    <li>城崎外湯各有固定休館日，2027 年 1 月休館表出發前再查。</li></ul>`],
+  ['電話', `<div class="phone-list">
+    <div><span>警察</span><a href="tel:110">110</a></div>
+    <div><span>救護車・消防</span><a href="tel:119">119</a></div>
+    <div><span>川口屋城崎河畔酒店</span><a href="tel:+81796322611">0796-32-2611</a></div>
+    <div><span>觀水庭こぜにや</span><a href="tel:+81857233311">0857-23-3311</a></div>
+    <div><span>岡山格蘭比亞酒店</span><a href="tel:+81862347000">086-234-7000</a></div>
+    <div><span>晴れの国おかやま館</span><a href="tel:+81862342270">086-234-2270</a></div>
+    <div><span>魚鮮水產（Day 2 午餐）</span><a href="tel:+81857367621">0857-36-7621</a></div>
+    <div><span>ジュジュアン（Day 5 晚餐候選）</span><a href="tel:+81857211919">0857-21-1919</a></div>
+    <div><span>牛王（Day 5 晚餐候選）</span><a href="tel:+81857301129">0857-30-1129</a></div></div>`],
+  ['電壓時差', `<ul>
+    <li>日本電壓 100V，插座與台灣同為雙扁腳，一般手機、筆電充電器可直接用。</li>
+    <li>日本比台灣快 1 小時；本頁時刻都是日本當地時間。</li></ul>`]
+];
+
+const CHIP = { ok: '已訂', check: '已查核', wait: '待確認', self: '自理' };
+const chip = (s, text) => `<span class="chip ${s}">${text || CHIP[s]}</span>`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const imgSrc = name => (window.IMG && IMG[name]) || `assets/day-illustrations/${name}.jpg`;
+
+/* ---------- 總覽 ---------- */
+document.getElementById('ov-list').innerHTML = DAYS.map(d => `
+  <li><button type="button" data-day="${d.n}">
+    <span class="ov-day"><small>DAY</small>${d.n}</span>
+    <span class="ov-main"><b>${esc(d.title)}</b><span>${esc(d.date)}・${esc(d.hotel[0].replace(/（.*）/, ''))}</span></span>
+    <span class="ov-go" aria-hidden="true">›</span>
+  </button></li>`).join('');
+document.querySelectorAll('.feature img[data-img]').forEach(i => { i.src = imgSrc(i.dataset.img); });
+
+/* ---------- 每日行程 ---------- */
+function mealCell(label, [text, s]) {
+  const tag = s === 'ok' ? chip('ok', '含') : s === 'wait' ? chip('wait') : '';
+  return `<div class="meal"><span class="k">${label}</span><span>${esc(text)}${tag}</span></div>`;
+}
+document.getElementById('day-picker').innerHTML = DAYS.map(d =>
+  `<button type="button" role="tab" id="pick-${d.n}" aria-controls="day-${d.n}" aria-selected="${d.n === 1}"><b>Day ${d.n}</b><span>${d.date.replace(/（.*/, '')}</span></button>`).join('');
+document.getElementById('days').innerHTML = DAYS.map(d => `
+  <article class="day" id="day-${d.n}" role="tabpanel" aria-labelledby="pick-${d.n}" ${d.n === 1 ? '' : 'hidden'}>
+    <div class="day-head"><span class="day-badge"><small>DAY</small><span>${d.n}</span></span><span class="day-date">${esc(d.date)}</span></div>
+    <h3 class="day-title">${esc(d.title)}</h3>
+    <p class="route">${d.route.map(esc).join('<span class="arr">→</span>')}</p>
+    <p class="plan-line">方案：${esc(d.plan[0])}${chip(d.plan[1], d.plan[2])}</p>
+    <p class="day-note"><b>【停止點】</b>${esc(d.note)}</p>
+    <div class="block-title">餐食</div>
+    <div class="meals">${mealCell('早餐', d.meals[0])}${mealCell('午餐', d.meals[1])}${mealCell('晚餐', d.meals[2])}</div>
+    <div class="block-title">旅館</div>
+    <div class="hotel">${esc(d.hotel[0])}${d.hotel[1] === 'ok' ? chip('ok') : ''}</div>
+    <div class="block-title">行程內容</div>
+    <ol class="timeline">${d.times.map(([t, x]) => `<li><time>${t}</time>${esc(x)}</li>`).join('')}</ol>
+    <dl class="kv">
+      <dt>交通費用</dt><dd>${esc(d.fare)}${chip('check')}</dd>
+      <dt>待辦</dt><dd>${esc(d.todo)}${chip('wait')}</dd>
+    </dl>
+    <div class="block-title">檢視建議（11/15）</div>
+    <div class="review"><ul>${d.review.map(r => `<li>${esc(r)}</li>`).join('')}</ul><p class="fine">未聯絡店家或旅館、未代訂；採用與否待旅伴決定。</p></div>
+    <a class="map-link" href="${encodeURI(d.map)}" target="_blank" rel="noopener noreferrer">在 Google 地圖看當天路線 ↗</a>
+    <img class="day-img" src="${imgSrc(d.img)}" alt="${esc(d.alt)}" loading="lazy">
+    <div class="day-pager">
+      <button type="button" data-go="${d.n - 1}" ${d.n === 1 ? 'disabled' : ''}>← Day ${d.n - 1}</button>
+      <button type="button" data-go="${d.n + 1}" ${d.n === DAYS.length ? 'disabled' : ''}>Day ${d.n + 1} →</button>
+    </div>
+  </article>`).join('');
+
+/* ---------- 旅遊資訊 ---------- */
+const infoTabs = document.getElementById('info-tabs');
+const infoPanels = document.getElementById('info-panels');
+infoTabs.innerHTML = INFO.map(([t], i) => `<button type="button" role="tab" id="itab-${i}" aria-controls="ipanel-${i}" aria-selected="${i === 0}">${t}</button>`).join('');
+infoPanels.innerHTML = INFO.map(([, html], i) => `<div class="info-panel" role="tabpanel" id="ipanel-${i}" aria-labelledby="itab-${i}" ${i ? 'hidden' : ''}>${html}</div>`).join('');
+infoTabs.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  infoTabs.querySelectorAll('button').forEach(x => x.setAttribute('aria-selected', x === b));
+  infoPanels.querySelectorAll('.info-panel').forEach(p => p.hidden = p.id !== b.getAttribute('aria-controls'));
+});
+
+/* ---------- 分頁與日期切換（只換內容，不往下捲） ---------- */
+const tabbar = document.getElementById('tabbar');
+const tabPanels = document.getElementById('tab-panels');
+const picker = document.getElementById('day-picker');
+const topbarH = () => document.querySelector('.topbar').offsetHeight;
+let currentTab = 'overview', currentDay = 1;
+
+// 只會往上回到內容開頭；分頁條還沒黏住時畫面完全不動
+function keepAbove(el, gap = 0) {
+  const at = el.getBoundingClientRect().top + window.scrollY - topbarH() - tabbar.offsetHeight - gap;
+  if (window.scrollY > at) window.scrollTo(0, at);
+}
+function setHash() {
+  const h = currentTab === 'daily' ? `#day-${currentDay}` : `#${currentTab}`;
+  if (location.hash !== h) history.replaceState(null, '', h);
+}
+function showTab(name) {
+  currentTab = name;
+  tabbar.querySelectorAll('[role="tab"]').forEach(b => b.setAttribute('aria-selected', b.id === 'tab-' + name));
+  tabPanels.querySelectorAll('.tab-panel').forEach(p => p.hidden = p.id !== 'panel-' + name);
+  keepAbove(tabPanels);
+  setHash();
+}
+function showDay(n) {
+  currentDay = n;
+  picker.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.id === 'pick-' + n));
+  document.querySelectorAll('#days .day').forEach(a => a.hidden = a.id !== 'day-' + n);
+  keepAbove(picker, 12);
+  setHash();
+}
+tabbar.addEventListener('click', e => { const b = e.target.closest('[role="tab"]'); if (b) showTab(b.id.replace('tab-', '')); });
+picker.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showDay(Number(b.id.replace('pick-', ''))); });
+document.getElementById('days').addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) showDay(Number(b.dataset.go)); });
+document.getElementById('ov-list').addEventListener('click', e => {
+  const b = e.target.closest('[data-day]'); if (!b) return;
+  showTab('daily'); showDay(Number(b.dataset.day));
+});
+document.getElementById('stat-todo').addEventListener('click', () => showTab('todo'));
+
+function openFromHash() {
+  const h = location.hash.slice(1);
+  const m = h.match(/^day-([1-8])$/);
+  if (m) { showTab('daily'); showDay(Number(m[1])); }
+  else if (['overview', 'todo', 'info'].includes(h)) showTab(h);
+}
+openFromHash();
+
+/* ---------- 共享待辦 ---------- */
+const TODO_CACHE = 'sanin-combined-todos-v1';
+let todoDone = {};
+try { todoDone = JSON.parse(localStorage.getItem(TODO_CACHE)) || {}; } catch (_) {}
+let sync = null;   // { api, ref } 連上 Firestore 後才有
+
+function setSync(text, tone) {
+  const el = document.getElementById('sync-status');
+  el.textContent = text;
+  el.className = 'sync' + (tone ? ' ' + tone : '');
+}
+function renderTodos() {
+  const list = document.getElementById('todo-list');
+  let total = 0, done = 0;
+  list.innerHTML = TRIP_TODOS.map(g => `
+    <div class="todo-group"><h3>${esc(g.group)}</h3>
+    ${g.items.map(it => {
+      total++; const on = !!todoDone[it.id]; if (on) done++;
+      return `<label class="todo-item${on ? ' done' : ''}"><input type="checkbox" data-todo="${it.id}" ${on ? 'checked' : ''}>
+        <span>${it.due ? `<span class="due">${esc(it.due)}</span>` : ''}<span class="text">${esc(it.text)}</span>${it.note ? `<span class="note">${esc(it.note)}</span>` : ''}</span></label>`;
+    }).join('')}</div>`).join('');
+  document.getElementById('todo-stat').textContent = `${done}/${total}`;
+  document.getElementById('todo-left').textContent = total - done ? String(total - done) : '';
+  document.getElementById('todo-bar').style.width = `${Math.round(done / total * 100)}%`;
+  document.getElementById('todo-summary').textContent = `已完成 ${done} 項，還有 ${total - done} 項。`;
+}
+function cacheTodos() { try { localStorage.setItem(TODO_CACHE, JSON.stringify(todoDone)); } catch (_) {} }
+document.getElementById('todo-list').addEventListener('change', e => {
+  const box = e.target.closest('[data-todo]'); if (!box) return;
+  const id = box.dataset.todo, on = box.checked;
+  if (on) todoDone[id] = true; else delete todoDone[id];
+  cacheTodos(); renderTodos();
+  if (sync) {
+    // 只改這一項，不動討論頁的其他欄位
+    sync.api.updateDoc(sync.ref, { [`notes.todos.${id}`]: on ? true : sync.api.deleteField(), updatedAt: Date.now() })
+      .catch(() => setSync('同步失敗，這次勾選只存在本機', 'warn'));
+  }
+});
+renderTodos();
+
+// 由頁尾 module script 呼叫
+window.startTodoSync = function (api) {
+  const ref = api.doc(api.db, 'trips', 'sanin-2027-companions');
+  setSync('連線中…');
+  api.onSnapshot(ref, { includeMetadataChanges: true }, snap => {
+    if (!snap.exists()) { setSync('找不到共享行程，改用本機保存', 'warn'); return; }
+    sync = { api, ref };
+    const todos = snap.data().notes && snap.data().notes.todos;
+    todoDone = todos && typeof todos === 'object' && !Array.isArray(todos) ? { ...todos } : {};
+    Object.keys(todoDone).forEach(k => { if (!todoDone[k]) delete todoDone[k]; });
+    cacheTodos(); renderTodos();
+    if (snap.metadata.fromCache) setSync('離線中，顯示上次同步的內容', 'warn');
+    else setSync('即時同步中（與討論頁共用）', 'live');
+  }, () => { sync = null; setSync('無法連線，改用本機保存', 'warn'); });
+};
+
+/* ---------- 其他 ---------- */
+const today = new Date(); today.setHours(0, 0, 0, 0);
+const daysLeft = Math.round((new Date('2027-01-11T00:00:00') - today) / 86400000);
+const nextDue = [['2026-12-05', '12/5 05:30'], ['2026-12-09', '12/9 05:30'], ['2026-12-12', '12/12 10:00'], ['2026-12-16', '12/16 10:00']]
+  .find(([d]) => new Date(d + 'T00:00:00') >= today);
+if (daysLeft > 0) document.getElementById('countdown').innerHTML = `距出發 <b>${daysLeft}</b> 天` + (nextDue ? `<br>下一步：${nextDue[1]}` : '');
+
+const toTop = document.getElementById('to-top');
+toTop.addEventListener('click', () => window.scrollTo({ top: 0 }));
+function onScroll() { toTop.classList.toggle('show', window.scrollY > 600); }
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+</script>
+
+<!-- 共享待辦同步（與 trip_discussion.html 同一份 Firestore 文件）；網址加 ?local=1 可只用本機 -->
+<script type="module">
+  if (!new URLSearchParams(location.search).has('local')) {
+    try {
+      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js');
+      const { getFirestore, doc, onSnapshot, updateDoc, deleteField } = await import('https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js');
+      const db = getFirestore(initializeApp({
+        apiKey: 'AIzaSyBEMwiInwMWyVylOg_Bs-I7aQUymJimOTQ',
+        authDomain: 'sanin-trip-2027.firebaseapp.com',
+        projectId: 'sanin-trip-2027',
+        storageBucket: 'sanin-trip-2027.firebasestorage.app',
+        messagingSenderId: '1087729366910',
+        appId: '1:1087729366910:web:31e1937880a5214f60a52f'
+      }));
+      window.startTodoSync({ db, doc, onSnapshot, updateDoc, deleteField });
+    } catch (err) {
+      document.getElementById('sync-status').textContent = '同步服務載入失敗，改用本機保存';
+      console.warn(err);
+    }
+  }
+</script>
+</body>
+</html>
